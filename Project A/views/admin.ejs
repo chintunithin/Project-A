@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="/admin.css">
+    <style>
+ /* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #eef2f7;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Main Admin Container */
+.admin-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1400px;
+    margin: auto;
+}
+
+/* Sub-container to wrap forms and event records */
+.adminSub-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+    justify-content: space-between;
+}
+
+/* Form & Records Containers */
+.form-container, .record-container {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    width: calc(29% - 10px); /* Adjust width for even spacing */
+    min-width: 300px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* On Hover Animation */
+.form-container:hover, .record-container:hover {
+    transform: scale(1.02);
+}
+
+/* Preview Container */
+.preview-container {
+    width: 100%;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+}
+#preview-bg {
+    width: 100%;
+    height: 300px;  /* Adjust based on layout */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: block;  /* Ensure it's visible */
+    opacity: 1;  /* Ensure it's not transparent */
+    position: absolute;
+    z-index: 1;
+}
+
+
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* Headings */
+h2 {
+    text-align: center;
+    color: #0056b3;
+    font-size: 20px;
+}
+
+/* Form Inputs */
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background: #f9f9f9;
+    color: #333;
+    border-radius: 5px;
+    outline: none;
+    transition: 0.3s;
+    font-size: 14px;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #0056b3;
+    background: #ffffff;
+}
+
+/* Buttons */
+button {
+    width: 100%;
+    background: #0056b3;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+    font-size: 14px;
+}
+
+button:hover {
+    background: #003d80;
+}
+
+/* Existing Events List */
+#eventList {
+    list-style: none;
+    padding: 0;
+    max-height: 250px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Scroll to Selected Record */
+#eventList li.selected {
+    background: #0056b3 !important;
+    color: #ffffff;
+}
+
+/* Event List Items */
+#eventList li {
+    background: #f9f9f9;
+    padding: 12px;
+    margin: 5px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+#eventList li:hover {
+    background: #0056b3;
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+/* Dynamic Section (Preview) */
+.dynamic-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background: #eef2f7;
+    padding: 20px;
+    border-radius: 10px;
+    gap: 20px;
+}
+
+/* Content Boxes */
+.content-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    z-index: 2;
+}
+
+/* Preview Box */
+.box {
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s, background 0.3s;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover Effect */
+.box:hover {
+    background: #0056b3;
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+/* Prevent Image Overflow in Preview */
+.box img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* Responsive Layout */
+@media (max-width: 900px) {
+    .admin-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .adminSub-container {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .form-container, .record-container, .preview-container {
+        width: 100%;
+        max-width: 600px;
+    }
+}
+.notification {
+        display: none;
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        padding: 15px;
+        border-radius: 5px;
+        color: white;
+        font-weight: bold;
+        z-index: 1000;
+    }
+    .success { background-color: green; }
+    .error { background-color: red; }
+
+    </style>
+</head>
+<body>
+    <div id="notification" class="notification"></div>
+    <div class="admin-container">
+         <!-- Event Records -->
+          <div class="adminSub-container">
+         <div class="record-container">
+            <h2>Existing Events</h2>
+            <ul id="eventList">
+                <!-- Event Records will be populated here dynamically -->
+            </ul>
+        </div>
+        <!-- Upload Background Media -->
+        <div class="form-container">
+            <h2>Upload Background Media</h2>
+            <form id="mediaForm">
+                <label>Choose Image/Video:</label>
+                <input type="file" name="mediaFile" required>
+                <label>Media Type:</label>
+                <select name="mediaType">
+                    <option value="image">Image</option>
+                    <option value="video">Video</option>
+                </select>
+                <button type="button" onclick="uploadMedia()">Upload</button>
+            </form>
+            <button type="button" onclick="clearMedia()">Clear Media</button>
+        </div>
+
+        <!-- Add / Edit Event -->
+        <div class="form-container">
+            <h2>Add / Edit Event</h2>
+            <form id="eventForm">
+                <input type="hidden" name="eventId" id="eventId">
+                <label>Title:</label>
+                <input type="text" name="title" id="title" required>
+                <label>Description:</label>
+                <textarea name="description" id="description" required></textarea>
+                <label>Event Image:</label>
+                <input type="file" name="eventImage" id="eventImage">
+                <label>Event Link (optional):</label>
+                <input type="text" name="link" id="link">
+                <button type="button" onclick="saveEvent()">Add New</button>
+                <button type="button" onclick="updateEvent()" style="display:none;" id="updateBtn">Update Event</button>
+            </form>
+            <button type="button" onclick="clearEvents()">Clear Events</button>
+        </div>
+
+    </div>
+
+        <!-- Preview Section -->
+        <div class="preview-container">
+            <h2>Preview</h2>
+            <section class="dynamic-section">
+                <div class="background-container" id="preview-bg"></div>
+                <div class="content-boxes" id="preview-content"></div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+     document.addEventListener("DOMContentLoaded", loadEvents);
+
+function showNotification(message, type) {
+    let notification = document.getElementById("notification");
+    notification.innerText = message;
+    notification.className = `notification ${type}`;
+    notification.style.display = "block";
+
+    setTimeout(() => {
+        notification.style.display = "none";
+    }, 3000);
+}
+
+function loadEvents() {
+    fetch("/events")
+        .then(res => res.json())
+        .then(events => {
+            let eventList = document.getElementById("eventList");
+            eventList.innerHTML = "";
+            events.forEach(event => {
+                let li = document.createElement("li");
+                li.innerHTML = `${event.title}`;
+                li.onclick = () => selectEvent(event);
+                eventList.appendChild(li);
+            });
+        })
+        .catch(error => showNotification("Failed to load events: " + error.message, "error"));
+}
+
+function selectEvent(event) {
+    document.getElementById("eventId").value = event.id;
+    document.getElementById("title").value = event.title;
+    document.getElementById("description").value = event.description;
+    document.getElementById("link").value = event.link || "";
+
+    // Show the update button, hide "Add New" button
+    document.getElementById("updateBtn").style.display = "block";
+
+    updatePreview(event);
+}
+
+function saveEvent() {
+    let formData = new FormData(document.getElementById("eventForm"));
+
+    fetch("/upload/event", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            loadEvents();
+            showNotification("Event added successfully!", "success");
+        } else {
+            showNotification("Error adding event: " + data.error, "error");
+        }
+    })
+    .catch(error => showNotification("Network error: " + error.message, "error"));
+}
+
+function updateEvent() {
+    let eventId = document.getElementById("eventId").value;
+    if (!eventId) {
+        showNotification("Select an event to update!", "error");
+        return;
+    }
+
+    let formData = new FormData(document.getElementById("eventForm"));
+
+    fetch(`/update/event/${eventId}`, {
+        method: "POST",
+        body: formData
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.text().then(text => { throw new Error(text); });
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.success) {
+            loadEvents();
+            showNotification("Event updated successfully!", "success");
+        } else {
+            showNotification("Error updating event: " + data.error, "error");
+        }
+    })
+    .catch(error => {
+        console.error("Update Error:", error);
+        showNotification("Network error: " + error.message, "error");
+    });
+}
+
+
+function uploadMedia() {
+    let formData = new FormData(document.getElementById("mediaForm"));
+
+    fetch("/upload/media", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            showNotification("Media uploaded successfully!", "success");
+        } else {
+            showNotification("Error uploading media: " + data.error, "error");
+        }
+    })
+    .catch(error => showNotification("Network error: " + error.message, "error"));
+}
+
+function updatePreview(event) {
+    let preview = document.getElementById("preview-content");
+    let previewBg = document.getElementById("preview-bg");
+
+    preview.innerHTML = `
+        <div class="box">
+            <h3>${event.title}</h3>
+            <p>${event.description}</p>
+            ${event.imageUrl ? `<img src="/images/${event.imageUrl}" alt="${event.title}">` : ""}
+            ${event.link ? `<a href="${event.link}" target="_blank">More Info</a>` : ""}
+        </div>
+    `;
+
+    // Fetch the latest background media
+    fetch('/latest-media')
+        .then(response => response.json())
+        .then(media => {
+            if (media.mediaUrl) {
+                if (media.mediaType === "image") {
+                    previewBg.style.backgroundImage = `url('/images/${media.mediaUrl}')`;
+                    previewBg.style.backgroundSize = "cover";
+                    previewBg.style.backgroundPosition = "center";
+                } else if (media.mediaType === "video") {
+                    previewBg.innerHTML = `<video autoplay loop muted class="background-video">
+                        <source src="/videos/${media.mediaUrl}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>`;
+                }
+            }
+        })
+        .catch(error => console.error("Error fetching background media:", error));
+}
+
+
+function clearMedia() {
+    fetch('/clear/media', { method: 'POST' })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                showNotification("Media cleared successfully!", "success");
+            } else {
+                showNotification("Error clearing media: " + data.error, "error");
+            }
+        })
+        .catch(error => showNotification("Network error: " + error.message, "error"));
+}
+
+function clearEvents() {
+    fetch('/clear/events', { method: 'POST' })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                loadEvents(); 
+                showNotification("Events cleared successfully!", "success");
+            } else {
+                showNotification("Error clearing events: " + data.error, "error");
+            }
+        })
+        .catch(error => showNotification("Network error: " + error.message, "error"));
+}
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Migration | DGT</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="/search.js"></script>
+    <link href="index.css"  rel="stylesheet" >
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap');
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        .section ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .section ul li {
+            padding: 10px;
+            margin: 6px 0;
+            border-left: 5px solid #F4A261;
+            background: #fafafa;
+            border-radius: 5px;
+        }
+        .hero {
+            background: #F4A261;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            border-radius: 10px;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: auto;
+        }
+        .section {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+        .section:hover {
+            transform: translateY(-3px);
+        }
+        .cta {
+            text-align: center;
+            padding: 40px;
+        }
+        .cta button {
+            background: #F4A261;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .cta button:hover {
+            background: #E76F51;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="wrapper">
+            <div class="logo-container">
+                <a href="index"><img src="/images/DawnTech_Icon.png" alt="Logo"></a>
+                <div class="text-container">
+                    <h1 id="title"></h1>
+                    <p id="subtitle"></p>
+                </div>
+            </div>
+          <input type="radio" name="slider" id="menu-btn">
+          <input type="radio" name="slider" id="close-btn">
+          <ul class="nav-links">
+            <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+            <li><a href="index">Home</a></li>
+            <li><a href="about">About</a></li>
+            <li>
+              <a href="#" class="desktop-item">Technology Offerings</a>
+              <input type="checkbox" id="showDrop">
+              <label for="showDrop" class="mobile-item">Technology Offerings</label>
+              <ul class="drop-menu">
+                <li><a href="/Mobility">Mobility</a></li>
+                <li><a href="/integration">Integrations</a></li>
+                <li><a href="/data-migrations">Data Migrations</a></li>
+                <li><a href="/Analytics">Analytics</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#" class="desktop-item">Application Offerings</a>
+              <input type="checkbox" id="showMega">
+              <label for="showMega" class="mobile-item">Application Offerings</label>
+              <div class="mega-box">
+                <div class="content">
+                  <div class="row">
+                    <img src="/images/implementationtechnology.jpg" alt="">
+                  </div>
+                  <div class="row">
+                    <header>CRM Solutions</header>
+                    <ul class="mega-links">
+                        <li><a href="/salesforce">Salesforce</a></li>
+                        <li><a href="/sap">SAP</a></li>
+                    </ul>
+                </div>
+                
+                <div class="row">
+                    <header>IT Service Management</header>
+                    <ul class="mega-links">
+                        <li><a href="/servicenow">ServiceNow</a></li>
+                        <li><a href="/microsoft">Microsoft</a></li>
+                    </ul>
+                </div>
+                
+                <div class="row">
+                    <header>Email & Business Intelligence</header>
+                    <ul class="mega-links">
+                        <li><a href="/celonis">Celonis</a></li>
+                    </ul>
+                </div>
+                
+                </div>
+              </div>
+            </li>
+            <li><a href="/feedback">Feedback</a></li>
+          </ul>
+          <div class="search-container">
+            <i class="fas fa-search search-icon" onclick="toggleSearch()"></i>
+            <div class="search-box" id="searchBox">
+                <input type="text" id="searchInput" placeholder="Search..." onkeyup="filterPages()">
+                <ul id="searchResults"></ul>
+            </div>
+        </div>
+        
+        
+          <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+        </div>
+      </nav>
+      <div id="floatingSidebar" class="fixed top-1/3 right-0 transform translate-x-full transition-transform duration-500 z-50 bg-white shadow-2xl rounded-l-2xl w-72 p-4 border border-gray-200" 
+      onmouseenter="clearHideTimeout()" onmouseleave="startHideTimeout()">
+      
+      <!-- Close Button -->
+      <div class="absolute top-2 left-2 cursor-pointer text-gray-600" onclick="toggleSidebar()">✖</div>
+    
+      <!-- Content -->
+      <h2 class="text-xl font-bold mb-4 text-gray-800">Our Pillars</h2>
+      <ul class="space-y-3 text-gray-700">
+        <li><strong>Methodology:</strong> A structured, agile-driven approach to solve modern challenges.</li>
+        <li><strong>Philosophy:</strong> Ethical, client-centered innovation with impactful results.</li>
+        <li><strong>The Way We Think:</strong> Forward-thinking strategies, anticipating future tech waves.</li>
+        <li><strong>Reinvention & AI-First:</strong> AI-driven solutions to transform businesses from the ground up.</li>
+      </ul>
+    </div>
+    
+    <!-- Floating Handle (Button to Open Sidebar) -->
+    <div id="floatingHandle" class="fixed top-1/3 right-0 bg-orange-500 text-white rounded-l-full px-3 py-2 cursor-pointer shadow-lg z-50" onclick="toggleSidebar()">
+      <span>☰ Our Pillars</span>
+    </div>
+    <header class="hero" data-aos="fade-down">
+        <h1>Cloud Migration</h1>
+        <p>CIOs tell us that cloud adoption is no longer a question of if but how fast. Organizations moving to the cloud face challenges in scalability, security, and integration. Without the right strategy, cloud migration can lead to spiraling costs and operational disruptions. DGT provides a roadmap for seamless, AI-optimized cloud transformation.</p>
+    </header>
+    
+    <section class="section" data-aos="fade-right">
+        <h2>Our Expertise</h2>
+        <p>We leverage deep experience in multi-cloud environments, including Salesforce Cloud, Microsoft Azure, AWS, and Google Cloud. Our proprietary cloud accelerators ensure minimal downtime and optimized cost management. With expertise in Mulesoft, Informatica, and Boomi, we create secure, scalable, and AI-driven cloud solutions tailored to business needs.</p>
+    </section>
+    
+    <section class="section" data-aos="fade-left">
+        <h2>Process Excellence</h2>
+        <p>Our cloud transformation roadmap ensures a secure, scalable, and cost-effective transition. By integrating automation, best-in-class security practices, and AI-driven optimizations, we enable businesses to adopt cloud infrastructure with confidence.</p>
+    </section>
+
+    <section class="section" data-aos="fade-up">
+        <h2>Technical Prowess</h2>
+        <p>We integrate Mulesoft, Informatica, and Boomi to create seamless, interconnected cloud solutions across industries. Our expertise in API-led connectivity, real-time data integration, and automation ensures that cloud migration is smooth, efficient, and future-proof.</p>
+    </section>
+    
+    <section class="section grid-container" data-aos="fade-up">
+        <div class="grid-item">
+            <h2>Industry Use Cases</h2>
+            <ul>
+                <li><strong>Hospitality:</strong> Migration of legacy PMS to cloud-based CRM with AI-enhanced analytics. <br> <em>Tools: Salesforce Service Cloud, Azure, Informatica.</em></li>
+                <li><strong>Energy & Utilities:</strong> AI-powered cloud analytics for real-time monitoring. <br> <em>Tools: Salesforce Energy & Utilities Cloud, Azure, Mulesoft, SAP.</em></li>
+                <li><strong>Manufacturing:</strong> Hybrid cloud implementation for smart factories. <br> <em>Tools: Salesforce Manufacturing Cloud, Boomi, Azure.</em></li>
+                <li><strong>Non-Profit:</strong> Cloud-based donor tracking and engagement platforms. <br> <em>Tools: Salesforce Nonprofit Cloud, Tableau, Mulesoft.</em></li>
+                <li><strong>CPG:</strong> AI-enabled supply chain cloud transformation. <br> <em>Tools: Salesforce CPG Cloud, SAP, Informatica, Celonis.</em></li>
+                <li><strong>Banking & Financial Services:</strong> Secure financial data migration, real-time risk monitoring. <br> <em>Tools: Salesforce Financial Services Cloud, Azure, ServiceNow.</em></li>
+            </ul>
+        </div>
+    </section>
+    
+    <section class="section" data-aos="fade-right">
+        <h2>Client Success Stories</h2>
+        <p>Our cloud solutions have helped businesses across industries achieve digital transformation. From reducing operational delays in supply chains to optimizing financial data security, we enable businesses to harness the full power of cloud technologies.</p>
+    </section>
+    
+    <section class="section" data-aos="fade-left">
+        <h2>Team Expertise</h2>
+        <p>Our certified cloud architects bring decades of experience in enterprise cloud strategy, ensuring best-in-class implementation, governance, and ongoing optimization. We work closely with organizations to tailor cloud solutions that align with business objectives and future growth.</p>
+    </section>
+    
+    <section class="cta" data-aos="zoom-in">
+        <h2>Future-Proof Your Business with Cloud</h2>
+        <button>Get Started</button>
+    </section>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>

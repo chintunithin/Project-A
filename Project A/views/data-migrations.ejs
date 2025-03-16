@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Migration | DGT</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="/search.js"></script>
+    <link href="index.css"  rel="stylesheet" >
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .data_intigritity{
+            background-image: url('/images/data_intigrity_b.avif');
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents repeating */
+        }
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px 0;
+        }
+
+        .hero {
+        
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            margin: 6%;
+            border: 2px solid orange;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(218, 122, 18, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin: 30px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            position: relative;
+            overflow: hidden;
+            color: black;
+        }
+        .card ul,
+.card ol {
+    list-style: none;
+    padding: 0;
+}
+
+.card ol li,
+.card ul li {
+    font-size: 1.2rem;
+    padding: 10px 0;
+    border-left: 5px solid #ff7f50;
+    padding-left: 20px;
+    transition: all 0.3s ease-in-out;
+    z-index: 3;
+   
+}
+
+.card ol li:hover,
+.card ul li:hover {
+    background: rgba(255, 127, 80, 0.15);
+    padding-left: 25px;
+}
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            max-height: 100%;
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index:2;
+        }
+
+        .card:hover img {
+            display: block;
+            opacity: 1;
+        }
+
+        .cta {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .cta button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 1.3rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .cta button:hover {
+            background: #2980b9;
+            transform: scale(1.08);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="wrapper">
+            <div class="logo-container">
+                <a href="index"><img src="/images/DawnTech_Icon.png" alt="Logo"></a>
+                <div class="text-container">
+                    <h1 id="title"></h1>
+                    <p id="subtitle"></p>
+                </div>
+            </div>
+          <input type="radio" name="slider" id="menu-btn">
+          <input type="radio" name="slider" id="close-btn">
+          <ul class="nav-links">
+            <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+            <li><a href="index">Home</a></li>
+            <li><a href="about">About</a></li>
+            <li>
+              <a href="#" class="desktop-item">Technology Offerings</a>
+              <input type="checkbox" id="showDrop">
+              <label for="showDrop" class="mobile-item">Technology Offerings</label>
+              <ul class="drop-menu">
+                <li><a href="/Mobility">Mobility</a></li>
+                <li><a href="/integration">Integrations</a></li>
+                <li><a href="/data-migrations">Data Migrations</a></li>
+                <li><a href="/Analytics">Analytics</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#" class="desktop-item">Application Offerings</a>
+              <input type="checkbox" id="showMega">
+              <label for="showMega" class="mobile-item">Application Offerings</label>
+              <div class="mega-box">
+                <div class="content">
+                  <div class="row">
+                    <img src="/images/implementationtechnology.jpg" alt="">
+                  </div>
+                  <div class="row">
+                    <header>CRM Solutions</header>
+                    <ul class="mega-links">
+                        <li><a href="/salesforce">Salesforce</a></li>
+                        <li><a href="/sap">SAP</a></li>
+                    </ul>
+                </div>
+                
+                <div class="row">
+                    <header>IT Service Management</header>
+                    <ul class="mega-links">
+                        <li><a href="/servicenow">ServiceNow</a></li>
+                        <li><a href="/microsoft">Microsoft</a></li>
+                    </ul>
+                </div>
+                
+                <div class="row">
+                    <header>Email & Business Intelligence</header>
+                    <ul class="mega-links">
+                        <li><a href="/celonis">Celonis</a></li>
+                    </ul>
+                </div>
+                
+                </div>
+              </div>
+            </li>
+            <li><a href="/feedback">Feedback</a></li>
+          </ul>
+          <div class="search-container">
+            <i class="fas fa-search search-icon" onclick="toggleSearch()"></i>
+            <div class="search-box" id="searchBox">
+                <input type="text" id="searchInput" placeholder="Search..." onkeyup="filterPages()">
+                <ul id="searchResults"></ul>
+            </div>
+        </div>
+        
+        
+          <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+        </div>
+      </nav>
+      <div id="floatingSidebar" class="fixed top-1/3 right-0 transform translate-x-full transition-transform duration-500 z-50 bg-white shadow-2xl rounded-l-2xl w-72 p-4 border border-gray-200" 
+      onmouseenter="clearHideTimeout()" onmouseleave="startHideTimeout()">
+      
+      <!-- Close Button -->
+      <div class="absolute top-2 left-2 cursor-pointer text-gray-600" onclick="toggleSidebar()">✖</div>
+    
+      <!-- Content -->
+      <h2 class="text-xl font-bold mb-4 text-gray-800">Our Pillars</h2>
+      <ul class="space-y-3 text-gray-700">
+        <li><strong>Methodology:</strong> A structured, agile-driven approach to solve modern challenges.</li>
+        <li><strong>Philosophy:</strong> Ethical, client-centered innovation with impactful results.</li>
+        <li><strong>The Way We Think:</strong> Forward-thinking strategies, anticipating future tech waves.</li>
+        <li><strong>Reinvention & AI-First:</strong> AI-driven solutions to transform businesses from the ground up.</li>
+      </ul>
+    </div>
+    
+    <!-- Floating Handle (Button to Open Sidebar) -->
+    <div id="floatingHandle" class="fixed top-1/3 right-0 bg-orange-500 text-white rounded-l-full px-3 py-2 cursor-pointer shadow-lg z-50" onclick="toggleSidebar()">
+      <span>☰ Our Pillars</span>
+    </div>
+    <header class="hero data_intigritity" data-aos="fade-up">
+        <h1>Revolutionize Your Business with DGT's Data Migration Solutions</h1>
+        <p>Seamlessly transition your critical data with DGT's expert services ensuring zero downtime and complete data integrity.</p>
+    </header>
+
+    <section class="container">
+        <div class="card" data-aos="fade-right">
+            <h2>Our Expertise</h2>
+            <ul>
+                <li>15+ years in complex data migration projects</li>
+                <li>Proficiency in ETL tools: Informatica, Talend, AWS Glue</li>
+                <li>Expertise in migrating Oracle, SQL Server, SAP HANA, Snowflake</li>
+                <li>AI-driven data quality, governance & automation</li>
+            </ul>
+            <img src="/images/data_migration_our_experties.JPG" alt="Expertise">
+        </div>
+
+        <div class="card" data-aos="fade-left">
+            <h2>Challenges</h2>
+            <ul>
+                <li>Data Loss & Corruption</li>
+                <li>System Downtime & Compatibility Issues</li>
+                <li>Data Security & Compliance</li>
+                <li>Performance Bottlenecks</li>
+            </ul>
+            <img src="/images/data_challenges.webp" alt="Challenges">
+        </div>
+
+        <div class="card" data-aos="fade-right">
+            <h2>Technology Trends</h2>
+            <ul>
+                <li>AI-Driven Data Migration</li>
+                <li>Cloud-to-Cloud Migrations</li>
+                <li>Real-Time Migration</li>
+                <li>Blockchain in Data Integrity</li>
+            </ul>
+            <img src="/images/technology_trends.webp" alt="Trends">
+        </div>
+
+        <div class="card" data-aos="fade-left">
+            <h2>Success Stories</h2>
+            <ul>
+                <li>Migrated 10TB of data for a global retailer</li>
+                <li>30% reduction in storage costs</li>
+                <li>Zero downtime during migration</li>
+            </ul>
+            <img src="/images/success_story.webp" alt="Success">
+        </div>
+    </section>
+
+    <section class="cta" data-aos="zoom-in">
+        <h2>Get a Free Data Migration Assessment</h2>
+        <button>Schedule Now</button>
+    </section>
+
+    <script src="/Aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>

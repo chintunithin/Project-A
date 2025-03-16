@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="index.css"  rel="stylesheet" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/search.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <style>
+      .footer {
+    background: #111;
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.footer .container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-section h2 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #F4A261;
+}
+
+.footer-section p,
+.footer-section ul {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #f4a261;
+}
+
+.socials a {
+    display: inline-block;
+    color: white;
+    margin-right: 10px;
+    font-size: 24px;
+    transition: transform 0.3s;
+}
+
+.socials a:hover {
+    transform: scale(1.2);
+    color: #f4a261;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    font-size: 13px;
+    border-top: 1px solid #444;
+    padding-top: 10px;
+}
+.swiper-container {
+            width: 100%;
+            padding: 50px 0;
+        }
+        .swiper-slide {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 300px;
+            color: white;
+            font-size: 20px;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            border: 5px solid #FFA500;
+            border-radius: 15px;
+        }
+        .swiper-slide::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .swiper-slide h3, .swiper-slide p {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+            /* background: rgba(0, 0, 0, 0.6); */
+            border-radius: 10px;
+        }
+        @media (max-width: 768px) {
+            .swiper-slide {
+                height: 250px;
+            }
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Montserrat:wght@400;700&display=swap');
+
+.dynamic-section {
+    padding: 50px 5%;
+    background-color: #f9f7f1; /* Light newspaper-like background */
+    display: flex;
+    justify-content: center;
+}
+
+.Event-Container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.Event-Box {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid #ff9800; /* Light orange border */
+    padding: 20px;
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+    min-height: 250px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.Event-Box:hover {
+    transform: scale(1.03);
+}
+
+.box {
+    background: rgba(255, 255, 255, 0.85); /* Semi-transparent white for a vintage feel */
+    padding: 20px;
+    border-radius: 5px;
+    font-family: 'EB Garamond', serif; /* Classic newspaper-like font */
+    text-align: center;
+    width: 100%;
+}
+
+.box h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #222;
+    text-transform: uppercase;
+}
+
+.box p {
+    font-size: 16px;
+    color: #444;
+    font-style: italic;
+}
+
+.box a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: #ff9800;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 3px;
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+}
+
+.box a:hover {
+    background: #e68900;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3);
+}
+
+/* Media Queries for Better Responsiveness */
+@media (max-width: 768px) {
+    .Event-Container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .Event-Container {
+        grid-template-columns: 1fr;
+    }
+}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+.offering-section-container {
+    background-color: #fffaf0; /* Light Orange Background */
+}
+
+.offering-section-header {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #d86f2d; /* Deep Orange */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Flex Container for Even Spacing */
+.offering-section {
+    display: flex;
+    flex-wrap: wrap; 
+    overflow-x: auto;  
+
+    gap: 12px;
+}
+.auto-slide{
+    display: flex;
+    flex-wrap: nowrap; 
+    gap:15px;
+}
+/* Default Small Box */
+.offering-section .box {
+    position: relative;
+    width: 120px;
+    height: 300px;
+    background-size: cover;  /* Ensures the image covers the entire box */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents repetition */
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    color: black;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Soft Orange Glow on Hover */
+.offering-section .box:hover {
+    width: 320px;
+    box-shadow: 0 8px 20px rgba(216, 111, 45, 0.5);
+    background-size: cover;  /* Ensures the image covers the entire box */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents repetition */
+}
+
+/* Overlay for Readability */
+.offering-section .box::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.offering-section .box:hover::before {
+    opacity: 0;
+}
+
+/* Vertical Headings by Default */
+.offering-section .box h3 {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
+    transition: transform 0.2s ease-in-out, font-size 0.2s;
+}
+
+/* Change to Horizontal on Hover */
+.offering-section .box:hover h3 {
+    writing-mode: horizontal-tb;
+    transform: rotate(0);
+    font-size: 22px;
+    color: #d86f2d; /* Orange */
+    background-color: rgba(0, 0, 0, 0.5);
+    text-shadow: -1px -1px 0 #000,  
+                  1px -1px 0 #000,  
+                 -1px  1px 0 #000,  
+                  1px  1px 0 #000; /* Creates a sharp black outline */
+}
+
+.offering-section .box:hover img{
+    object-fit: cover;
+}
+/* Hidden Description (Appears on Hover) */
+.offering-section .box p {
+    font-size: 14px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+/* Show Description on Hover */
+.offering-section .box:hover p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .search-box {
+        width: 100%;
+        left: 0;
+        right: 0;
+    }
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+    .offering-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .offering-section .box {
+        width: 100%;
+        height: 100px;
+    }
+
+    .offering-section .box:hover {
+        height: 250px;
+    }
+}
+
+.swiper-slide a{
+    text-decoration: none;
+    color: white;
+}
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="wrapper">
+            <div class="logo-container">
+                <a href="index"><img src="/images/DawnTech_Icon.png" alt="Logo"></a>
+                <div class="text-container">
+                    <h1 id="title"></h1>
+                    <p id="subtitle"></p>
+                </div>
+            </div>
+          <input type="radio" name="slider" id="menu-btn">
+          <input type="radio" name="slider" id="close-btn">
+          <ul class="nav-links">
+            <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+            <li><a href="index">Home</a></li>
+            <li><a href="about">About</a></li>
+            <li>
+              <a href="#" class="desktop-item">Technology Offerings</a>
+              <input type="checkbox" id="showDrop">
+              <label for="showDrop" class="mobile-item">Technology Offerings</label>
+              <ul class="drop-menu">
+                <li><a href="/Mobility">Mobility</a></li>
+                <li><a href="/integration">Integrations</a></li>
+                <li><a href="/data-migrations">Data Migrations</a></li>
+                <li><a href="/Analytics">Analytics</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#" class="desktop-item">Application Offerings</a>
+              <input type="checkbox" id="showMega">
+              <label for="showMega" class="mobile-item">Application Offerings</label>
+              <div class="mega-box">
+                <div class="content">
+                  <div class="row">
+                    <img src="/images/implementationtechnology.jpg" alt="">
+                  </div>
+                  <div class="row">
+                    <header>CRM Solutions</header>
+                    <ul class="mega-links">
+                        <li><a href="/salesforce">Salesforce</a></li>
+                        <li><a href="/sap">SAP</a></li>
+                    </ul>
+                </div>
+                
+                <div class="row">
+                    <header>IT Service Management</header>
+                    <ul class="mega-links">
+                        <li><a href="/servicenow">ServiceNow</a></li>
+                        <li><a href="/microsoft">Microsoft</a></li>
+                    </ul>
+                </div>
+                
+                <div class="row">
+                    <header>Email & Business Intelligence</header>
+                    <ul class="mega-links">
+                        <li><a href="/celonis">Celonis</a></li>
+                    </ul>
+                </div>
+                
+                </div>
+              </div>
+            </li>
+            <li><a href="/feedback">Feedback</a></li>
+          </ul>
+          <div class="search-container">
+            <i class="fas fa-search search-icon" onclick="toggleSearch()"></i>
+            <div class="search-box" id="searchBox">
+                <input type="text" id="searchInput" placeholder="Search..." onkeyup="filterPages()">
+                <ul id="searchResults"></ul>
+            </div>
+        </div>
+        
+        
+          <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+        </div>
+      </nav>
+      <div id="floatingSidebar" class="fixed top-1/3 right-0 transform translate-x-full transition-transform duration-500 z-50 bg-white shadow-2xl rounded-l-2xl w-72 p-4 border border-gray-200" 
+      onmouseenter="clearHideTimeout()" onmouseleave="startHideTimeout()">
+      
+      <!-- Close Button -->
+      <div class="absolute top-2 left-2 cursor-pointer text-gray-600" onclick="toggleSidebar()">✖</div>
+    
+      <!-- Content -->
+      <h2 class="text-xl font-bold mb-4 text-gray-800">Our Pillars</h2>
+      <ul class="space-y-3 text-gray-700">
+        <li><strong>Methodology:</strong> A structured, agile-driven approach to solve modern challenges.</li>
+        <li><strong>Philosophy:</strong> Ethical, client-centered innovation with impactful results.</li>
+        <li><strong>The Way We Think:</strong> Forward-thinking strategies, anticipating future tech waves.</li>
+        <li><strong>Reinvention & AI-First:</strong> AI-driven solutions to transform businesses from the ground up.</li>
+      </ul>
+    </div>
+    
+    <!-- Floating Handle (Button to Open Sidebar) -->
+    <div id="floatingHandle" class="fixed top-1/3 right-0 bg-orange-500 text-white rounded-l-full px-3 py-2 cursor-pointer shadow-lg z-50" onclick="toggleSidebar()">
+      <span>☰ Our Pillars</span>
+    </div>
+      <section class="background-container">
+        <% if (media.length > 1) { %>
+            <div class="slideshow">
+                <% media.forEach(item => { %>
+                    <% if (item.mediaType === 'image') { %>
+                        <img src="/images/<%= item.mediaUrl %>" alt="Background">
+                    <% } %>
+                <% }); %>
+            </div>
+        <% } else if (media.length === 1 && media[0].mediaType === 'video') { %>
+            <video class="bg-video" autoplay loop muted>
+                <source src="/images/<%= media[0].mediaUrl %>" type="video/mp4">
+            </video>
+        <% } %>
+        
+        <section class="hero">
+            <h1>Dawn Digital Technology – Industry-First AI-Powered Solutions</h1>
+            <p>Transforming industries with <span class="dynamic-text"></span></p>
+        </section>
+    </section>
+    <section class="swiper-container">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" style="background-image: url('/images/industryHospitalityTravel.jpg');">
+                    <a href=""> <div>
+                        <h3>Hospitality & Travel</h3>
+                        <p>Enhancing customer experiences with AI-driven solutions for seamless travel and hospitality services.</p>
+                    </div></a>
+                </div>
+            
+            <div class="swiper-slide" style="background-image: url('/images/industryEnergryUtility.jpg');">
+                <a> <div>
+                        <h3>Energy & Utilities</h3>
+                        <p>Driving efficiency and sustainability with smart grid technology and predictive analytics.</p>
+                    </a>    </div>
+                </div>
+              <div class="swiper-slide" style="background-image: url('/images/industryManufacturing.jpg');">
+                <a>    <div>
+                        <h3>Manufacturing</h3>
+                        <p>Optimizing production processes through AI-powered automation and real-time data insights.</p>
+                    </a>    </div>
+                </div>
+              <div class="swiper-slide" style="background-image: url('/images/industryNotforProfit.jpg');">
+                <a>   <div>
+                        <h3>Not-for-Profit</h3>
+                        <p>Empowering organizations with digital solutions to maximize impact and streamline operations.</p>
+                    </a>     </div>
+                </div>
+            <div class="swiper-slide" style="background-image: url('/images/industryConsumerPkgGoods.jpg');">
+                <a>   <div>
+                        <h3>CPG</h3>
+                        <p>Revolutionizing consumer goods with AI-powered demand forecasting and personalized marketing.</p>
+                    </a>     </div>
+                </div>
+          <div class="swiper-slide" style="background-image: url('/images/industryBankingFinancial.jpg');">
+            <a>       <div>
+                        <h3>Banking & Financial Services</h3>
+                        <p>Enhancing security, customer insights, and operational efficiency in financial institutions.</p>
+                    </a>    </div>
+               </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+      <!-- <section>
+        <div class="background-container">
+            <% if (media.length > 1) { %>
+                <div class="slideshow">
+                    <% media.forEach(item => { %>
+                        <% if (item.mediaType === 'image') { %>
+                            <img class="bg-slide" src="/images/<%= item.mediaUrl %>" alt="Background">
+                        <% } %>
+                    <% }); %>
+                </div>
+            <% } else if (media.length === 1 && media[0].mediaType === 'video') { %>
+                <video class="bg-video" autoplay loop muted>
+                    <source src="/videos/<%= media[0].mediaUrl %>" type="video/mp4">
+                </video>
+            <% } %>
+        </div>
+      </section> -->
+      <section class="dynamic-section">
+            <div class="Event-Container">
+                <% events.forEach(event => { %>
+                    <div class="Event-Box" style="background-image: url('/images/<%= event.imageUrl %>');">
+                        <div class="box">
+                            <h3><%= event.title %></h3>
+                            <p><%= event.description %></p>
+                            <% if (event.link) { %>
+                                <a href="<%= event.link %>" target="_blank">More Info</a>
+                            <% } %>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+    </section>
+      <section class="intro-section" data-aos="fade-up">
+        <div class="container">
+            <div class="image-container" data-aos="zoom-in">
+                <div class="slideshow2">
+                    <img src="/images/image1.jpg" class="slide active" alt="Business Transformation">
+                    <img src="/images/image2.jpg" class="slide" alt="Technology Implementation">
+                    <img src="/images/image3.jpg" class="slide" alt="Cloud Migration">
+                    <img src="/images/image4.webp" class="slide" alt="Shared and Managed Services">
+                    <img src="/images/image5.webp" class="slide" alt="AI and ML">
+                    <img src="/images/image6.webp" class="slide" alt="Analytics and Visualization">
+                    <img src="/images/image7.webp" class="slide" alt="Digital Skills Training">
+                </div>
+            </div>
+            
+            <div class="content-container">
+                <div class="content-block" data-aos="fade-right">Business Process Transformation</div>
+                <div class="content-block" data-aos="fade-left">Technology Implementation</div>
+                <div class="content-block" data-aos="fade-right">Cloud Migration</div>
+                <div class="content-block" data-aos="fade-left">Shared and Managed Services</div>
+                <div class="content-block" data-aos="fade-right">Change Management</div>
+                <div class="content-block" data-aos="fade-left">Design Thinking</div>
+                <div class="content-block" data-aos="fade-right">AI and ML</div>
+                <div class="content-block" data-aos="fade-left">Analytics and Visualization</div>
+                <div class="content-block" data-aos="fade-right">Digital Skills Training</div>
+            </div>
+        </div>
+    </section>
+    <br>
+    <section class="offering-section-container">
+        <div class="offering-section-header">Industry To Offerings</div>
+        <div class="offering-section">
+            <div class="auto-slide">
+                <a href="/BusinessProcessTransformation">
+                    <div class="box" style="background-image: url('/images/offeringBusinessMT.jpg');" data-aos="fade-right" data-aos-delay="100">
+                        <div class="overlay"></div>
+                        <h3>Business Model Transformation</h3>
+                        <p>Transforming processes, models, and technology for better efficiency.</p>
+                    </div>
+                </a>
+                <a href="/TechnologyImplementation">
+                    <div class="box" style="background-image: url('/images/offeringTechnologyImp.jpg');" data-aos="fade-left" data-aos-delay="200">
+                        <div class="overlay"></div>
+                        <h3>Technology Implementation</h3>
+                        <p>Implementing and upgrading technologies for business improvement.</p>
+                    </div>
+                </a>
+                <a href="/cloudmigration">
+                    <div class="box" style="background-image: url('/images/offeringcloudMigration.jpg');" data-aos="fade-right" data-aos-delay="300">
+                        <div class="overlay"></div>
+                        <h3>Cloud Migration and Optimization</h3>
+                        <p>Moving and optimizing services for cloud architecture.</p>
+                    </div>
+                </a>
+                <a href="/ManagedServices">
+                    <div class="box" style="background-image: url('/images/OfferingSharedManaged.jpg');" data-aos="fade-left" data-aos-delay="400">
+                        <div class="overlay"></div>
+                        <h3>Shared and Managed Services</h3>
+                        <p>Providing shared and managed service solutions.</p>
+                    </div>
+                </a>
+                <a href="/changeManagement">
+                    <div class="box" style="background-image: url('/images/change_management.webp');" data-aos="fade-right" data-aos-delay="500">
+                        <div class="overlay"></div>
+                        <h3>Change Management Initiatives</h3>
+                        <p>Initiatives to manage organizational change effectively.</p>
+                    </div>
+                </a>
+                <a href="/DesignThinking">
+                    <div class="box" style="background-image: url('/images/design_thinking.webp');" data-aos="fade-left" data-aos-delay="600">
+                        <div class="overlay"></div>
+                        <h3>Design Thinking Workshops</h3>
+                        <p>Workshops focused on innovative design methodologies.</p>
+                    </div>
+                </a>
+                <a href="/ALML">
+                    <div class="box" style="background-image: url('/images/ai_machine_learning.webp');" data-aos="fade-right" data-aos-delay="700">
+                        <div class="overlay"></div>
+                        <h3>AI and Machine Learning Solutions</h3>
+                        <p>Solutions leveraging AI and machine learning technologies.</p>
+                    </div>
+                </a>
+                <a href="/DataAnalyticsVisualization">
+                    <div class="box" style="background-image: url('/images/data_analytics.webp');" data-aos="fade-left" data-aos-delay="800">
+                        <div class="overlay"></div>
+                        <h3>Data Analytics and Visualization</h3>
+                        <p>Analyzing data and creating visual representations for decision making.</p>
+                    </div>
+                </a>
+                <a href="/DigitalSkillTraining">
+                    <div class="box" style="background-image: url('/images/digital_skill.webp');" data-aos="fade-up" data-aos-delay="900">
+                        <div class="overlay"></div>
+                        <h3>Digital Skills Training</h3>
+                        <p>Training programs to enhance digital skills and AI awareness in the organization.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+  <div class="offering-section-header">Contact</div>
+ 
+  <footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section about" data-aos="fade-up">
+                <h2>Dawn Digital Technology</h2>
+                <p>Your trusted partner in innovation and excellence.</p>
+                <div class="socials">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section links" data-aos="fade-up" data-aos-delay="100">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section contact" data-aos="fade-up" data-aos-delay="200">
+                <h2>Contact Us</h2>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Street, City, Country</p>
+                <p><i class="fas fa-phone"></i> +123 456 7890</p>
+                <p><i class="fas fa-envelope"></i> contact@company.com</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2025 Dawn Digital Technology | All rights reserved.</p>
+    </div>
+</footer>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+        
+        <script>
+            AOS.init({
+                duration: 1000,
+                once: true,
+            });
+
+            document.addEventListener("DOMContentLoaded", function() {
+            const slideshow = document.querySelector(".slideshow");
+            const slides = document.querySelectorAll(".slideshow img");
+            let currentIndex = 0;
+            
+            function showNextSlide() {
+                currentIndex = (currentIndex + 1) % slides.length;
+                slideshow.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+            
+            if (slides.length > 1) {
+                setInterval(showNextSlide, 5000); // Change image every 5 seconds
+            }
+        });
+
+        </script>
+            <script>
+ 
+
+document.addEventListener("DOMContentLoaded", function () {
+    let slides = document.querySelectorAll(".slide");
+    let index = 0;
+
+    function showNextSlide() {
+        slides[index].classList.remove("active"); 
+        index = (index + 1) % slides.length; 
+        slides[index].classList.add("active"); 
+    }
+
+    setInterval(showNextSlide, 2000); 
+});
+    document.addEventListener("DOMContentLoaded", function () {
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 2000,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                },
+                480: {
+                    slidesPerView: 1,
+                }
+            }
+        });
+    });
+
+const phrases = ["cutting-edge AI", "technology", "expertise"];
+        let currentPhrase = 0;
+        let currentLetter = 0;
+        let isDeleting = false;
+        const textElement = document.querySelector(".dynamic-text");
+
+        function typeEffect() {
+            let phrase = phrases[currentPhrase];
+            let speed = isDeleting ? 50 : 100; 
+            
+            if (isDeleting) {
+                textElement.textContent = phrase.substring(0, currentLetter);
+                currentLetter--;
+            } else {
+                textElement.textContent = phrase.substring(0, currentLetter);
+                currentLetter++;
+            }
+            
+            if (!isDeleting && currentLetter === phrase.length + 1) {
+                isDeleting = true;
+                speed = 1200;
+            } else if (isDeleting && currentLetter === 0) {
+                isDeleting = false;
+                currentPhrase = (currentPhrase + 1) % phrases.length;
+                speed = 500;
+            }
+            
+            setTimeout(typeEffect, speed);
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(typeEffect, 1000);
+        });
+
+     
+
+</script>
+
+</body>
+</html>

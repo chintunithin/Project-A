@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobility Solutions | DGT</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="/search.js"></script>
+    <link href="index.css"  rel="stylesheet" >
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+    /* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 85%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px 0;
+}
+
+/* Hero Section */
+.hero {
+    background-color: white;
+    color: rgb(255, 255, 255);
+    border: 1px solid orange;
+    text-align: center;
+    text-shadow: 0px 0px 5px orange;
+    padding: 100px 20px;
+    border-radius: 10px;
+    margin-bottom:50px ;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    margin-top: 6%;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    background-color: rgba(80, 80, 80, 0.5);
+}
+
+.hero p {
+    font-size: 1.3rem;
+    max-width: 700px;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Sections */
+.section {
+    background: white;
+    padding: 60px 30px;
+    border-radius: 12px;
+    margin: 50px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+section{
+    
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+.section:hover {
+    transform: translateY(-5px);
+}
+
+.section h2 {
+    font-size: 2.2rem;
+    color: #ff7f50;
+    text-align: center;
+    margin-bottom: 25px;
+}
+.challenges,.accelerators,.methodology{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+.trends,.expertise,.why-choose,.success{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.mobility_img{
+    top:20px;
+    width: 350px;
+}
+
+.success ul,.methodology ul,.why-choose ul,.accelerators ul,.trends ul,.challenges ul,
+.success ol,.methodology ol,.why-choose ol,.accelerators ol,.trends ol,.challenges ol {
+    list-style: none;
+    padding: 0;
+}
+
+.success ol li,.methodology ol li,.why-choose ol li,.accelerators ol li,.trends ol li,.challenges ol li,
+.success ul li,.methodology ul li,.why-choose ul li,.accelerators ul li,.trends ul li,.challenges ul li {
+    font-size: 1.2rem;
+    padding: 10px 0;
+    border-left: 5px solid #ff7f50;
+    padding-left: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.success ol li:hover,.methodology ol li:hover,.why-choose ol li:hover,.accelerators ol li:hover,.trends ol li:hover,.challenges ol li:hover,
+.success ul li:hover,.methodology ul li:hover,.why-choose ul li:hover,.accelerators ul li:hover,.trends ul li:hover,.challenges ul li:hover {
+    background: rgba(255, 127, 80, 0.15);
+    padding-left: 25px;
+}
+
+/* Call to Action */
+.cta {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.cta button {
+    background: #ff7f50;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    font-size: 1.3rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.cta button:hover {
+    background: #e65c00;
+    transform: scale(1.08);
+    box-shadow: 0px 4px 10px rgba(230, 92, 0, 0.5);
+}
+.hero-bg{
+    background-image: url('/images/offeringMobility.jpg');
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents repeating */
+}
+/* Animations */
+[data-aos] {
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+}
+
+[data-aos].aos-animate {
+    opacity: 1;
+}
+
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="wrapper">
+            <div class="logo-container">
+                <a href="index"><img src="/images/DawnTech_Icon.png" alt="Logo"></a>
+                <div class="text-container">
+                    <h1 id="title"></h1>
+                    <p id="subtitle"></p>
+                </div>
+            </div>
+          <input type="radio" name="slider" id="menu-btn">
+          <input type="radio" name="slider" id="close-btn">
+          <ul class="nav-links">
+            <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+            <li><a href="index">Home</a></li>
+            <li><a href="about">About</a></li>
+            <li>
+              <a href="#" class="desktop-item">Technology Offerings</a>
+              <input type="checkbox" id="showDrop">
+              <label for="showDrop" class="mobile-item">Technology Offerings</label>
+              <ul class="drop-menu">
+                <li><a href="/Mobility">Mobility</a></li>
+                <li><a href="/integration">Integrations</a></li>
+                <li><a href="/data-migrations">Data Migrations</a></li>
+                <li><a href="/Analytics">Analytics</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#" class="desktop-item">Application Offerings</a>
+              <input type="checkbox" id="showMega">
+              <label for="showMega" class="mobile-item">Application Offerings</label>
+              <div class="mega-box">
+                <div class="content">
+                  <div class="row">
+                    <img src="/images/implementationtechnology.jpg" alt="">
+                  </div>
+                  <div class="row">
+                    <header>CRM Solutions</header>
+                    <ul class="mega-links">
+                        <li><a href="/salesforce">Salesforce</a></li>
+                        <li><a href="/sap">SAP</a></li>
+                    </ul>
+                </div>
+                
+                <div class="row">
+                    <header>IT Service Management</header>
+                    <ul class="mega-links">
+                        <li><a href="/servicenow">ServiceNow</a></li>
+                        <li><a href="/microsoft">Microsoft</a></li>
+                    </ul>
+                </div>
+                
+                <div class="row">
+                    <header>Email & Business Intelligence</header>
+                    <ul class="mega-links">
+                        <li><a href="/celonis">Celonis</a></li>
+                    </ul>
+                </div>
+                
+                </div>
+              </div>
+            </li>
+            <li><a href="/feedback">Feedback</a></li>
+          </ul>
+          <div class="search-container">
+            <i class="fas fa-search search-icon" onclick="toggleSearch()"></i>
+            <div class="search-box" id="searchBox">
+                <input type="text" id="searchInput" placeholder="Search..." onkeyup="filterPages()">
+                <ul id="searchResults"></ul>
+            </div>
+        </div>
+        
+        
+          <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+        </div>
+      </nav>
+      <div id="floatingSidebar" class="fixed top-1/3 right-0 transform translate-x-full transition-transform duration-500 z-50 bg-white shadow-2xl rounded-l-2xl w-72 p-4 border border-gray-200" 
+      onmouseenter="clearHideTimeout()" onmouseleave="startHideTimeout()">
+      
+      <!-- Close Button -->
+      <div class="absolute top-2 left-2 cursor-pointer text-gray-600" onclick="toggleSidebar()">✖</div>
+    
+      <!-- Content -->
+      <h2 class="text-xl font-bold mb-4 text-gray-800">Our Pillars</h2>
+      <ul class="space-y-3 text-gray-700">
+        <li><strong>Methodology:</strong> A structured, agile-driven approach to solve modern challenges.</li>
+        <li><strong>Philosophy:</strong> Ethical, client-centered innovation with impactful results.</li>
+        <li><strong>The Way We Think:</strong> Forward-thinking strategies, anticipating future tech waves.</li>
+        <li><strong>Reinvention & AI-First:</strong> AI-driven solutions to transform businesses from the ground up.</li>
+      </ul>
+    </div>
+    
+    <!-- Floating Handle (Button to Open Sidebar) -->
+    <div id="floatingHandle" class="fixed top-1/3 right-0 bg-orange-500 text-white rounded-l-full px-3 py-2 cursor-pointer shadow-lg z-50" onclick="toggleSidebar()">
+      <span>☰ Our Pillars</span>
+    </div>
+    <header class="hero hero-bg" data-aos="fade-up">
+        <h1>Empower Your Workforce with AI-Driven Mobility Solutions</h1>
+        <p>Enhance operational efficiency, enable real-time decision-making, and elevate user experience with DGT’s mobile-first enterprise solutions.</p>
+    </header>
+    
+    <section class="expertise" data-aos="fade-right" style="display: none;">
+        <div>
+        <h2>Our Expertise</h2>
+        <p>#NAME?</p>
+    </div>
+    </section>
+    
+    <section class="challenges" data-aos="fade-left">
+        <img class="mobility_img" src="/images/UnderstandingtheChallenges.webp" alt="">
+        <div>
+            <h2>Understanding the Challenges</h2>
+        <ul>
+            <li>Security & Compliance Risks</li>
+            <li>Device Fragmentation & User Experience</li>
+            <li>Offline Functionality & Performance Issues</li>
+            <li>Scalability & Cost of Development</li>
+        </ul>
+    </div>
+    </section>
+    
+    <section class="trends" data-aos="fade-up">
+        <img class="mobility_img" src="/images/TechnologyTrends.webp" alt="">
+        <div>
+        <h2>2025 Technology Trends</h2>
+        <ul>
+            <li>AI-powered mobile apps & predictive workflows</li>
+            <li>Edge AI & 5G for real-time processing</li>
+            <li>Voice & Gesture Interfaces</li>
+            <li>Blockchain for mobile security</li>
+        </ul>
+        </div>
+    </section>
+    
+    <section class="accelerators" data-aos="fade-right">
+        <img class="mobility_img" src="/images/DGTAccelerators.webp" alt="">
+        <div>
+        <h2>DGT Accelerators</h2>
+        <ul>
+            <li>DGT MobileOps™: AI-powered field service & sales enablement app</li>
+            <li>Offline-First SDK: Real-time data sync in low-connectivity zones</li>
+            <li>AI Voice Assistant for Mobility</li>
+        </ul>
+        </div>
+    </section>
+    
+    <section class="why-choose" data-aos="fade-left">
+        <img class="mobility_img" src="/images/WhyChooseDGT.webp" alt="">
+        <div>
+        <h2>Why Choose DGT</h2>
+        <ul>
+            <li>AI-first mobile architecture</li>
+            <li>Cross-platform development expertise</li>
+            <li>Offline & real-time sync capabilities</li>
+            <li>Enterprise-grade security & compliance</li>
+        </ul>
+        </div>
+    </section>
+    
+    <section class="methodology" data-aos="fade-up">
+        <img class="mobility_img" src="/images/OurMethodology.webp" alt="">
+        <div>
+        <h2>Our Methodology</h2>
+        <ol>
+            <li>Discovery & User Experience Research</li>
+            <li>App Design & Prototyping</li>
+            <li>Development & Testing</li>
+            <li>Deployment & AI-driven Optimization</li>
+        </ol>
+        </div>
+    </section>
+    
+    <section class="success" data-aos="fade-right">
+        <img class="mobility_img" src="/images/SuccessStories.webp" alt="">
+        <div>
+        <h2>Success Stories</h2>
+        <ul>
+            <li>Deployed AI-powered field service app for a global telecom provider</li>
+            <li>Reduced operational delays by 40%</li>
+            <li>Increased technician efficiency by 35%</li>
+        </ul>
+        </div>
+    </section>
+    
+    <section class="cta" data-aos="zoom-in">
+        <h2>Ready to Transform Your Mobile Strategy?</h2>
+        <a href="#" class="btn">Schedule a Mobility Consultation</a>
+    </section>
+    
+    <script src="/Aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>

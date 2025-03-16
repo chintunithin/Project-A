@@ -1,0 +1,77 @@
+body {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+.admin-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.form-container, .record-container, .preview-container {
+    flex: 1;
+    background-color: #252526;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+input, textarea, select, button {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: none;
+}
+
+button {
+    background-color: #007acc;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #005f99;
+}
+
+.record-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.record-container li {
+    padding: 10px;
+    background: #333;
+    margin: 5px 0;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.record-container li:hover {
+    background: #555;
+}
+
+.dynamic-section {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.content-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.box {
+    background: #444;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    flex: 1;
+    min-width: 200px;
+}

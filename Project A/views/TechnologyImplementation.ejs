@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technology Implementation | DGT</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="/search.js"></script>
+    <link href="index.css"  rel="stylesheet" >
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: #f7f9fc;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+            padding: 20px;
+        }
+        .hero {
+            background: linear-gradient(to right, #00416A, #E4E5E6);
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            border-radius: 15px;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .section {
+            background: white;
+            padding: 40px 25px;
+            border-radius: 12px;
+            margin: 40px 0;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+        .section:hover {
+            transform: scale(1.03);
+        }
+        .cta {
+            text-align: center;
+            padding: 40px;
+        }
+        .cta button {
+            background: #00416A;
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .cta button:hover {
+            background: #002a4d;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="wrapper">
+            <div class="logo-container">
+                <a href="index"><img src="/images/DawnTech_Icon.png" alt="Logo"></a>
+                <div class="text-container">
+                    <h1 id="title"></h1>
+                    <p id="subtitle"></p>
+                </div>
+            </div>
+          <input type="radio" name="slider" id="menu-btn">
+          <input type="radio" name="slider" id="close-btn">
+          <ul class="nav-links">
+            <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+            <li><a href="index">Home</a></li>
+            <li><a href="about">About</a></li>
+            <li>
+              <a href="#" class="desktop-item">Technology Offerings</a>
+              <input type="checkbox" id="showDrop">
+              <label for="showDrop" class="mobile-item">Technology Offerings</label>
+              <ul class="drop-menu">
+                <li><a href="/Mobility">Mobility</a></li>
+                <li><a href="/integration">Integrations</a></li>
+                <li><a href="/data-migrations">Data Migrations</a></li>
+                <li><a href="/Analytics">Analytics</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#" class="desktop-item">Application Offerings</a>
+              <input type="checkbox" id="showMega">
+              <label for="showMega" class="mobile-item">Application Offerings</label>
+              <div class="mega-box">
+                <div class="content">
+                  <div class="row">
+                    <img src="/images/implementationtechnology.jpg" alt="">
+                  </div>
+                  <div class="row">
+                    <header>CRM Solutions</header>
+                    <ul class="mega-links">
+                        <li><a href="/salesforce">Salesforce</a></li>
+                        <li><a href="/sap">SAP</a></li>
+                    </ul>
+                </div>
+                
+                <div class="row">
+                    <header>IT Service Management</header>
+                    <ul class="mega-links">
+                        <li><a href="/servicenow">ServiceNow</a></li>
+                        <li><a href="/microsoft">Microsoft</a></li>
+                    </ul>
+                </div>
+                
+                <div class="row">
+                    <header>Email & Business Intelligence</header>
+                    <ul class="mega-links">
+                        <li><a href="/celonis">Celonis</a></li>
+                    </ul>
+                </div>
+                
+                </div>
+              </div>
+            </li>
+            <li><a href="/feedback">Feedback</a></li>
+          </ul>
+          <div class="search-container">
+            <i class="fas fa-search search-icon" onclick="toggleSearch()"></i>
+            <div class="search-box" id="searchBox">
+                <input type="text" id="searchInput" placeholder="Search..." onkeyup="filterPages()">
+                <ul id="searchResults"></ul>
+            </div>
+        </div>
+        
+        
+          <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+        </div>
+      </nav>
+      <div id="floatingSidebar" class="fixed top-1/3 right-0 transform translate-x-full transition-transform duration-500 z-50 bg-white shadow-2xl rounded-l-2xl w-72 p-4 border border-gray-200" 
+      onmouseenter="clearHideTimeout()" onmouseleave="startHideTimeout()">
+      
+      <!-- Close Button -->
+      <div class="absolute top-2 left-2 cursor-pointer text-gray-600" onclick="toggleSidebar()">✖</div>
+    
+      <!-- Content -->
+      <h2 class="text-xl font-bold mb-4 text-gray-800">Our Pillars</h2>
+      <ul class="space-y-3 text-gray-700">
+        <li><strong>Methodology:</strong> A structured, agile-driven approach to solve modern challenges.</li>
+        <li><strong>Philosophy:</strong> Ethical, client-centered innovation with impactful results.</li>
+        <li><strong>The Way We Think:</strong> Forward-thinking strategies, anticipating future tech waves.</li>
+        <li><strong>Reinvention & AI-First:</strong> AI-driven solutions to transform businesses from the ground up.</li>
+      </ul>
+    </div>
+    
+    <!-- Floating Handle (Button to Open Sidebar) -->
+    <div id="floatingHandle" class="fixed top-1/3 right-0 bg-orange-500 text-white rounded-l-full px-3 py-2 cursor-pointer shadow-lg z-50" onclick="toggleSidebar()">
+      <span>☰ Our Pillars</span>
+    </div>
+    <header class="hero" data-aos="fade-down">
+        <h1>Technology Implementation</h1>
+        <p>Across industries, we observe that legacy systems hinder innovation, and IT leaders struggle with fragmented technology landscapes. Businesses require robust, scalable, and AI-enabled technology solutions to stay ahead. At DGT, we implement and integrate cutting-edge technologies that not only solve immediate business challenges but also future-proof operations.</p>
+    </header>
+    
+    <section class="section" data-aos="fade-right">
+        <h2>Unique Selling Proposition (USP)</h2>
+        <p>We differentiate ourselves with our hands-on expertise across Salesforce, Mulesoft, Azure, Boomi, and more. Our team includes certified architects and engineers who ensure seamless implementation, integrating AI to enhance decision-making and automation. Our rapid deployment methodologies and industry accelerators help clients realize value faster.</p>
+    </section>
+    
+    <section class="section" data-aos="fade-right">
+        <h2>Hospitality and Travel</h2>
+        <p>AI chatbots for customer support, seamless CRM and PMS integrations.</p>
+        <p><strong>Tools:</strong> Salesforce Hospitality Cloud, Mulesoft, Tableau.</p>
+    </section>
+    
+    <section class="section" data-aos="fade-left">
+        <h2>Energy and Utilities</h2>
+        <p>Smart grid AI monitoring, real-time energy load balancing.</p>
+        <p><strong>Tools:</strong> Salesforce Energy & Utilities Cloud, Azure, ServiceNow.</p>
+    </section>
+    
+    <section class="section" data-aos="fade-up">
+        <h2>Manufacturing</h2>
+        <p>Automated production monitoring and AI-driven defect detection.</p>
+        <p><strong>Tools:</strong> Salesforce Manufacturing Cloud, SAP, Informatica, Celonis.</p>
+    </section>
+    
+    <section class="section" data-aos="fade-right">
+        <h2>Not For Profit</h2>
+        <p>Volunteer and donation tracking, AI-driven impact analytics.</p>
+        <p><strong>Tools:</strong> Salesforce Nonprofit Cloud, Tableau, Boomi.</p>
+    </section>
+    
+    <section class="section" data-aos="fade-left">
+        <h2>Consumer Packaged Goods (CPG)</h2>
+        <p>AI-based retail analytics, omnichannel sales integration.</p>
+        <p><strong>Tools:</strong> Salesforce CPG Cloud, Power BI, Mulesoft, Azure AD.</p>
+    </section>
+    
+    <section class="section" data-aos="fade-up">
+        <h2>Banking and Financial Services</h2>
+        <p>Cloud-based risk management, automated compliance workflows.</p>
+        <p><strong>Tools:</strong> Salesforce Financial Services Cloud, ServiceNow, Informatica, Tableau.</p>
+    </section>
+    
+    <section class="cta" data-aos="zoom-in">
+        <h2>Future-Proof Your Business with Technology</h2>
+        <button>Contact Us</button>
+    </section>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>
