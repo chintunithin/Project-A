@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
     <link rel="stylesheet" href="/admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
  /* Global Styles */
 body {
@@ -241,7 +242,15 @@ button:hover {
     }
     .success { background-color: green; }
     .error { background-color: red; }
-
+.downloaded-users{
+    border: 1px solid blue;
+    padding: 5px;
+    transition: 0.7s;
+}
+.downloaded-users:hover{
+background-color: rgba(2, 175, 255, 0.1);
+cursor: pointer;
+}
     </style>
 </head>
 <body>
@@ -254,7 +263,12 @@ button:hover {
             <ul id="eventList">
                 <!-- Event Records will be populated here dynamically -->
             </ul>
+            <div class="downloaded-users" onclick="showDownloadedUsers()">
+                <h2>Downloaded Users</h2>
+                <div id="gridUser"></div>
+            </div>
         </div>
+        
         <!-- Upload Background Media -->
         <div class="form-container">
             <h2>Upload Background Media</h2>
@@ -474,6 +488,58 @@ function clearEvents() {
             }
         })
         .catch(error => showNotification("Network error: " + error.message, "error"));
+}
+async function showDownloadedUsers() {
+    try {
+        const response = await fetch('/get-downloads');
+        const data = await response.json();
+
+        if (!data.success) {
+            throw new Error(data.error || "Failed to fetch records.");
+        }
+
+        const users = data.users;
+        
+        if (users.length === 0) {
+            Swal.fire('No Records', 'No users have downloaded the case study yet.', 'info');
+            return;
+        }
+
+        // Generate HTML table dynamically
+        let tableHTML = `<table style="width:100%; border-collapse: collapse;">
+                            <thead>
+                                <tr style="background: #f97316; color: white;">
+                                    <th style="padding: 10px; border: 1px solid white;">Name</th>
+                                    <th style="padding: 10px; border: 1px solid white;">Email</th>
+                                    <th style="padding: 10px; border: 1px solid white;">Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>`;
+
+        users.forEach(user => {
+            tableHTML += `<tr>
+                            <td style="padding: 10px; border: 1px solid #ddd;white-space:nowrap;">${user.name}</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;white-space:nowrap;">${user.email}</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">${user.downloadTime}</td>
+                          </tr>`;
+        });
+
+        tableHTML += `</tbody></table>`;
+
+        Swal.fire({
+            title: 'Downloaded Users',
+            html: tableHTML,
+            width: '600px',
+            confirmButtonText: 'Close',
+            customClass: {
+                popup: 'custom-swal-popup'
+            }
+        });
+
+    } catch (error) {
+        console.error('❌ Error:', error);
+        Swal.fire('Error', 'Failed to load user records!', 'error');
+    }
 }
 
     </script>

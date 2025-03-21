@@ -117,3 +117,114 @@ document.addEventListener('DOMContentLoaded', function () {
         subtitleElement.appendChild(span);
     });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  let popup = document.getElementById('lipopup');
+  let popupContent = document.getElementById('lipopup-content');
+
+  function onListItemClick(event, content) {
+      if (!popup || !popupContent) {
+          console.error("Popup elements not found!");
+          return;
+      }
+
+      popupContent.innerHTML = content;
+      popup.style.display = 'block';
+
+      let rect = event.target.getBoundingClientRect();
+
+      popup.style.top = `${window.scrollY + rect.bottom + 5}px`; // 5px gap below item
+      popup.style.left = `${window.scrollX + rect.left}px`; // Align with left of item
+  }
+
+  document.addEventListener('click', function (event) {
+      if (!event.target.closest('li')) {
+          popup.style.display = 'none';
+      }
+  });
+
+  document.addEventListener('scroll', function () {
+      popup.style.display = 'none';
+  });
+
+  window.onListItemClick = onListItemClick;
+});
+
+function showDownloadPopup() {
+  Swal.fire({
+      title: 'Download Case Study',
+      html: `<div class="form-container">
+              <input type="text" id="name" placeholder="Enter your name" required>
+              <input type="email" id="email" placeholder="Enter your email" required>
+             </div>`,
+      confirmButtonText: 'Download',
+      showCancelButton: true,
+      preConfirm: async () => {
+          const name = document.getElementById('name').value;
+          const email = document.getElementById('email').value;
+          const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // Email RegEx
+
+          if (!name || !email) {
+              Swal.showValidationMessage('Please enter both name and email');
+              return false;
+          }
+          if (!emailPattern.test(email)) {
+            Swal.showValidationMessage('Please enter a valid email address');
+            return false;
+        }
+
+
+          try {
+              // Send data to server to store in database
+              const response = await fetch('/save-download', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ name, email })
+              });
+
+              const result = await response.json();
+
+              if (!result.success) {
+                  throw new Error(result.error);
+              }
+
+              // Start PDF download
+              const link = document.createElement('a');
+              link.href = '/files/CollectionDetailPrint20241009.pdf';
+              link.download = 'CaseStudy.pdf';
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+
+              Swal.fire('Success', 'Your download is starting!', 'success');
+          } catch (error) {
+              console.error('❌ Error:', error);
+              Swal.fire('Error', 'Something went wrong. Try again!', 'error');
+          }
+      }
+  });
+}
+
+
+async function getFileSizeAndType(url) {
+  try {
+      let response = await fetch(url, { method: 'HEAD' });
+      let fileSize = response.headers.get('content-length');
+      let fileType = response.headers.get('content-type');
+
+      if (fileSize) {
+          fileSize = (fileSize / (1024 * 1024)).toFixed(2) + "MB"; // Convert bytes to MB
+      } else {
+          fileSize = "Unknown Size";
+      }
+
+      let extension = fileType ? `.${fileType.split('/')[1]}` : ".unknown";
+      document.getElementById('file-info').innerText = `${fileSize} ${extension}`;
+  } catch (error) {
+      document.getElementById('file-info').innerText = "Failed to fetch size";
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  getFileSizeAndType('/files/CollectionDetailPrint20241009.pdf'); // Replace with your actual file path
+});

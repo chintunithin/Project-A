@@ -24,7 +24,7 @@
 }
 
 .footer .container {
-    max-width: 1100px;
+    max-width: 100%;
     margin: 0 auto;
 }
 
@@ -367,15 +367,23 @@
           <ul class="nav-links">
             <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
             <li><a href="index">Home</a></li>
-            <li><a href="about">About</a></li>
+            <li>
+                <a href="#" class="desktop-item">Industry Offerings</a>
+                <input type="checkbox" id="showindustry">
+                <ul class="industry-menu">
+                  <li><a href="/Mobility">Mobility</a></li>
+                  <li><a href="/integration">Integration</a></li>
+                  <li><a href="/data-migrations">Data Migration</a></li>
+                  <li><a href="/Analytics">Analytics</a></li>
+                </ul></li>
             <li>
               <a href="#" class="desktop-item">Technology Offerings</a>
               <input type="checkbox" id="showDrop">
               <label for="showDrop" class="mobile-item">Technology Offerings</label>
               <ul class="drop-menu">
                 <li><a href="/Mobility">Mobility</a></li>
-                <li><a href="/integration">Integrations</a></li>
-                <li><a href="/data-migrations">Data Migrations</a></li>
+                <li><a href="/integration">Integration</a></li>
+                <li><a href="/data-migrations">Data Migration</a></li>
                 <li><a href="/Analytics">Analytics</a></li>
               </ul>
             </li>
@@ -414,7 +422,8 @@
                 </div>
               </div>
             </li>
-            <li><a href="/feedback">Feedback</a></li>
+            <li><a href="/feedback">Contact</a></li>
+            <li><a href="about">About Us</a></li>
           </ul>
           <div class="search-container">
             <i class="fas fa-search search-icon" onclick="toggleSearch()"></i>
@@ -725,7 +734,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
     document.addEventListener("DOMContentLoaded", function () {
         var swiper = new Swiper(".mySwiper", {
-            slidesPerView: 3,
+            slidesPerView: 1,
             spaceBetween: 30,
             loop: true,
             autoplay: {

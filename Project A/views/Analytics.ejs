@@ -60,7 +60,6 @@
             background: white;
             padding: 30px;
             border-radius: 12px;
-            width: 48%;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease-in-out;
             position: relative;
@@ -111,26 +110,21 @@
             opacity: 0.2;
         }
 
-        .cta {
-            text-align: center;
-            padding: 50px 20px;
-        }
+        .card-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two sections */
+    gap: 30px; /* Space between cards */
+    justify-content: center;
+    align-items: stretch;
+    padding: 20px;
+}
 
-        .cta button {
-            background: #2c3e50;
-            color: white;
-            border: none;
-            padding: 14px 28px;
-            font-size: 1.3rem;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .cta button:hover {
-            background: #1f2a38;
-            transform: scale(1.08);
-        }
+/* Responsive - Switch to a single column on smaller screens */
+@media (max-width: 768px) {
+    .card-container {
+        grid-template-columns: 1fr; /* Single column for mobile */
+    }
+}
     </style>
 </head>
 <body>
@@ -234,7 +228,7 @@
         <p>Transform raw data into actionable insights with DGT’s advanced analytics, AI-powered dashboards, and real-time business intelligence solutions.</p>
     </header>
 
-    <section class="container">
+    <section class="container card-container">
         <div class="card" data-aos="fade-right">
             <h2>Our Expertise</h2>
             <ul>

@@ -9,6 +9,7 @@
     <script src="/search.js"></script>
     <link href="index.css"  rel="stylesheet" >
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
     /* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
@@ -72,13 +73,17 @@ section{
     margin-bottom: 30px;
     margin-top: 10px;
 }
+section div{
+    
+  width: 35%;
+}
 
 .section:hover {
     transform: translateY(-5px);
 }
 
-.section h2 {
-    font-size: 2.2rem;
+section h2 {
+    font-size: 2rem;
     color: #ff7f50;
     text-align: center;
     margin-bottom: 25px;
@@ -259,6 +264,9 @@ section{
     <div id="floatingHandle" class="fixed top-1/3 right-0 bg-orange-500 text-white rounded-l-full px-3 py-2 cursor-pointer shadow-lg z-50" onclick="toggleSidebar()">
       <span>☰ Our Pillars</span>
     </div>
+    <div id="lipopup" class="lipopup">
+        <div id="lipopup-content" class="lipopup-content"></div>
+    </div>
     <header class="hero hero-bg" data-aos="fade-up">
         <h1>Empower Your Workforce with AI-Driven Mobility Solutions</h1>
         <p>Enhance operational efficiency, enable real-time decision-making, and elevate user experience with DGT’s mobile-first enterprise solutions.</p>
@@ -274,38 +282,38 @@ section{
     <section class="challenges" data-aos="fade-left">
         <img class="mobility_img" src="/images/UnderstandingtheChallenges.webp" alt="">
         <div>
-            <h2>Understanding the Challenges</h2>
-        <ul>
-            <li>Security & Compliance Risks</li>
-            <li>Device Fragmentation & User Experience</li>
-            <li>Offline Functionality & Performance Issues</li>
-            <li>Scalability & Cost of Development</li>
-        </ul>
-    </div>
+            <h2>Today's CEO Challenges</h2>
+            <ul>
+                <li onclick="onListItemClick(event, 'Security & Compliance Risks involve protecting data and ensuring regulatory adherence.')">Security & Compliance Risks</li>
+                <li onclick="onListItemClick(event, 'Device Fragmentation & User Experience can lead to inconsistent application performance.')">Device Fragmentation & User Experience</li>
+                <li onclick="onListItemClick(event, 'Offline Functionality & Performance Issues impact user accessibility in low-network areas.')">Offline Functionality & Performance Issues</li>
+                <li onclick="onListItemClick(event, 'Scalability & Cost of Development are critical for long-term business sustainability.')">Scalability & Cost of Development</li>
+            </ul>
+        </div>
     </section>
     
     <section class="trends" data-aos="fade-up">
         <img class="mobility_img" src="/images/TechnologyTrends.webp" alt="">
         <div>
-        <h2>2025 Technology Trends</h2>
-        <ul>
-            <li>AI-powered mobile apps & predictive workflows</li>
-            <li>Edge AI & 5G for real-time processing</li>
-            <li>Voice & Gesture Interfaces</li>
-            <li>Blockchain for mobile security</li>
-        </ul>
+            <h2>TechnologyTrends</h2>
+            <ul>
+                <li onclick="onListItemClick(event, 'AI-powered mobile apps leverage machine learning to enhance user experience and optimize workflows.')">AI-powered mobile apps & predictive workflows</li>
+                <li onclick="onListItemClick(event, 'Edge AI & 5G enable real-time data processing at the edge, reducing latency and improving efficiency.')">Edge AI & 5G for real-time processing</li>
+                <li onclick="onListItemClick(event, 'Voice & Gesture Interfaces improve accessibility and allow for hands-free operation in various applications.')">Voice & Gesture Interfaces</li>
+                <li onclick="onListItemClick(event, 'Blockchain technology enhances mobile security by providing decentralized and tamper-proof data protection.')">Blockchain for mobile security</li>
+            </ul>
         </div>
     </section>
     
     <section class="accelerators" data-aos="fade-right">
         <img class="mobility_img" src="/images/DGTAccelerators.webp" alt="">
         <div>
-        <h2>DGT Accelerators</h2>
-        <ul>
-            <li>DGT MobileOps™: AI-powered field service & sales enablement app</li>
-            <li>Offline-First SDK: Real-time data sync in low-connectivity zones</li>
-            <li>AI Voice Assistant for Mobility</li>
-        </ul>
+            <h2>DGT Accelerators</h2>
+            <ul>
+                <li onclick="onListItemClick(event, 'DGT MobileOps™ is an AI-powered field service and sales enablement app designed to enhance operational efficiency.')">DGT MobileOps™: AI-powered field service & sales enablement app</li>
+                <li onclick="onListItemClick(event, 'Offline-First SDK ensures seamless real-time data synchronization in areas with low connectivity.')">Offline-First SDK: Real-time data sync in low-connectivity zones</li>
+                <li onclick="onListItemClick(event, 'AI Voice Assistant for Mobility enables hands-free operation and smart automation for enhanced user experience.')">AI Voice Assistant for Mobility</li>
+            </ul>
         </div>
     </section>
     
@@ -314,10 +322,10 @@ section{
         <div>
         <h2>Why Choose DGT</h2>
         <ul>
-            <li>AI-first mobile architecture</li>
-            <li>Cross-platform development expertise</li>
-            <li>Offline & real-time sync capabilities</li>
-            <li>Enterprise-grade security & compliance</li>
+            <li onclick="onListItemClick(event, 'AI-first mobile architecture ensures optimized performance and smart automation.')">AI-first mobile architecture</li>
+            <li onclick="onListItemClick(event, 'Cross-platform development expertise enables seamless application across multiple devices.')">Cross-platform development expertise</li>
+            <li onclick="onListItemClick(event, 'Offline & real-time sync capabilities provide continuous operation even with network issues.')">Offline & real-time sync capabilities</li>
+            <li onclick="onListItemClick(event, 'Enterprise-grade security & compliance ensures data protection and regulatory adherence.')">Enterprise-grade security & compliance</li>
         </ul>
         </div>
     </section>
@@ -327,10 +335,10 @@ section{
         <div>
         <h2>Our Methodology</h2>
         <ol>
-            <li>Discovery & User Experience Research</li>
-            <li>App Design & Prototyping</li>
-            <li>Development & Testing</li>
-            <li>Deployment & AI-driven Optimization</li>
+            <li onclick="onListItemClick(event, 'Discovery & User Experience Research helps in understanding user needs and expectations.')">Discovery & User Experience Research</li>
+            <li onclick="onListItemClick(event, 'App Design & Prototyping ensures an intuitive and user-friendly interface before development.')">App Design & Prototyping</li>
+            <li onclick="onListItemClick(event, 'Development & Testing guarantee quality and reliability through iterative improvements.')">Development & Testing</li>
+            <li onclick="onListItemClick(event, 'Deployment & AI-driven Optimization help continuously improve app performance and efficiency.')">Deployment & AI-driven Optimization</li>
         </ol>
         </div>
     </section>
@@ -338,18 +346,24 @@ section{
     <section class="success" data-aos="fade-right">
         <img class="mobility_img" src="/images/SuccessStories.webp" alt="">
         <div>
-        <h2>Success Stories</h2>
+        <h2>Case Study</h2>
         <ul>
             <li>Deployed AI-powered field service app for a global telecom provider</li>
             <li>Reduced operational delays by 40%</li>
             <li>Increased technician efficiency by 35%</li>
         </ul>
+        <div class="whitebutton" onclick="showDownloadPopup()"  style="float: left;"> 
+            <a href="#">Download</a><br>
+            <span class="up">Click to Download</span><br>
+            <span class="down" id="file-info">Fetching size...</span>
+        </div>
+        
         </div>
     </section>
     
     <section class="cta" data-aos="zoom-in">
         <h2>Ready to Transform Your Mobile Strategy?</h2>
-        <a href="#" class="btn">Schedule a Mobility Consultation</a>
+        <a href="/contact" class="btn">ContactUs</a>
     </section>
     
     <script src="/Aos.js"></script>

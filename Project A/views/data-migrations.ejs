@@ -28,7 +28,21 @@
             margin: auto;
             padding: 20px 0;
         }
+        .card-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two sections */
+    gap: 30px; /* Space between cards */
+    justify-content: center;
+    align-items: stretch;
+    padding: 20px;
+}
 
+/* Responsive - Switch to a single column on smaller screens */
+@media (max-width: 768px) {
+    .card-container {
+        grid-template-columns: 1fr; /* Single column for mobile */
+    }
+}
         .hero {
         
             color: white;
@@ -91,34 +105,15 @@
             left: 0;
             right: 0;
             bottom: 0;
-            z-index:2;
+            z-index:-1;
+           
         }
 
         .card:hover img {
             display: block;
-            opacity: 1;
+            opacity: 0.5;
         }
 
-        .cta {
-            text-align: center;
-            padding: 50px 20px;
-        }
-
-        .cta button {
-            background: #3498db;
-            color: white;
-            border: none;
-            padding: 14px 28px;
-            font-size: 1.3rem;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .cta button:hover {
-            background: #2980b9;
-            transform: scale(1.08);
-        }
     </style>
 </head>
 <body>
@@ -222,7 +217,7 @@
         <p>Seamlessly transition your critical data with DGT's expert services ensuring zero downtime and complete data integrity.</p>
     </header>
 
-    <section class="container">
+    <section class="container card-container">
         <div class="card" data-aos="fade-right">
             <h2>Our Expertise</h2>
             <ul>
@@ -257,7 +252,7 @@
         </div>
 
         <div class="card" data-aos="fade-left">
-            <h2>Success Stories</h2>
+            <h2>Case Study</h2>
             <ul>
                 <li>Migrated 10TB of data for a global retailer</li>
                 <li>30% reduction in storage costs</li>
@@ -269,7 +264,7 @@
 
     <section class="cta" data-aos="zoom-in">
         <h2>Get a Free Data Migration Assessment</h2>
-        <button>Schedule Now</button>
+        <button type="button" class="btn">Schedule Now</button>
     </section>
 
     <script src="/Aos.js"></script>

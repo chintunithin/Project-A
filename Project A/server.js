@@ -46,7 +46,15 @@ app.get('/', (req, res) => {
 app.get('/admin', (req, res) => {
     res.render('admin'); 
 });
-
+app.get('/get-downloads', (req, res) => {
+    db.all('SELECT * FROM tblDownloads ORDER BY downloadTime DESC', [], (err, users) => {
+        if (err) {
+            console.error("❌ Database error:", err.message);
+            return res.status(500).json({ success: false, error: "Database error: " + err.message });
+        }
+        res.json({ success: true, users });
+    });
+});
 app.post('/upload/media', upload.single('mediaFile'), (req, res) => {
     console.log("📂 Upload request received");
 
@@ -212,6 +220,28 @@ app.get("/:page", (req, res) => {
         res.status(404).render("404");
     }
 });
+
+app.post('/save-download', (req, res) => {
+    const { name, email } = req.body;
+    const downloadTime = new Date().toISOString();
+
+    if (!name || !email) {
+        return res.status(400).json({ success: false, error: "Name and email are required." });
+    }
+
+    db.run('INSERT INTO tblDownloads (name, email, downloadTime) VALUES (?, ?, ?)', 
+        [name, email, downloadTime], 
+        (err) => {
+            if (err) {
+                console.error("❌ Database error:", err.message);
+                return res.status(500).json({ success: false, error: "Database error: " + err.message });
+            }
+            console.log("✅ Download details saved successfully!");
+            res.json({ success: true, message: "Download details saved successfully!" });
+        }
+    );
+});
+
 
 
 

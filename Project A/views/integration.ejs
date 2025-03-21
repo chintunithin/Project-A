@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script src="/search.js"></script>
     <link href="index.css"  rel="stylesheet" >
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
@@ -48,6 +49,21 @@ body {
     margin-top:6% ;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
     animation: fadeIn 1s ease-in-out;
+}
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two sections */
+    gap: 30px; /* Space between cards */
+    justify-content: center;
+    align-items: stretch;
+    padding: 20px;
+}
+
+/* Responsive - Switch to a single column on smaller screens */
+@media (max-width: 768px) {
+    .card-container {
+        grid-template-columns: 1fr; /* Single column for mobile */
+    }
 }
 
 .hero h1 {
@@ -127,29 +143,7 @@ body {
     padding-left: 25px;
 }
 
-/* CTA Section */
-.cta {
-    text-align: center;
-    padding: 60px 20px;
-}
 
-.cta button {
-    background: linear-gradient(135deg, #1e40af, #9333ea);
-    color: white;
-    border: none;
-    padding: 14px 32px;
-    font-size: 1.3rem;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    animation: pulse 2s infinite;
-}
-
-.cta button:hover {
-    background: #7e22ce;
-    transform: scale(1.1);
-    box-shadow: 0 6px 12px rgba(147, 51, 234, 0.5);
-}
 
 /* Animations */
 @keyframes fadeIn {
@@ -305,63 +299,92 @@ body {
     <div id="floatingHandle" class="fixed top-1/3 right-0 bg-orange-500 text-white rounded-l-full px-3 py-2 cursor-pointer shadow-lg z-50" onclick="toggleSidebar()">
       <span>☰ Our Pillars</span>
     </div>
-    
+    <div id="lipopup" class="lipopup">
+        <div id="lipopup-content" class="lipopup-content"></div>
+    </div>
     <header class="hero AI-powered-bg" data-aos="fade-up">
         <h1>Seamlessly Connect Your Business with DGT’s Integration Services</h1>
         <p>Eliminate silos and create a unified ecosystem with API-led, AI-powered integrations.</p>
     </header>
-
-    <section class="card challenges" data-aos="fade-left">
-        <img src="/images/intigration_challenges.webp" alt="Integration Challenges">
-        <div class="card-content">
-            <h2>Understanding the Challenges</h2>
-            <ul>
-                <li>Data Silos & Disjointed Systems</li>
-                <li>Real-Time Data Flow Challenges</li>
-                <li>API Complexity & Performance Bottlenecks</li>
-                <li>Security & Compliance Risks</li>
-            </ul>
-        </div>
-    </section>
+    <div class="card-container">
+        <section class="card challenges" data-aos="fade-left">
+            <img src="/images/intigration_challenges.webp" alt="Integration Challenges">
+            <div class="card-content">
+                <h2>Understanding the Challenges</h2>
+                <ul>
+                    <li onclick="onListItemClick(event, 'Data Silos & Disjointed Systems create inefficiencies and hinder seamless communication.')">
+                        Data Silos & Disjointed Systems
+                    </li>
+                    <li onclick="onListItemClick(event, 'Real-Time Data Flow Challenges arise due to latency and inconsistent data synchronization.')">
+                        Real-Time Data Flow Challenges
+                    </li>
+                    <li onclick="onListItemClick(event, 'API Complexity & Performance Bottlenecks can slow down system integrations and responsiveness.')">
+                        API Complexity & Performance Bottlenecks
+                    </li>
+                    <li onclick="onListItemClick(event, 'Security & Compliance Risks must be addressed to protect sensitive data and ensure regulatory compliance.')">
+                        Security & Compliance Risks
+                    </li>
+                </ul>
+            </div>
+        </section>
+        
     
-    <section class="card trends" data-aos="fade-up">
-        <img src="/images/intigration trends.webp" alt="Technology Trends">
-        <div class="card-content">
-            <h2>2025 Integration Trends</h2>
-            <ul>
-                <li>AI-driven hyperautomation in integrations</li>
-                <li>No-Code & Low-Code API development</li>
-                <li>Event-Driven Architectures (EDA)</li>
-                <li>Composable Business with API Mesh</li>
-            </ul>
-        </div>
-    </section>
+        <section class="card trends" data-aos="fade-up">
+            <img src="/images/intigration trends.webp" alt="Technology Trends">
+            <div class="card-content">
+                <h2>2025 Integration Trends</h2>
+                <ul>
+                    <li onclick="onListItemClick(event, 'AI-driven hyperautomation enhances efficiency by automating complex integration workflows.')">
+                        AI-driven hyperautomation in integrations
+                    </li>
+                    <li onclick="onListItemClick(event, 'No-Code & Low-Code API development empowers business users to create integrations with minimal coding.')">
+                        No-Code & Low-Code API development
+                    </li>
+                    <li onclick="onListItemClick(event, 'Event-Driven Architectures (EDA) improve scalability and responsiveness by processing events in real-time.')">
+                        Event-Driven Architectures (EDA)
+                    </li>
+                    <li onclick="onListItemClick(event, 'Composable Business with API Mesh enables flexible and reusable integrations for modern enterprises.')">
+                        Composable Business with API Mesh
+                    </li>
+                </ul>
+            </div>
+        </section>
     
-    <section class="card accelerators" data-aos="fade-right">
-        <img src="/images/dgt acclerators.webp" alt="DGT Accelerators">
-        <div class="card-content">
-            <h2>DGT Accelerators</h2>
-            <ul>
-                <li>DGT API Hub™: Pre-built connectors for SAP, Salesforce, Workday</li>
-                <li>Event Processing Engine for real-time integration monitoring</li>
-                <li>AI-driven API Testing Automation</li>
-            </ul>
-        </div>
-    </section>
-    
-    <section class="card success" data-aos="fade-right">
+        <section class="card accelerators" data-aos="fade-right">
+            <img src="/images/dgt acclerators.webp" alt="DGT Accelerators">
+            <div class="card-content">
+                <h2>DGT Accelerators</h2>
+                <ul>
+                    <li onclick="onListItemClick(event, 'DGT API Hub™ provides pre-built connectors for SAP, Salesforce, and Workday, streamlining integration efforts.')">
+                        DGT API Hub™: Pre-built connectors for SAP, Salesforce, Workday
+                    </li>
+                    <li onclick="onListItemClick(event, 'The Event Processing Engine enables real-time integration monitoring, alerting teams to issues instantly.')">
+                        Event Processing Engine for real-time integration monitoring
+                    </li>
+                    <li onclick="onListItemClick(event, 'AI-driven API Testing Automation improves integration reliability by automatically detecting and resolving issues.')">
+                        AI-driven API Testing Automation
+                    </li>
+                </ul>
+            </div>
+        </section>
+        
+    <section class="card success" data-aos="fade-left">
         <img src="images/success stories.webp" alt="Success Stories">
         <div class="card-content">
-            <h2>Success Stories</h2>
+            <h2>Case study</h2>
             <ul>
-               c:\Users\chett\Documents\success stories.webp
+                <div class="whitebutton" onclick="showDownloadPopup()" > 
+                    <a href="#">Download</a><br>
+                    <span class="up">Click to Download</span><br>
+                    <span class="down" id="file-info">Fetching size...</span>
+                </div>
             </ul>
         </div>
     </section>
-    
+    </div>
     <section class="cta" data-aos="zoom-in">
         <h2>Ready to Optimize Your Integrations?</h2>
-        <button>Book an Integration Strategy Call</button>
+        <button type="button" class="btn">Contact us</button>
     </section>
     
     <script src="/Aos.js"></script>
