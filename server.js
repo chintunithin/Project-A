@@ -198,7 +198,8 @@ app.get("/:page", (req, res) => {
     const allowedPages = ["mobility", "about", "integration", "data-migrations", "analytics",
         "businessprocesstransformation","technologyimplementation","cloudmigration","managedservices"
         ,"changemanagement","designthinking","alml","dataanalyticsvisualization","digitalskilltraining",
-    "celonis","microsoft","servicenow","sap","salesforce","feedback","casestudy","about"];
+    "celonis","microsoft","servicenow","sap","salesforce","feedback","casestudy","about","hospitality","utilities"
+,"notforprofit","manufacturing","consumercpg","banking"];
 
     if (page === "index") {
         db.all("SELECT * FROM tblContentTable", [], (err, events) => {
