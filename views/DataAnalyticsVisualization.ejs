@@ -46,7 +46,8 @@
             background: white;
             padding: 40px 30px;
             border-radius: 10px;
-            margin: 30px 0;
+            margin: 10px 0;
+            font-size: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-left: 6px solid #E76F51;
             transition: transform 0.3s ease-in-out;
@@ -71,6 +72,23 @@
         .cta button:hover {
             background: #F4A261;
         }
+        .Dav-container{
+            display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      padding: 20px;
+        }
+        .section h2{
+            font-size: 2rem;
+    color: #ff7f50;
+    text-align: center;
+    margin-bottom: 25px;
+        }
+        @media (max-width: 768px) {
+      .Dav-container {
+          grid-template-columns: 1fr;
+      }
+  }
     </style>
 </head>
 <body>
@@ -173,9 +191,9 @@
         <h1>Analytics & Visualization</h1>
         <p>Data is the new currency, but insights are what drive decisions. We hear from businesses that they have vast amounts of data but lack the tools to extract meaningful insights. DGT enables organizations to turn raw data into actionable intelligence through cutting-edge analytics and visualization.</p>
     </header>
-    
+    <div class="Dav-container">
     <section class="section" data-aos="fade-right">
-        <h2>usp</h2>
+        <h2>DGT Value Add</h2>
         <p>Our deep expertise in Tableau, Power BI, and Salesforce Einstein Analytics allows us to deliver real-time, AI-powered dashboards. We integrate analytics across enterprise systems, ensuring seamless access to KPIs and predictive insights. Our proprietary accelerators provide rapid deployment and enhanced decision-making capabilities.</p>
     </section>
     
@@ -214,6 +232,11 @@
         <h2>Banking and Financial Services
         </h2>
         <p>Real-time fraud detection and credit scoring. Tools: Salesforce Financial Services Cloud, Azure, Power BI, Tableau.</p>
+    </section>
+    </div>
+    <section class="cta" data-aos="zoom-in">
+        <h2>Future-Proof Your Business with Cloud</h2>
+        <button>Get Started</button>
     </section>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>

@@ -14,8 +14,8 @@
         
         body {
             font-family: 'Roboto', sans-serif;
-            background: linear-gradient(to right, #F4A261, #264653);
-            color: #fff;
+            background:  #f4f4f4;
+            color: #333;
             margin: 0;
             padding: 0;
         }
@@ -42,7 +42,8 @@
             background: rgba(255, 255, 255, 0.1);
             padding: 50px 30px;
             border-radius: 12px;
-            margin: 40px 0;
+            margin: 10px 0;
+            font-size: 20px;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(8px);
             transition: transform 0.3s ease-in-out;
@@ -72,6 +73,23 @@
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        .Ms-container{
+            display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      padding: 20px;
+        }
+        .section h2{
+            font-size: 2rem;
+    color: #ff7f50;
+    text-align: center;
+    margin-bottom: 25px;
+        }
+        @media (max-width: 768px) {
+      .Ms-container {
+          grid-template-columns: 1fr;
+      }
+  }
     </style>
 </head>
 <body>
@@ -187,8 +205,9 @@
             </ul>
         </div>
     </section>
+    <div class="Ms-container">
     <section class="section" data-aos="fade-right">
-        <h2>usp</h2>
+        <h2>DGT Value Add</h2>
         <p>Unlike traditional MSPs, we infuse AI into every layer of our managed services. From predictive analytics to proactive monitoring, we ensure maximum uptime and efficiency. Our expertise spans Salesforce, ServiceNow, SAP, and enterprise automation tools, providing a holistic approach that drives long-term value.</p>
     </section>
     
@@ -228,6 +247,7 @@
         </h2>
         <p>Real-time support for banking automation, AI-based fraud prevention. Tools: Salesforce Financial Services Cloud, ServiceNow, Tableau, Power BI.</p>
     </section>
+    </div>
     
     <section class="cta" data-aos="zoom-in">
         <h2>Future-Proof Your Business with Cloud</h2>

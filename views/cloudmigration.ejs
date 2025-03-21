@@ -56,7 +56,8 @@
             background: white;
             padding: 40px 30px;
             border-radius: 10px;
-            margin: 30px 0;
+            margin: 10px 0;
+            font-size: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease-in-out;
         }
@@ -80,6 +81,23 @@
         .cta button:hover {
             background: #E76F51;
         }
+        .Cmo-container{
+            display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      padding: 20px;
+        }
+        .section h2{
+            font-size: 2rem;
+    color: #ff7f50;
+    text-align: center;
+    margin-bottom: 25px;
+        }
+        @media (max-width: 768px) {
+      .Cmo-container {
+          grid-template-columns: 1fr;
+      }
+  }
     </style>
 </head>
 <body>
@@ -182,7 +200,7 @@
         <h1>Cloud Migration</h1>
         <p>CIOs tell us that cloud adoption is no longer a question of if but how fast. Organizations moving to the cloud face challenges in scalability, security, and integration. Without the right strategy, cloud migration can lead to spiraling costs and operational disruptions. DGT provides a roadmap for seamless, AI-optimized cloud transformation.</p>
     </header>
-    
+    <div class="Cmo-container">
     <section class="section" data-aos="fade-right">
         <h2>Our Expertise</h2>
         <p>We leverage deep experience in multi-cloud environments, including Salesforce Cloud, Microsoft Azure, AWS, and Google Cloud. Our proprietary cloud accelerators ensure minimal downtime and optimized cost management. With expertise in Mulesoft, Informatica, and Boomi, we create secure, scalable, and AI-driven cloud solutions tailored to business needs.</p>
@@ -192,13 +210,18 @@
         <h2>Process Excellence</h2>
         <p>Our cloud transformation roadmap ensures a secure, scalable, and cost-effective transition. By integrating automation, best-in-class security practices, and AI-driven optimizations, we enable businesses to adopt cloud infrastructure with confidence.</p>
     </section>
-
+    <div style="margin: 29px;">
     <section class="section" data-aos="fade-up">
         <h2>Technical Prowess</h2>
         <p>We integrate Mulesoft, Informatica, and Boomi to create seamless, interconnected cloud solutions across industries. Our expertise in API-led connectivity, real-time data integration, and automation ensures that cloud migration is smooth, efficient, and future-proof.</p>
     </section>
+    <section class="section" data-aos="fade-right">
+        <h2>Client Success Stories</h2>
+        <p>Our cloud solutions have helped businesses across industries achieve digital transformation. From reducing operational delays in supply chains to optimizing financial data security, we enable businesses to harness the full power of cloud technologies.</p>
+    </section>
+    </div>
     
-    <section class="section grid-container" data-aos="fade-up">
+    <section class="section grid-container" data-aos="fade-up" style="font-size: 14px;">
         <div class="grid-item">
             <h2>Industry Use Cases</h2>
             <ul>
@@ -212,16 +235,11 @@
         </div>
     </section>
     
-    <section class="section" data-aos="fade-right">
-        <h2>Client Success Stories</h2>
-        <p>Our cloud solutions have helped businesses across industries achieve digital transformation. From reducing operational delays in supply chains to optimizing financial data security, we enable businesses to harness the full power of cloud technologies.</p>
-    </section>
-    
     <section class="section" data-aos="fade-left">
         <h2>Team Expertise</h2>
         <p>Our certified cloud architects bring decades of experience in enterprise cloud strategy, ensuring best-in-class implementation, governance, and ongoing optimization. We work closely with organizations to tailor cloud solutions that align with business objectives and future growth.</p>
     </section>
-    
+    </div>
     <section class="cta" data-aos="zoom-in">
         <h2>Future-Proof Your Business with Cloud</h2>
         <button>Get Started</button>

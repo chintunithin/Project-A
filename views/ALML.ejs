@@ -14,8 +14,8 @@
         
         body {
             font-family: 'Poppins', sans-serif;
-            background: #1B263B;
-            color: #fff;
+            background: #fff;
+            color: #333;
             margin: 0;
             padding: 0;
         }
@@ -46,7 +46,8 @@
             background: rgba(255, 255, 255, 0.1);
             padding: 40px 30px;
             border-radius: 10px;
-            margin: 30px 0;
+            margin: 10px 0;
+            font-size: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-left: 6px solid #E63946;
             transition: transform 0.3s ease-in-out;
@@ -71,6 +72,23 @@
         .cta button:hover {
             background: #F4A261;
         }
+        .Aiml-container{
+            display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      padding: 20px;
+        }
+        .section h2{
+            font-size: 2rem;
+    color: #ff7f50;
+    text-align: center;
+    margin-bottom: 25px;
+        }
+        @media (max-width: 768px) {
+      .Aiml-container {
+          grid-template-columns: 1fr;
+      }
+  }
     </style>
 </head>
 <body>
@@ -173,8 +191,9 @@
     <div id="floatingHandle" class="fixed top-1/3 right-0 bg-orange-500 text-white rounded-l-full px-3 py-2 cursor-pointer shadow-lg z-50" onclick="toggleSidebar()">
       <span>☰ Our Pillars</span>
     </div>
+    <div class="Aiml-container">
     <section class="section" data-aos="fade-right">
-        <h2>usp</h2>
+        <h2>DGT Value Add</h2>
         <p>Our AI-first approach is embedded into everything we do. With expertise in predictive analytics, NLP, and generative AI, we create AI-powered solutions tailored to business needs. We leverage Salesforce AI, Azure AI, Informatica, and Mulesoft to build scalable, explainable, and industry-specific AI solutions.</p>
     </section>
     
@@ -213,6 +232,11 @@
         <h2>Banking and Financial Services
         </h2>
         <p>AI-driven credit risk analysis and fraud detection. Tools: Salesforce Financial Services Cloud, Azure, ServiceNow, Tableau.</p>
+    </section>
+    </div>
+    <section class="cta" data-aos="zoom-in">
+        <h2>Future-Proof Your Business with Cloud</h2>
+        <button>Get Started</button>
     </section>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>

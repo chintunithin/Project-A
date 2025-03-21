@@ -46,7 +46,8 @@
             background: white;
             padding: 40px 30px;
             border-radius: 10px;
-            margin: 30px 0;
+            margin: 10px 0;
+            font-size: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-left: 6px solid #F4A261;
             transition: transform 0.3s ease-in-out;
@@ -71,6 +72,23 @@
         .cta button:hover {
             background: #E76F51;
         }
+        .Dst-container{
+            display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      padding: 20px;
+        }
+        .section h2{
+            font-size: 2rem;
+    color: #ff7f50;
+    text-align: center;
+    margin-bottom: 25px;
+        }
+        @media (max-width: 768px) {
+      .Dst-container {
+          grid-template-columns: 1fr;
+      }
+  }
     </style>
 </head>
 <body>
@@ -173,9 +191,9 @@
         <h1>Digital Skills Training</h1>
         <p>The rapid pace of technological evolution leaves businesses struggling to upskill their workforce. CIOs emphasize that digital transformation success depends on people, yet training remains a significant challenge. DGT bridges this gap with AI-driven digital skills training programs.</p>
     </header>
-    
+    <div class="Dst-container">
     <section class="section" data-aos="fade-right">
-        <h2>usp</h2>
+        <h2>DGT Value Add</h2>
         <p>We provide AI-powered learning paths tailored to industry needs. Using Salesforce myTrailhead, ServiceNow Learning, and our own digital coaching tools, we ensure employees and executives stay ahead of technological trends. Our structured programs blend AI, automation, and real-world simulations for maximum impact.</p>
     </section>
     
@@ -214,6 +232,11 @@
         <h2>Banking and Financial Services
         </h2>
         <p>AI-driven compliance and regulatory training for financial professionals. Tools: Salesforce Financial Services Cloud, ServiceNow, Azure A.</p>
+    </section>
+    </div>
+    <section class="cta" data-aos="zoom-in">
+        <h2>Future-Proof Your Business with Cloud</h2>
+        <button>Get Started</button>
     </section>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>

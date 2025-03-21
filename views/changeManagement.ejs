@@ -46,7 +46,8 @@
             background: white;
             padding: 40px 30px;
             border-radius: 10px;
-            margin: 30px 0;
+            margin: 10px 0;
+            font-size: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-left: 6px solid #E76F51;
             transition: transform 0.3s ease-in-out;
@@ -71,6 +72,23 @@
         .cta button:hover {
             background: #F4A261;
         }
+        .Cm-container{
+            display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      padding: 20px;
+        }
+        .section h2{
+            font-size: 2rem;
+    color: #ff7f50;
+    text-align: center;
+    margin-bottom: 25px;
+        }
+        @media (max-width: 768px) {
+      .Cm-container {
+          grid-template-columns: 1fr;
+      }
+  }
     </style>
 </head>
 <body>
@@ -173,9 +191,9 @@
         <h1>Change Management</h1>
         <p>Digital transformation initiatives often fail due to poor adoption. We hear from leaders that managing change—people, processes, and technology—is one of the biggest barriers to success. DGT ensures organizations navigate change smoothly, fostering a culture of innovation and continuous improvement.</p>
     </header>
-    
+    <div class="Cm-container">
     <section class="section" data-aos="fade-right">
-        <h2>usp</h2>
+        <h2>DGT Value Add</h2>
         <p>We bring structured change management methodologies powered by AI-driven insights. Our tools, including ServiceNow, Okta, and Power BI, provide real-time adoption metrics. With years of experience in enterprise transformations, we empower businesses with training, communication strategies, and leadership coaching to drive seamless change.</p>
     </section>
     
@@ -215,7 +233,12 @@
         </h2>
         <p>AI-driven compliance automation and policy transformation. Tools: Salesforce Financial Services Cloud, Tableau, ServiceNow.</p>
     </section>
-    
+    </div>
+
+    <section class="cta" data-aos="zoom-in">
+        <h2>Future-Proof Your Business with Cloud</h2>
+        <button>Get Started</button>
+    </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
         AOS.init();
