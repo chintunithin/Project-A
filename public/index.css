@@ -442,7 +442,6 @@ nav input{
   visibility: visible;
 }
 
-
 /* Mobile responsive */
 @media (max-width: 768px) {
   .search-box {
