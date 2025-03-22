@@ -199,7 +199,7 @@ app.get("/:page", (req, res) => {
         "businessprocesstransformation","technologyimplementation","cloudmigration","managedservices"
         ,"changemanagement","designthinking","alml","dataanalyticsvisualization","digitalskilltraining",
     "celonis","microsoft","servicenow","sap","salesforce","feedback","casestudy","about","hospitality","utilities"
-,"notforprofit","manufacturing","consumercpg","banking"];
+,"notforprofit","manufacturing","consumercpg","banking","contactus"];
 
     if (page === "index") {
         db.all("SELECT * FROM tblContentTable", [], (err, events) => {
