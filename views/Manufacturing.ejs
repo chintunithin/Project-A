@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manufacturing | DGT</title>
+    <link href="index.css"  rel="stylesheet" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="/search.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="/Aos.js"></script>
     <style>
         * {
             margin: 0;
@@ -16,29 +24,32 @@
         .hero {
             position: relative;
             height: 80vh;
-            background: url('/images/industryManufacturing.jpg') no-repeat center center/cover;
+            background: url('images/manufacturing.jpg') no-repeat center center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
         .hero-content {
-            background: rgba(255, 255, 255, 0.9);
+            background-color: rgba(0, 0, 0, 0.4);
             padding: 30px;
             text-align: center;
             border-radius: 10px;
             max-width: 600px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 6px rgba(16, 15, 15, 0.2);
         }
 
         .hero-content h1 {
-            font-size: 2.5rem;
-            color: #333;
-        }
+    font-size: 2.5rem;
+    color: #f7f2f2;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000 !important;
+}
+
 
         .hero-content p {
             font-size: 1.2rem;
-            color: #555;
+            color: #fdf7f7;
+             text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000 !important;
             margin-top: 10px;
         }
 
@@ -49,18 +60,18 @@
             padding: 50px 0;
         }
 
-        .section {
+        .manufacturing-section {
             margin-bottom: 50px;
             text-align: center;
         }
 
-        .section h2 {
+        .manufacturing-section h2 {
             font-size: 2rem;
             color: #333;
             margin-bottom: 20px;
         }
 
-        .section p {
+        .manufacturing-section p {
             font-size: 1.1rem;
             color: #555;
             max-width: 800px;
@@ -75,7 +86,7 @@
             margin-top: 30px;
         }
 
-        .card {
+        .mf-card {
             background: #f9f9f9;
             padding: 20px;
             border-radius: 8px;
@@ -85,7 +96,7 @@
             text-align: center;
         }
 
-        .card h3 {
+        .mf-card h3 {
             color: #007bff;
             margin-bottom: 10px;
         }
@@ -118,7 +129,7 @@
                 flex-direction: column;
             }
 
-            .card {
+            .mf-card {
                 flex: 1 1 100%;
             }
         }
@@ -127,50 +138,55 @@
 <body>
 
     <section class="hero">
-        <div class="hero-content">
+        <div class="hero-content" data-aos="zoom-out"  data-aos-delay="100">
             <h1>Manufacturing</h1>
             <p>Optimizing production processes through AI-powered automation and real-time data insights.</p>
         </div>
     </section>
 
-    <div class="container">
-        <section class="section">
+    <div class="container" data-aos="fade-up"  data-aos-delay="100">
+        <section class="manufacturing-section">
             <h2>Revolutionizing Manufacturing with AI</h2>
             <p>AI-driven solutions are transforming the manufacturing industry by enhancing operational efficiency, automating production, and improving real-time monitoring. DGT's AI-powered analytics and automation optimize production lines, reduce downtime, and boost productivity.</p>
         </section>
 
-        <section class="section">
+        <section class="manufacturing-section">
             <h2>Key AI-Powered Solutions</h2>
-            <div class="grid">
-                <div class="card">
+            <div class="grid" data-aos-delay="100">
+                <div class="mf-card" data-aos="slide-right">
                     <h3>Smart Production Planning</h3>
                     <p>AI-powered demand forecasting and real-time scheduling for optimized production.</p>
                 </div>
-                <div class="card">
+                <div class="mf-card" data-aos="slide-left" data-aos-delay="100">
                     <h3>Predictive Maintenance</h3>
                     <p>Advanced AI models to predict machinery failures and reduce downtime.</p>
                 </div>
-                <div class="card">
+                <div class="mf-card"  data-aos="slide-left" data-aos-delay="100">
                     <h3>Shop Floor Analytics</h3>
                     <p>Real-time AI analytics to monitor production performance and efficiency.</p>
                 </div>
-                <div class="card">
+                <div class="mf-card"  data-aos="slide-right" data-aos-delay="100">
                     <h3>Supply Chain Optimization</h3>
                     <p>AI-driven logistics and procurement for cost efficiency and reduced lead times.</p>
                 </div>
             </div>
         </section>
 
-        <section class="section tools">
+        <section class="manufacturing-section tools"data-aos="fade-up" data-aos-delay="100">
             <h2>Technology Stack</h2>
             <p><strong>Salesforce Manufacturing Cloud</strong> | Celonis | Power BI | CI/CD Tools</p>
         </section>
 
-        <section class="section cta">
+        <section class="manufacturing-section cta-footer" data-aos="fade-down" data-aos-delay="100">
             <h2>Drive Manufacturing Excellence with AI</h2>
             <a href="#">Contact Us</a>
         </section>
     </div>
-
+    <script>
+        AOS.init({
+                  duration: 1000,
+                  once: true,
+              });
+  </script>
 </body>
 </html>
