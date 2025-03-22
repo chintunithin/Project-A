@@ -375,21 +375,7 @@ nav input{
   border-radius: 5px;
   display: block;
 }
-/* Container for search results */
-#searchResults {
-  position: absolute;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  width: 100%; /* Adjust as needed */
-  max-height: 250px;
-  overflow-y: auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 0;
-  margin-top: 5px;
-  z-index: 1000;
-  display: none; /* Initially hidden */
-}
+
 /* Search Results Container */
 #searchResults {
   position: absolute;
@@ -481,7 +467,7 @@ nav input{
       top: 50px;
       left: 0;
       right: 0;
-      width: 100%;
+      width: 90%;
   }
 
   .search-box input {
