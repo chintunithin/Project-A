@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Energy & Utilities | DGT</title>
+    <link href="index.css"  rel="stylesheet" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="/search.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="/Aos.js"></script>
     <style>
         * {
             margin: 0;
@@ -16,14 +24,14 @@
         .hero {
             position: relative;
             height: 80vh;
-            background: url('/images/industryEnergyUtilities.jpg') no-repeat center center/cover;
+            background: url('images/Utilities-performance.jpg') no-repeat center center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
         .hero-content {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(19, 18, 18, 0.4);
             padding: 30px;
             text-align: center;
             border-radius: 10px;
@@ -33,12 +41,12 @@
 
         .hero-content h1 {
             font-size: 2.5rem;
-            color: #333;
+            color: #f9f5f5;
         }
 
         .hero-content p {
             font-size: 1.2rem;
-            color: #555;
+            color: #f9f4f4;
             margin-top: 10px;
         }
 
@@ -51,18 +59,18 @@
         }
 
         /* Sections */
-        .section {
+        .utilities-section {
             margin-bottom: 50px;
             text-align: center;
         }
 
-        .section h2 {
+        .utilities-section h2 {
             font-size: 2rem;
             color: #333;
             margin-bottom: 20px;
         }
 
-        .section p {
+        .utilities-section p {
             font-size: 1.1rem;
             color: #555;
             max-width: 800px;
@@ -78,7 +86,7 @@
             margin-top: 30px;
         }
 
-        .card {
+        .u-card {
             background: #f9f9f9;
             padding: 20px;
             border-radius: 8px;
@@ -88,7 +96,7 @@
             text-align: center;
         }
 
-        .card h3 {
+        .u-card h3 {
             color: #007bff;
             margin-bottom: 10px;
         }
@@ -123,7 +131,7 @@
                 flex-direction: column;
             }
 
-            .card {
+            .u-card {
                 flex: 1 1 100%;
             }
         }
@@ -133,36 +141,36 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content">
+        <div class="hero-content"  data-aos="zoom-out"  data-aos-delay="100">
             <h1>Energy & Utilities</h1>
             <p>Driving efficiency and sustainability with smart grid technology and predictive analytics.</p>
         </div>
     </section>
 
     <!-- About Energy & Utilities -->
-    <div class="container">
-        <section class="section">
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <section class="utilities-section">
             <h2>AI-Powered Transformation in Energy & Utilities</h2>
             <p>Leveraging AI to optimize energy distribution, predictive maintenance, and sustainability initiatives. Our solutions enhance operational efficiency, reduce downtime, and drive energy conservation.</p>
         </section>
 
         <!-- Key AI Solutions -->
-        <section class="section">
+        <section class="utilities-section">
             <h2>Key AI-Powered Solutions</h2>
-            <div class="grid">
-                <div class="card">
+            <div class="grid"  data-aos-delay="100">
+                <div class="u-card" data-aos="slide-right" >
                     <h3>Smart Grid Optimization</h3>
                     <p>Real-time grid monitoring and automated demand-response for energy efficiency.</p>
                 </div>
-                <div class="card">
+                <div class="u-card"  data-aos="slide-left" data-aos-delay="100">
                     <h3>Predictive Maintenance</h3>
                     <p>AI-driven asset monitoring to reduce failures and maintenance costs.</p>
                 </div>
-                <div class="card">
+                <div class="u-card"  data-aos="slide-left" data-aos-delay="100">
                     <h3>Field Mobility Solutions</h3>
                     <p>Empowering field teams with mobile tools for seamless operations.</p>
                 </div>
-                <div class="card">
+                <div class="u-card"  data-aos="slide-right" data-aos-delay="100">
                     <h3>Energy Forecasting</h3>
                     <p>Advanced analytics for energy demand prediction and cost optimization.</p>
                 </div>
@@ -170,17 +178,22 @@
         </section>
 
         <!-- Tools & Technologies -->
-        <section class="section tools">
+        <section class="utilities-section tools"  data-aos="fade-up" data-aos-delay="100">
             <h2>Technology Stack</h2>
             <p><strong>Salesforce Field Service</strong> | SAP | ServiceNow | Azure</p>
         </section>
 
         <!-- Call to Action -->
-        <section class="section cta">
+        <section class="utilities-section cta-footer"  data-aos="fade-down" data-aos-delay="100">
             <h2>Transform Your Energy Operations with AI</h2>
             <a href="#">Contact Us</a>
         </section>
     </div>
-
+    <script>
+        AOS.init({
+                  duration: 1000,
+                  once: true,
+              });
+  </script>
 </body>
 </html>
