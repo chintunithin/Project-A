@@ -95,6 +95,21 @@ section h2 {
     align-items: center;
 
 }
+@media screen and (max-width: 768px) {
+    .challenges,.accelerators,.methodology{
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.trends,.expertise,.why-choose,.success{
+    flex-direction: column !important;
+    justify-content: space-evenly;
+    align-items: center;
+}
+section div{
+    width: 100%;
+  }
+}
 .trends,.expertise,.why-choose,.success{
     display: flex;
     flex-direction: row-reverse;
