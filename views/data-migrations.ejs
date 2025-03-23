@@ -119,6 +119,12 @@
             display: block;
             opacity: 0.5;
         }
+        .card h2{
+            font-size: 2rem;
+    color: #ff7f50;
+    text-align: center;
+    margin-bottom: 25px;
+        }
 
     </style>
 </head>
@@ -294,6 +300,11 @@
                 <li>Migrated 10TB of data for a global retailer</li>
                 <li>30% reduction in storage costs</li>
                 <li>Zero downtime during migration</li>
+                <div class="whitebutton" onclick="showDownloadPopup()" > 
+                    <a href="#">Download</a><br>
+                    <span class="up">Click to Download</span><br>
+                    <span class="down" id="file-info">Fetching size...</span>
+                </div>
             </ul>
             <img src="/images/success_story.webp" alt="Success">
         </div>

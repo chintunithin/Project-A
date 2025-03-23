@@ -27,7 +27,7 @@ body {
   color: white;
 }
 nav{
-  position: fixed;
+  position:sticky;
   z-index: 99;
   width: -webkit-fill-available;
   left: 0;
@@ -63,9 +63,7 @@ nav.scrolled {
 .nav-links li{
   list-style: none;
 }
-body {
-    padding-top: 80px; 
-}
+
 .nav-links li a{
   color: #FFFFFF;
   text-decoration: none;
@@ -267,6 +265,7 @@ li:hover .industry-menu {
   #showDrop:checked ~ .drop-menu,
   #showMega:checked ~ .mega-box{
     max-height: 100%;
+    overflow: auto;
   }
   .nav-links .desktop-item{
     display: none;
