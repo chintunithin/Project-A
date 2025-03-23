@@ -27,7 +27,7 @@ body {
   color: white;
 }
 nav{
-  position:sticky;
+  position: fixed;
   z-index: 99;
   width: -webkit-fill-available;
   left: 0;
@@ -63,7 +63,9 @@ nav.scrolled {
 .nav-links li{
   list-style: none;
 }
-
+body {
+    padding-top: 80px; 
+}
 .nav-links li a{
   color: #FFFFFF;
   text-decoration: none;
