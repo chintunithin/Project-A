@@ -328,6 +328,9 @@
         left: 0;
         right: 0;
     }
+    .title-hero{
+        width: 100%;
+    }
 }
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -494,7 +497,7 @@
             </video>
         <% } %>
         
-        <section class="hero">
+        <section class="hero title-hero">
             <h1>Dawn Digital Technology – Industry-First AI-Powered Solutions</h1>
             <p>Transforming industries with <span class="dynamic-text"></span></p>
         </section>
@@ -502,7 +505,7 @@
     <section class="swiper-container">
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide" style="background-image: url('images/hospitalityicon.jpg');">
+                <div class="swiper-slide" style="background-image: url('images/industryHospitalityTravel.jpg');">
                     <a href="/hospitality"> <div>
                         <h3>Hospitality & Travel</h3>
                         <p>Enhancing customer experiences with AI-driven solutions for seamless travel and hospitality services.</p>
@@ -816,7 +819,14 @@ const phrases = ["cutting-edge AI", "technology", "expertise"];
             setTimeout(typeEffect, 1000);
         });
 
-     
+        document.addEventListener("DOMContentLoaded", function () {
+    const titleElement = document.querySelector(".title-hero h1");
+
+    if (window.innerWidth <= 768) {
+        titleElement.textContent = "DGT";
+    }
+});
+
 
 </script>
 
