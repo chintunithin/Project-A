@@ -132,23 +132,7 @@
         font-size: 25px !important;
     }
 }
-.cta {
-            text-align: center;
-            padding: 40px;
-        }
-        .cta button {
-            background: #f37806;
-            color: white;
-            padding: 14px 30px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .cta button:hover {
-            background: #da6d06;
-        }
+
         .card h2{
             font-size: 2rem;
     color: #ff7f50;
@@ -341,9 +325,11 @@
 
     <section class="cta" data-aos="fade-up">
         <h2>Request a BI & Analytics Demo</h2>
-        <button><a href="/contactus" >Contact Us</a></button>
+        <button type="button" class="btn"><a href="/contactus" >Contact Us</a></button>
     </section>
-
+    <div id="lipopup" class="lipopup">
+        <div id="lipopup-content" class="lipopup-content"></div>
+    </div>
     <script src="/Aos.js"></script>
     <script>
         AOS.init();

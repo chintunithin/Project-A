@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script src="/search.js"></script>
     <link href="index.css"  rel="stylesheet" >
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
@@ -261,7 +262,7 @@
     </header>
 
     <section class="container card-container">
-        <div class="card" data-aos="fade-right">
+        <div class="card" data-aos="fade-up">
             <h2>Our Expertise</h2>
             <ul>
                 <li>15+ years in complex data migration projects</li>
@@ -272,7 +273,7 @@
             <img src="/images/Our_expertise.JPG" alt="Expertise">
         </div>
 
-        <div class="card" data-aos="fade-left">
+        <div class="card" data-aos="fade-up">
             <h2>Challenges</h2>
             <ul>
                 <li>Data Loss & Corruption</li>
@@ -283,7 +284,7 @@
             <img src="/images/challenges.jpg" alt="Challenges">
         </div>
 
-        <div class="card" data-aos="fade-right">
+        <div class="card" data-aos="fade-up">
             <h2>Technology Trends</h2>
             <ul>
                 <li>AI-Driven Data Migration</li>
@@ -294,7 +295,7 @@
             <img src="/images/t_image.jpg" alt="Trends">
         </div>
 
-        <div class="card" data-aos="fade-left">
+        <div class="card" data-aos="fade-up">
             <h2>Case Study</h2>
             <ul>
                 <li>Migrated 10TB of data for a global retailer</li>
@@ -308,11 +309,13 @@
         </div>
     </section>
 
-    <section class="cta" data-aos="zoom-in">
+    <section class="cta" data-aos="fade-up">
         <h2>Get a Free Data Migration Assessment</h2>
-        <button type="button" class="btn"><a href="/contactus">Schedule Now</a></button>
+        <button type="button" class="btn"><a href="/contactus"> Contact Us</a></button>
     </section>
-
+    <div id="lipopup" class="lipopup">
+        <div id="lipopup-content" class="lipopup-content"></div>
+    </div>
     <script src="/Aos.js"></script>
     <script>
         AOS.init();
