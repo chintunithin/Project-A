@@ -9,6 +9,7 @@
     <script src="/search.js"></script>
   <link href="index.css"  rel="stylesheet" >
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -283,7 +284,7 @@
                 <li>AI-powered predictive & prescriptive analytics</li>
                 <li>Real-time data streaming & advanced visualization</li>
             </ul>
-            <img src="/images/analytics_ourexperties.webp" alt="Expertise">
+            <img src="/images/E_analytics.jpg" alt="Expertise">
         </div>
 
         <div class="card" data-aos="fade-up">
@@ -294,7 +295,7 @@
                 <li>Slow Decision-Making Process</li>
                 <li>Security & Compliance Risks</li>
             </ul>
-            <img src="/images/analytic_challenges.webp" alt="Challenges">
+            <img src="/images/c_analytics.jpg" alt="Challenges">
         </div>
 
         <div class="card" data-aos="fade-up">
@@ -305,7 +306,7 @@
                 <li>Data Fabric & Federated Learning</li>
                 <li>Edge Computing & Predictive AI</li>
             </ul>
-            <img src="/images/analytic_trends.webp" alt="Trends">
+            <img src="/images/tech_analytics.jpg" alt="Trends">
         </div>
 
         <div class="card" data-aos="fade-up">
@@ -319,7 +320,7 @@
                     <span class="down" id="file-info">Fetching size...</span>
                 </div>
             </ul>
-            <img src="/images/analytics_success.webp" alt="Success">
+            <img src="/images/case_analytics.jpg" alt="Success">
         </div>
     </section>
 
@@ -327,7 +328,9 @@
         <h2>Request a BI & Analytics Demo</h2>
         <button type="button" class="btn"><a href="/contactus" >Contact Us</a></button>
     </section>
-
+    <div id="lipopup" class="lipopup">
+        <div id="lipopup-content" class="lipopup-content"></div>
+    </div>
     <script src="/Aos.js"></script>
     <script>
         AOS.init();
