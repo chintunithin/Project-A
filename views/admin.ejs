@@ -255,6 +255,78 @@ cursor: pointer;
     </style>
 </head>
 <body>
+    <% if (!isAuthenticated) { %>
+        <script>
+            async function adminLogin() {
+                const { value: formValues } = await Swal.fire({
+                    title: 'Admin Login',
+                    html: `
+                        <input id="userId" class="swal2-input" placeholder="User ID">
+                        <input id="password" type="password" class="swal2-input" placeholder="Password">
+                    `,
+                    focusConfirm: false,
+                    showCancelButton: false,  // Prevent bypassing login
+                    allowOutsideClick: false, // Prevent closing by clicking outside
+                    allowEscapeKey: false,    // Prevent ESC key from closing popup
+                    confirmButtonText: 'Login',
+                    preConfirm: () => {
+                        return {
+                            userId: document.getElementById('userId').value.trim(),
+                            password: document.getElementById('password').value.trim()
+                        };
+                    }
+                });
+
+                if (!formValues || !formValues.userId || !formValues.password) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'User ID and Password are required!',
+                    }).then(() => {
+                        adminLogin(); // Reopen login if input is missing
+                    });
+                    return;
+                }
+
+                // Send login request to server
+                const response = await fetch('/admin-login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formValues),
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Login Successful!',
+                        text: 'Redirecting to Admin Panel...',
+                        timer: 1500,
+                        showConfirmButton: false
+                    }).then(() => {
+                        window.location.reload(); // Reload to apply session
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Login Failed!',
+                        text: result.error || 'Invalid credentials',
+                    }).then(() => {
+                        adminLogin(); // Retry login on failure
+                    });
+                }
+            }
+
+            // Call login function immediately
+            adminLogin();
+        </script>
+    <% } else { %>
+        <h2>Welcome, Admin!</h2>
+        <a href="/logout" style="position: fixed; bottom: 20px; right: 20px; background-color: red; color: white; padding: 10px 15px; border-radius: 5px; text-decoration: none; font-weight: bold;">
+            Logout
+        </a>
+    <% } %>
     <div id="notification" class="notification"></div>
     <div class="admin-container">
          <!-- Event Records -->
@@ -316,7 +388,7 @@ cursor: pointer;
             </section>
         </div>
     </div>
-
+   
     <script>
      document.addEventListener("DOMContentLoaded", loadEvents);
 
