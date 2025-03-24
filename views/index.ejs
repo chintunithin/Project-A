@@ -355,6 +355,26 @@
     text-decoration: none;
     color: white;
 }
+.popup-message {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    background: #F4A261;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    display: none;
+    z-index: 1000;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
     </style>
 </head>
 <body>
@@ -715,7 +735,10 @@
             </div>
         </div>
     </div>
-
+    <div id="popup-message" class="popup-message">
+        Follow us on Linkedin! <i class="fab fa-linkedin"></i>
+    </div>
+    
     <div class="footer-bottom">
         <p>&copy; 2025 Dawn Digital Technology | All rights reserved.</p>
     </div>
@@ -826,6 +849,28 @@ const phrases = ["cutting-edge AI", "technology", "expertise"];
 
     if (window.innerWidth <= 768) {
         titleElement.textContent = "DGT";
+    }
+});
+document.addEventListener("DOMContentLoaded", function () {
+    let popupShown = sessionStorage.getItem("popupShown");
+    let popup = document.getElementById("popup-message");
+
+    if (!popupShown) {
+        window.addEventListener("scroll", function () {
+            let footer = document.querySelector(".footer");
+            let footerPosition = footer.getBoundingClientRect().top;
+            let screenHeight = window.innerHeight;
+
+            if (footerPosition < screenHeight) {
+                popup.style.display = "block";
+
+                setTimeout(function () {
+                    popup.style.display = "none";
+                }, 5000);
+
+                sessionStorage.setItem("popupShown", "true");
+            }
+        });
     }
 });
 
