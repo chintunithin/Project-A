@@ -1,6 +1,7 @@
 const express = require('express');
 const db = require('./db'); 
 const multer = require('multer');
+const session = require('express-session');
 const path = require('path');
 
 const app = express();
@@ -10,6 +11,14 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));  
 app.use(express.urlencoded({ extended: true }));
 
+app.use(session({
+    secret: 'devilsDomain',  
+    resave: false,
+    saveUninitialized: true,
+}));
+
+// ✅ Admin Credentials
+const ADMIN_CREDENTIALS = { userId: "admin", password: "admin123" };
 // Multer setup for file uploads
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -42,10 +51,10 @@ app.get('/', (req, res) => {
     });
 });
 
-// 🛠 Render Admin Page
-app.get('/admin', (req, res) => {
-    res.render('admin'); 
-});
+// // 🛠 Render Admin Page
+// app.get('/admin', (req, res) => {
+//     res.render('admin'); 
+// });
 app.get('/get-downloads', (req, res) => {
     db.all('SELECT * FROM tblDownloads ORDER BY downloadTime DESC', [], (err, users) => {
         if (err) {
@@ -83,8 +92,24 @@ app.post('/upload/media', upload.single('mediaFile'), (req, res) => {
         }
     );
 });
+// 🛠 Render Admin Page
+app.get('/admin', (req, res) => {
+    res.render('admin', { isAuthenticated: req.session.authenticated || false });
+});
 
-
+app.get('/logout', (req, res) => {
+    if (req.session) {
+        req.session.destroy((err) => {
+            if (err) {
+                console.error("❌ Error destroying session:", err);
+                return res.status(500).send("Error logging out.");
+            }
+            res.redirect('/admin');
+        });
+    } else {
+        res.redirect('/admin'); 
+    }
+});
 // ✅ Add express.json() to parse JSON request body
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true }));
@@ -218,7 +243,7 @@ app.get("/:page", (req, res) => {
     } else if (allowedPages.includes(page)) {
         res.render(page);
     } else {
-        res.status(404).render("404");
+        res.status(404).send("<h1>404 - Page Not Found</h1><p>Oops! The page you requested does not exist.</p>");
     }
 });
 
@@ -244,6 +269,62 @@ app.post('/save-download', (req, res) => {
 });
 
 
+app.post('/save-contacted', (req, res) => {
+    const { name, email, message } = req.body;
+    const contactedAt = new Date().toISOString();
 
+    if (!name || !email || !message) {
+        return res.status(400).json({ success: false, error: "All fields are required." });
+    }
+
+    db.run('INSERT INTO tblContacted (name, email, message, contactedAt) VALUES (?, ?, ?, ?)', 
+        [name, email, message, contactedAt], 
+        (err) => {
+            if (err) {
+                console.error("❌ Database error:", err.message);
+                return res.status(500).json({ success: false, error: "Database error: " + err.message });
+            }
+            console.log("✅ Contact form details saved successfully!");
+            res.json({ success: true, message: "Message saved successfully!" });
+        }
+    );
+});
+
+
+
+// 🏠 **Render Admin Page with Authentication**
+app.get('/admin', (req, res) => {
+    if (!req.session.authenticated) {
+        return res.render('admin', { isAuthenticated: false }); // Show login popup
+    }
+    res.render('admin', { isAuthenticated: true }); // Show admin panel
+});
+
+// ✅ **Admin Login (SweetAlert Integration)**
+app.post('/admin-login', (req, res) => {
+    const { userId, password } = req.body;
+
+    if (userId === ADMIN_CREDENTIALS.userId && password === ADMIN_CREDENTIALS.password) {
+        req.session.authenticated = true;
+        return res.json({ success: true }); // Login success
+    } else {
+        return res.json({ success: false, error: "Invalid User ID or Password!" });
+    }
+});
+
+// ✅ Admin Logout
+app.get('/logout', (req, res) => {
+    if (req.session) {
+        req.session.destroy((err) => {
+            if (err) {
+                console.error("❌ Error destroying session:", err);
+                return res.status(500).send("Error logging out.");
+            }
+            res.redirect('/admin');
+        });
+    } else {
+        res.redirect('/admin'); 
+    }
+});
 
 app.listen(PORT, () => console.log(`✅ Server running at http://localhost:${PORT} 🚀`));
