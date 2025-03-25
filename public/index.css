@@ -634,8 +634,8 @@ nav input{
   border-right: 4px solid #00ffea;
   padding-right: 5px;
   animation: blink 0.8s infinite;
-  color: #ff0044;
-  text-shadow: 0 0 10px #ff0044, 0 0 20px #ff0022;
+  color: #ffffff;
+  text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff;
 }
 
 .logo img {
