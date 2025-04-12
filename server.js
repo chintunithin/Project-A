@@ -221,7 +221,7 @@ app.set("view engine", "ejs");
 
 app.get("/:page", (req, res) => {
     const page = req.params.page.toLowerCase();
-    const allowedPages = ["mobility", "about", "integration", "data-migrations", "analytics",
+    const allowedPages = ["Mobility", "about", "integration", "data-migrations", "analytics",
         "businessprocesstransformation","technologyimplementation","cloudmigration","managedservices"
         ,"changemanagement","designthinking","alml","dataanalyticsvisualization","digitalskilltraining",
     "celonis","microsoft","servicenow","sap","salesforce","feedback","casestudy","about","hospitality","utilities"
