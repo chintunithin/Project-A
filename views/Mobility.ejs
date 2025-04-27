@@ -171,14 +171,7 @@ section div{
     background-repeat: no-repeat; /* Prevents repeating */
 }
 /* Animations */
-[data-aos] {
-    opacity: 0;
-    transition: opacity 0.6s ease-in-out;
-}
 
-[data-aos].aos-animate {
-    opacity: 1;
-}
 
 
     </style>
@@ -351,10 +344,10 @@ section div{
         </div>
     </section>
     
-    <section class="accelerators" data-aos="fade-up">
-        <img class="mobility_img" src="images/dgtacceletors.jpg" alt="">
+    <section class="accelerators">
+        <img class="mobility_img" src="images/dgtacceletors.jpg" alt="" data-aos="slide-in">
         <div>
-            <h2>DGT Accelerators</h2>
+            <h2 data-aos="slide-in">DGT Accelerators</h2>
             <ul>
                 <li onclick="onListItemClick(event, 'DGT MobileOps™ is an AI-powered field service and sales enablement app designed to enhance operational efficiency.')">DGT MobileOps™: AI-powered field service & sales enablement app</li>
                 <li onclick="onListItemClick(event, 'Offline-First SDK ensures seamless real-time data synchronization in areas with low connectivity.')">Offline-First SDK: Real-time data sync in low-connectivity zones</li>
