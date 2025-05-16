@@ -171,7 +171,14 @@ section div{
     background-repeat: no-repeat; /* Prevents repeating */
 }
 /* Animations */
+[data-aos] {
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+}
 
+[data-aos].aos-animate {
+    opacity: 1;
+}
 
 
     </style>
