@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="/Aos.js"></script>
+<script src="https://knadh.github.io/dragmove.js/dragmove.js"></script>
 
 
     <style>
@@ -383,9 +384,10 @@
 
 .offering-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    max-width: 1400px;
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -568,26 +570,59 @@
           <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
         </div>
       </nav>
-      <div id="floatingSidebar" class="fixed top-1/3 right-0 transform translate-x-full transition-transform duration-500 z-50 bg-white shadow-2xl rounded-l-2xl w-72 p-4 border border-gray-200" 
-      onmouseenter="clearHideTimeout()" onmouseleave="startHideTimeout()">
       
-      <!-- Close Button -->
-      <div class="absolute top-2 left-2 cursor-pointer text-gray-600" onclick="toggleSidebar()">✖</div>
-    
-      <!-- Content -->
-      <h2 class="text-xl font-bold mb-4 text-gray-800">Our Pillars</h2>
-      <ul class="space-y-3 text-gray-700">
-        <li><strong>Methodology:</strong> A structured, agile-driven approach to solve modern challenges.</li>
-        <li><strong>Philosophy:</strong> Ethical, client-centered innovation with impactful results.</li>
-        <li><strong>The Way We Think:</strong> Forward-thinking strategies, anticipating future tech waves.</li>
-        <li><strong>Reinvention & AI-First:</strong> AI-driven solutions to transform businesses from the ground up.</li>
-      </ul>
-    </div>
-    
-    <!-- Floating Handle (Button to Open Sidebar) -->
-    <div id="floatingHandle" class="fixed top-1/3 right-0 bg-orange-500 text-white rounded-l-full px-3 py-2 cursor-pointer shadow-lg z-50" onclick="toggleSidebar()">
-      <span>☰ Our Pillars</span>
-    </div>
+      <!-- New Floating Sidebar HTML -->
+      <div id="newFloatingSidebar" class="new-floating-sidebar fixed z-[100] bg-white shadow-2xl rounded-l-2xl w-80 p-6 border border-gray-200 backdrop-blur-sm bg-opacity-95" style="max-height: 100vh; overflow-y: auto; top: 70px; right: -320px; transition: right 0.3s ease-in-out;">
+          <!-- Close Button -->
+          <div class="absolute top-3 left-3 cursor-pointer text-gray-600 hover:text-orange-500 transition-colors duration-300" onclick="toggleNewSidebar()">
+              <i class="fas fa-times text-lg"></i>
+          </div>
+
+          <!-- Content -->
+          <div class="mt-8">
+              <h2 class="text-2xl font-bold mb-6 text-gray-800 border-b border-orange-200 pb-3">Our Pillars</h2>
+              <ul class="space-y-4 text-gray-700">
+                  <li class="flex items-start group hover:bg-orange-50 p-3 rounded-lg transition-all duration-300">
+                      <i class="fas fa-lightbulb text-orange-500 mt-1 mr-3 group-hover:scale-110 transition-transform duration-300"></i>
+                      <div>
+                          <strong class="block text-gray-800 group-hover:text-orange-600 transition-colors duration-300">Methodology</strong>
+                          <span class="text-sm">A structured, agile-driven approach to solve modern challenges.</span>
+                      </div>
+                  </li>
+                  <li class="flex items-start group hover:bg-orange-50 p-3 rounded-lg transition-all duration-300">
+                      <i class="fas fa-balance-scale text-orange-500 mt-1 mr-3 group-hover:scale-110 transition-transform duration-300"></i>
+                      <div>
+                          <strong class="block text-gray-800 group-hover:text-orange-600 transition-colors duration-300">Philosophy</strong>
+                          <span class="text-sm">Ethical, client-centered innovation with impactful results.</span>
+                      </div>
+                  </li>
+                  <li class="flex items-start group hover:bg-orange-50 p-3 rounded-lg transition-all duration-300">
+                      <i class="fas fa-brain text-orange-500 mt-1 mr-3 group-hover:scale-110 transition-transform duration-300"></i>
+                      <div>
+                          <strong class="block text-gray-800 group-hover:text-orange-600 transition-colors duration-300">The Way We Think</strong>
+                          <span class="text-sm">Forward-thinking strategies, anticipating future tech waves.</span>
+                      </div>
+                  </li>
+                  <li class="flex items-start group hover:bg-orange-50 p-3 rounded-lg transition-all duration-300">
+                      <i class="fas fa-robot text-orange-500 mt-1 mr-3 group-hover:scale-110 transition-transform duration-300"></i>
+                      <div>
+                          <strong class="block text-gray-800 group-hover:text-orange-600 transition-colors duration-300">Reinvention & AI-First</strong>
+                          <span class="text-sm">AI-driven solutions to transform businesses from the ground up.</span>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+      </div>
+
+      <!-- New Floating Handle (Button to Open Sidebar) -->
+      <div id="newFloatingHandle" class="new-floating-handle fixed top-1/3 right-0 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-l-full px-4 py-3 cursor-pointer shadow-lg z-50 hover:from-orange-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105" onclick="toggleNewSidebar()">
+          <div class="flex items-center space-x-2">
+              <i class="fas fa-chevron-left"></i>
+              <span class="font-medium">Our Pillars</span>
+          </div>
+      </div>
+      <!-- End New Floating Sidebar HTML -->
+
       <section class="background-container">
         <% if (media.length > 1) { %>
             <div class="slideshow">
@@ -687,8 +722,135 @@
             </div>
     </section>
       <section class="intro-section" data-aos="fade-up">
-        <div class="container">
-            <div class="image-container" data-aos="zoom-in">
+        <div class="intro-container">
+            <div class="intro-content">
+                <div class="intro-header" data-aos="fade-right">
+                    <h2>Our Expertise</h2>
+                    <p>Transforming businesses through innovative solutions</p>
+                </div>
+                
+                <div class="content-grid">
+                    <div class="content-block" data-aos="fade-up" data-aos-delay="100">
+                        <i class="fas fa-sync-alt"></i>
+                        <h3>Business Process Transformation</h3>
+                        <div class="popup-content">
+                            <h4>Business Process Transformation</h4>
+                            <p>Leverage Salesforce and AI to streamline your business processes. Our solutions help automate workflows, reduce manual tasks, and increase operational efficiency.</p>
+                            <ul>
+                                <li>Process Automation</li>
+                                <li>Workflow Optimization</li>
+                                <li>Digital Transformation</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="content-block" data-aos="fade-up" data-aos-delay="200">
+                        <i class="fas fa-cogs"></i>
+                        <h3>Technology Implementation</h3>
+                        <div class="popup-content">
+                            <h4>Technology Implementation</h4>
+                            <p>Expert implementation of Salesforce solutions with AI integration. We ensure seamless deployment and maximum ROI for your technology investments.</p>
+                            <ul>
+                                <li>Salesforce Implementation</li>
+                                <li>AI Integration</li>
+                                <li>Custom Development</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="content-block" data-aos="fade-up" data-aos-delay="300">
+                        <i class="fas fa-cloud"></i>
+                        <h3>Cloud Migration</h3>
+                        <div class="popup-content">
+                            <h4>Cloud Migration</h4>
+                            <p>Seamless migration to Salesforce cloud with AI capabilities. We handle the entire process ensuring zero downtime and data integrity.</p>
+                            <ul>
+                                <li>Data Migration</li>
+                                <li>Cloud Architecture</li>
+                                <li>Security Implementation</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="content-block" data-aos="fade-up" data-aos-delay="400">
+                        <i class="fas fa-users-cog"></i>
+                        <h3>Shared and Managed Services</h3>
+                        <div class="popup-content">
+                            <h4>Shared and Managed Services</h4>
+                            <p>Comprehensive managed services for Salesforce and AI solutions. We provide ongoing support, maintenance, and optimization.</p>
+                            <ul>
+                                <li>24/7 Support</li>
+                                <li>System Maintenance</li>
+                                <li>Performance Optimization</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="content-block" data-aos="fade-up" data-aos-delay="500">
+                        <i class="fas fa-exchange-alt"></i>
+                        <h3>Change Management</h3>
+                        <div class="popup-content">
+                            <h4>Change Management</h4>
+                            <p>Expert guidance through digital transformation. We help organizations adapt to new Salesforce and AI technologies effectively.</p>
+                            <ul>
+                                <li>Training Programs</li>
+                                <li>User Adoption</li>
+                                <li>Change Strategy</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="content-block" data-aos="fade-up" data-aos-delay="600">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>Design Thinking</h3>
+                        <div class="popup-content">
+                            <h4>Design Thinking</h4>
+                            <p>Innovative approach to Salesforce and AI solutions. We use design thinking to create user-centric, effective digital experiences.</p>
+                            <ul>
+                                <li>User Experience Design</li>
+                                <li>Solution Architecture</li>
+                                <li>Innovation Workshops</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="content-block" data-aos="fade-up" data-aos-delay="700">
+                        <i class="fas fa-brain"></i>
+                        <h3>AI and ML</h3>
+                        <div class="popup-content">
+                            <h4>AI and Machine Learning</h4>
+                            <p>Advanced AI and ML solutions integrated with Salesforce. We help businesses leverage artificial intelligence for better decision-making.</p>
+                            <ul>
+                                <li>Predictive Analytics</li>
+                                <li>AI Automation</li>
+                                <li>Machine Learning Models</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="content-block" data-aos="fade-up" data-aos-delay="800">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Analytics and Visualization</h3>
+                        <div class="popup-content">
+                            <h4>Analytics and Visualization</h4>
+                            <p>Powerful analytics and visualization tools for Salesforce data. Transform your data into actionable insights with AI-powered analytics.</p>
+                            <ul>
+                                <li>Data Analytics</li>
+                                <li>Business Intelligence</li>
+                                <li>Custom Dashboards</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="content-block" data-aos="fade-up" data-aos-delay="900">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>Digital Skills Training</h3>
+                        <div class="popup-content">
+                            <h4>Digital Skills Training</h4>
+                            <p>Comprehensive training programs for Salesforce and AI technologies. We help your team master new digital tools and technologies.</p>
+                            <ul>
+                                <li>Salesforce Training</li>
+                                <li>AI Awareness</li>
+                                <li>Digital Literacy</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="intro-image-container" data-aos="fade-left">
                 <div class="slideshow2">
                     <img src="/images/image1.jpg" class="slide active" alt="Business Transformation">
                     <img src="/images/image2.jpg" class="slide" alt="Technology Implementation">
@@ -698,18 +860,7 @@
                     <img src="/images/image6.webp" class="slide" alt="Analytics and Visualization">
                     <img src="/images/image7.webp" class="slide" alt="Digital Skills Training">
                 </div>
-            </div>
-            
-            <div class="content-container">
-                <div class="content-block" data-aos="fade-up">Business Process Transformation</div>
-                <div class="content-block" data-aos="fade-up">Technology Implementation</div>
-                <div class="content-block" data-aos="fade-up">Cloud Migration</div>
-                <div class="content-block" data-aos="fade-up">Shared and Managed Services</div>
-                <div class="content-block" data-aos="fade-up">Change Management</div>
-                <div class="content-block" data-aos="fade-up">Design Thinking</div>
-                <div class="content-block" data-aos="fade-up">AI and ML</div>
-                <div class="content-block" data-aos="fade-up">Analytics and Visualization</div>
-                <div class="content-block" data-aos="fade-up">Digital Skills Training</div>
+                <div class="image-overlay"></div>
             </div>
         </div>
     </section>
@@ -718,7 +869,7 @@
         <div class="offering-section-header">Industry To Offerings</div>
         <div class="offering-section-new">
             <div class="offering-grid">
-                <a href="/BusinessProcessTransformation" class="offering-card">
+                <a href="/BusinessProcessTransformation" class="offering-card" data-aos="fade-up" data-aos-delay="100">
                     <img src="/images/Business model transformation.jpg" alt="Business Model Transformation" class="offering-image">
                     <div class="offering-content">
                         <h3 class="offering-title">Business Model Transformation</h3>
@@ -726,7 +877,7 @@
                     </div>
                 </a>
                 
-                <a href="/TechnologyImplementation" class="offering-card">
+                <a href="/TechnologyImplementation" class="offering-card" data-aos="fade-up" data-aos-delay="200">
                     <img src="/images/Technology implementation.jpg" alt="Technology Implementation" class="offering-image">
                     <div class="offering-content">
                         <h3 class="offering-title">Technology Implementation</h3>
@@ -734,7 +885,7 @@
                     </div>
                 </a>
                 
-                <a href="/cloudmigration" class="offering-card">
+                <a href="/cloudmigration" class="offering-card" data-aos="fade-up" data-aos-delay="300">
                     <img src="/images/Cloud migration.jpg" alt="Cloud Migration" class="offering-image">
                     <div class="offering-content">
                         <h3 class="offering-title">Cloud Migration</h3>
@@ -742,7 +893,7 @@
                     </div>
                 </a>
                 
-                <a href="/ManagedServices" class="offering-card">
+                <a href="/ManagedServices" class="offering-card" data-aos="fade-up" data-aos-delay="400">
                     <img src="/images/Shared And managed services.jpg" alt="Managed Services" class="offering-image">
                     <div class="offering-content">
                         <h3 class="offering-title">Shared and Managed Services</h3>
@@ -750,7 +901,7 @@
                     </div>
                 </a>
                 
-                <a href="/changeManagement" class="offering-card">
+                <a href="/changeManagement" class="offering-card" data-aos="fade-up" data-aos-delay="500">
                     <img src="/images/Change management.jpg" alt="Change Management" class="offering-image">
                     <div class="offering-content">
                         <h3 class="offering-title">Change Management</h3>
@@ -758,7 +909,7 @@
                     </div>
                 </a>
                 
-                <a href="/DesignThinking" class="offering-card">
+                <a href="/DesignThinking" class="offering-card" data-aos="fade-up" data-aos-delay="600">
                     <img src="/images/design_thinking.webp" alt="Design Thinking" class="offering-image">
                     <div class="offering-content">
                         <h3 class="offering-title">Design Thinking</h3>
@@ -766,7 +917,7 @@
                     </div>
                 </a>
                 
-                <a href="/ALML" class="offering-card">
+                <a href="/ALML" class="offering-card" data-aos="fade-up" data-aos-delay="700">
                     <img src="/images/ai_machine_learning.webp" alt="AI and ML" class="offering-image">
                     <div class="offering-content">
                         <h3 class="offering-title">AI and Machine Learning</h3>
@@ -774,7 +925,7 @@
                     </div>
                 </a>
                 
-                <a href="/DataAnalyticsVisualization" class="offering-card">
+                <a href="/DataAnalyticsVisualization" class="offering-card" data-aos="fade-up" data-aos-delay="800">
                     <img src="/images/Data analytics and visualization.jpg" alt="Data Analytics" class="offering-image">
                     <div class="offering-content">
                         <h3 class="offering-title">Data Analytics</h3>
@@ -782,7 +933,7 @@
                     </div>
                 </a>
                 
-                <a href="/DigitalSkillTraining" class="offering-card">
+                <a href="/DigitalSkillTraining" class="offering-card" data-aos="fade-up" data-aos-delay="900">
                     <img src="/images/Digital skills training.jpg" alt="Digital Skills" class="offering-image">
                     <div class="offering-content">
                         <h3 class="offering-title">Digital Skills Training</h3>

@@ -9,178 +9,515 @@
     <link href="index.css"  rel="stylesheet" >
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <style>
-    /* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background: #fafafa;
+            color: #2c3e50;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
 
-/* General Styles */
-body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
-    line-height: 1.6;
-}
+        .hero {
+            background: linear-gradient(135deg, rgba(255, 245, 240, 0.9), rgba(255, 255, 255, 0.9)), url('/images/MobilityIcon.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #2c3e50;
+            text-align: center;
+            padding: 100px 20px 120px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255, 127, 80, 0.1);
+        }
 
-.container {
-    width: 85%;
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px 0;
-}
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 70% 30%, rgba(255, 127, 80, 0.1) 0%, transparent 70%);
+            z-index: 1;
+        }
 
-/* Hero Section */
-.hero {
-    background-color: white;
-    color: rgb(255, 255, 255);
-    border: 1px solid orange;
-    text-align: center;
-    text-shadow: 0px 0px 5px orange;
-    padding: 100px 20px;
-    border-radius: 10px;
-    margin-bottom:50px ;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    margin-top: 6%;
-}
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255, 127, 80, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 1;
+        }
 
-.hero h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 15px;
-    background-color: rgba(80, 80, 80, 0.5);
-}
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
 
-.hero p {
-    font-size: 1.3rem;
-    max-width: 700px;
-    margin: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-}
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+            color: #2c3e50;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
 
-/* Sections */
-.section {
-    background: white;
-    padding: 60px 30px;
-    border-radius: 12px;
-    margin: 50px 0;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-}
-section{
-    
-    margin-bottom: 30px;
-    margin-top: 10px;
-}
-section div{
-    
-  width: 35%;
-}
+        .hero h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: rgba(255, 127, 80, 0.3);
+            animation: lineExpand 0.6s ease-out 0.8s forwards;
+        }
 
-.section:hover {
-    transform: translateY(-5px);
-}
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            line-height: 1.8;
+            color: #2c3e50;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out 0.4s forwards;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+        }
 
-section h2 {
-    font-size: 2rem;
-    color: #ff7f50; 
-    text-align: center;
-    margin-bottom: 25px;
-}
-.challenges,.accelerators,.methodology{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
+        /* --- Existing Mobility Styles Below --- */
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px 0;
+        }
 
-}
-@media screen and (max-width: 768px) {
-    .challenges,.accelerators,.methodology{
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-}
-.trends,.expertise,.why-choose,.success{
-    flex-direction: column !important;
-    justify-content: space-evenly;
-    align-items: center;
-}
-section div{
-    width: 100%;
-  }
-}
-.trends,.expertise,.why-choose,.success{
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-evenly;
-    align-items: center;
-}
-.mobility_img{
-    top: 20px;
-    width: 500px;
-    height: 300px;
-}
+        /* Existing Mobility Hero styles are replaced by the new .hero styles above */
 
-.success ul,.methodology ul,.why-choose ul,.accelerators ul,.trends ul,.challenges ul,
-.success ol,.methodology ol,.why-choose ol,.accelerators ol,.trends ol,.challenges ol {
-    list-style: none;
-    padding: 0;
-}
+        .section {
+            background: white;
+            padding: 60px 30px;
+            border-radius: 12px;
+            margin: 50px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+        section{
+            
+            margin-bottom: 30px;
+            margin-top: 10px;
+        }
+        section div{
+            
+          width: 35%;
+        }
 
-.success ol li,.methodology ol li,.why-choose ol li,.accelerators ol li,.trends ol li,.challenges ol li,
-.success ul li,.methodology ul li,.why-choose ul li,.accelerators ul li,.trends ul li,.challenges ul li {
-    font-size: 1.2rem;
-    padding: 10px 0;
-    border-left: 5px solid #ff7f50;
-    padding-left: 20px;
-    transition: all 0.3s ease-in-out;
-}
+        .section:hover {
+            transform: translateY(-5px);
+        }
 
-.success ol li:hover,.methodology ol li:hover,.why-choose ol li:hover,.accelerators ol li:hover,.trends ol li:hover,.challenges ol li:hover,
-.success ul li:hover,.methodology ul li:hover,.why-choose ul li:hover,.accelerators ul li:hover,.trends ul li:hover,.challenges ul li:hover {
-    background: rgba(255, 127, 80, 0.15);
-    padding-left: 25px;
-}
+        section h2 {
+            font-size: 2rem;
+            color: #ff7f50; 
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .challenges,.accelerators,.methodology{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
 
-/* Call to Action */
-.cta {
-    text-align: center;
-    padding: 50px 20px;
-}
+        }
+        @media screen and (max-width: 768px) {
+            .challenges,.accelerators,.methodology{
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .trends,.expertise,.why-choose,.success{
+            flex-direction: column !important;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        section div{
+            width: 100%;
+          }
+        }
+        .trends,.expertise,.why-choose,.success{
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .mobility_img{
+            top: 20px;
+            width: 500px;
+            height: 300px;
+        }
 
-.cta button {
-    background: #ff7f50;
-    color: white;
-    border: none;
-    padding: 14px 28px;
-    font-size: 1.3rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-}
+        .success ul,.methodology ul,.why-choose ul,.accelerators ul,.trends ul,.challenges ul,
+        .success ol,.methodology ol,.why-choose ol,.accelerators ol,.trends ol,.challenges ol {
+            list-style: none;
+            padding: 0;
+        }
 
-.cta button:hover {
-    background: #e65c00;
-    transform: scale(1.08);
-    box-shadow: 0px 4px 10px rgba(230, 92, 0, 0.5);
-}
-.hero-bg{
-    background-image: url('/images/MobilityIcon.jpg');
-    background-size: cover; /* Ensures the image covers the entire background */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat; /* Prevents repeating */
-}
-/* Animations */
-[data-aos] {
-    opacity: 0;
-    transition: opacity 0.6s ease-in-out;
-}
+        .success ol li,.methodology ol li,.why-choose ol li,.accelerators ol li,.trends ol li,.challenges ol li,
+        .success ul li,.methodology ul li,.why-choose ul li,.accelerators ul li,.trends ul li,.challenges ul li {
+            font-size: 1.2rem;
+            padding: 10px 0;
+            border-left: 5px solid #ff7f50;
+            padding-left: 20px;
+            transition: all 0.3s ease-in-out;
+        }
 
-[data-aos].aos-animate {
-    opacity: 1;
-}
+        .success ol li:hover,.methodology ol li:hover,.why-choose ol li:hover,.accelerators ol li:hover,.trends ol li:hover,.challenges ol li:hover,
+        .success ul li:hover,.methodology ul li:hover,.why-choose ul li:hover,.accelerators ul li:hover,.trends ul li:hover,.challenges ul li:hover {
+            background: rgba(255, 127, 80, 0.15);
+            padding-left: 25px;
+        }
 
+        /* Existing Mobility CTA styles are replaced by the new .cta styles below */
 
+        /* Animations */
+        @keyframes fadeInUp { /* Keep or adjust if already defined for new hero */
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes lineExpand { /* Keep or adjust if already defined for new hero */
+            from {
+                width: 0;
+            }
+            to {
+                width: 60px;
+            }
+        }
+        
+        /* --- Styles Copied from BusinessProcessTransformation.ejs --- */
+
+        .cta-section {
+            background: #fff;
+            color: #2c3e50;
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid rgba(255, 127, 80, 0.1);
+            border-bottom: 1px solid rgba(255, 127, 80, 0.1);
+        }
+
+        .cta-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .cta-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: #ff7f50;
+            opacity: 0.3;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 32px;
+            background: transparent;
+            color: #2c3e50;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 127, 80, 0.3);
+            position: relative;
+            overflow: hidden;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button:hover {
+            border-color: #ff7f50;
+            background: rgba(255, 127, 80, 0.05);
+            transform: translateY(-2px);
+        }
+
+        @keyframes moveShape {
+            0% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(20px, 20px);
+            }
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+        .classic-footer {
+            background: #1a252f;
+            color: white;
+            padding: 80px 0 20px;
+            margin-top: 0;
+            position: relative;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 60px;
+            padding: 0 40px;
+        }
+
+        .footer-section {
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            font-family: 'Playfair Display', serif;
+            color: white;
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: #ff7f50;
+        }
+
+        .footer-section p, .footer-section li {
+            color: #a3b1c2;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section ul li a {
+            color: #a3b1c2;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .footer-section ul li a::before {
+            content: '→';
+            position: absolute;
+            left: -10px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            color: #ff7f50;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+            padding-left: 20px;
+        }
+
+        .footer-section ul li a:hover::before {
+            opacity: 1;
+            left: 0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: #a3b1c2;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-links a:hover {
+            color: #ff7f50;
+            border-color: #ff7f50;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 60px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: #a3b1c2;
+            font-size: 0.9rem;
+        }
+
+        /* Popup Content Styles */
+        .popup-content {
+            position: fixed;
+            transform: translateX(-50%);
+            width: 300px;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 99999;
+            border: 2px solid #ff6b6b;
+            pointer-events: none;
+        }
+
+        .popup-content::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+        }
+
+        .popup-content h4 {
+            color: #ff6b6b;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .popup-content p {
+            color: #2d3436;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .popup-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+        }
+
+        .popup-content ul li {
+            color: #636e72;
+            font-size: 0.9rem;
+            padding: 5px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .popup-content ul li::before {
+            content: '•';
+            color: #ff6b6b;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        .section div:hover .popup-content {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        /* Position popups based on their position in the grid */
+        .section div:nth-child(3n+1) .popup-content {
+            left: calc(50% + 0px);
+        }
+
+        .section div:nth-child(3n+2) .popup-content {
+            left: calc(50% + 0px);
+        }
+
+        .section div:nth-child(3n+3) .popup-content {
+            left: calc(50% + 0px);
+        }
+
+        /* Position popups for bottom row */
+        .section div:nth-last-child(-n+3) .popup-content {
+            bottom: 100%;
+            top: auto;
+        }
+
+        /* Position popups for other rows */
+        .section div:not(:nth-last-child(-n+3)) .popup-content {
+            top: 100%;
+        }
+
+        .section div:not(:nth-last-child(-n+3)) .popup-content::before {
+            top: -10px;
+            border-bottom: 10px solid #ff6b6b;
+        }
+
+        .section div:nth-last-child(-n+3) .popup-content::before {
+            bottom: -10px;
+            border-top: 10px solid #ff6b6b;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .popup-content {
+                width: 280px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -290,32 +627,62 @@ section div{
           <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
         </div>
       </nav>
-      <div id="floatingSidebar" class="fixed top-1/3 right-0 transform translate-x-full transition-transform duration-500 z-50 bg-white shadow-2xl rounded-l-2xl w-72 p-4 border border-gray-200" 
-      onmouseenter="clearHideTimeout()" onmouseleave="startHideTimeout()">
-      
-      <!-- Close Button -->
-      <div class="absolute top-2 left-2 cursor-pointer text-gray-600" onclick="toggleSidebar()">✖</div>
-    
-      <!-- Content -->
-      <h2 class="text-xl font-bold mb-4 text-gray-800">Our Pillars</h2>
-      <ul class="space-y-3 text-gray-700">
-        <li><strong>Methodology:</strong> A structured, agile-driven approach to solve modern challenges.</li>
-        <li><strong>Philosophy:</strong> Ethical, client-centered innovation with impactful results.</li>
-        <li><strong>The Way We Think:</strong> Forward-thinking strategies, anticipating future tech waves.</li>
-        <li><strong>Reinvention & AI-First:</strong> AI-driven solutions to transform businesses from the ground up.</li>
-      </ul>
-    </div>
-    
-    <!-- Floating Handle (Button to Open Sidebar) -->
-    <div id="floatingHandle" class="fixed top-1/3 right-0 bg-orange-500 text-white rounded-l-full px-3 py-2 cursor-pointer shadow-lg z-50" onclick="toggleSidebar()">
-      <span>☰ Our Pillars</span>
-    </div>
-    <div id="lipopup" class="lipopup">
-        <div id="lipopup-content" class="lipopup-content"></div>
-    </div>
-    <header class="hero hero-bg" data-aos="fade-up">
-        <h1>Empower Your Workforce with AI-Driven Mobility Solutions</h1>
-        <p>Enhance operational efficiency, enable real-time decision-making, and elevate user experience with DGT’s mobile-first enterprise solutions.</p>
+       <!-- New Floating Sidebar HTML -->
+      <div id="newFloatingSidebar" class="new-floating-sidebar fixed z-[100] bg-white shadow-2xl rounded-l-2xl w-80 p-6 border border-gray-200 backdrop-blur-sm bg-opacity-95" style="max-height: 100vh; overflow-y: auto; top: 70px; right: -320px; transition: right 0.3s ease-in-out;">
+          <!-- Close Button -->
+          <div class="absolute top-3 left-3 cursor-pointer text-gray-600 hover:text-orange-500 transition-colors duration-300" onclick="toggleNewSidebar()">
+              <i class="fas fa-times text-lg"></i>
+          </div>
+
+          <!-- Content -->
+          <div class="mt-8">
+              <h2 class="text-2xl font-bold mb-6 text-gray-800 border-b border-orange-200 pb-3">Our Pillars</h2>
+              <ul class="space-y-4 text-gray-700">
+                  <li class="flex items-start group hover:bg-orange-50 p-3 rounded-lg transition-all duration-300">
+                      <i class="fas fa-lightbulb text-orange-500 mt-1 mr-3 group-hover:scale-110 transition-transform duration-300"></i>
+                      <div>
+                          <strong class="block text-gray-800 group-hover:text-orange-600 transition-colors duration-300">Methodology</strong>
+                          <span class="text-sm">A structured, agile-driven approach to solve modern challenges.</span>
+                      </div>
+                  </li>
+                  <li class="flex items-start group hover:bg-orange-50 p-3 rounded-lg transition-all duration-300">
+                      <i class="fas fa-balance-scale text-orange-500 mt-1 mr-3 group-hover:scale-110 transition-transform duration-300"></i>
+                      <div>
+                          <strong class="block text-gray-800 group-hover:text-orange-600 transition-colors duration-300">Philosophy</strong>
+                          <span class="text-sm">Ethical, client-centered innovation with impactful results.</span>
+                      </div>
+                  </li>
+                  <li class="flex items-start group hover:bg-orange-50 p-3 rounded-lg transition-all duration-300">
+                      <i class="fas fa-brain text-orange-500 mt-1 mr-3 group-hover:scale-110 transition-transform duration-300"></i>
+                      <div>
+                          <strong class="block text-gray-800 group-hover:text-orange-600 transition-colors duration-300">The Way We Think</strong>
+                          <span class="text-sm">Forward-thinking strategies, anticipating future tech waves.</span>
+                      </div>
+                  </li>
+                  <li class="flex items-start group hover:bg-orange-50 p-3 rounded-lg transition-all duration-300">
+                      <i class="fas fa-robot text-orange-500 mt-1 mr-3 group-hover:scale-110 transition-transform duration-300"></i>
+                      <div>
+                          <strong class="block text-gray-800 group-hover:text-orange-600 transition-colors duration-300">Reinvention & AI-First</strong>
+                          <span class="text-sm">AI-driven solutions to transform businesses from the ground up.</span>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+      </div>
+
+      <!-- New Floating Handle (Button to Open Sidebar) -->
+      <div id="newFloatingHandle" class="new-floating-handle fixed top-1/3 right-0 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-l-full px-4 py-3 cursor-pointer shadow-lg z-50 hover:from-orange-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105" onclick="toggleNewSidebar()">
+          <div class="flex items-center space-x-2">
+              <i class="fas fa-chevron-left"></i>
+              <span class="font-medium">Our Pillars</span>
+          </div>
+      </div>
+      <!-- End New Floating Sidebar HTML -->
+    <header class="hero" data-aos="fade-up">
+        <div class="hero-content">
+            <h1>Empower Your Workforce with AI-Driven Mobility Solutions</h1>
+            <p>Enhance operational efficiency, enable real-time decision-making, and elevate user experience with DGT's mobile-first enterprise solutions.</p>
+        </div>
     </header>
     
     <section class="expertise" data-aos="fade-up" style="display: none;">
@@ -330,24 +697,44 @@ section div{
         <div>
             <h2>Today's CEO Challenges</h2>
             <ul>
-                <li onclick="onListItemClick(event, 'Security & Compliance Risks involve protecting data and ensuring regulatory adherence.')">Security & Compliance Risks</li>
-                <li onclick="onListItemClick(event, 'Device Fragmentation & User Experience can lead to inconsistent application performance.')">Device Fragmentation & User Experience</li>
-                <li onclick="onListItemClick(event, 'Offline Functionality & Performance Issues impact user accessibility in low-network areas.')">Offline Functionality & Performance Issues</li>
-                <li onclick="onListItemClick(event, 'Scalability & Cost of Development are critical for long-term business sustainability.')">Scalability & Cost of Development</li>
+                <li>Security & Compliance Risks</li>
+                <li>Device Fragmentation & User Experience</li>
+                <li>Offline Functionality & Performance Issues</li>
+                <li>Scalability & Cost of Development</li>
             </ul>
+            <div class="popup-content">
+                <h4>Today's CEO Challenges</h4>
+                <p>Modern enterprises face critical challenges in their mobile transformation journey. Our solutions address these key pain points:</p>
+                <ul>
+                    <li>Security & Compliance Risks: Protecting sensitive data while ensuring regulatory adherence</li>
+                    <li>Device Fragmentation: Managing consistent user experience across diverse devices</li>
+                    <li>Offline Functionality: Ensuring seamless operation in low-connectivity areas</li>
+                    <li>Scalability: Building cost-effective solutions that grow with your business</li>
+                </ul>
+            </div>
         </div>
     </section>
     
     <section class="trends" data-aos="fade-up">
         <img class="mobility_img" src="images/technologytrend.jpg" alt="">
         <div>
-            <h2>TechnologyTrends</h2>
+            <h2>Technology Trends</h2>
             <ul>
-                <li onclick="onListItemClick(event, 'AI-powered mobile apps leverage machine learning to enhance user experience and optimize workflows.')">AI-powered mobile apps & predictive workflows</li>
-                <li onclick="onListItemClick(event, 'Edge AI & 5G enable real-time data processing at the edge, reducing latency and improving efficiency.')">Edge AI & 5G for real-time processing</li>
-                <li onclick="onListItemClick(event, 'Voice & Gesture Interfaces improve accessibility and allow for hands-free operation in various applications.')">Voice & Gesture Interfaces</li>
-                <li onclick="onListItemClick(event, 'Blockchain technology enhances mobile security by providing decentralized and tamper-proof data protection.')">Blockchain for mobile security</li>
+                <li>AI-powered mobile apps & predictive workflows</li>
+                <li>Edge AI & 5G for real-time processing</li>
+                <li>Voice & Gesture Interfaces</li>
+                <li>Blockchain for mobile security</li>
             </ul>
+            <div class="popup-content">
+                <h4>Technology Trends</h4>
+                <p>Stay ahead with cutting-edge mobile technologies that drive innovation:</p>
+                <ul>
+                    <li>AI-powered mobile apps: Leveraging machine learning for enhanced user experience</li>
+                    <li>Edge AI & 5G: Enabling real-time data processing and reduced latency</li>
+                    <li>Voice & Gesture Interfaces: Revolutionizing user interaction methods</li>
+                    <li>Blockchain Security: Ensuring tamper-proof data protection</li>
+                </ul>
+            </div>
         </div>
     </section>
     
@@ -356,36 +743,65 @@ section div{
         <div>
             <h2 data-aos="slide-in">DGT Accelerators</h2>
             <ul>
-                <li onclick="onListItemClick(event, 'DGT MobileOps™ is an AI-powered field service and sales enablement app designed to enhance operational efficiency.')">DGT MobileOps™: AI-powered field service & sales enablement app</li>
-                <li onclick="onListItemClick(event, 'Offline-First SDK ensures seamless real-time data synchronization in areas with low connectivity.')">Offline-First SDK: Real-time data sync in low-connectivity zones</li>
-                <li onclick="onListItemClick(event, 'AI Voice Assistant for Mobility enables hands-free operation and smart automation for enhanced user experience.')">AI Voice Assistant for Mobility</li>
+                <li>DGT MobileOps™: AI-powered field service & sales enablement app</li>
+                <li>Offline-First SDK: Real-time data sync in low-connectivity zones</li>
+                <li>AI Voice Assistant for Mobility</li>
             </ul>
+            <div class="popup-content">
+                <h4>DGT Accelerators</h4>
+                <p>Our proprietary solutions accelerate your mobile transformation:</p>
+                <ul>
+                    <li>DGT MobileOps™: Comprehensive field service and sales enablement platform</li>
+                    <li>Offline-First SDK: Robust data synchronization for challenging environments</li>
+                    <li>AI Voice Assistant: Intelligent voice-based interaction for enhanced productivity</li>
+                </ul>
+            </div>
         </div>
     </section>
     
     <section class="why-choose" data-aos="fade-up">
         <img class="mobility_img" src="images/whydgt.jpg" alt="">
         <div>
-        <h2>Why Choose DGT</h2>
-        <ul>
-            <li onclick="onListItemClick(event, 'AI-first mobile architecture ensures optimized performance and smart automation.')">AI-first mobile architecture</li>
-            <li onclick="onListItemClick(event, 'Cross-platform development expertise enables seamless application across multiple devices.')">Cross-platform development expertise</li>
-            <li onclick="onListItemClick(event, 'Offline & real-time sync capabilities provide continuous operation even with network issues.')">Offline & real-time sync capabilities</li>
-            <li onclick="onListItemClick(event, 'Enterprise-grade security & compliance ensures data protection and regulatory adherence.')">Enterprise-grade security & compliance</li>
-        </ul>
+            <h2>Why Choose DGT</h2>
+            <ul>
+                <li>AI-first mobile architecture</li>
+                <li>Cross-platform development expertise</li>
+                <li>Offline & real-time sync capabilities</li>
+                <li>Enterprise-grade security & compliance</li>
+            </ul>
+            <div class="popup-content">
+                <h4>Why Choose DGT</h4>
+                <p>Partner with us for comprehensive mobile solutions:</p>
+                <ul>
+                    <li>AI-first Approach: Leveraging artificial intelligence for optimal performance</li>
+                    <li>Cross-platform Expertise: Seamless deployment across all devices</li>
+                    <li>Advanced Sync: Reliable data synchronization in any environment</li>
+                    <li>Enterprise Security: Robust protection for sensitive business data</li>
+                </ul>
+            </div>
         </div>
     </section>
     
     <section class="methodology" data-aos="fade-up">
         <img class="mobility_img" src="images/ourmethod.jpg" alt="">
         <div>
-        <h2>Our Methodology</h2>
-        <ol>
-            <li onclick="onListItemClick(event, 'Discovery & User Experience Research helps in understanding user needs and expectations.')">Discovery & User Experience Research</li>
-            <li onclick="onListItemClick(event, 'App Design & Prototyping ensures an intuitive and user-friendly interface before development.')">App Design & Prototyping</li>
-            <li onclick="onListItemClick(event, 'Development & Testing guarantee quality and reliability through iterative improvements.')">Development & Testing</li>
-            <li onclick="onListItemClick(event, 'Deployment & AI-driven Optimization help continuously improve app performance and efficiency.')">Deployment & AI-driven Optimization</li>
-        </ol>
+            <h2>Our Methodology</h2>
+            <ol>
+                <li>Discovery & User Experience Research</li>
+                <li>App Design & Prototyping</li>
+                <li>Development & Testing</li>
+                <li>Deployment & AI-driven Optimization</li>
+            </ol>
+            <div class="popup-content">
+                <h4>Our Methodology</h4>
+                <p>Our proven approach ensures successful mobile solutions:</p>
+                <ul>
+                    <li>Discovery: Deep understanding of user needs and business requirements</li>
+                    <li>Design: Creating intuitive and engaging user interfaces</li>
+                    <li>Development: Building robust and scalable applications</li>
+                    <li>Deployment: Seamless implementation with continuous optimization</li>
+                </ul>
+            </div>
         </div>
     </section>
     
@@ -407,17 +823,78 @@ section div{
         </div>
     </section>
     
-    <section class="cta" data-aos="fade-up">
-        <h2>Ready to Transform Your Mobile Strategy?</h2>
-        <a href="/contact" class="btn">Contact Us</a>
-    </section>
-    <div id="lipopup" class="lipopup">
-        <div id="lipopup-content" class="lipopup-content"></div>
-    </div>
     
-    <script src="/Aos.js"></script>
+    
+    <section class="cta-section" data-aos="fade-up">
+        <div class="cta-wrapper">
+            <h2>Ready to Transform Your Mobile Strategy?</h2>
+            <a href="/contactus" class="cta-button">Contact Us</a>
+        </div>
+    </section>
+
+    <footer class="classic-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Dawn Digital</h3>
+                <p>Pioneering digital transformation through innovative solutions and strategic thinking. We combine cutting-edge technology with practical business insights.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/index">Home</a></li>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/services">Services</a></li>
+                    <li><a href="/contactus">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> 3 Sugarcreek Center Blvd, Suite 100, Sugar Land, TX 77478</li>
+                    <li><i class="fas fa-envelope"></i> info@dawndgt.com</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Dawn Digital Technology. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        AOS.init();
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100,
+            easing: 'ease-out-cubic'
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const text = document.querySelector('.animated-text');
+            const words = text.textContent.split(' ');
+            text.textContent = '';
+            
+            words.forEach((word, index) => {
+                const span = document.createElement('span');
+                span.textContent = word + ' ';
+                span.style.animationDelay = `${0.6 + (index * 0.03)}s`;
+                span.style.animation = 'wordFadeIn 0.5s ease-out forwards';
+                text.appendChild(span);
+            });
+        });
     </script>
 </body>
 </html>

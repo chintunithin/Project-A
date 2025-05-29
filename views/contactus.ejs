@@ -3,18 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="index.css"  rel="stylesheet" >
+    <title>Contact Us | DGT</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="index.css" rel="stylesheet">
     <script src="/search.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap');
 
+        .contact-hero {
+            background: linear-gradient(135deg, #fff5f0 0%, #fff 100%);
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 80px 20px;
+        }
+
+        .contact-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 70% 30%, rgba(255, 127, 80, 0.1) 0%, transparent 70%);
+        }
+
+        .contact-container {
+            max-width: 1400px;
+            margin: -100px auto 0;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, #ff7f50, #ff6b6b);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .contact-card i {
+            font-size: 2.5rem;
+            color: #ff7f50;
+            margin-bottom: 20px;
+        }
+
+        .contact-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .contact-card p {
+            color: #5d6d7e;
+            line-height: 1.6;
+        }
+
+        .contact-form-container {
+            background: white;
+            border-radius: 20px;
+            padding: 60px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, #ff7f50, #ff6b6b);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            color: #2c3e50;
+        }
+
+        .form-control:focus {
+            border-color: #ff7f50;
+            box-shadow: 0 0 0 3px rgba(255, 127, 80, 0.1);
+            outline: none;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #ff7f50, #ff6b6b);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 127, 80, 0.2);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            color: #ff7f50;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+            background: #ff7f50;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                margin-top: -50px;
+            }
+            .contact-form-container {
+                padding: 30px;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav>
@@ -123,118 +312,180 @@
           <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
         </div>
       </nav>
-      <div id="floatingSidebar" class="fixed top-1/3 right-0 transform translate-x-full transition-transform duration-500 z-50 bg-white shadow-2xl rounded-l-2xl w-72 p-4 border border-gray-200" 
-      onmouseenter="clearHideTimeout()" onmouseleave="startHideTimeout()">
-      
-      <!-- Close Button -->
-      <div class="absolute top-2 left-2 cursor-pointer text-gray-600" onclick="toggleSidebar()">✖</div>
-    
-      <!-- Content -->
-      <h2 class="text-xl font-bold mb-4 text-gray-800">Our Pillars</h2>
-      <ul class="space-y-3 text-gray-700">
-        <li><strong>Methodology:</strong> A structured, agile-driven approach to solve modern challenges.</li>
-        <li><strong>Philosophy:</strong> Ethical, client-centered innovation with impactful results.</li>
-        <li><strong>The Way We Think:</strong> Forward-thinking strategies, anticipating future tech waves.</li>
-        <li><strong>Reinvention & AI-First:</strong> AI-driven solutions to transform businesses from the ground up.</li>
-      </ul>
-    </div>
-    
-    <!-- Floating Handle (Button to Open Sidebar) -->
-    <div id="floatingHandle" class="fixed top-1/3 right-0 bg-orange-500 text-white rounded-l-full px-3 py-2 cursor-pointer shadow-lg z-50" onclick="toggleSidebar()">
-      <span>☰ Our Pillars</span>
-    </div>
-    <div class="flex items-center justify-center min-h-screen bg-gray-100">
-        <div class="w-full max-w-4xl mx-auto flex flex-col md:flex-row shadow-lg rounded-lg overflow-hidden">
-            <!-- Left Section -->
-            <div class="w-full md:w-1/2 bg-cover bg-center flex flex-col justify-between p-6 text-white"
-                style="background-image: url('/images/Contactbg1.png');">
-                <div class="text-center bg-white bg-opacity-70 p-3 rounded">
-                    <img src="/images/DawnTech_Icon.png" alt="Logo" class="mx-auto mb-4" style="height: 80px;">
-                    <h1 class="text-2xl md:text-3xl font-bold text-black">Dawn Digital Technology</h1>
-                </div>
-                <div>
-                    <p class="text-lg"><strong>Address:</strong> 3 Sugarcreek Center Blvd, Suite 100, Sugar Land, TX 77478</p>
-                    <p><i class="fas fa-envelope"></i> info@dawndgt.com</p>
-                    <div class="flex space-x-4 mt-4">
-                        <a href="#" class="text-white text-2xl"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="text-white text-2xl"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-white text-2xl"><i class="fab fa-linkedin"></i></a>
+      <!-- New Floating Sidebar HTML -->
+      <div id="newFloatingSidebar" class="new-floating-sidebar fixed z-[100] bg-white shadow-2xl rounded-l-2xl w-80 p-6 border border-gray-200 backdrop-blur-sm bg-opacity-95" style="max-height: 100vh; overflow-y: auto; top: 70px; right: -320px; transition: right 0.3s ease-in-out;">
+          <!-- Close Button -->
+          <div class="absolute top-3 left-3 cursor-pointer text-gray-600 hover:text-orange-500 transition-colors duration-300" onclick="toggleNewSidebar()">
+              <i class="fas fa-times text-lg"></i>
+          </div>
+
+          <!-- Content -->
+          <div class="mt-8">
+              <h2 class="text-2xl font-bold mb-6 text-gray-800 border-b border-orange-200 pb-3">Our Pillars</h2>
+              <ul class="space-y-4 text-gray-700">
+                  <li class="flex items-start group hover:bg-orange-50 p-3 rounded-lg transition-all duration-300">
+                      <i class="fas fa-lightbulb text-orange-500 mt-1 mr-3 group-hover:scale-110 transition-transform duration-300"></i>
+                      <div>
+                          <strong class="block text-gray-800 group-hover:text-orange-600 transition-colors duration-300">Methodology</strong>
+                          <span class="text-sm">A structured, agile-driven approach to solve modern challenges.</span>
+                      </div>
+                  </li>
+                  <li class="flex items-start group hover:bg-orange-50 p-3 rounded-lg transition-all duration-300">
+                      <i class="fas fa-balance-scale text-orange-500 mt-1 mr-3 group-hover:scale-110 transition-transform duration-300"></i>
+                      <div>
+                          <strong class="block text-gray-800 group-hover:text-orange-600 transition-colors duration-300">Philosophy</strong>
+                          <span class="text-sm">Ethical, client-centered innovation with impactful results.</span>
+                      </div>
+                  </li>
+                  <li class="flex items-start group hover:bg-orange-50 p-3 rounded-lg transition-all duration-300">
+                      <i class="fas fa-brain text-orange-500 mt-1 mr-3 group-hover:scale-110 transition-transform duration-300"></i>
+                      <div>
+                          <strong class="block text-gray-800 group-hover:text-orange-600 transition-colors duration-300">The Way We Think</strong>
+                          <span class="text-sm">Forward-thinking strategies, anticipating future tech waves.</span>
+                      </div>
+                  </li>
+                  <li class="flex items-start group hover:bg-orange-50 p-3 rounded-lg transition-all duration-300">
+                      <i class="fas fa-robot text-orange-500 mt-1 mr-3 group-hover:scale-110 transition-transform duration-300"></i>
+                      <div>
+                          <strong class="block text-gray-800 group-hover:text-orange-600 transition-colors duration-300">Reinvention & AI-First</strong>
+                          <span class="text-sm">AI-driven solutions to transform businesses from the ground up.</span>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+      </div>
+</nav>
+      <!-- New Floating Handle (Button to Open Sidebar) -->
+      <div id="newFloatingHandle" class="new-floating-handle fixed top-1/3 right-0 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-l-full px-4 py-3 cursor-pointer shadow-lg z-50 hover:from-orange-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105" onclick="toggleNewSidebar()">
+          <div class="flex items-center space-x-2">
+              <i class="fas fa-chevron-left"></i>
+              <span class="font-medium">Our Pillars</span>
+          </div>
+      </div>
+      <!-- End New Floating Sidebar HTML -->
+
+    <section class="contact-hero">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4" data-aos="fade-up">Get in Touch</h1>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                Let's discuss how we can help transform your business with innovative solutions.
+            </p>
+        </div>
+    </section>
+
+    <div class="contact-container">
+        <div class="contact-grid">
+            <div class="contact-card" data-aos="fade-up">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Our Location</h3>
+                <p>3 Sugarcreek Center Blvd, Suite 100<br>Sugar Land, TX 77478</p>
+            </div>
+
+            <div class="contact-card" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-envelope"></i>
+                <h3>Email Us</h3>
+                <p>info@dawndgt.com</p>
+            </div>
+
+            <div class="contact-card" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-phone-alt"></i>
+                <h3>Call Us</h3>
+                <p>+1 (555) 123-4567</p>
+            </div>
+        </div>
+
+        <div class="contact-form-container" data-aos="fade-up">
+            <form id="contactForm" class="max-w-2xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" rows="6" class="form-control" required></textarea>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </div>
+            </form>
+
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             </div>
-            
-            <!-- Right Section (Form) -->
-            <div class="w-full md:w-1/2 bg-white p-6 flex flex-col justify-center">
-                <h2 class="text-2xl font-semibold mb-4 text-center md:text-left">Get in Touch</h2>
-                <form id="contactForm" class="space-y-4">
-                    <input type="text" name="name" placeholder="Your Name"
-                        class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" style="color: black;">
-                    <input type="email" name="email" placeholder="Your Email"
-                        class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" style="color: black;">
-                    <textarea name="message" placeholder="Your Message" rows="4"
-                        class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" style="color: black;"></textarea>
-                    <button type="submit"
-                        class="w-full p-3 border-2 border-blue-500 text-blue-500 rounded hover:bg-blue-500 hover:text-white transition">Send Message</button>
-                </form>
-            </div>
-            
         </div>
-        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-        
-</div>
-<script>
-    document.getElementById('contactForm').addEventListener('submit', async function (e) {
-        e.preventDefault();
-    
-        const formData = {
-            name: this.name.value.trim(),
-            email: this.email.value.trim(),
-            message: this.message.value.trim(),
-        };
-    
-        if (!formData.name || !formData.email || !formData.message) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'All fields are required!',
-            });
-            return;
-        }
-    
-        try {
-            const response = await fetch('/save-contacted', { // Use relative URL
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData),
-            });
-    
-            const result = await response.json();
-            if (result.success) {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Success!',
-                    text: 'Message sent successfully!',
-                });
-                this.reset();
-            } else {
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: this.name.value.trim(),
+                email: this.email.value.trim(),
+                subject: this.subject.value.trim(),
+                message: this.message.value.trim()
+            };
+
+            if (!formData.name || !formData.email || !formData.subject || !formData.message) {
                 Swal.fire({
                     icon: 'error',
-                    title: 'Error!',
-                    text: result.error || 'Something went wrong. Please try again.',
+                    title: 'Oops...',
+                    text: 'All fields are required!'
+                });
+                return;
+            }
+
+            try {
+                const response = await fetch('/save-contacted', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success!',
+                        text: 'Message sent successfully!'
+                    });
+                    this.reset();
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error!',
+                        text: result.error || 'Something went wrong. Please try again.'
+                    });
+                }
+            } catch (error) {
+                console.error("❌ Fetch error:", error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Server Error!',
+                    text: 'Unable to send message. Try again later.'
                 });
             }
-        } catch (error) {
-            console.error("❌ Fetch error:", error);
-            Swal.fire({
-                icon: 'error',
-                title: 'Server Error!',
-                text: 'Unable to send message. Try again later.',
-            });
-        }
-    });
+        });
     </script>
-    
-    
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </body>
 </html>

@@ -1,6 +1,3 @@
-
-
-
 const pages = {
     "mobility": "Mobility Solutions",
     "about": "About Us",
@@ -68,36 +65,7 @@ window.addEventListener("scroll", function() {
     }
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-    const sidebar = document.getElementById('floatingSidebar');
-    const handle = document.getElementById('floatingHandle');
-    let hideTimeout;
-  
-    window.toggleSidebar = function () {
-      if (sidebar.classList.contains('translate-x-full')) {
-        sidebar.classList.remove('translate-x-full');
-        handle.style.display = 'none';
-        startHideTimeout();
-      } else {
-        sidebar.classList.add('translate-x-full');
-        handle.style.display = 'flex';
-        clearHideTimeout();
-      }
-    };
-  
-    window.startHideTimeout = function () {
-      clearTimeout(hideTimeout);
-      hideTimeout = setTimeout(() => {
-        sidebar.classList.add('translate-x-full');
-        handle.style.display = 'flex';
-      }, 3000);
-    };
-  
-    window.clearHideTimeout = function () {
-      clearTimeout(hideTimeout);
-    };
-  });
-  document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function() {
     const titleText = "DAWN DIGITAL TECHNOLOGY";
     const subtitleText = "YOUR AI PARTNER FOR SCALABLE, FUTURE-READY ENTERPRISES";
     const titleElement = document.getElementById("title");
@@ -227,4 +195,53 @@ async function getFileSizeAndType(url) {
 
 document.addEventListener("DOMContentLoaded", function () {
   getFileSizeAndType('/files/CollectionDetailPrint20241009.pdf'); // Replace with your actual file path
+
+  // New Floating Sidebar JavaScript
+    const newSidebar = document.getElementById('newFloatingSidebar');
+    const newHandle = document.getElementById('newFloatingHandle');
+    let newHideTimeout;
+
+    console.log('New Sidebar element:', newSidebar);
+    console.log('New Handle element:', newHandle);
+    console.log('dragmove function available:', typeof dragmove === 'function');
+
+    // Initialize dragmove.js on the new sidebar, using the handle as the drag area
+    if (newSidebar && newHandle && typeof dragmove === 'function') {
+        dragmove(newSidebar, newHandle);
+        console.log('dragmove.js initialized on new sidebar.');
+    } else {
+        console.error('Could not initialize dragmove.js on new sidebar.', { newSidebar, newHandle, dragmoveAvailable: typeof dragmove === 'function' });
+    }
+
+    window.toggleNewSidebar = function () {
+        console.log('toggleNewSidebar called');
+        if (newSidebar.style.right === '0px') { // Check if sidebar is visible
+            // Closing sidebar
+            newSidebar.style.right = '-320px'; // Hide off-screen
+            newHandle.style.display = 'flex';
+            // clearNewHideTimeout(); // Remove or comment out if only used for auto-hide
+            console.log('New Sidebar closing.');
+        } else {
+            // Opening sidebar
+            newSidebar.style.right = '0px'; // Show on-screen
+            newHandle.style.display = 'none';
+            // startNewHideTimeout(); // Remove or comment out as auto-hide is not desired
+            console.log('New Sidebar opening.');
+        }
+    };
+
+    // Add smooth scroll animation (existing code, keeping it)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = this.getAttribute('href');
+            const element = document.querySelector(target);
+            if (element) {
+                window.scrollTo({
+                    top: element.offsetTop - 50, // Adjust as needed
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
 });

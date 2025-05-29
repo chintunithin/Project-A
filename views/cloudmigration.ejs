@@ -4,100 +4,454 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cloud Migration | DGT</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script src="/search.js"></script>
     <link href="index.css"  rel="stylesheet" >
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap');
         
         body {
-            font-family: 'Raleway', sans-serif;
-            background: #f4f4f4;
-            color: #333;
+            font-family: 'Source Sans Pro', sans-serif;
+            background: #fafafa;
+            color: #2c3e50;
             margin: 0;
             padding: 0;
+            line-height: 1.6;
         }
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: auto;
-            padding: 20px;
-        }
-        .section ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        .section ul li {
-            padding: 10px;
-            margin: 6px 0;
-            border-left: 5px solid #F4A261;
-            background: #fafafa;
-            border-radius: 5px;
-        }
+
         .hero {
-            background: #F4A261;
-            color: white;
+            background: linear-gradient(135deg, rgba(255, 245, 240, 0.9), rgba(255, 255, 255, 0.9)), url('/images/cloud-migration-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #2c3e50;
             text-align: center;
-            padding: 80px 20px;
-            border-radius: 10px;
+            padding: 100px 20px 120px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255, 127, 80, 0.1);
         }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 70% 30%, rgba(255, 127, 80, 0.1) 0%, transparent 70%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
         .hero h1 {
-            font-size: 2.5rem;
-            font-weight: bold;
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+            color: #2c3e50;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
+
+        .hero h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: rgba(255, 127, 80, 0.3);
+            animation: lineExpand 0.6s ease-out 0.8s forwards;
+        }
+
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             max-width: 800px;
-            margin: auto;
+            margin: 0 auto;
+            position: relative;
+            line-height: 1.8;
+            color: #2c3e50;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out 0.4s forwards;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
         }
-        .section {
+
+        .content-container {
+            max-width: 1400px;
+            margin: -60px auto 40px;
+            padding: 0 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin: 40px 0;
+            justify-items: center;
+        }
+
+        .classic-card {
             background: white;
-            padding: 40px 30px;
-            border-radius: 10px;
-            margin: 10px 0;
-            font-size: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out;
+            border-radius: 12px;
+            padding: 40px;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: visible;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            width: 100%;
+            max-width: 400px;
+            cursor: pointer;
+            z-index: 1;
         }
-        .section:hover {
+
+        .classic-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 4px;
+            height: 0;
+            background: #ff7f50;
+            transition: height 0.4s ease;
+        }
+
+        .classic-card:hover {
+            z-index: 2;
+        }
+
+        .classic-card:hover::after {
+            height: 100%;
+        }
+
+        .classic-card h2 {
+            font-family: 'Playfair Display', serif;
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .classic-card h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: #ff7f50;
+            transition: width 0.3s ease;
+        }
+
+        .classic-card:hover h2::after {
+            width: 80px;
+        }
+
+        .classic-card p {
+            color: #5d6d7e;
+            line-height: 1.8;
+            position: relative;
+            margin: 0;
+        }
+
+        .popup-content {
+            position: fixed;
+            width: 300px;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            border: 2px solid #ff6b6b;
+            z-index: 99999;
+            pointer-events: none;
+        }
+
+        .classic-card:hover .popup-content {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .popup-content h4 {
+            color: #ff6b6b;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .popup-content p {
+            color: #2d3436;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .popup-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+        }
+
+        .popup-content ul li {
+            color: #636e72;
+            font-size: 0.9rem;
+            padding: 5px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .popup-content ul li::before {
+            content: '•';
+            color: #ff6b6b;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        .cta-section {
+            background: #fff;
+            color: #2c3e50;
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid rgba(255, 127, 80, 0.1);
+            border-bottom: 1px solid rgba(255, 127, 80, 0.1);
+        }
+
+        .cta-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .cta-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: #ff7f50;
+            opacity: 0.3;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 32px;
+            background: transparent;
+            color: #2c3e50;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 127, 80, 0.3);
+            position: relative;
+            overflow: hidden;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button:hover {
+            border-color: #ff7f50;
+            background: rgba(255, 127, 80, 0.05);
+            transform: translateY(-2px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes lineExpand {
+            from {
+                width: 0;
+            }
+            to {
+                width: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                background-attachment: scroll;
+                padding: 80px 20px 100px;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            .section-grid {
+                grid-template-columns: 1fr;
+            }
+            .content-container {
+                padding: 0 20px;
+                margin-top: -40px;
+            }
+            .classic-card {
+                padding: 30px;
+            }
+            .cta-section {
+                padding: 40px 20px;
+            }
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        .classic-footer {
+            background: #1a252f;
+            color: white;
+            padding: 80px 0 20px;
+            margin-top: 0;
+            position: relative;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 60px;
+            padding: 0 40px;
+        }
+
+        .footer-section {
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            font-family: 'Playfair Display', serif;
+            color: white;
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: #ff7f50;
+        }
+
+        .footer-section p, .footer-section li {
+            color: #a3b1c2;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section ul li a {
+            color: #a3b1c2;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .footer-section ul li a::before {
+            content: '→';
+            position: absolute;
+            left: -10px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            color: #ff7f50;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+            padding-left: 20px;
+        }
+
+        .footer-section ul li a:hover::before {
+            opacity: 1;
+            left: 0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: #a3b1c2;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-links a:hover {
+            color: #ff7f50;
+            border-color: #ff7f50;
             transform: translateY(-3px);
         }
-        .cta {
+
+        .footer-bottom {
             text-align: center;
-            padding: 40px;
+            padding-top: 30px;
+            margin-top: 60px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: #a3b1c2;
+            font-size: 0.9rem;
         }
-        .cta button {
-            background: #ef6e05;
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 6px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .cta button:hover {
-            background: #E76F51;
-        }
-        .Cmo-container{
-            display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      padding: 20px;
-        }
-        .section h2{
-            font-size: 2rem;
-    color: #ff7f50;
-    text-align: center;
-    margin-bottom: 25px;
-        }
-        @media (max-width: 768px) {
-      .Cmo-container {
-          grid-template-columns: 1fr;
-      }
-  }
     </style>
 </head>
 <body>
@@ -207,78 +561,228 @@
           <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
         </div>
       </nav>
-      <div id="floatingSidebar" class="fixed top-1/3 right-0 transform translate-x-full transition-transform duration-500 z-50 bg-white shadow-2xl rounded-l-2xl w-72 p-4 border border-gray-200" 
-      onmouseenter="clearHideTimeout()" onmouseleave="startHideTimeout()">
-      
-      <!-- Close Button -->
-      <div class="absolute top-2 left-2 cursor-pointer text-gray-600" onclick="toggleSidebar()">✖</div>
-    
-      <!-- Content -->
-      <h2 class="text-xl font-bold mb-4 text-gray-800">Our Pillars</h2>
-      <ul class="space-y-3 text-gray-700">
-        <li><strong>Methodology:</strong> A structured, agile-driven approach to solve modern challenges.</li>
-        <li><strong>Philosophy:</strong> Ethical, client-centered innovation with impactful results.</li>
-        <li><strong>The Way We Think:</strong> Forward-thinking strategies, anticipating future tech waves.</li>
-        <li><strong>Reinvention & AI-First:</strong> AI-driven solutions to transform businesses from the ground up.</li>
-      </ul>
-    </div>
-    
-    <!-- Floating Handle (Button to Open Sidebar) -->
-    <div id="floatingHandle" class="fixed top-1/3 right-0 bg-orange-500 text-white rounded-l-full px-3 py-2 cursor-pointer shadow-lg z-50" onclick="toggleSidebar()">
-      <span>☰ Our Pillars</span>
-    </div>
-    <header class="hero" data-aos="fade-up">
-        <h1>Cloud Migration</h1>
-        <p>CIOs tell us that cloud adoption is no longer a question of if but how fast. Organizations moving to the cloud face challenges in scalability, security, and integration. Without the right strategy, cloud migration can lead to spiraling costs and operational disruptions. DGT provides a roadmap for seamless, AI-optimized cloud transformation.</p>
+ <!-- New Floating Sidebar HTML -->
+      <div id="newFloatingSidebar" class="new-floating-sidebar fixed z-[100] bg-white shadow-2xl rounded-l-2xl w-80 p-6 border border-gray-200 backdrop-blur-sm bg-opacity-95" style="max-height: 100vh; overflow-y: auto; top: 70px; right: -320px; transition: right 0.3s ease-in-out;">
+          <!-- Close Button -->
+          <div class="absolute top-3 left-3 cursor-pointer text-gray-600 hover:text-orange-500 transition-colors duration-300" onclick="toggleNewSidebar()">
+              <i class="fas fa-times text-lg"></i>
+          </div>
+
+          <!-- Content -->
+          <div class="mt-8">
+              <h2 class="text-2xl font-bold mb-6 text-gray-800 border-b border-orange-200 pb-3">Our Pillars</h2>
+              <ul class="space-y-4 text-gray-700">
+                  <li class="flex items-start group hover:bg-orange-50 p-3 rounded-lg transition-all duration-300">
+                      <i class="fas fa-lightbulb text-orange-500 mt-1 mr-3 group-hover:scale-110 transition-transform duration-300"></i>
+                      <div>
+                          <strong class="block text-gray-800 group-hover:text-orange-600 transition-colors duration-300">Methodology</strong>
+                          <span class="text-sm">A structured, agile-driven approach to solve modern challenges.</span>
+                      </div>
+                  </li>
+                  <li class="flex items-start group hover:bg-orange-50 p-3 rounded-lg transition-all duration-300">
+                      <i class="fas fa-balance-scale text-orange-500 mt-1 mr-3 group-hover:scale-110 transition-transform duration-300"></i>
+                      <div>
+                          <strong class="block text-gray-800 group-hover:text-orange-600 transition-colors duration-300">Philosophy</strong>
+                          <span class="text-sm">Ethical, client-centered innovation with impactful results.</span>
+                      </div>
+                  </li>
+                  <li class="flex items-start group hover:bg-orange-50 p-3 rounded-lg transition-all duration-300">
+                      <i class="fas fa-brain text-orange-500 mt-1 mr-3 group-hover:scale-110 transition-transform duration-300"></i>
+                      <div>
+                          <strong class="block text-gray-800 group-hover:text-orange-600 transition-colors duration-300">The Way We Think</strong>
+                          <span class="text-sm">Forward-thinking strategies, anticipating future tech waves.</span>
+                      </div>
+                  </li>
+                  <li class="flex items-start group hover:bg-orange-50 p-3 rounded-lg transition-all duration-300">
+                      <i class="fas fa-robot text-orange-500 mt-1 mr-3 group-hover:scale-110 transition-transform duration-300"></i>
+                      <div>
+                          <strong class="block text-gray-800 group-hover:text-orange-600 transition-colors duration-300">Reinvention & AI-First</strong>
+                          <span class="text-sm">AI-driven solutions to transform businesses from the ground up.</span>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+      </div>
+
+      <!-- New Floating Handle (Button to Open Sidebar) -->
+      <div id="newFloatingHandle" class="new-floating-handle fixed top-1/3 right-0 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-l-full px-4 py-3 cursor-pointer shadow-lg z-50 hover:from-orange-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105" onclick="toggleNewSidebar()">
+          <div class="flex items-center space-x-2">
+              <i class="fas fa-chevron-left"></i>
+              <span class="font-medium">Our Pillars</span>
+          </div>
+      </div>
+      <!-- End New Floating Sidebar HTML -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Cloud Migration</h1>
+            <p class="animated-text">CIOs tell us that cloud adoption is no longer a question of if but how fast. Organizations moving to the cloud face challenges in scalability, security, and integration. Without the right strategy, cloud migration can lead to spiraling costs and operational disruptions. DGT provides a roadmap for seamless, AI-optimized cloud transformation.</p>
+        </div>
     </header>
-    <div class="Cmo-container">
-    <section class="section" data-aos="fade-up">
-        <h2>Our Expertise</h2>
-        <p>We leverage deep experience in multi-cloud environments, including Salesforce Cloud, Microsoft Azure, AWS, and Google Cloud. Our proprietary cloud accelerators ensure minimal downtime and optimized cost management. With expertise in Mulesoft, Informatica, and Boomi, we create secure, scalable, and AI-driven cloud solutions tailored to business needs.</p>
-    </section>
-    
-    <section class="section" data-aos="fade-up">
-        <h2>Process Excellence</h2>
-        <p>Our cloud transformation roadmap ensures a secure, scalable, and cost-effective transition. By integrating automation, best-in-class security practices, and AI-driven optimizations, we enable businesses to adopt cloud infrastructure with confidence.</p>
-    </section>
-    <div style="margin: 29px;">
-    <section class="section" data-aos="fade-up">
-        <h2>Technical Prowess</h2>
-        <p>We integrate Mulesoft, Informatica, and Boomi to create seamless, interconnected cloud solutions across industries. Our expertise in API-led connectivity, real-time data integration, and automation ensures that cloud migration is smooth, efficient, and future-proof.</p>
-    </section>
-    <section class="section" data-aos="fade-up">
-        <h2>Client Success Stories</h2>
-        <p>Our cloud solutions have helped businesses across industries achieve digital transformation. From reducing operational delays in supply chains to optimizing financial data security, we enable businesses to harness the full power of cloud technologies.</p>
-    </section>
+
+    <div class="content-container">
+        <div class="section-grid">
+            <div class="classic-card" data-aos="fade-up">
+                <h2>Our Expertise</h2>
+                <p>We leverage deep experience in multi-cloud environments, including Salesforce Cloud, Microsoft Azure, AWS, and Google Cloud...</p>
+                <div class="popup-content">
+                    <h4>Cloud Expertise</h4>
+                    <p>Our team brings extensive experience in multi-cloud environments and enterprise solutions.</p>
+                    <ul>
+                        <li>Salesforce Cloud implementation</li>
+                        <li>Microsoft Azure migration</li>
+                        <li>AWS cloud solutions</li>
+                        <li>Google Cloud Platform</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="classic-card" data-aos="fade-up" data-aos-delay="100">
+                <h2>Process Excellence</h2>
+                <p>Our cloud transformation roadmap ensures a secure, scalable, and cost-effective transition...</p>
+                <div class="popup-content">
+                    <h4>Migration Process</h4>
+                    <p>Comprehensive approach to cloud migration with focus on security and efficiency.</p>
+                    <ul>
+                        <li>Cloud readiness assessment</li>
+                        <li>Migration strategy development</li>
+                        <li>Security implementation</li>
+                        <li>Cost optimization</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="classic-card" data-aos="fade-up" data-aos-delay="200">
+                <h2>Technical Prowess</h2>
+                <p>We integrate Mulesoft, Informatica, and Boomi to create seamless, interconnected cloud solutions...</p>
+                <div class="popup-content">
+                    <h4>Technical Solutions</h4>
+                    <p>Advanced integration and automation for cloud environments.</p>
+                    <ul>
+                        <li>Mulesoft integration</li>
+                        <li>Informatica implementation</li>
+                        <li>Boomi automation</li>
+                        <li>API development</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="classic-card" data-aos="fade-up" data-aos-delay="300">
+                <h2>Industry Solutions</h2>
+                <p>Tailored cloud solutions for various industries, from hospitality to financial services...</p>
+                <div class="popup-content">
+                    <h4>Industry-Specific Solutions</h4>
+                    <p>Customized cloud solutions for different industry needs.</p>
+                    <ul>
+                        <li>Hospitality cloud migration</li>
+                        <li>Financial services security</li>
+                        <li>Manufacturing automation</li>
+                        <li>Healthcare compliance</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="classic-card" data-aos="fade-up" data-aos-delay="400">
+                <h2>Security & Compliance</h2>
+                <p>Comprehensive security measures and compliance frameworks for cloud environments...</p>
+                <div class="popup-content">
+                    <h4>Security Framework</h4>
+                    <p>Robust security and compliance solutions for cloud infrastructure.</p>
+                    <ul>
+                        <li>Data encryption</li>
+                        <li>Access control</li>
+                        <li>Compliance monitoring</li>
+                        <li>Threat detection</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="classic-card" data-aos="fade-up" data-aos-delay="500">
+                <h2>Cost Optimization</h2>
+                <p>Strategic cloud cost management and resource optimization...</p>
+                <div class="popup-content">
+                    <h4>Cost Management</h4>
+                    <p>Efficient cloud resource utilization and cost control.</p>
+                    <ul>
+                        <li>Resource optimization</li>
+                        <li>Cost monitoring</li>
+                        <li>Performance tuning</li>
+                        <li>Budget management</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-    
-    <section class="section grid-container" data-aos="fade-up" style="font-size: 14px;">
-        <div class="grid-item">
-            <h2>Industry Use Cases</h2>
-            <ul>
-                <li><strong>Hospitality:</strong> Migration of legacy PMS to cloud-based CRM with AI-enhanced analytics. <br> <em>Tools: Salesforce Service Cloud, Azure, Informatica.</em></li>
-                <li><strong>Energy & Utilities:</strong> AI-powered cloud analytics for real-time monitoring. <br> <em>Tools: Salesforce Energy & Utilities Cloud, Azure, Mulesoft, SAP.</em></li>
-                <li><strong>Manufacturing:</strong> Hybrid cloud implementation for smart factories. <br> <em>Tools: Salesforce Manufacturing Cloud, Boomi, Azure.</em></li>
-                <li><strong>Non-Profit:</strong> Cloud-based donor tracking and engagement platforms. <br> <em>Tools: Salesforce Nonprofit Cloud, Tableau, Mulesoft.</em></li>
-                <li><strong>CPG:</strong> AI-enabled supply chain cloud transformation. <br> <em>Tools: Salesforce CPG Cloud, SAP, Informatica, Celonis.</em></li>
-                <li><strong>Banking & Financial Services:</strong> Secure financial data migration, real-time risk monitoring. <br> <em>Tools: Salesforce Financial Services Cloud, Azure, ServiceNow.</em></li>
-            </ul>
+
+    <section class="cta-section" data-aos="fade-up">
+        <div class="cta-wrapper">
+            <h2>Ready to Migrate to the Cloud?</h2>
+            <a href="/contactus" class="cta-button">Start Your Journey</a>
         </div>
     </section>
-    
-    <section class="section" data-aos="fade-up">
-        <h2>Team Expertise</h2>
-        <p>Our certified cloud architects bring decades of experience in enterprise cloud strategy, ensuring best-in-class implementation, governance, and ongoing optimization. We work closely with organizations to tailor cloud solutions that align with business objectives and future growth.</p>
-    </section>
-    </div>
-    <section class="cta" data-aos="fade-up">
-        <h2>Future-Proof Your Business with Cloud</h2>
-        <button><a href="/contactus">Contact Us</a></button>
-    </section>
-    
+
+    <footer class="classic-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Dawn Digital</h3>
+                <p>Pioneering digital transformation through innovative solutions and strategic thinking. We combine cutting-edge technology with practical business insights.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/index">Home</a></li>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/services">Services</a></li>
+                    <li><a href="/contactus">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> 3 Sugarcreek Center Blvd, Suite 100, Sugar Land, TX 77478</li>
+                    <li><i class="fas fa-envelope"></i> info@dawndgt.com</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Dawn Digital Technology. All rights reserved.</p>
+        </div>
+    </footer>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        AOS.init();
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100,
+            easing: 'ease-out-cubic'
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const text = document.querySelector('.animated-text');
+            const words = text.textContent.split(' ');
+            text.textContent = '';
+            
+            words.forEach((word, index) => {
+                const span = document.createElement('span');
+                span.textContent = word + ' ';
+                span.style.animationDelay = `${0.6 + (index * 0.03)}s`;
+                span.style.animation = 'wordFadeIn 0.5s ease-out forwards';
+                text.appendChild(span);
+            });
+        });
     </script>
 </body>
 </html>

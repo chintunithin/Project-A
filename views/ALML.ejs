@@ -3,99 +3,458 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI & ML | DGT</title>
+    <title>AI and ML | DGT</title>
     <script src="/search.js"></script>
-  <link href="index.css"  rel="stylesheet" >
-  <script src="https://cdn.tailwindcss.com"></script>
+    <link href="index.css"  rel="stylesheet" >
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap');
         
         body {
-            font-family: 'Poppins', sans-serif;
-            background: #fff;
-            color: #333;
+            font-family: 'Source Sans Pro', sans-serif;
+            background: #fafafa;
+            color: #2c3e50;
             margin: 0;
             padding: 0;
+            line-height: 1.6;
         }
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: auto;
-            padding: 20px;
-        }
+
         .hero {
-            background: #F4A261;
-            color: white;
+            background: linear-gradient(135deg, rgba(255, 245, 240, 0.9), rgba(255, 255, 255, 0.9)), url('/images/ai-ml-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #2c3e50;
             text-align: center;
-            padding: 80px 20px;
-            border-radius: 10px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 100px 20px 120px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255, 127, 80, 0.1);
         }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 70% 30%, rgba(255, 127, 80, 0.1) 0%, transparent 70%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
         .hero h1 {
-            font-size: 2.5rem;
-            font-weight: bold;
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+            color: #2c3e50;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
+
+        .hero h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: rgba(255, 127, 80, 0.3);
+            animation: lineExpand 0.6s ease-out 0.8s forwards;
+        }
+
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             max-width: 800px;
-            margin: auto;
+            margin: 0 auto;
+            position: relative;
+            line-height: 1.8;
+            color: #2c3e50;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out 0.4s forwards;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
         }
-        .section {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 40px 30px;
-            border-radius: 10px;
-            margin: 10px 0;
-            font-size: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-left: 6px solid #E63946;
-            transition: transform 0.3s ease-in-out;
+
+        .content-container {
+            max-width: 1400px;
+            margin: -60px auto 40px;
+            padding: 0 40px;
+            position: relative;
+            z-index: 2;
         }
-        .section:hover {
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin: 40px 0;
+            justify-items: center;
+        }
+
+        .classic-card {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: visible;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            width: 100%;
+            max-width: 400px;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .classic-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 4px;
+            height: 0;
+            background: #ff7f50;
+            transition: height 0.4s ease;
+        }
+
+        .classic-card:hover {
+            z-index: 2;
+        }
+
+        .classic-card:hover::after {
+            height: 100%;
+        }
+
+        .classic-card h2 {
+            font-family: 'Playfair Display', serif;
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .classic-card h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: #ff7f50;
+            transition: width 0.3s ease;
+        }
+
+        .classic-card:hover h2::after {
+            width: 80px;
+        }
+
+        .classic-card p {
+            color: #5d6d7e;
+            line-height: 1.8;
+            position: relative;
+            margin: 0;
+        }
+
+        .popup-content {
+            position: fixed;
+            width: 300px;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            border: 2px solid #ff6b6b;
+            z-index: 99999;
+            pointer-events: none;
+        }
+
+        .classic-card:hover .popup-content {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .popup-content h4 {
+            color: #ff6b6b;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .popup-content p {
+            color: #2d3436;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .popup-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+        }
+
+        .popup-content ul li {
+            color: #636e72;
+            font-size: 0.9rem;
+            padding: 5px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .popup-content ul li::before {
+            content: '•';
+            color: #ff6b6b;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        .cta-section {
+            background: #fff;
+            color: #2c3e50;
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid rgba(255, 127, 80, 0.1);
+            border-bottom: 1px solid rgba(255, 127, 80, 0.1);
+        }
+
+        .cta-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .cta-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: #ff7f50;
+            opacity: 0.3;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 32px;
+            background: transparent;
+            color: #2c3e50;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 127, 80, 0.3);
+            position: relative;
+            overflow: hidden;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button:hover {
+            border-color: #ff7f50;
+            background: rgba(255, 127, 80, 0.05);
+            transform: translateY(-2px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes lineExpand {
+            from {
+                width: 0;
+            }
+            to {
+                width: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                background-attachment: scroll;
+                padding: 80px 20px 100px;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            .section-grid {
+                grid-template-columns: 1fr;
+            }
+            .content-container {
+                padding: 0 20px;
+                margin-top: -40px;
+            }
+            .classic-card {
+                padding: 30px;
+            }
+            .cta-section {
+                padding: 40px 20px;
+            }
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        .classic-footer {
+            background: #1a252f;
+            color: white;
+            padding: 80px 0 20px;
+            margin-top: 0;
+            position: relative;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 60px;
+            padding: 0 40px;
+        }
+
+        .footer-section {
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            font-family: 'Playfair Display', serif;
+            color: white;
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: #ff7f50;
+        }
+
+        .footer-section p, .footer-section li {
+            color: #a3b1c2;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section ul li a {
+            color: #a3b1c2;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .footer-section ul li a::before {
+            content: '→';
+            position: absolute;
+            left: -10px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            color: #ff7f50;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+            padding-left: 20px;
+        }
+
+        .footer-section ul li a:hover::before {
+            opacity: 1;
+            left: 0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: #a3b1c2;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-links a:hover {
+            color: #ff7f50;
+            border-color: #ff7f50;
             transform: translateY(-3px);
         }
-        .cta {
+
+        .footer-bottom {
             text-align: center;
-            padding: 40px;
+            padding-top: 30px;
+            margin-top: 60px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: #a3b1c2;
+            font-size: 0.9rem;
         }
-        .cta button {
-            background: #f06f0c;
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 6px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .cta button:hover {
-            background: #da6a0e;
-        }
-        .Aiml-container{
-            display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      padding: 20px;
-        }
-        .section h2{
-            font-size: 2rem;
-    color: #ff7f50;
-    text-align: center;
-    margin-bottom: 25px;
-        }
-        @media (max-width: 768px) {
-      .Aiml-container {
-          grid-template-columns: 1fr;
-      }
-  }
     </style>
 </head>
 <body>
-    <header class="hero" data-aos="fade-down">
-        <h1>AI & ML</h1>
-        <p>We see AI redefining every industry, yet many organizations struggle with implementation. CIOs tell us that while AI holds promise, real-world adoption remains a challenge. At DGT, we focus on practical AI—solutions that deliver immediate business value, drive automation, and enhance decision-making.</p>
-    </header>
     <nav>
         <div class="wrapper">
             <div class="logo-container">
@@ -202,77 +561,243 @@
           <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
         </div>
       </nav>
-      <div id="floatingSidebar" class="fixed top-1/3 right-0 transform translate-x-full transition-transform duration-500 z-50 bg-white shadow-2xl rounded-l-2xl w-72 p-4 border border-gray-200" 
-      onmouseenter="clearHideTimeout()" onmouseleave="startHideTimeout()">
-      
-      <!-- Close Button -->
-      <div class="absolute top-2 left-2 cursor-pointer text-gray-600" onclick="toggleSidebar()">✖</div>
-    
-      <!-- Content -->
-      <h2 class="text-xl font-bold mb-4 text-gray-800">Our Pillars</h2>
-      <ul class="space-y-3 text-gray-700">
-        <li><strong>Methodology:</strong> A structured, agile-driven approach to solve modern challenges.</li>
-        <li><strong>Philosophy:</strong> Ethical, client-centered innovation with impactful results.</li>
-        <li><strong>The Way We Think:</strong> Forward-thinking strategies, anticipating future tech waves.</li>
-        <li><strong>Reinvention & AI-First:</strong> AI-driven solutions to transform businesses from the ground up.</li>
-      </ul>
+ <!-- New Floating Sidebar HTML -->
+      <div id="newFloatingSidebar" class="new-floating-sidebar fixed z-[100] bg-white shadow-2xl rounded-l-2xl w-80 p-6 border border-gray-200 backdrop-blur-sm bg-opacity-95" style="max-height: 100vh; overflow-y: auto; top: 70px; right: -320px; transition: right 0.3s ease-in-out;">
+          <!-- Close Button -->
+          <div class="absolute top-3 left-3 cursor-pointer text-gray-600 hover:text-orange-500 transition-colors duration-300" onclick="toggleNewSidebar()">
+              <i class="fas fa-times text-lg"></i>
+          </div>
+
+          <!-- Content -->
+          <div class="mt-8">
+              <h2 class="text-2xl font-bold mb-6 text-gray-800 border-b border-orange-200 pb-3">Our Pillars</h2>
+              <ul class="space-y-4 text-gray-700">
+                  <li class="flex items-start group hover:bg-orange-50 p-3 rounded-lg transition-all duration-300">
+                      <i class="fas fa-lightbulb text-orange-500 mt-1 mr-3 group-hover:scale-110 transition-transform duration-300"></i>
+                      <div>
+                          <strong class="block text-gray-800 group-hover:text-orange-600 transition-colors duration-300">Methodology</strong>
+                          <span class="text-sm">A structured, agile-driven approach to solve modern challenges.</span>
+                      </div>
+                  </li>
+                  <li class="flex items-start group hover:bg-orange-50 p-3 rounded-lg transition-all duration-300">
+                      <i class="fas fa-balance-scale text-orange-500 mt-1 mr-3 group-hover:scale-110 transition-transform duration-300"></i>
+                      <div>
+                          <strong class="block text-gray-800 group-hover:text-orange-600 transition-colors duration-300">Philosophy</strong>
+                          <span class="text-sm">Ethical, client-centered innovation with impactful results.</span>
+                      </div>
+                  </li>
+                  <li class="flex items-start group hover:bg-orange-50 p-3 rounded-lg transition-all duration-300">
+                      <i class="fas fa-brain text-orange-500 mt-1 mr-3 group-hover:scale-110 transition-transform duration-300"></i>
+                      <div>
+                          <strong class="block text-gray-800 group-hover:text-orange-600 transition-colors duration-300">The Way We Think</strong>
+                          <span class="text-sm">Forward-thinking strategies, anticipating future tech waves.</span>
+                      </div>
+                  </li>
+                  <li class="flex items-start group hover:bg-orange-50 p-3 rounded-lg transition-all duration-300">
+                      <i class="fas fa-robot text-orange-500 mt-1 mr-3 group-hover:scale-110 transition-transform duration-300"></i>
+                      <div>
+                          <strong class="block text-gray-800 group-hover:text-orange-600 transition-colors duration-300">Reinvention & AI-First</strong>
+                          <span class="text-sm">AI-driven solutions to transform businesses from the ground up.</span>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+      </div>
+
+      <!-- New Floating Handle (Button to Open Sidebar) -->
+      <div id="newFloatingHandle" class="new-floating-handle fixed top-1/3 right-0 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-l-full px-4 py-3 cursor-pointer shadow-lg z-50 hover:from-orange-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105" onclick="toggleNewSidebar()">
+          <div class="flex items-center space-x-2">
+              <i class="fas fa-chevron-left"></i>
+              <span class="font-medium">Our Pillars</span>
+          </div>
+      </div>
+      <!-- End New Floating Sidebar HTML -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>AI and Machine Learning</h1>
+            <p class="animated-text">We see organizations struggling to harness the full potential of AI and ML. Our CIOs tell us that without proper implementation, AI initiatives often fail to deliver expected ROI. DGT combines deep AI expertise with practical business understanding to deliver transformative solutions that drive real value.</p>
+        </div>
+    </header>
+
+    <div class="content-container">
+        <div class="section-grid">
+            <div class="classic-card" data-aos="fade-up">
+                <h2>DGT Value Add</h2>
+                <p>Our AI solutions combine cutting-edge technology with practical business applications...</p>
+                <div class="popup-content">
+                    <h4>DGT Value Add</h4>
+                    <p>We bring deep expertise in AI and ML implementation across industries.</p>
+                    <ul>
+                        <li>Custom AI model development</li>
+                        <li>ML pipeline automation</li>
+                        <li>AI-driven analytics</li>
+                        <li>Predictive modeling</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="classic-card" data-aos="fade-up" data-aos-delay="100">
+                <h2>Natural Language Processing</h2>
+                <p>Advanced NLP solutions for customer service and content analysis...</p>
+                <div class="popup-content">
+                    <h4>NLP Solutions</h4>
+                    <p>State-of-the-art natural language processing capabilities.</p>
+                    <ul>
+                        <li>Sentiment analysis</li>
+                        <li>Chatbot development</li>
+                        <li>Text classification</li>
+                        <li>Language translation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="classic-card" data-aos="fade-up" data-aos-delay="200">
+                <h2>Computer Vision</h2>
+                <p>Image and video analysis solutions for various industries...</p>
+                <div class="popup-content">
+                    <h4>Computer Vision Solutions</h4>
+                    <p>Advanced image and video processing capabilities.</p>
+                    <ul>
+                        <li>Object detection</li>
+                        <li>Facial recognition</li>
+                        <li>Quality control</li>
+                        <li>Video analytics</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="classic-card" data-aos="fade-up" data-aos-delay="300">
+                <h2>Predictive Analytics</h2>
+                <p>AI-powered forecasting and trend analysis solutions...</p>
+                <div class="popup-content">
+                    <h4>Predictive Analytics</h4>
+                    <p>Advanced forecasting and trend analysis capabilities.</p>
+                    <ul>
+                        <li>Demand forecasting</li>
+                        <li>Risk assessment</li>
+                        <li>Market trend analysis</li>
+                        <li>Behavioral prediction</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="classic-card" data-aos="fade-up" data-aos-delay="400">
+                <h2>Deep Learning</h2>
+                <p>Advanced neural network solutions for complex problems...</p>
+                <div class="popup-content">
+                    <h4>Deep Learning Solutions</h4>
+                    <p>State-of-the-art neural network implementations.</p>
+                    <ul>
+                        <li>Neural network design</li>
+                        <li>Model optimization</li>
+                        <li>Transfer learning</li>
+                        <li>Custom architectures</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="classic-card" data-aos="fade-up" data-aos-delay="500">
+                <h2>AI Integration</h2>
+                <p>Seamless integration of AI solutions with existing systems...</p>
+                <div class="popup-content">
+                    <h4>AI Integration Services</h4>
+                    <p>Comprehensive AI integration capabilities.</p>
+                    <ul>
+                        <li>API development</li>
+                        <li>System integration</li>
+                        <li>Cloud deployment</li>
+                        <li>Performance optimization</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="classic-card" data-aos="fade-up" data-aos-delay="600">
+                <h2>AI Consulting</h2>
+                <p>Strategic guidance for AI implementation and adoption...</p>
+                <div class="popup-content">
+                    <h4>AI Consulting Services</h4>
+                    <p>Expert guidance for AI strategy and implementation.</p>
+                    <ul>
+                        <li>AI strategy development</li>
+                        <li>Technology assessment</li>
+                        <li>ROI analysis</li>
+                        <li>Implementation planning</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-    
-    <!-- Floating Handle (Button to Open Sidebar) -->
-    <div id="floatingHandle" class="fixed top-1/3 right-0 bg-orange-500 text-white rounded-l-full px-3 py-2 cursor-pointer shadow-lg z-50" onclick="toggleSidebar()">
-      <span>☰ Our Pillars</span>
-    </div>
-    <div class="Aiml-container">
-    <section class="section" data-aos="fade-up">
-        <h2>DGT Value Add</h2>
-        <p>Our AI-first approach is embedded into everything we do. With expertise in predictive analytics, NLP, and generative AI, we create AI-powered solutions tailored to business needs. We leverage Salesforce AI, Azure AI, Informatica, and Mulesoft to build scalable, explainable, and industry-specific AI solutions.</p>
-    </section>
-    
-    <section class="section" data-aos="fade-up">
-        <h2>Hospitality and Travel
-        </h2>
-        <p>AI-driven demand forecasting for hotel operations. Tools: Salesforce Service Cloud, Mulesoft, Power BI.</p>
+
+    <section class="cta-section" data-aos="fade-up">
+        <div class="cta-wrapper">
+            <h2>Ready to Transform with AI?</h2>
+            <a href="/contactus" class="cta-button">Start Your Journey</a>
+        </div>
     </section>
 
-    <section class="section" data-aos="fade-up">
-        <h2>Energy and Utilities
-        </h2>
-        <p>Predictive analytics for energy consumption patterns. Tools: Salesforce Energy & Utilities Cloud, Azure, Informatica.</p>
-    </section>
-    
-    
-    <section class="section" data-aos="fade-up">
-        <h2>Manufacturing
-        </h2>
-        <p>AI-powered predictive maintenance and OEE optimization. Tools: Salesforce Manufacturing Cloud, Celonis, SAP.</p>
-    </section>
-    
-    <section class="section" data-aos="fade-up">
-        <h2>Not For Profit
-        </h2>
-        <p>AI-driven donor segmentation and campaign effectiveness tracking. Tools: Salesforce Nonprofit Cloud, Tableau, Mulesoft.</p>
-    </section>
+    <footer class="classic-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Dawn Digital</h3>
+                <p>Pioneering digital transformation through innovative solutions and strategic thinking. We combine cutting-edge technology with practical business insights.</p>
+            </div>
 
-    <section class="section" data-aos="fade-up">
-        <h2>CPG
-        </h2>
-        <p>AI-enhanced merchandising and sales optimization. Tools: Salesforce CPG Cloud, Informatica, Celonis.</p>
-    </section>
-    
-    <section class="section" data-aos="fade-up">
-        <h2>Banking and Financial Services
-        </h2>
-        <p>AI-driven credit risk analysis and fraud detection. Tools: Salesforce Financial Services Cloud, Azure, ServiceNow, Tableau.</p>
-    </section>
-    </div>
-    <section class="cta" data-aos="fade-up">
-        <h2>Future-Proof Your Business with Cloud</h2>
-        <button><a href="/contactus">Contact us</a></button>
-    </section>
-    
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/index">Home</a></li>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/services">Services</a></li>
+                    <li><a href="/contactus">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> 3 Sugarcreek Center Blvd, Suite 100, Sugar Land, TX 77478</li>
+                    <li><i class="fas fa-envelope"></i> info@dawndgt.com</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Dawn Digital Technology. All rights reserved.</p>
+        </div>
+    </footer>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        AOS.init();
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100,
+            easing: 'ease-out-cubic'
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const text = document.querySelector('.animated-text');
+            const words = text.textContent.split(' ');
+            text.textContent = '';
+            
+            words.forEach((word, index) => {
+                const span = document.createElement('span');
+                span.textContent = word + ' ';
+                span.style.animationDelay = `${0.6 + (index * 0.03)}s`;
+                span.style.animation = 'wordFadeIn 0.5s ease-out forwards';
+                text.appendChild(span);
+            });
+        });
     </script>
 </body>
 </html>
