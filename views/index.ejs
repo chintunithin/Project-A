@@ -375,6 +375,90 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
+/* New Offering Section Styles */
+.offering-section-new {
+    padding: 40px 5%;
+    background-color: #f9f7f1;
+}
+
+.offering-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.offering-card {
+    position: relative;
+    height: 200px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.offering-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.offering-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.offering-card:hover .offering-image {
+    transform: scale(1.1);
+}
+
+.offering-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    color: white;
+    transform: translateY(70px);
+    transition: transform 0.3s ease;
+}
+
+.offering-card:hover .offering-content {
+    transform: translateY(0);
+}
+
+.offering-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #F4A261;
+}
+
+.offering-description {
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    line-height: 1.4;
+}
+
+.offering-card:hover .offering-description {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .offering-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    
+    .offering-card {
+        height: 180px;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -632,69 +716,77 @@
     <br>
     <section class="offering-section-container">
         <div class="offering-section-header">Industry To Offerings</div>
-        <div class="offering-section">
-            <div class="auto-slide">
-                <a href="/BusinessProcessTransformation">
-                    <div class="box" style="background-image: url('/images/Business model transformation.jpg');" data-aos="fade-up" data-aos-delay="100">
-                        <div class="overlay"></div>
-                        <h3>Business Model Transformation</h3>
-                        <p>Transforming processes, models, and technology for better efficiency.</p>
+        <div class="offering-section-new">
+            <div class="offering-grid">
+                <a href="/BusinessProcessTransformation" class="offering-card">
+                    <img src="/images/Business model transformation.jpg" alt="Business Model Transformation" class="offering-image">
+                    <div class="offering-content">
+                        <h3 class="offering-title">Business Model Transformation</h3>
+                        <p class="offering-description">Transforming processes, models, and technology for better efficiency.</p>
                     </div>
                 </a>
-                <a href="/TechnologyImplementation">
-                    <div class="box" style="background-image: url('/images/Technology implementation.jpg');" data-aos="fade-up" data-aos-delay="200">
-                        <div class="overlay"></div>
-                        <h3>Technology Implementation</h3>
-                        <p>Implementing and upgrading technologies for business improvement.</p>
+                
+                <a href="/TechnologyImplementation" class="offering-card">
+                    <img src="/images/Technology implementation.jpg" alt="Technology Implementation" class="offering-image">
+                    <div class="offering-content">
+                        <h3 class="offering-title">Technology Implementation</h3>
+                        <p class="offering-description">Implementing and upgrading technologies for business improvement.</p>
                     </div>
                 </a>
-                <a href="/cloudmigration">
-                    <div class="box" style="background-image: url('/images/Cloud migration.jpg');" data-aos="fade-up" data-aos-delay="300">
-                        <div class="overlay"></div>
-                        <h3>Cloud Migration and Optimization</h3>
-                        <p>Moving and optimizing services for cloud architecture.</p>
+                
+                <a href="/cloudmigration" class="offering-card">
+                    <img src="/images/Cloud migration.jpg" alt="Cloud Migration" class="offering-image">
+                    <div class="offering-content">
+                        <h3 class="offering-title">Cloud Migration</h3>
+                        <p class="offering-description">Moving and optimizing services for cloud architecture.</p>
                     </div>
                 </a>
-                <a href="/ManagedServices">
-                    <div class="box" style="background-image: url('/images/Shared And managed services.jpg');" data-aos="fade-up" data-aos-delay="400">
-                        <div class="overlay"></div>
-                        <h3>Shared and Managed Services</h3>
-                        <p>Providing shared and managed service solutions.</p>
+                
+                <a href="/ManagedServices" class="offering-card">
+                    <img src="/images/Shared And managed services.jpg" alt="Managed Services" class="offering-image">
+                    <div class="offering-content">
+                        <h3 class="offering-title">Shared and Managed Services</h3>
+                        <p class="offering-description">Providing shared and managed service solutions.</p>
                     </div>
                 </a>
-                <a href="/changeManagement">
-                    <div class="box" style="background-image: url('/images/Change management.jpg');" data-aos="fade-up" data-aos-delay="500">
-                        <div class="overlay"></div>
-                        <h3>Change Management Initiatives</h3>
-                        <p>Initiatives to manage organizational change effectively.</p>
+                
+                <a href="/changeManagement" class="offering-card">
+                    <img src="/images/Change management.jpg" alt="Change Management" class="offering-image">
+                    <div class="offering-content">
+                        <h3 class="offering-title">Change Management</h3>
+                        <p class="offering-description">Initiatives to manage organizational change effectively.</p>
                     </div>
                 </a>
-                <a href="/DesignThinking">
-                    <div class="box" style="background-image: url('/images/design_thinking.webp');" data-aos="fade-up" data-aos-delay="600">
-                        <div class="overlay"></div>
-                        <h3>Design Thinking Workshops</h3>
-                        <p>Workshops focused on innovative design methodologies.</p>
+                
+                <a href="/DesignThinking" class="offering-card">
+                    <img src="/images/design_thinking.webp" alt="Design Thinking" class="offering-image">
+                    <div class="offering-content">
+                        <h3 class="offering-title">Design Thinking</h3>
+                        <p class="offering-description">Workshops focused on innovative design methodologies.</p>
                     </div>
                 </a>
-                <a href="/ALML">
-                    <div class="box" style="background-image: url('/images/ai_machine_learning.webp');" data-aos="fade-up" data-aos-delay="700">
-                        <div class="overlay"></div>
-                        <h3>AI and Machine Learning Solutions</h3>
-                        <p>Solutions leveraging AI and machine learning technologies.</p>
+                
+                <a href="/ALML" class="offering-card">
+                    <img src="/images/ai_machine_learning.webp" alt="AI and ML" class="offering-image">
+                    <div class="offering-content">
+                        <h3 class="offering-title">AI and Machine Learning</h3>
+                        <p class="offering-description">Solutions leveraging AI and machine learning technologies.</p>
                     </div>
                 </a>
-                <a href="/DataAnalyticsVisualization">
-                    <div class="box" style="background-image: url('/images/Data analytics and visualization.jpg');" data-aos="fade-up" data-aos-delay="800">
-                        <div class="overlay"></div>
-                        <h3>Data Analytics and Visualization</h3>
-                        <p>Analyzing data and creating visual representations for decision making.</p>
+                
+                <a href="/DataAnalyticsVisualization" class="offering-card">
+                    <img src="/images/Data analytics and visualization.jpg" alt="Data Analytics" class="offering-image">
+                    <div class="offering-content">
+                        <h3 class="offering-title">Data Analytics</h3>
+                        <p class="offering-description">Analyzing data and creating visual representations for decision making.</p>
                     </div>
                 </a>
-                <a href="/DigitalSkillTraining">
-                    <div class="box" style="background-image: url('/images/Digital skills training.jpg');" data-aos="fade-up" data-aos-delay="900">
-                        <div class="overlay"></div>
-                        <h3>Digital Skills Training</h3>
-                        <p>Training programs to enhance digital skills and AI awareness in the organization.</p>
+                
+                <a href="/DigitalSkillTraining" class="offering-card">
+                    <img src="/images/Digital skills training.jpg" alt="Digital Skills" class="offering-image">
+                    <div class="offering-content">
+                        <h3 class="offering-title">Digital Skills Training</h3>
+                        <p class="offering-description">Training programs to enhance digital skills and AI awareness.</p>
                     </div>
                 </a>
             </div>
