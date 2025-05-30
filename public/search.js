@@ -1,7 +1,33 @@
-const pages = {
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    
+  const searchButton = document.getElementById('searchButton');
+  const searchContainer = document.getElementById('searchContainer');
+  const searchInput = document.getElementById('searchInput');
+  const searchResults = document.getElementById('searchResults');
+
+    let isOpen = false;
+
+    searchButton.addEventListener("click", function (e) {
+        e.stopPropagation(); // Prevent document click from closing immediately
+        isOpen = !isOpen;
+        searchContainer.style.display = isOpen ? "block" : "none";
+        if (isOpen) {
+            document.getElementById("searchInput").focus();
+        }
+    });
+
+    document.addEventListener("click", function (e) {
+        if (!searchContainer.contains(e.target) && isOpen) {
+            searchContainer.style.display = "none";
+            isOpen = false;
+        }
+    });
+  const pages = {
     "mobility": "Mobility Solutions",
     "about": "About Us",
-    "integration": "System Integrations",
+    "integration": "System Integrations",   
     "data-migrations": "Data Migration Services",
     "analytics": "Business Analytics",
     "businessprocesstransformation": "Business Process Transformation",
@@ -19,42 +45,87 @@ const pages = {
     "sap": "SAP Enterprise Solutions",
     "salesforce": "Salesforce CRM",
     "feedback": "Customer Feedback",
-    "casestudy":"Case Study",
-    "about":"About"
-};
+    "casestudy": "Case Study"
+  };
 
-function toggleSearch() {
-    let searchBox = document.getElementById("searchBox");
-    searchBox.classList.toggle("active");
+  const iconMap = {
+    'mobility': 'fas fa-mobile-alt',
+    'about': 'fas fa-info-circle',
+    'integration': 'fas fa-plug',
+    'data-migrations': 'fas fa-database',
+    'analytics': 'fas fa-chart-line',
+    'businessprocesstransformation': 'fas fa-sync',
+    'technologyimplementation': 'fas fa-cogs',
+    'cloudmigration': 'fas fa-cloud',
+    'managedservices': 'fas fa-users-cog',
+    'changemanagement': 'fas fa-exchange-alt',
+    'designthinking': 'fas fa-lightbulb',
+    'alml': 'fas fa-brain',
+    'dataanalyticsvisualization': 'fas fa-chart-bar',
+    'digitalskilltraining': 'fas fa-graduation-cap',
+    'celonis': 'fas fa-chart-network',
+    'microsoft': 'fab fa-microsoft',
+    'servicenow': 'fas fa-cogs',
+    'sap': 'fab fa-sap',
+    'salesforce': 'fab fa-salesforce',
+    'feedback': 'fas fa-comment-alt',
+    'casestudy': 'fas fa-file-alt'
+  };
 
-    if (searchBox.classList.contains("active")) {
-        document.getElementById("searchInput").focus();
+  // Toggle search container visibility
+  searchButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+    searchContainer.classList.toggle('active');
+    if (searchContainer.classList.contains('active')) {
+      searchInput.focus();
+      displayResults(Object.entries(pages).slice(0, 4));
     }
-}
+  });
 
-function filterPages() {
-    let input = document.getElementById("searchInput").value.toLowerCase();
-    let resultsContainer = document.getElementById("searchResults");
-    resultsContainer.innerHTML = "";
-
-    if (input === "") {
-        resultsContainer.style.display = "none";
-        return;
+  // Close search container when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!searchContainer.contains(e.target) && !searchButton.contains(e.target)) {
+      searchContainer.classList.remove('active');
     }
+  });
 
-    let filteredPages = Object.keys(pages).filter(page => pages[page].toLowerCase().includes(input));
-
-    if (filteredPages.length > 0) {
-        resultsContainer.style.display = "block";
-        filteredPages.forEach(page => {
-            let li = document.createElement("li");
-            li.innerHTML = `<a href="/${page}">${pages[page]}</a>`;
-            resultsContainer.appendChild(li);
-        });
-    } else {
-        resultsContainer.style.display = "none";
+  // Handle search input
+  searchInput.addEventListener('input', () => {
+    const query = searchInput.value.toLowerCase();
+    if (query === '') {
+      displayResults(Object.entries(pages).slice(0, 4));
+      return;
     }
-}
+    const filtered = Object.entries(pages).filter(([key, title]) =>
+      title.toLowerCase().includes(query)
+    );
+    displayResults(filtered.slice(0, 4));
+  });
+
+  function displayResults(results) {
+    searchResults.innerHTML = '';
+    if (results.length === 0) {
+      searchResults.innerHTML = '<div class="search-result-item">No results found</div>';
+      return;
+    }
+    results.forEach(([key, title]) => {
+      const resultItem = document.createElement('a');
+      resultItem.href = `/${key}`;
+      resultItem.className = 'search-result-item';
+
+      const icon = document.createElement('i');
+      icon.className = iconMap[key] || 'fas fa-link';
+
+      const text = document.createElement('span');
+      text.textContent = title;
+
+      resultItem.appendChild(icon);
+      resultItem.appendChild(text);
+      searchResults.appendChild(resultItem);
+    });
+  }
+});
+
 
 window.addEventListener("scroll", function() {
     const navbar = document.querySelector("nav");
@@ -63,59 +134,6 @@ window.addEventListener("scroll", function() {
     } else {
         navbar.classList.remove("scrolled");
     }
-});
-
-document.addEventListener("DOMContentLoaded", function() {
-    const titleText = "DAWN DIGITAL TECHNOLOGY";
-    const subtitleText = "YOUR AI PARTNER FOR SCALABLE, FUTURE-READY ENTERPRISES";
-    const titleElement = document.getElementById("title");
-    const subtitleElement = document.getElementById("subtitle");
-    
-    titleText.split("").forEach((char, index) => {
-        let span = document.createElement("span");
-        span.textContent = char;
-        span.style.animationDelay = `${index * 0.05}s`;
-        titleElement.appendChild(span);
-    });
-    
-    subtitleText.split("").forEach((char, index) => {
-        let span = document.createElement("span");
-        span.textContent = char;
-        span.style.animationDelay = `${index * 0.03}s`;
-        subtitleElement.appendChild(span);
-    });
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-  let popup = document.getElementById('lipopup');
-  let popupContent = document.getElementById('lipopup-content');
-
-  function onListItemClick(event, content) {
-      if (!popup || !popupContent) {
-          console.error("Popup elements not found!");
-          return;
-      }
-
-      popupContent.innerHTML = content;
-      popup.style.display = 'block';
-
-      let rect = event.target.getBoundingClientRect();
-
-      popup.style.top = `${window.scrollY + rect.bottom + 5}px`; // 5px gap below item
-      popup.style.left = `${window.scrollX + rect.left}px`; // Align with left of item
-  }
-
-  document.addEventListener('click', function (event) {
-      if (!event.target.closest('li')) {
-          popup.style.display = 'none';
-      }
-  });
-
-  document.addEventListener('scroll', function () {
-      popup.style.display = 'none';
-  });
-
-  window.onListItemClick = onListItemClick;
 });
 
 function showDownloadPopup() {
@@ -140,7 +158,6 @@ function showDownloadPopup() {
             Swal.showValidationMessage('Please enter a valid email address');
             return false;
         }
-
 
           try {
               // Send data to server to store in database
@@ -172,76 +189,3 @@ function showDownloadPopup() {
       }
   });
 }
-
-
-async function getFileSizeAndType(url) {
-  try {
-      let response = await fetch(url, { method: 'HEAD' });
-      let fileSize = response.headers.get('content-length');
-      let fileType = response.headers.get('content-type');
-
-      if (fileSize) {
-          fileSize = (fileSize / (1024 * 1024)).toFixed(2) + "MB"; // Convert bytes to MB
-      } else {
-          fileSize = "Unknown Size";
-      }
-
-      let extension = fileType ? `.${fileType.split('/')[1]}` : ".unknown";
-      document.getElementById('file-info').innerText = `${fileSize} ${extension}`;
-  } catch (error) {
-      document.getElementById('file-info').innerText = "Failed to fetch size";
-  }
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-  getFileSizeAndType('/files/CollectionDetailPrint20241009.pdf'); // Replace with your actual file path
-
-  // New Floating Sidebar JavaScript
-    const newSidebar = document.getElementById('newFloatingSidebar');
-    const newHandle = document.getElementById('newFloatingHandle');
-    let newHideTimeout;
-
-    console.log('New Sidebar element:', newSidebar);
-    console.log('New Handle element:', newHandle);
-    console.log('dragmove function available:', typeof dragmove === 'function');
-
-    // Initialize dragmove.js on the new sidebar, using the handle as the drag area
-    if (newSidebar && newHandle && typeof dragmove === 'function') {
-        dragmove(newSidebar, newHandle);
-        console.log('dragmove.js initialized on new sidebar.');
-    } else {
-        console.error('Could not initialize dragmove.js on new sidebar.', { newSidebar, newHandle, dragmoveAvailable: typeof dragmove === 'function' });
-    }
-
-    window.toggleNewSidebar = function () {
-        console.log('toggleNewSidebar called');
-        if (newSidebar.style.right === '0px') { // Check if sidebar is visible
-            // Closing sidebar
-            newSidebar.style.right = '-320px'; // Hide off-screen
-            newHandle.style.display = 'flex';
-            // clearNewHideTimeout(); // Remove or comment out if only used for auto-hide
-            console.log('New Sidebar closing.');
-        } else {
-            // Opening sidebar
-            newSidebar.style.right = '0px'; // Show on-screen
-            newHandle.style.display = 'none';
-            // startNewHideTimeout(); // Remove or comment out as auto-hide is not desired
-            console.log('New Sidebar opening.');
-        }
-    };
-
-    // Add smooth scroll animation (existing code, keeping it)
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = this.getAttribute('href');
-            const element = document.querySelector(target);
-            if (element) {
-                window.scrollTo({
-                    top: element.offsetTop - 50, // Adjust as needed
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-});

@@ -3,204 +3,394 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Integrations | DGT</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <title>Integration Solutions | DGT</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script src="/search.js"></script>
     <link href="index.css"  rel="stylesheet" >
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background: #fafafa;
+            color: #2c3e50;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-    scroll-behavior: smooth;
-}
+        .hero {
+            background: linear-gradient(135deg, rgba(255, 245, 240, 0.9), rgba(255, 255, 255, 0.9)), url('/images/IntegrationMain.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #2c3e50;
+            text-align: center;
+            padding: 100px 20px 120px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255, 127, 80, 0.1);
+        }
 
-body {
-    background: #ffffff;
-    color: rgb(0, 0, 0);
-    padding: 20px;
-}
-.AI-powered-bg{
-    background-image: url('/images/IntegrationMain.jpg');
-    background-size: cover; /* Ensures the image covers the entire background */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat; /* Prevents repeating */
-}
-/* Container */
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
-    padding: 40px 0;
-}
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 70% 30%, rgba(255, 127, 80, 0.1) 0%, transparent 70%);
+            z-index: 1;
+        }
 
-/* Hero Section */
-.hero {
-    color: white;
-    text-align: center;
-    padding: 100px 20px;
-    border-radius: 15px;
-    margin-top:6% ;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    animation: fadeIn 1s ease-in-out;
-}
-.card-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two sections */
-    gap: 30px; /* Space between cards */
-    justify-content: center;
-    align-items: stretch;
-    padding: 20px;
-}
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255, 127, 80, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 1;
+        }
 
-/* Responsive - Switch to a single column on smaller screens */
-@media (max-width: 768px) {
-    .card-container {
-        grid-template-columns: 1fr; /* Single column for mobile */
-    }
-}
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
 
-.hero h1 {
-    font-size: 3rem;
-    font-weight: 600;
-    margin-bottom: 15px;
-    text-shadow: 0px 0px 5px orange;
-}
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+            color: #2c3e50;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
 
-.hero p {
-    font-size: 1.2rem;
-    max-width: 700px;
-    background-color: rgba(243, 143, 36, 0.2);
-    margin: auto;
-}
+        .hero h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: rgba(255, 127, 80, 0.3);
+            animation: lineExpand 0.6s ease-out 0.8s forwards;
+        }
 
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            line-height: 1.8;
+            color: #2c3e50;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out 0.4s forwards;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+        }
 
-/* Card Sections */
-.card {
-    background: rgba(255, 255, 255);
-    padding: 30px;
-    border-radius: 15px;
-    border: 1px solid orange;
-    margin: 50px 0;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    overflow: hidden;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    animation: slideUp 0.5s ease-in-out;
-}
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px 0;
+        }
 
-.card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
-}
+        .section {
+            background: white;
+            padding: 60px 30px;
+            border-radius: 12px;
+            margin: 50px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
 
-.card img {
-    width: 250px;
-    height: 250px;
-    border-radius: 10px;
-    transition: transform 0.5s ease-in-out;
-}
+        section {
+            margin-bottom: 30px;
+            margin-top: 10px;
+        }
 
-.card:hover img {
-    transform: scale(1.1);
-}
+        section div {
+            width: 35%;
+        }
 
-.card-content {
-    flex: 1;
-}
+        .section:hover {
+            transform: translateY(-5px);
+        }
 
-.card h2 {
-    font-size: 2rem;
-    color: #ff7f50;
-    margin-bottom: 15px;
-}
+        section h2 {
+            font-size: 2rem;
+            color: #ff7f50; 
+            text-align: center;
+            margin-bottom: 25px;
+        }
 
-.card ul {
-    list-style: none;
-    padding: 0;
-}
+        .challenges, .accelerators, .methodology {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+        }
 
-.card ul li {
-    font-size: 1.2rem;
-    padding: 10px 0;
-    border-left: 5px solid #ff7f50;
-    padding-left: 20px;
-    transition: all 0.3s ease-in-out;
-    color: black;
-}
+        @media screen and (max-width: 768px) {
+            .challenges, .accelerators, .methodology {
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+            .trends, .expertise, .why-choose, .success {
+                flex-direction: column !important;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+            section div {
+                width: 100%;
+            }
+        }
 
-.card ul li:hover {
-    background: rgba(255, 127, 80, 0.15);
-    padding-left: 25px;
-}
+        .trends, .expertise, .why-choose, .success {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-evenly;
+            align-items: center;
+        }
 
+        .integration_img {
+            top: 20px;
+            width: 500px;
+            height: 300px;
+        }
 
+        .success ul, .methodology ul, .why-choose ul, .accelerators ul, .trends ul, .challenges ul,
+        .success ol, .methodology ol, .why-choose ol, .accelerators ol, .trends ol, .challenges ol {
+            list-style: none;
+            padding: 0;
+        }
 
-/* Animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+        .success ol li, .methodology ol li, .why-choose ol li, .accelerators ol li, .trends ol li, .challenges ol li,
+        .success ul li, .methodology ul li, .why-choose ul li, .accelerators ul li, .trends ul li, .challenges ul li {
+            font-size: 1.2rem;
+            padding: 10px 0;
+            border-left: 5px solid #ff7f50;
+            padding-left: 20px;
+            transition: all 0.3s ease-in-out;
+        }
 
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+        .success ol li:hover, .methodology ol li:hover, .why-choose ol li:hover, .accelerators ol li:hover, .trends ol li:hover, .challenges ol li:hover,
+        .success ul li:hover, .methodology ul li:hover, .why-choose ul li:hover, .accelerators ul li:hover, .trends ul li:hover, .challenges ul li:hover {
+            background: rgba(255, 127, 80, 0.15);
+            padding-left: 25px;
+        }
 
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.05);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-/* Responsive Design */
-@media (max-width: 900px) {
-    .container {
-        width: 95%;
-    }
+        @keyframes lineExpand {
+            from {
+                width: 0;
+            }
+            to {
+                width: 60px;
+            }
+        }
 
-    .hero h1 {
-        font-size: 2.5rem;
-    }
+        .cta-section {
+            background: #fff;
+            color: #2c3e50;
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid rgba(255, 127, 80, 0.1);
+            border-bottom: 1px solid rgba(255, 127, 80, 0.1);
+        }
 
-    .card {
-        flex-direction: column;
-        text-align: center;
-    }
+        .cta-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
 
-    .card img {
-        width: 100%;
-        max-width: 300px;
-    }
-}
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
 
+        .cta-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: #ff7f50;
+            opacity: 0.3;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 32px;
+            background: transparent;
+            color: #2c3e50;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 127, 80, 0.3);
+            position: relative;
+            overflow: hidden;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button:hover {
+            border-color: #ff7f50;
+            background: rgba(255, 127, 80, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .classic-footer {
+            background: #1a252f;
+            color: white;
+            padding: 80px 0 20px;
+            margin-top: 0;
+            position: relative;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 60px;
+            padding: 0 40px;
+        }
+
+        .footer-section {
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            font-family: 'Playfair Display', serif;
+            color: white;
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: #ff7f50;
+        }
+
+        .footer-section p, .footer-section li {
+            color: #a3b1c2;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section ul li a {
+            color: #a3b1c2;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .footer-section ul li a::before {
+            content: '→';
+            position: absolute;
+            left: -10px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            color: #ff7f50;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+            padding-left: 20px;
+        }
+
+        .footer-section ul li a:hover::before {
+            opacity: 1;
+            left: 0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: #a3b1c2;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-links a:hover {
+            color: #ff7f50;
+            border-color: #ff7f50;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 60px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: #a3b1c2;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
@@ -259,7 +449,7 @@ body {
                         <li><a href="/changemanagement">Change Management</a></li>
                         <li><a href="/designthinking">Design Thinking</a></li>
                         <li><a href="/alml">AI and ML</a></li>
-                        <li><a href="/analytics">Analytics and Visualization</a></li>
+                        <li><a href="/dataanalyticsvisualization">Analytics and Visualization</a></li>
                         <li><a href="/digitalskilltraining">Digital Skills Training</a></li>
                     </ul>
                 </div>
@@ -364,96 +554,84 @@ body {
     <div id="lipopup" class="lipopup">
         <div id="lipopup-content" class="lipopup-content"></div>
     </div>
-    <header class="hero AI-powered-bg" data-aos="fade-up">
-        <h1>Seamlessly Connect Your Business with DGT’s Integration Services</h1>
-        <p>Eliminate silos and create a unified ecosystem with API-led, AI-powered integrations.</p>
+    <header class="hero" data-aos="fade-up">
+        <div class="hero-content">
+            <h1>Seamlessly Connect Your Business with DGT's Integration Services</h1>
+            <p>Eliminate silos and create a unified ecosystem with API-led, AI-powered integrations.</p>
+        </div>
     </header>
-    <div class="card-container">
-        <section class="card challenges" data-aos="fade-up">
-            <img src="images/underchanllenges.png" alt="Integration Challenges" data-aos="fade-in">
-            <div class="card-content">
-                <h2 data-aos="slide-up">Understanding the Challenges</h2>
-                <ul>
-                    <li onclick="onListItemClick(event, 'Data Silos & Disjointed Systems create inefficiencies and hinder seamless communication.')" data-aos="slide-up">
-                        Data Silos & Disjointed Systems
-                    </li>
-                    <li onclick="onListItemClick(event, 'Real-Time Data Flow Challenges arise due to latency and inconsistent data synchronization.')" data-aos="slide-up">
-                        Real-Time Data Flow Challenges
-                    </li>
-                    <li onclick="onListItemClick(event, 'API Complexity & Performance Bottlenecks can slow down system integrations and responsiveness.')" data-aos="slide-up">
-                        API Complexity & Performance Bottlenecks
-                    </li>
-                    <li onclick="onListItemClick(event, 'Security & Compliance Risks must be addressed to protect sensitive data and ensure regulatory compliance.')" data-aos="slide-up">
-                        Security & Compliance Risks
-                    </li>
-                </ul>
-            </div>
-        </section>
-        
-    
-        <section class="card trends" data-aos="fade-up">
-            <img src="images/intigrationtrend.jpg" alt="Technology Trends" data-aos="fade-in">
-            <div class="card-content">
-                <h2 data-aos="slide-up">2025 Integration Trends</h2>
-                <ul>
-                    <li onclick="onListItemClick(event, 'AI-driven hyperautomation enhances efficiency by automating complex integration workflows.')" data-aos="slide-up">
-                        AI-driven hyperautomation in integrations
-                    </li>
-                    <li onclick="onListItemClick(event, 'No-Code & Low-Code API development empowers business users to create integrations with minimal coding.')" data-aos="slide-up">
-                        No-Code & Low-Code API development
-                    </li>
-                    <li onclick="onListItemClick(event, 'Event-Driven Architectures (EDA) improve scalability and responsiveness by processing events in real-time.')" data-aos="slide-up">
-                        Event-Driven Architectures (EDA)
-                    </li>
-                    <li onclick="onListItemClick(event, 'Composable Business with API Mesh enables flexible and reusable integrations for modern enterprises.')" data-aos="slide-up">
-                        Composable Business with API Mesh
-                    </li>
-                </ul>
-            </div>
-        </section>
-    
-        <section class="card accelerators" data-aos="fade-up">
-            <img src="images/dgtacceletaorsint.jpg" alt="DGT Accelerators" data-aos="fade-in">
-            <div class="card-content">
-                <h2 data-aos="slide-up">DGT Accelerators</h2>
-                <ul>
-                    <li onclick="onListItemClick(event, 'DGT API Hub™ provides pre-built connectors for SAP, Salesforce, and Workday, streamlining integration efforts.')"data-aos="slide-up">
-                        DGT API Hub™: Pre-built connectors for SAP, Salesforce, Workday
-                    </li>
-                    <li onclick="onListItemClick(event, 'The Event Processing Engine enables real-time integration monitoring, alerting teams to issues instantly.')" data-aos="slide-up">
-                        Event Processing Engine for real-time integration monitoring
-                    </li>
-                    <li onclick="onListItemClick(event, 'AI-driven API Testing Automation improves integration reliability by automatically detecting and resolving issues.')" data-aos="slide-up">
-                        AI-driven API Testing Automation
-                    </li>
-                </ul>
-            </div>
-        </section>
-        
-    <section class="card success" data-aos="fade-up">
-        <img src="images/casestudyint.jpg" alt="Success Stories" data-aos="fade-in">
-        <div class="card-content">
-            <h2 data-aos="slide-up">Case study</h2>
+    <section class="challenges" data-aos="fade-up">
+        <img class="integration_img" src="images/underchanllenges.png" alt="">
+        <div>
+            <h2>Understanding the Challenges</h2>
             <ul>
-                <div class="whitebutton" onclick="showDownloadPopup()" data-aos="slide-up"> 
-                    <a href="#">Download</a><br>
-                    <span class="up">Click to Download</span><br>
-                    <span class="down" id="file-info">Fetching size...</span>
-                </div>
+                <li>Data Silos & Disjointed Systems</li>
+                <li>Real-Time Data Flow Challenges</li>
+                <li>API Complexity & Performance Bottlenecks</li>
+                <li>Security & Compliance Risks</li>
             </ul>
         </div>
     </section>
-    </div>
-    <section class="cta" data-aos="fade-up">
-        <h2>Ready to Optimize Your Integrations?</h2>
-        <button type="button" class="btn"><a href="/contactus">Contact us</a></button>
+    
+    <section class="trends" data-aos="fade-up">
+        <img class="integration_img" src="images/intigrationtrend.jpg" alt="">
+        <div>
+            <h2>2025 Integration Trends</h2>
+            <ul>
+                <li>AI-driven hyperautomation in integrations</li>
+                <li>No-Code & Low-Code API development</li>
+                <li>Event-Driven Architectures (EDA)</li>
+                <li>Composable Business with API Mesh</li>
+            </ul>
+        </div>
+    </section>
+    
+    <section class="accelerators" data-aos="fade-up">
+        <img class="integration_img" src="images/dgtacceletaorsint.jpg" alt="">
+        <div>
+            <h2>DGT Accelerators</h2>
+            <ul>
+                <li>DGT API Hub™: Pre-built connectors for SAP, Salesforce, Workday</li>
+                <li>Event Processing Engine for real-time integration monitoring</li>
+                <li>AI-driven API Testing Automation</li>
+            </ul>
+        </div>
+    </section>
+    
+    <section class="success" data-aos="fade-up">
+        <img class="integration_img" src="images/casestudyint.jpg" alt="">
+        <div>
+            <h2>Case Study</h2>
+            <ul>
+                <li>Global Enterprise: Seamless integration of legacy and modern systems</li>
+                <li>Performance: 60% reduction in data processing time</li>
+                <li>Efficiency: 45% improvement in system synchronization</li>
+            </ul>
+            <div class="whitebutton" onclick="showDownloadPopup()" style="float: left;"> 
+                <a href="#">Download</a><br>
+                <span class="up">Click to Download</span><br>
+                <span class="down" id="file-info">Fetching size...</span>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta-section" data-aos="fade-up">
+        <div class="cta-wrapper">
+            <h2>Ready to Optimize Your Integrations?</h2>
+            <a href="/contactus" class="cta-button">Contact Us</a>
+        </div>
     </section>
     <div id="lipopup" class="lipopup">
         <div id="lipopup-content" class="lipopup-content"></div>
     </div>
-    <script src="/Aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        AOS.init();
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100,
+            easing: 'ease-out-cubic'
+        });
     </script>
 </body>
 </html>

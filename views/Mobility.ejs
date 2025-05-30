@@ -411,8 +411,7 @@
 
         /* Popup Content Styles */
         .popup-content {
-            position: fixed;
-            transform: translateX(-50%);
+            position: absolute;
             width: 300px;
             background: white;
             padding: 20px;
@@ -421,18 +420,23 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
-            z-index: 99999;
             border: 2px solid #ff6b6b;
+            z-index: 99999;
             pointer-events: none;
-        }
-
-        .popup-content::before {
-            content: '';
-            position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
+            display: block !important;
+        }
+
+        .section div {
+            position: relative;
+        }
+
+        .section div:hover .popup-content {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            display: block !important;
         }
 
         .popup-content h4 {
@@ -472,34 +476,26 @@
             font-size: 1.2rem;
         }
 
-        .section div:hover .popup-content {
-            opacity: 1;
-            visibility: visible;
-            pointer-events: auto;
-        }
-
-        /* Position popups based on their position in the grid */
-        .section div:nth-child(3n+1) .popup-content {
-            left: calc(50% + 0px);
-        }
-
-        .section div:nth-child(3n+2) .popup-content {
-            left: calc(50% + 0px);
-        }
-
-        .section div:nth-child(3n+3) .popup-content {
-            left: calc(50% + 0px);
+        .popup-content::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
         }
 
         /* Position popups for bottom row */
         .section div:nth-last-child(-n+3) .popup-content {
             bottom: 100%;
             top: auto;
+            margin-bottom: 10px;
         }
 
         /* Position popups for other rows */
         .section div:not(:nth-last-child(-n+3)) .popup-content {
             top: 100%;
+            margin-top: 10px;
         }
 
         .section div:not(:nth-last-child(-n+3)) .popup-content::before {
@@ -516,6 +512,8 @@
         @media (max-width: 768px) {
             .popup-content {
                 width: 280px;
+                left: 0;
+                transform: none;
             }
         }
     </style>
@@ -576,7 +574,7 @@
                         <li><a href="/changemanagement">Change Management</a></li>
                         <li><a href="/designthinking">Design Thinking</a></li>
                         <li><a href="/alml">AI and ML</a></li>
-                        <li><a href="/analytics">Analytics and Visualization</a></li>
+                        <li><a href="/dataanalyticsvisualization">Analytics and Visualization</a></li>
                         <li><a href="/digitalskilltraining">Digital Skills Training</a></li>
                     </ul>
                 </div>
@@ -706,7 +704,7 @@
                 <h4>Today's CEO Challenges</h4>
                 <p>Modern enterprises face critical challenges in their mobile transformation journey. Our solutions address these key pain points:</p>
                 <ul>
-                    <li>Security & Compliance Risks: Protecting sensitive data while ensuring regulatory adherence</li>
+                    <li>Security & Compliance: Protecting sensitive data while ensuring regulatory adherence</li>
                     <li>Device Fragmentation: Managing consistent user experience across diverse devices</li>
                     <li>Offline Functionality: Ensuring seamless operation in low-connectivity areas</li>
                     <li>Scalability: Building cost-effective solutions that grow with your business</li>
@@ -814,6 +812,16 @@
             <li>Reduced operational delays by 40%</li>
             <li>Increased technician efficiency by 35%</li>
         </ul>
+        <div class="popup-content">
+            <h4>Case Study Success</h4>
+            <p>Real-world results from our mobile solutions implementation:</p>
+            <ul>
+                <li>Global Telecom Provider: Successful deployment of AI-powered field service app</li>
+                <li>Operational Efficiency: 40% reduction in service delays</li>
+                <li>Workforce Productivity: 35% increase in technician efficiency</li>
+                <li>ROI Achievement: Significant cost savings and improved customer satisfaction</li>
+            </ul>
+        </div>
         <div class="whitebutton" onclick="showDownloadPopup()"  style="float: left;"> 
             <a href="#">Download</a><br>
             <span class="up">Click to Download</span><br>
@@ -893,6 +901,28 @@
                 span.style.animationDelay = `${0.6 + (index * 0.03)}s`;
                 span.style.animation = 'wordFadeIn 0.5s ease-out forwards';
                 text.appendChild(span);
+            });
+
+            // Add popup handling
+            const sections = document.querySelectorAll('.section div');
+            sections.forEach(section => {
+                section.addEventListener('mouseenter', function() {
+                    const popup = this.querySelector('.popup-content');
+                    if (popup) {
+                        popup.style.display = 'block';
+                        popup.style.opacity = '1';
+                        popup.style.visibility = 'visible';
+                    }
+                });
+
+                section.addEventListener('mouseleave', function() {
+                    const popup = this.querySelector('.popup-content');
+                    if (popup) {
+                        popup.style.display = 'none';
+                        popup.style.opacity = '0';
+                        popup.style.visibility = 'hidden';
+                    }
+                });
             });
         });
     </script>

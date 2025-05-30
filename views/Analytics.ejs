@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analytics and Visualization | DGT</title>
+    <title>Analytics Solutions | DGT</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script src="/search.js"></script>
     <link href="index.css"  rel="stylesheet" >
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap');
         
@@ -22,7 +23,7 @@
         }
 
         .hero {
-            background: linear-gradient(135deg, rgba(255, 245, 240, 0.9), rgba(255, 255, 255, 0.9)), url('/images/analytics-bg.jpg');
+            background: linear-gradient(135deg, rgba(255, 245, 240, 0.9), rgba(255, 255, 255, 0.9)), url('/images/AnalyticsMain.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -42,6 +43,18 @@
             right: 0;
             bottom: 0;
             background: radial-gradient(circle at 70% 30%, rgba(255, 127, 80, 0.1) 0%, transparent 70%);
+            z-index: 1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255, 127, 80, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
             z-index: 1;
         }
 
@@ -90,142 +103,117 @@
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
         }
 
-        .content-container {
-            max-width: 1400px;
-            margin: -60px auto 40px;
-            padding: 0 40px;
-            position: relative;
-            z-index: 2;
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px 0;
         }
 
-        .section-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin: 40px 0;
-            justify-items: center;
-        }
-
-        .classic-card {
+        .section {
             background: white;
+            padding: 60px 30px;
             border-radius: 12px;
-            padding: 40px;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            position: relative;
-            overflow: visible;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            width: 100%;
-            max-width: 400px;
-            cursor: pointer;
-            z-index: 1;
+            margin: 50px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
         }
 
-        .classic-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 4px;
-            height: 0;
-            background: #ff7f50;
-            transition: height 0.4s ease;
+        section {
+            margin-bottom: 30px;
+            margin-top: 10px;
         }
 
-        .classic-card:hover {
-            z-index: 2;
+        section div {
+            width: 35%;
         }
 
-        .classic-card:hover::after {
-            height: 100%;
+        .section:hover {
+            transform: translateY(-5px);
         }
 
-        .classic-card h2 {
-            font-family: 'Playfair Display', serif;
-            color: #2c3e50;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 15px;
+        section h2 {
+            font-size: 2rem;
+            color: #ff7f50; 
+            text-align: center;
+            margin-bottom: 25px;
         }
 
-        .classic-card h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background: #ff7f50;
-            transition: width 0.3s ease;
+        .challenges, .accelerators, .methodology {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
         }
 
-        .classic-card:hover h2::after {
-            width: 80px;
+        @media screen and (max-width: 768px) {
+            .challenges, .accelerators, .methodology {
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+            .trends, .expertise, .why-choose, .success {
+                flex-direction: column !important;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+            section div {
+                width: 100%;
+            }
         }
 
-        .classic-card p {
-            color: #5d6d7e;
-            line-height: 1.8;
-            position: relative;
-            margin: 0;
+        .trends, .expertise, .why-choose, .success {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-evenly;
+            align-items: center;
         }
 
-        .popup-content {
-            position: fixed;
-            width: 300px;
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            border: 2px solid #ff6b6b;
-            z-index: 99999;
-            pointer-events: none;
+        .analytics_img {
+            top: 20px;
+            width: 500px;
+            height: 300px;
         }
 
-        .classic-card:hover .popup-content {
-            opacity: 1;
-            visibility: visible;
-            pointer-events: auto;
-        }
-
-        .popup-content h4 {
-            color: #ff6b6b;
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .popup-content p {
-            color: #2d3436;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-
-        .popup-content ul {
+        .success ul, .methodology ul, .why-choose ul, .accelerators ul, .trends ul, .challenges ul,
+        .success ol, .methodology ol, .why-choose ol, .accelerators ol, .trends ol, .challenges ol {
             list-style: none;
             padding: 0;
-            margin: 0;
-            text-align: left;
         }
 
-        .popup-content ul li {
-            color: #636e72;
-            font-size: 0.9rem;
-            padding: 5px 0;
-            position: relative;
-            padding-left: 20px;
-        }
-
-        .popup-content ul li::before {
-            content: '•';
-            color: #ff6b6b;
-            position: absolute;
-            left: 0;
+        .success ol li, .methodology ol li, .why-choose ol li, .accelerators ol li, .trends ol li, .challenges ol li,
+        .success ul li, .methodology ul li, .why-choose ul li, .accelerators ul li, .trends ul li, .challenges ul li {
             font-size: 1.2rem;
+            padding: 10px 0;
+            border-left: 5px solid #ff7f50;
+            padding-left: 20px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .success ol li:hover, .methodology ol li:hover, .why-choose ol li:hover, .accelerators ol li:hover, .trends ol li:hover, .challenges ol li:hover,
+        .success ul li:hover, .methodology ul li:hover, .why-choose ul li:hover, .accelerators ul li:hover, .trends ul li:hover, .challenges ul li:hover {
+            background: rgba(255, 127, 80, 0.15);
+            padding-left: 25px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes lineExpand {
+            from {
+                width: 0;
+            }
+            to {
+                width: 60px;
+            }
         }
 
         .cta-section {
@@ -287,55 +275,6 @@
             border-color: #ff7f50;
             background: rgba(255, 127, 80, 0.05);
             transform: translateY(-2px);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes lineExpand {
-            from {
-                width: 0;
-            }
-            to {
-                width: 60px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                background-attachment: scroll;
-                padding: 80px 20px 100px;
-            }
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            .hero p {
-                font-size: 1.1rem;
-            }
-            .section-grid {
-                grid-template-columns: 1fr;
-            }
-            .content-container {
-                padding: 0 20px;
-                margin-top: -40px;
-            }
-            .classic-card {
-                padding: 30px;
-            }
-            .cta-section {
-                padding: 40px 20px;
-            }
-            .cta-section h2 {
-                font-size: 1.8rem;
-            }
         }
 
         .classic-footer {
@@ -474,10 +413,10 @@
               <input type="checkbox" id="showDrop">
               <label for="showDrop" class="mobile-item">Technology Offerings</label>
               <ul class="drop-menu">
-                <li><a href="/Mobility">Mobility</a></li>
+                <li><a href="/mobility">Mobility</a></li>
                 <li><a href="/integration">Integration</a></li>
                 <li><a href="/data-migrations">Data Migration</a></li>
-                <li><a href="/Analytics">Analytics</a></li>
+                <li><a href="/analytics">Analytics</a></li>
               </ul>
             </li>
             <li>
@@ -510,7 +449,7 @@
                         <li><a href="/changemanagement">Change Management</a></li>
                         <li><a href="/designthinking">Design Thinking</a></li>
                         <li><a href="/alml">AI and ML</a></li>
-                        <li><a href="/analytics">Analytics and Visualization</a></li>
+                        <li><a href="/dataanalyticsvisualization">Analytics and Visualization</a></li>
                         <li><a href="/digitalskilltraining">Digital Skills Training</a></li>
                     </ul>
                 </div>
@@ -561,7 +500,7 @@
           <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
         </div>
       </nav>
- <!-- New Floating Sidebar HTML -->
+      <!-- New Floating Sidebar HTML -->
       <div id="newFloatingSidebar" class="new-floating-sidebar fixed z-[100] bg-white shadow-2xl rounded-l-2xl w-80 p-6 border border-gray-200 backdrop-blur-sm bg-opacity-95" style="max-height: 100vh; overflow-y: auto; top: 70px; right: -320px; transition: right 0.3s ease-in-out;">
           <!-- Close Button -->
           <div class="absolute top-3 left-3 cursor-pointer text-gray-600 hover:text-orange-500 transition-colors duration-300" onclick="toggleNewSidebar()">
@@ -612,126 +551,72 @@
           </div>
       </div>
       <!-- End New Floating Sidebar HTML -->
-    <header class="hero">
+    <header class="hero" data-aos="fade-up">
         <div class="hero-content">
-            <h1>Analytics and Visualization</h1>
-            <p class="animated-text">In today's data-driven world, organizations struggle to extract meaningful insights from vast amounts of information. CIOs emphasize that without proper analytics and visualization tools, businesses cannot make informed decisions. DGT provides cutting-edge analytics solutions that transform raw data into actionable insights.</p>
+            <h1>Transform Your Data into Actionable Insights</h1>
+            <p>Leverage the power of advanced analytics and AI to drive informed decision-making and business growth.</p>
         </div>
     </header>
-
-    <div class="content-container">
-        <div class="section-grid">
-            <div class="classic-card" data-aos="fade-up">
-                <h2>DGT Value Add</h2>
-                <p>Our team combines deep expertise in data analytics with cutting-edge visualization tools...</p>
-                <div class="popup-content">
-                    <h4>DGT Value Add</h4>
-                    <p>Our team combines deep expertise in data analytics with cutting-edge visualization tools to deliver actionable insights.</p>
-                    <ul>
-                        <li>Advanced data analytics</li>
-                        <li>Interactive dashboards</li>
-                        <li>Real-time reporting</li>
-                        <li>Predictive analytics</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="classic-card" data-aos="fade-up" data-aos-delay="100">
-                <h2>Hospitality and Travel</h2>
-                <p>AI-powered guest behavior analysis and revenue optimization...</p>
-                <div class="popup-content">
-                    <h4>Hospitality Solutions</h4>
-                    <p>Comprehensive analytics for the hospitality industry.</p>
-                    <ul>
-                        <li>Guest behavior analysis</li>
-                        <li>Revenue optimization</li>
-                        <li>Occupancy forecasting</li>
-                        <li>Tools: Tableau, Power BI, Salesforce Analytics</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="classic-card" data-aos="fade-up" data-aos-delay="200">
-                <h2>Energy and Utilities</h2>
-                <p>Smart grid analytics and consumption pattern analysis...</p>
-                <div class="popup-content">
-                    <h4>Energy Solutions</h4>
-                    <p>Advanced analytics for energy and utilities sector.</p>
-                    <ul>
-                        <li>Smart grid analytics</li>
-                        <li>Consumption patterns</li>
-                        <li>Predictive maintenance</li>
-                        <li>Tools: Power BI, Azure Analytics, Tableau</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="classic-card" data-aos="fade-up" data-aos-delay="300">
-                <h2>Manufacturing</h2>
-                <p>Production efficiency analytics and quality control insights...</p>
-                <div class="popup-content">
-                    <h4>Manufacturing Solutions</h4>
-                    <p>Integrated analytics for manufacturing operations.</p>
-                    <ul>
-                        <li>Production efficiency</li>
-                        <li>Quality control insights</li>
-                        <li>Supply chain analytics</li>
-                        <li>Tools: Celonis, Power BI, Tableau</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="classic-card" data-aos="fade-up" data-aos-delay="400">
-                <h2>Not For Profit</h2>
-                <p>Impact measurement and donor engagement analytics...</p>
-                <div class="popup-content">
-                    <h4>Non-Profit Solutions</h4>
-                    <p>Specialized analytics for non-profit organizations.</p>
-                    <ul>
-                        <li>Impact measurement</li>
-                        <li>Donor engagement</li>
-                        <li>Program effectiveness</li>
-                        <li>Tools: Salesforce Analytics, Tableau, Power BI</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="classic-card" data-aos="fade-up" data-aos-delay="500">
-                <h2>CPG</h2>
-                <p>Consumer behavior analysis and market trend insights...</p>
-                <div class="popup-content">
-                    <h4>CPG Solutions</h4>
-                    <p>Comprehensive analytics for consumer packaged goods.</p>
-                    <ul>
-                        <li>Consumer behavior analysis</li>
-                        <li>Market trend insights</li>
-                        <li>Sales forecasting</li>
-                        <li>Tools: Power BI, Tableau, Salesforce Analytics</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="classic-card" data-aos="fade-up" data-aos-delay="600">
-                <h2>Banking and Financial Services</h2>
-                <p>Risk analysis and customer behavior insights...</p>
-                <div class="popup-content">
-                    <h4>Financial Services Solutions</h4>
-                    <p>Advanced analytics for financial institutions.</p>
-                    <ul>
-                        <li>Risk analysis</li>
-                        <li>Customer behavior insights</li>
-                        <li>Fraud detection</li>
-                        <li>Tools: Power BI, Tableau, Salesforce Analytics</li>
-                    </ul>
-                </div>
+    
+    <section class="challenges" data-aos="fade-up">
+        <img class="analytics_img" src="/images/c_analytics.jpg" alt="">
+        <div>
+            <h2>Understanding the Challenges</h2>
+            <ul>
+                <li>Data Silos & Integration Complexity</li>
+                <li>Real-Time Analytics Requirements</li>
+                <li>Data Quality & Governance</li>
+                <li>Scalability & Performance</li>
+            </ul>
+        </div>
+    </section>
+    
+    <section class="trends" data-aos="fade-up">
+        <img class="analytics_img" src="/images/tech_analytics.jpg" alt="">
+        <div>
+            <h2>Technology Trends</h2>
+            <ul>
+                <li>AI-Powered Predictive Analytics</li>
+                <li>Natural Language Processing</li>
+                <li>Real-Time Data Processing</li>
+                <li>Augmented Analytics</li>
+            </ul>
+        </div>
+    </section>
+    
+    <section class="accelerators" data-aos="fade-up">
+        <img class="analytics_img" src="/images/Analytic_Dgt.png" alt="">
+        <div>
+            <h2>DGT Accelerators</h2>
+            <ul>
+                <li>DGT Analytics Hub™: Unified analytics platform</li>
+                <li>AI-Powered Data Quality Engine</li>
+                <li>Real-Time Analytics Dashboard</li>
+            </ul>
+        </div>
+    </section>
+    
+    <section class="success" data-aos="fade-up">
+        <img class="analytics_img" src="/images/case_analytics.jpg" alt="">
+        <div>
+            <h2>Case Study</h2>
+            <ul>
+                <li>Global Retailer: 40% increase in sales forecasting accuracy</li>
+                <li>Real-time inventory optimization</li>
+                <li>Enhanced customer segmentation</li>
+            </ul>
+            <div class="whitebutton" onclick="showDownloadPopup()" style="float: left;"> 
+                <a href="#">Download</a><br>
+                <span class="up">Click to Download</span><br>
+                <span class="down" id="file-info">Fetching size...</span>
             </div>
         </div>
-    </div>
-
+    </section>
+    
     <section class="cta-section" data-aos="fade-up">
         <div class="cta-wrapper">
-            <h2>Ready to Transform Your Data into Insights?</h2>
-            <a href="/contactus" class="cta-button">Start Your Journey</a>
+            <h2>Ready to Unlock Your Data's Potential?</h2>
+            <a href="/contactus" class="cta-button">Contact Us</a>
         </div>
     </section>
 
@@ -783,20 +668,6 @@
             once: true,
             offset: 100,
             easing: 'ease-out-cubic'
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const text = document.querySelector('.animated-text');
-            const words = text.textContent.split(' ');
-            text.textContent = '';
-            
-            words.forEach((word, index) => {
-                const span = document.createElement('span');
-                span.textContent = word + ' ';
-                span.style.animationDelay = `${0.6 + (index * 0.03)}s`;
-                span.style.animation = 'wordFadeIn 0.5s ease-out forwards';
-                text.appendChild(span);
-            });
         });
     </script>
 </body>
