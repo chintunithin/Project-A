@@ -460,497 +460,464 @@
     }
 }
 
+/* Search Styles */
+.nav__item--search {
+    position: relative;
+}
+
+.search-toggle {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.search-toggle:hover {
+    color: #F4A261;
+}
+
+.search-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 300px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    display: none;
+    z-index: 1000;
+}
+
+.search-dropdown.active {
+    display: block;
+    animation: slideDown 0.3s ease;
+}
+
+.search-input-wrapper {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 10px 35px 10px 15px;
+    border: 2px solid #F4A261;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#searchInput:focus {
+    border-color: #d86f2d;
+}
+
+.search-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #F4A261;
+}
+
+.search-results {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.search-result-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    text-decoration: none;
+    color: #333;
+}
+
+.search-result-item:hover {
+    background-color: #fff5eb;
+}
+
+.search-result-item i {
+    margin-right: 8px;
+    color: #F4A261;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .search-dropdown {
+        width: 100%;
+        right: -15px;
+    }
+}
+
     </style>
 </head>
 <body>
-    <!-- New Navigation Bar with BEM -->
-    <nav class="nav">
-        <div class="nav__container">
-            <!-- Logo Section -->
-            <div class="nav__logo">
-                <a href="index" class="nav__logo-link">
-                    <img src="/images/DawnTech_Icon.png" alt="Logo" class="nav__logo-img">
-                    <div class="nav__logo-text">
-                        <h1 class="nav__logo-title">DAWNDIGITALTECHNOLOGY</h1>
-                        <p class="nav__logo-subtitle">YOUR AI PARTNER FOR SCALABLE, FUTURE-READY ENTERPRISES</p>
-                    </div>
-                </a>
-            </div>
+    <%- include('partials/navbar') %>
 
-            <!-- Mobile Menu Toggle -->
-            <button class="nav__toggle" aria-label="Toggle Menu" type="button">
-                <span class="nav__toggle-icon"></span>
-            </button>
-
-            <!-- Navigation Menu -->
-            <div class="nav__menu">
-                <ul class="nav__list">
-                    <li class="nav__item">
-                        <a href="index" class="nav__link">
-                            <i class="fas fa-home nav__icon"></i>
-                            <span>Home</span>
-                        </a>
-                    </li>
-                    
-                    <!-- Technology Offerings Dropdown -->
-                    <li class="nav__item nav__item--dropdown">
-                        <button class="nav__dropdown-btn">
-                            <i class="fas fa-microchip nav__icon"></i>
-                            <span>Technology Offerings</span>
-                            <i class="fas fa-chevron-down nav__icon nav__icon--dropdown"></i>
-                        </button>
-                        <ul class="nav__dropdown-menu">
-                            <button id="submenu-back" type="button" class="submenu-back"><i class="fas fa-arrow-left"></i> Back</button>
-                            <li><a href="/Mobility"><i class="fas fa-mobile-alt"></i> Mobility</a></li>
-                            <li><a href="/integration"><i class="fas fa-plug"></i> Integration</a></li>
-                            <li><a href="/data-migrations"><i class="fas fa-database"></i> Data Migration</a></li>
-                            <li><a href="/Analytics"><i class="fas fa-chart-line"></i> Analytics</a></li>
-                        </ul>
-                    </li>
-
-                    <!-- Other Offerings Mega Menu -->
-                    <li class="nav__item nav__item--mega">
-                        <button class="nav__mega-btn">
-                            <i class="fas fa-th-large nav__icon"></i>
-                            <span>Other Offerings</span>
-                            <i class="fas fa-chevron-down nav__icon nav__icon--dropdown"></i>
-                        </button>
-                        <div class="nav__mega-menu">
-                            <button id="submenu-back-mega" type="button" class="submenu-back"><i class="fas fa-arrow-left"></i> Back</button>
-                            <div class="nav__mega-grid">
-                                <!-- Services Section -->
-                                <div class="nav__mega-section">
-                                    <h3 class="nav__mega-title"><i class="fas fa-cogs"></i> Services</h3>
-                                    <ul class="nav__mega-list">
-                                        <li><a href="/hospitality"><i class="fas fa-hotel"></i> Hospitality & Travel</a></li>
-                                        <li><a href="/utilities"><i class="fas fa-bolt"></i> Energy & Utilities</a></li>
-                                        <li><a href="/manufacturing"><i class="fas fa-industry"></i> Manufacturing</a></li>
-                                        <li><a href="/notforprofit"><i class="fas fa-hands-helping"></i> Not-for-Profit</a></li>
-                                        <li><a href="/consumercpg"><i class="fas fa-shopping-cart"></i> CPG</a></li>
-                                        <li><a href="/banking"><i class="fas fa-university"></i> Banking & Financial Services</a></li>
-                                    </ul>
-                                </div>
-
-                                <!-- Solutions Section -->
-                                <div class="nav__mega-section">
-                                    <h3 class="nav__mega-title"><i class="fas fa-lightbulb"></i> Solutions</h3>
-                                    <ul class="nav__mega-list">
-                                        <li><a href="/businessprocesstransformation"><i class="fas fa-sync"></i> Business Process Transformation</a></li>
-                                        <li><a href="/technologyimplementation"><i class="fas fa-tools"></i> Technology Implementation</a></li>
-                                        <li><a href="/cloudmigration"><i class="fas fa-cloud"></i> Cloud Migration</a></li>
-                                        <li><a href="/ManagedServices"><i class="fas fa-users-cog"></i> Shared and Managed Services</a></li>
-                                        <li><a href="/changemanagement"><i class="fas fa-exchange-alt"></i> Change Management</a></li>
-                                        <li><a href="/designthinking"><i class="fas fa-pencil-ruler"></i> Design Thinking</a></li>
-                                    </ul>
-                                </div>
-
-                                <!-- Technologies Section -->
-                                <div class="nav__mega-section">
-                                    <h3 class="nav__mega-title"><i class="fas fa-brain"></i> Technologies</h3>
-                                    <ul class="nav__mega-list">
-                                        <li><a href="/alml"><i class="fas fa-robot"></i> AI and ML</a></li>
-                                        <li><a href="/dataanalyticsvisualization"><i class="fas fa-chart-bar"></i> Analytics and Visualization</a></li>
-                                        <li><a href="/digitalskilltraining"><i class="fas fa-graduation-cap"></i> Digital Skills Training</a></li>
-                                    </ul>
-                                </div>
-
-                                <!-- Platforms Section -->
-                                <div class="nav__mega-section">
-                                    <h3 class="nav__mega-title"><i class="fas fa-layer-group"></i> Platforms</h3>
-                                    <ul class="nav__mega-list">
-                                        <li><a href="/salesforce"><i class="fab fa-salesforce"></i> Salesforce</a></li>
-                                        <li><a href="/sap"><i class="fab fa-sap"></i> SAP</a></li>
-                                        <li><a href="/servicenow"><i class="fas fa-cogs"></i> ServiceNow</a></li>
-                                        <li><a href="/microsoft"><i class="fab fa-microsoft"></i> Microsoft</a></li>
-                                        <li><a href="/celonis"><i class="fas fa-chart-network"></i> Celonis</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="nav__item">
-                        <a href="/contactus" class="nav__link">
-                            <i class="fas fa-envelope nav__icon"></i>
-                            <span>Contact</span>
-                        </a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="about" class="nav__link">
-                            <i class="fas fa-info-circle nav__icon"></i>
-                            <span>About Us</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-
-<section class="background-container">
-  <% if (media.length > 1) { %>
-      <div class="slideshow">
-          <% media.forEach(item => { %>
-              <% if (item.mediaType === 'image') { %>
-                  <img src="/images/<%= item.mediaUrl %>" alt="Background">
-              <% } %>
-          <% }); %>
-      </div>
-  <% } else if (media.length === 1 && media[0].mediaType === 'video') { %>
-      <video class="bg-video" autoplay loop muted>
-          <source src="/images/<%= media[0].mediaUrl %>" type="video/mp4">
-      </video>
-  <% } %>
-  
-  <section class="hero title-hero">
-      <h1>We Are Dawn Digital Technology – Industry-First AI-Powered Solutions</h1>
-      <p>Transforming industries with <span class="dynamic-text"></span></p>
-  </section>
-</section>
-<section class="swiper-container">
-    <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide" style="background-image: url('images/indexHospitality.jpg');">
-                <a href="/hospitality"> <div>
-                    <h3>Hospitality & Travel</h3>
-                    <p>Enhancing customer experiences with AI-driven solutions for seamless travel and hospitality services.</p>
-                </div></a>
-            </div>
-        
-        <div class="swiper-slide" style="background-image: url('images/energyandutilities.webp');">
-            <a href="/utilities"> <div>
-                    <h3>Energy & Utilities</h3>
-                    <p>Driving efficiency and sustainability with smart grid technology and predictive analytics.</p>
-                </a>    </div>
-            </div>
-          <div class="swiper-slide" style="background-image: url('images/indexmanufacturing.jpg');">
-            <a href="/manufacturing">    <div>
-                    <h3>Manufacturing</h3>
-                    <p>Optimizing production processes through AI-powered automation and real-time data insights.</p>
-                </a>    </div>
-            </div>
-          <div class="swiper-slide" style="background-image: url('images/notforprofit.jpeg');">
-            <a href="/notforprofit">   <div>
-                    <h3>Not-for-Profit</h3>
-                    <p>Empowering organizations with digital solutions to maximize impact and streamline operations.</p>
-                </a>     </div>
-            </div>
-        <div class="swiper-slide" style="background-image: url('images/ServiceNowIcon.webp');">
-            <a href="/consumercpg">   <div>
-                    <h3>CPG</h3>
-                    <p>Revolutionizing consumer goods with AI-powered demand forecasting and personalized marketing.</p>
-                </a>     </div>
-            </div>
-      <div class="swiper-slide" style="background-image: url('images/bankingmain.jpg');">
-        <a href="/banking">       <div>
-                    <h3>Banking & Financial Services</h3>
-                    <p>Enhancing security, customer insights, and operational efficiency in financial institutions.</p>
-                </a>    </div>
-           </div>
-        </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-pagination"></div>
-    </div>
-</section>
-  <!-- <section>
-    <div class="background-container">
+    <section class="background-container">
         <% if (media.length > 1) { %>
             <div class="slideshow">
                 <% media.forEach(item => { %>
                     <% if (item.mediaType === 'image') { %>
-                        <img class="bg-slide" src="/images/<%= item.mediaUrl %>" alt="Background">
+                        <img src="/images/<%= item.mediaUrl %>" alt="Background">
                     <% } %>
                 <% }); %>
             </div>
         <% } else if (media.length === 1 && media[0].mediaType === 'video') { %>
             <video class="bg-video" autoplay loop muted>
-                <source src="/videos/<%= media[0].mediaUrl %>" type="video/mp4">
+                <source src="/images/<%= media[0].mediaUrl %>" type="video/mp4">
             </video>
         <% } %>
-    </div>
-  </section> -->
-<section class="dynamic-section">
-      <h2 class="section-heading" style="text-align: center; color: #d86f2d; font-size: 32px; font-weight: 700; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px;">Upcoming Events</h2>
-      <div class="Event-Container">
-          <% events.forEach(event => { %>
-              <div class="Event-Box" style="background-image: url('/images/<%= event.imageUrl %>');">
-                  <div class="box">
-                      <h3><%= event.title %></h3>
-                      <p><%= event.description %></p>
-                      <% if (event.link) { %>
-                          <a href="<%= event.link %>" target="_blank">More Info</a>
-                      <% } %>
+        
+        <section class="hero title-hero">
+            <h1>We Are Dawn Digital Technology – Industry-First AI-Powered Solutions</h1>
+            <p>Transforming industries with <span class="dynamic-text"></span></p>
+        </section>
+    </section>
+    <section class="swiper-container">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" style="background-image: url('images/indexHospitality.jpg');">
+                    <a href="/hospitality"> <div>
+                        <h3>Hospitality & Travel</h3>
+                        <p>Enhancing customer experiences with AI-driven solutions for seamless travel and hospitality services.</p>
+                    </div></a>
+                </div>
+            
+            <div class="swiper-slide" style="background-image: url('images/energyandutilities.webp');">
+                <a href="/utilities"> <div>
+                        <h3>Energy & Utilities</h3>
+                        <p>Driving efficiency and sustainability with smart grid technology and predictive analytics.</p>
+                    </a>    </div>
+                </div>
+              <div class="swiper-slide" style="background-image: url('images/indexmanufacturing.jpg');">
+                <a href="/manufacturing">    <div>
+                        <h3>Manufacturing</h3>
+                        <p>Optimizing production processes through AI-powered automation and real-time data insights.</p>
+                    </a>    </div>
+                </div>
+              <div class="swiper-slide" style="background-image: url('images/notforprofit.jpeg');">
+                <a href="/notforprofit">   <div>
+                        <h3>Not-for-Profit</h3>
+                        <p>Empowering organizations with digital solutions to maximize impact and streamline operations.</p>
+                    </a>     </div>
+                </div>
+            <div class="swiper-slide" style="background-image: url('images/ServiceNowIcon.webp');">
+                <a href="/consumercpg">   <div>
+                        <h3>CPG</h3>
+                        <p>Revolutionizing consumer goods with AI-powered demand forecasting and personalized marketing.</p>
+                    </a>     </div>
+                </div>
+          <div class="swiper-slide" style="background-image: url('images/bankingmain.jpg');">
+            <a href="/banking">       <div>
+                        <h3>Banking & Financial Services</h3>
+                        <p>Enhancing security, customer insights, and operational efficiency in financial institutions.</p>
+                    </a>    </div>
+               </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+    <section class="dynamic-section">
+          <h2 class="section-heading" style="text-align: center; color: #d86f2d; font-size: 32px; font-weight: 700; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px;">Upcoming Events</h2>
+          <div class="Event-Container">
+              <% events.forEach(event => { %>
+                  <div class="Event-Box" style="background-image: url('/images/<%= event.imageUrl %>');">
+                      <div class="box">
+                          <h3><%= event.title %></h3>
+                          <p><%= event.description %></p>
+                          <% if (event.link) { %>
+                              <a href="<%= event.link %>" target="_blank">More Info</a>
+                          <% } %>
+                      </div>
+                  </div>
+              <% }); %>
+          </div>
+    </section>
+    <section class="intro-section" data-aos="fade-up">
+      <div class="intro-container">
+          <div class="intro-content">
+              <div class="intro-header" data-aos="fade-right">
+                  <h2>Our Expertise</h2>
+                  <p>Transforming businesses through innovative solutions</p>
+              </div>
+              
+              <div class="content-grid">
+                  <div class="content-block" data-aos="fade-up" data-aos-delay="100">
+                      <i class="fas fa-sync-alt"></i>
+                      <h3>Business Process Transformation</h3>
+                      <div class="popup-content">
+                          <h4>Business Process Transformation</h4>
+                          <p>Leverage Salesforce and AI to streamline your business processes. Our solutions help automate workflows, reduce manual tasks, and increase operational efficiency.</p>
+                          <ul>
+                              <li>Process Automation</li>
+                              <li>Workflow Optimization</li>
+                              <li>Digital Transformation</li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="content-block" data-aos="fade-up" data-aos-delay="200">
+                      <i class="fas fa-cogs"></i>
+                      <h3>Technology Implementation</h3>
+                      <div class="popup-content">
+                          <h4>Technology Implementation</h4>
+                          <p>Expert implementation of Salesforce solutions with AI integration. We ensure seamless deployment and maximum ROI for your technology investments.</p>
+                          <ul>
+                              <li>Salesforce Implementation</li>
+                              <li>AI Integration</li>
+                              <li>Custom Development</li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="content-block" data-aos="fade-up" data-aos-delay="300">
+                      <i class="fas fa-cloud"></i>
+                      <h3>Cloud Migration</h3>
+                      <div class="popup-content">
+                          <h4>Cloud Migration</h4>
+                          <p>Seamless migration to Salesforce cloud with AI capabilities. We handle the entire process ensuring zero downtime and data integrity.</p>
+                          <ul>
+                              <li>Data Migration</li>
+                              <li>Cloud Architecture</li>
+                              <li>Security Implementation</li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="content-block" data-aos="fade-up" data-aos-delay="400">
+                      <i class="fas fa-users-cog"></i>
+                      <h3>Shared and Managed Services</h3>
+                      <div class="popup-content">
+                          <h4>Shared and Managed Services</h4>
+                          <p>Comprehensive managed services for Salesforce and AI solutions. We provide ongoing support, maintenance, and optimization.</p>
+                          <ul>
+                              <li>24/7 Support</li>
+                              <li>System Maintenance</li>
+                              <li>Performance Optimization</li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="content-block" data-aos="fade-up" data-aos-delay="500">
+                      <i class="fas fa-exchange-alt"></i>
+                      <h3>Change Management</h3>
+                      <div class="popup-content">
+                          <h4>Change Management</h4>
+                          <p>Expert guidance through digital transformation. We help organizations adapt to new Salesforce and AI technologies effectively.</p>
+                          <ul>
+                              <li>Training Programs</li>
+                              <li>User Adoption</li>
+                              <li>Change Strategy</li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="content-block" data-aos="fade-up" data-aos-delay="600">
+                      <i class="fas fa-lightbulb"></i>
+                      <h3>Design Thinking</h3>
+                      <div class="popup-content">
+                          <h4>Design Thinking</h4>
+                          <p>Innovative approach to Salesforce and AI solutions. We use design thinking to create user-centric, effective digital experiences.</p>
+                          <ul>
+                              <li>User Experience Design</li>
+                              <li>Solution Architecture</li>
+                              <li>Innovation Workshops</li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="content-block" data-aos="fade-up" data-aos-delay="700">
+                      <i class="fas fa-brain"></i>
+                      <h3>AI and ML</h3>
+                      <div class="popup-content">
+                          <h4>AI and Machine Learning</h4>
+                          <p>Advanced AI and ML solutions integrated with Salesforce. We help businesses leverage artificial intelligence for better decision-making.</p>
+                          <ul>
+                              <li>Predictive Analytics</li>
+                              <li>AI Automation</li>
+                              <li>Machine Learning Models</li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="content-block" data-aos="fade-up" data-aos-delay="800">
+                      <i class="fas fa-chart-line"></i>
+                      <h3>Analytics and Visualization</h3>
+                      <div class="popup-content">
+                          <h4>Analytics and Visualization</h4>
+                          <p>Powerful analytics and visualization tools for Salesforce data. Transform your data into actionable insights with AI-powered analytics.</p>
+                          <ul>
+                              <li>Data Analytics</li>
+                              <li>Business Intelligence</li>
+                              <li>Custom Dashboards</li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="content-block" data-aos="fade-up" data-aos-delay="900">
+                      <i class="fas fa-graduation-cap"></i>
+                      <h3>Digital Skills Training</h3>
+                      <div class="popup-content">
+                          <h4>Digital Skills Training</h4>
+                          <p>Comprehensive training programs for Salesforce and AI technologies. We help your team master new digital tools and technologies.</p>
+                          <ul>
+                              <li>Salesforce Training</li>
+                              <li>AI Awareness</li>
+                              <li>Digital Literacy</li>
+                          </ul>
+                      </div>
                   </div>
               </div>
-          <% }); %>
-      </div>
-</section>
-  <section class="intro-section" data-aos="fade-up">
-    <div class="intro-container">
-        <div class="intro-content">
-            <div class="intro-header" data-aos="fade-right">
-                <h2>Our Expertise</h2>
-                <p>Transforming businesses through innovative solutions</p>
-            </div>
-            
-            <div class="content-grid">
-                <div class="content-block" data-aos="fade-up" data-aos-delay="100">
-                    <i class="fas fa-sync-alt"></i>
-                    <h3>Business Process Transformation</h3>
-                    <div class="popup-content">
-                        <h4>Business Process Transformation</h4>
-                        <p>Leverage Salesforce and AI to streamline your business processes. Our solutions help automate workflows, reduce manual tasks, and increase operational efficiency.</p>
-                        <ul>
-                            <li>Process Automation</li>
-                            <li>Workflow Optimization</li>
-                            <li>Digital Transformation</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="content-block" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-cogs"></i>
-                    <h3>Technology Implementation</h3>
-                    <div class="popup-content">
-                        <h4>Technology Implementation</h4>
-                        <p>Expert implementation of Salesforce solutions with AI integration. We ensure seamless deployment and maximum ROI for your technology investments.</p>
-                        <ul>
-                            <li>Salesforce Implementation</li>
-                            <li>AI Integration</li>
-                            <li>Custom Development</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="content-block" data-aos="fade-up" data-aos-delay="300">
-                    <i class="fas fa-cloud"></i>
-                    <h3>Cloud Migration</h3>
-                    <div class="popup-content">
-                        <h4>Cloud Migration</h4>
-                        <p>Seamless migration to Salesforce cloud with AI capabilities. We handle the entire process ensuring zero downtime and data integrity.</p>
-                        <ul>
-                            <li>Data Migration</li>
-                            <li>Cloud Architecture</li>
-                            <li>Security Implementation</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="content-block" data-aos="fade-up" data-aos-delay="400">
-                    <i class="fas fa-users-cog"></i>
-                    <h3>Shared and Managed Services</h3>
-                    <div class="popup-content">
-                        <h4>Shared and Managed Services</h4>
-                        <p>Comprehensive managed services for Salesforce and AI solutions. We provide ongoing support, maintenance, and optimization.</p>
-                        <ul>
-                            <li>24/7 Support</li>
-                            <li>System Maintenance</li>
-                            <li>Performance Optimization</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="content-block" data-aos="fade-up" data-aos-delay="500">
-                    <i class="fas fa-exchange-alt"></i>
-                    <h3>Change Management</h3>
-                    <div class="popup-content">
-                        <h4>Change Management</h4>
-                        <p>Expert guidance through digital transformation. We help organizations adapt to new Salesforce and AI technologies effectively.</p>
-                        <ul>
-                            <li>Training Programs</li>
-                            <li>User Adoption</li>
-                            <li>Change Strategy</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="content-block" data-aos="fade-up" data-aos-delay="600">
-                    <i class="fas fa-lightbulb"></i>
-                    <h3>Design Thinking</h3>
-                    <div class="popup-content">
-                        <h4>Design Thinking</h4>
-                        <p>Innovative approach to Salesforce and AI solutions. We use design thinking to create user-centric, effective digital experiences.</p>
-                        <ul>
-                            <li>User Experience Design</li>
-                            <li>Solution Architecture</li>
-                            <li>Innovation Workshops</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="content-block" data-aos="fade-up" data-aos-delay="700">
-                    <i class="fas fa-brain"></i>
-                    <h3>AI and ML</h3>
-                    <div class="popup-content">
-                        <h4>AI and Machine Learning</h4>
-                        <p>Advanced AI and ML solutions integrated with Salesforce. We help businesses leverage artificial intelligence for better decision-making.</p>
-                        <ul>
-                            <li>Predictive Analytics</li>
-                            <li>AI Automation</li>
-                            <li>Machine Learning Models</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="content-block" data-aos="fade-up" data-aos-delay="800">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Analytics and Visualization</h3>
-                    <div class="popup-content">
-                        <h4>Analytics and Visualization</h4>
-                        <p>Powerful analytics and visualization tools for Salesforce data. Transform your data into actionable insights with AI-powered analytics.</p>
-                        <ul>
-                            <li>Data Analytics</li>
-                            <li>Business Intelligence</li>
-                            <li>Custom Dashboards</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="content-block" data-aos="fade-up" data-aos-delay="900">
-                    <i class="fas fa-graduation-cap"></i>
-                    <h3>Digital Skills Training</h3>
-                    <div class="popup-content">
-                        <h4>Digital Skills Training</h4>
-                        <p>Comprehensive training programs for Salesforce and AI technologies. We help your team master new digital tools and technologies.</p>
-                        <ul>
-                            <li>Salesforce Training</li>
-                            <li>AI Awareness</li>
-                            <li>Digital Literacy</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="intro-image-container" data-aos="fade-left">
-            <div class="slideshow2">
-                <img src="/images/image1.jpg" class="slide active" alt="Business Transformation">
-                <img src="/images/image2.jpg" class="slide" alt="Technology Implementation">
-                <img src="/images/image3.jpg" class="slide" alt="Cloud Migration">
-                <img src="/images/image4.webp" class="slide" alt="Shared and Managed Services">
-                <img src="/images/image5.webp" class="slide" alt="AI and ML">
-                <img src="/images/image6.webp" class="slide" alt="Analytics and Visualization">
-                <img src="/images/image7.webp" class="slide" alt="Digital Skills Training">
-            </div>
-            <div class="image-overlay"></div>
-        </div>
-    </div>
-</section>
-<br>
-<section class="offering-section-container">
-    <div class="offering-section-header">Industry To Offerings</div>
-    <div class="offering-section-new">
-        <div class="offering-grid">
-            <a href="/BusinessProcessTransformation" class="offering-card" data-aos="fade-up" data-aos-delay="100">
-                <img src="/images/Business model transformation.jpg" alt="Business Model Transformation" class="offering-image">
-                <div class="offering-content">
-                    <h3 class="offering-title">Business Model Transformation</h3>
-                    <p class="offering-description">Transforming processes, models, and technology for better efficiency.</p>
-                </div>
-            </a>
-            
-            <a href="/TechnologyImplementation" class="offering-card" data-aos="fade-up" data-aos-delay="200">
-                <img src="/images/Technology implementation.jpg" alt="Technology Implementation" class="offering-image">
-                <div class="offering-content">
-                    <h3 class="offering-title">Technology Implementation</h3>
-                    <p class="offering-description">Implementing and upgrading technologies for business improvement.</p>
-                </div>
-            </a>
-            
-            <a href="/cloudmigration" class="offering-card" data-aos="fade-up" data-aos-delay="300">
-                <img src="/images/Cloud migration.jpg" alt="Cloud Migration" class="offering-image">
-                <div class="offering-content">
-                    <h3 class="offering-title">Cloud Migration</h3>
-                    <p class="offering-description">Moving and optimizing services for cloud architecture.</p>
-                </div>
-            </a>
-            
-            <a href="/ManagedServices" class="offering-card" data-aos="fade-up" data-aos-delay="400">
-                <img src="/images/Shared And managed services.jpg" alt="Managed Services" class="offering-image">
-                <div class="offering-content">
-                    <h3 class="offering-title">Shared and Managed Services</h3>
-                    <p class="offering-description">Providing shared and managed service solutions.</p>
-                </div>
-            </a>
-            
-            <a href="/changeManagement" class="offering-card" data-aos="fade-up" data-aos-delay="500">
-                <img src="/images/Change management.jpg" alt="Change Management" class="offering-image">
-                <div class="offering-content">
-                    <h3 class="offering-title">Change Management</h3>
-                    <p class="offering-description">Initiatives to manage organizational change effectively.</p>
-                </div>
-            </a>
-            
-            <a href="/DesignThinking" class="offering-card" data-aos="fade-up" data-aos-delay="600">
-                <img src="/images/design_thinking.webp" alt="Design Thinking" class="offering-image">
-                <div class="offering-content">
-                    <h3 class="offering-title">Design Thinking</h3>
-                    <p class="offering-description">Workshops focused on innovative design methodologies.</p>
-                </div>
-            </a>
-            
-            <a href="/ALML" class="offering-card" data-aos="fade-up" data-aos-delay="700">
-                <img src="/images/ai_machine_learning.webp" alt="AI and ML" class="offering-image">
-                <div class="offering-content">
-                    <h3 class="offering-title">AI and Machine Learning</h3>
-                    <p class="offering-description">Solutions leveraging AI and machine learning technologies.</p>
-                </div>
-            </a>
-            
-            <a href="/DataAnalyticsVisualization" class="offering-card" data-aos="fade-up" data-aos-delay="800">
-                <img src="/images/Data analytics and visualization.jpg" alt="Data Analytics" class="offering-image">
-                <div class="offering-content">
-                    <h3 class="offering-title">Data Analytics</h3>
-                    <p class="offering-description">Analyzing data and creating visual representations for decision making.</p>
-                </div>
-            </a>
-            
-            <a href="/DigitalSkillTraining" class="offering-card" data-aos="fade-up" data-aos-delay="900">
-                <img src="/images/Digital skills training.jpg" alt="Digital Skills" class="offering-image">
-                <div class="offering-content">
-                    <h3 class="offering-title">Digital Skills Training</h3>
-                    <p class="offering-description">Training programs to enhance digital skills and AI awareness.</p>
-                </div>
-            </a>
-        </div>
-    </div>
-</section>
-<div class="offering-section-header">Contact</div>
- 
-<footer class="footer">
-  <div class="container">
-      <div class="footer-content">
-          <div class="footer-section about" data-aos="fade-up">
-              <h2>Dawn Digital Technology</h2>
-              <p>Your trusted partner in innovation and excellence.</p>
-              <div class="socials">
-                  <a href="#"><i class="fab fa-facebook-f"></i></a>
-                  <a href="#"><i class="fab fa-twitter"></i></a>
-                  <a href="#"><i class="fab fa-instagram"></i></a>
-                  <a href="https://www.linkedin.com/company/dawndgtllc/"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+          
+          <div class="intro-image-container" data-aos="fade-left">
+              <div class="slideshow2">
+                  <img src="/images/image1.jpg" class="slide active" alt="Business Transformation">
+                  <img src="/images/image2.jpg" class="slide" alt="Technology Implementation">
+                  <img src="/images/image3.jpg" class="slide" alt="Cloud Migration">
+                  <img src="/images/image4.webp" class="slide" alt="Shared and Managed Services">
+                  <img src="/images/image5.webp" class="slide" alt="AI and ML">
+                  <img src="/images/image6.webp" class="slide" alt="Analytics and Visualization">
+                  <img src="/images/image7.webp" class="slide" alt="Digital Skills Training">
               </div>
-          </div>
-
-          <div class="footer-section links" data-aos="fade-up" data-aos-delay="100">
-              <h2>Quick Links</h2>
-              <ul>
-                  <li><a href="/index">Home</a></li>
-                  <li><a href="/about">About</a></li>
-                  <!-- <li><a href="#">Services</a></li> -->
-                  <li><a href="/contactus">Contact</a></li>
-                  <li><a href="/About">Blog</a></li>
-              </ul>
-          </div>
-
-          <div class="footer-section contact" data-aos="fade-up" data-aos-delay="200">
-              <h2>Contact Us</h2>
-              <p><i class="fas fa-map-marker-alt"></i> 3 Sugarcreek Center Blvd, Suite 100, Sugar Land, TX 77478</p>
-              <!-- <p><i class="fas fa-phone"></i> +123 456 7890</p> -->
-              <p><i class="fas fa-envelope"></i> info@dawndgt.com</p>
+              <div class="image-overlay"></div>
           </div>
       </div>
-  </div>
-  <div id="popup-message" class="popup-message">
-      <a href="https://www.linkedin.com/company/dawndgtllc/">Follow us on Linkedin! <i class="fab fa-linkedin"></i></a>
-  </div>
-  
-  <div class="footer-bottom">
-      <p>&copy; 2025 Dawn Digital Technology | All rights reserved.</p>
-  </div>
-</footer>
+  </section>
+  <br>
+  <section class="offering-section-container">
+      <div class="offering-section-header">Industry To Offerings</div>
+      <div class="offering-section-new">
+          <div class="offering-grid">
+              <a href="/BusinessProcessTransformation" class="offering-card" data-aos="fade-up" data-aos-delay="100">
+                  <img src="/images/Business model transformation.jpg" alt="Business Model Transformation" class="offering-image">
+                  <div class="offering-content">
+                      <h3 class="offering-title">Business Model Transformation</h3>
+                      <p class="offering-description">Transforming processes, models, and technology for better efficiency.</p>
+                  </div>
+              </a>
+              
+              <a href="/TechnologyImplementation" class="offering-card" data-aos="fade-up" data-aos-delay="200">
+                  <img src="/images/Technology implementation.jpg" alt="Technology Implementation" class="offering-image">
+                  <div class="offering-content">
+                      <h3 class="offering-title">Technology Implementation</h3>
+                      <p class="offering-description">Implementing and upgrading technologies for business improvement.</p>
+                  </div>
+              </a>
+              
+              <a href="/cloudmigration" class="offering-card" data-aos="fade-up" data-aos-delay="300">
+                  <img src="/images/Cloud migration.jpg" alt="Cloud Migration" class="offering-image">
+                  <div class="offering-content">
+                      <h3 class="offering-title">Cloud Migration</h3>
+                      <p class="offering-description">Moving and optimizing services for cloud architecture.</p>
+                  </div>
+              </a>
+              
+              <a href="/ManagedServices" class="offering-card" data-aos="fade-up" data-aos-delay="400">
+                  <img src="/images/Shared And managed services.jpg" alt="Managed Services" class="offering-image">
+                  <div class="offering-content">
+                      <h3 class="offering-title">Shared and Managed Services</h3>
+                      <p class="offering-description">Providing shared and managed service solutions.</p>
+                  </div>
+              </a>
+              
+              <a href="/changeManagement" class="offering-card" data-aos="fade-up" data-aos-delay="500">
+                  <img src="/images/Change management.jpg" alt="Change Management" class="offering-image">
+                  <div class="offering-content">
+                      <h3 class="offering-title">Change Management</h3>
+                      <p class="offering-description">Initiatives to manage organizational change effectively.</p>
+                  </div>
+              </a>
+              
+              <a href="/DesignThinking" class="offering-card" data-aos="fade-up" data-aos-delay="600">
+                  <img src="/images/design_thinking.webp" alt="Design Thinking" class="offering-image">
+                  <div class="offering-content">
+                      <h3 class="offering-title">Design Thinking</h3>
+                      <p class="offering-description">Workshops focused on innovative design methodologies.</p>
+                  </div>
+              </a>
+              
+              <a href="/ALML" class="offering-card" data-aos="fade-up" data-aos-delay="700">
+                  <img src="/images/ai_machine_learning.webp" alt="AI and ML" class="offering-image">
+                  <div class="offering-content">
+                      <h3 class="offering-title">AI and Machine Learning</h3>
+                      <p class="offering-description">Solutions leveraging AI and machine learning technologies.</p>
+                  </div>
+              </a>
+              
+              <a href="/DataAnalyticsVisualization" class="offering-card" data-aos="fade-up" data-aos-delay="800">
+                  <img src="/images/Data analytics and visualization.jpg" alt="Data Analytics" class="offering-image">
+                  <div class="offering-content">
+                      <h3 class="offering-title">Data Analytics</h3>
+                      <p class="offering-description">Analyzing data and creating visual representations for decision making.</p>
+                  </div>
+              </a>
+              
+              <a href="/DigitalSkillTraining" class="offering-card" data-aos="fade-up" data-aos-delay="900">
+                  <img src="/images/Digital skills training.jpg" alt="Digital Skills" class="offering-image">
+                  <div class="offering-content">
+                      <h3 class="offering-title">Digital Skills Training</h3>
+                      <p class="offering-description">Training programs to enhance digital skills and AI awareness.</p>
+                  </div>
+              </a>
+          </div>
+      </div>
+  </section>
+  <div class="offering-section-header">Contact</div>
+   
+  <footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section about" data-aos="fade-up">
+                <h2>Dawn Digital Technology</h2>
+                <p>Your trusted partner in innovation and excellence.</p>
+                <div class="socials">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/dawndgtllc/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section links" data-aos="fade-up" data-aos-delay="100">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="/index">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <!-- <li><a href="#">Services</a></li> -->
+                    <li><a href="/contactus">Contact</a></li>
+                    <li><a href="/About">Blog</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section contact" data-aos="fade-up" data-aos-delay="200">
+                <h2>Contact Us</h2>
+                <p><i class="fas fa-map-marker-alt"></i> 3 Sugarcreek Center Blvd, Suite 100, Sugar Land, TX 77478</p>
+                <!-- <p><i class="fas fa-phone"></i> +123 456 7890</p> -->
+                <p><i class="fas fa-envelope"></i> info@dawndgt.com</p>
+            </div>
+        </div>
+    </div>
+    <div id="popup-message" class="popup-message">
+        <a href="https://www.linkedin.com/company/dawndgtllc/">Follow us on Linkedin! <i class="fab fa-linkedin"></i></a>
+    </div>
+    
+    <div class="footer-bottom">
+        <p>&copy; 2025 Dawn Digital Technology | All rights reserved.</p>
+    </div>
+  </footer>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
         
         <script>
@@ -1053,14 +1020,14 @@ const phrases = ["cutting-edge AI", "technology", "expertise"];
         });
 
         document.addEventListener("DOMContentLoaded", function () {
-    const titleElement = document.querySelector(".title-hero h1");
+            const titleElement = document.querySelector(".title-hero h1");
 
-    if (window.innerWidth <= 768) {
-        titleElement.textContent = "DGT";
-    }
-});
+            if (window.innerWidth <= 768) {
+                titleElement.textContent = "DGT";
+            }
+        });
 
-</script>
+    </script>
 
 <!-- Add Algolia InstantSearch.js -->
 <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.22.1/dist/algoliasearch-lite.umd.js"></script>

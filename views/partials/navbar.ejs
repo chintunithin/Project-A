@@ -1,0 +1,178 @@
+<!-- New Navigation Bar with BEM -->
+<nav class="nav">
+    <div class="nav__container">
+        <!-- Logo Section -->
+        <div class="nav__logo">
+            <div class="nav__logo-link">
+                <img src="/images/DawnTech_Icon.png" alt="Logo" class="nav__logo-img">
+                <div class="nav__logo-text">
+                    <h1 class="nav__logo-title">DAWNDIGITALTECHNOLOGY</h1>
+                    <p class="nav__logo-subtitle">YOUR AI PARTNER FOR SCALABLE, FUTURE-READY ENTERPRISES</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="nav__toggle" aria-label="Toggle Menu" type="button">
+            <span class="nav__toggle-icon"></span>
+        </button>
+
+        <!-- Navigation Menu -->
+        <div class="nav__menu">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a href="index" class="nav__link">
+                        <i class="fas fa-home nav__icon"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                
+                <!-- Technology Offerings Dropdown -->
+                <li class="nav__item nav__item--dropdown">
+                    <button class="nav__dropdown-btn">
+                        <i class="fas fa-microchip nav__icon"></i>
+                        <span>Technology Offerings</span>
+                        <i class="fas fa-chevron-down nav__icon nav__icon--dropdown"></i>
+                    </button>
+                    <ul class="nav__dropdown-menu">
+                        <span class="submenu-back" onclick="handleBackNavigation(this, event)"><i class="fas fa-arrow-left"></i> Back</span>
+                        <li><a href="/Mobility"><i class="fas fa-mobile-alt"></i> Mobility</a></li>
+                        <li><a href="/integration"><i class="fas fa-plug"></i> Integration</a></li>
+                        <li><a href="/data-migrations"><i class="fas fa-database"></i> Data Migration</a></li>
+                        <li><a href="/Analytics"><i class="fas fa-chart-line"></i> Analytics</a></li>
+                    </ul>
+                </li>
+
+                <!-- Other Offerings Mega Menu -->
+                <li class="nav__item nav__item--mega">
+                    <button class="nav__mega-btn">
+                        <i class="fas fa-th-large nav__icon"></i>
+                        <span>Other Offerings</span>
+                        <i class="fas fa-chevron-down nav__icon nav__icon--dropdown"></i>
+                    </button>
+                    <div class="nav__mega-menu">
+                        <span class="submenu-back" onclick="handleBackNavigation(this, event)"><i class="fas fa-arrow-left"></i> Back</span>
+                        <div class="nav__mega-grid">
+                            <!-- Services Section -->
+                            <div class="nav__mega-section">
+                                <h3 class="nav__mega-title"><i class="fas fa-cogs"></i> Services</h3>
+                                <ul class="nav__mega-list">
+                                    <li><a href="/hospitality"><i class="fas fa-hotel"></i> Hospitality & Travel</a></li>
+                                    <li><a href="/utilities"><i class="fas fa-bolt"></i> Energy & Utilities</a></li>
+                                    <li><a href="/manufacturing"><i class="fas fa-industry"></i> Manufacturing</a></li>
+                                    <li><a href="/notforprofit"><i class="fas fa-hands-helping"></i> Not-for-Profit</a></li>
+                                    <li><a href="/consumercpg"><i class="fas fa-shopping-cart"></i> CPG</a></li>
+                                    <li><a href="/banking"><i class="fas fa-university"></i> Banking & Financial Services</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- Solutions Section -->
+                            <div class="nav__mega-section">
+                                <h3 class="nav__mega-title"><i class="fas fa-lightbulb"></i> Solutions</h3>
+                                <ul class="nav__mega-list">
+                                    <li><a href="/businessprocesstransformation"><i class="fas fa-sync"></i> Business Process Transformation</a></li>
+                                    <li><a href="/technologyimplementation"><i class="fas fa-tools"></i> Technology Implementation</a></li>
+                                    <li><a href="/cloudmigration"><i class="fas fa-cloud"></i> Cloud Migration</a></li>
+                                    <li><a href="/ManagedServices"><i class="fas fa-users-cog"></i> Shared and Managed Services</a></li>
+                                    <li><a href="/changemanagement"><i class="fas fa-exchange-alt"></i> Change Management</a></li>
+                                    <li><a href="/designthinking"><i class="fas fa-pencil-ruler"></i> Design Thinking</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- Technologies Section -->
+                            <div class="nav__mega-section">
+                                <h3 class="nav__mega-title"><i class="fas fa-brain"></i> Technologies</h3>
+                                <ul class="nav__mega-list">
+                                    <li><a href="/alml"><i class="fas fa-robot"></i> AI and ML</a></li>
+                                    <li><a href="/dataanalyticsvisualization"><i class="fas fa-chart-bar"></i> Analytics and Visualization</a></li>
+                                    <li><a href="/digitalskilltraining"><i class="fas fa-graduation-cap"></i> Digital Skills Training</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- Platforms Section -->
+                            <div class="nav__mega-section">
+                                <h3 class="nav__mega-title"><i class="fas fa-layer-group"></i> Platforms</h3>
+                                <ul class="nav__mega-list">
+                                    <li><a href="/salesforce"><i class="fab fa-salesforce"></i> Salesforce</a></li>
+                                    <li><a href="/sap"><i class="fab fa-sap"></i> SAP</a></li>
+                                    <li><a href="/servicenow"><i class="fas fa-cogs"></i> ServiceNow</a></li>
+                                    <li><a href="/microsoft"><i class="fab fa-microsoft"></i> Microsoft</a></li>
+                                    <li><a href="/celonis"><i class="fas fa-chart-network"></i> Celonis</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav__item">
+                    <a href="/contactus" class="nav__link">
+                        <i class="fas fa-envelope nav__icon"></i>
+                        <span>Contact</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="about" class="nav__link">
+                        <i class="fas fa-info-circle nav__icon"></i>
+                        <span>About Us</span>
+                    </a>
+                </li>
+                <!-- Search Button -->
+                <li class="nav__item nav__item--search">
+                    <button class="search-btn" aria-label="Search">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Search services, solutions...">
+                        <div class="search-results"></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav> 
+
+<div id="newFloatingSidebar" class="new-floating-sidebar fixed z-[100] bg-white shadow-2xl rounded-l-2xl w-80 p-6 border border-gray-200 backdrop-blur-sm bg-opacity-95 transform transition-transform duration-300 ease-in-out" style="max-height: 100vh; overflow-y: auto; top: 70px; right: -320px;">
+      <!-- Content -->
+      <div class="mt-8">
+          <h2 class="text-2xl font-bold mb-6 text-gray-800 border-b border-orange-200 pb-3">Our Pillars</h2>
+          <ul class="space-y-4 text-gray-700">
+              <li class="flex items-start group hover:bg-orange-50 p-3 rounded-lg transition-all duration-300">
+                  <i class="fas fa-lightbulb text-orange-500 mt-1 mr-3 group-hover:scale-110 transition-transform duration-300"></i>
+                  <div>
+                      <strong class="block text-gray-800 group-hover:text-orange-600 transition-colors duration-300">Methodology</strong>
+                      <span class="text-sm">A structured, agile-driven approach to solve modern challenges.</span>
+                  </div>
+              </li>
+              <li class="flex items-start group hover:bg-orange-50 p-3 rounded-lg transition-all duration-300">
+                  <i class="fas fa-balance-scale text-orange-500 mt-1 mr-3 group-hover:scale-110 transition-transform duration-300"></i>
+                  <div>
+                      <strong class="block text-gray-800 group-hover:text-orange-600 transition-colors duration-300">Philosophy</strong>
+                      <span class="text-sm">Ethical, client-centered innovation with impactful results.</span>
+                  </div>
+              </li>
+              <li class="flex items-start group hover:bg-orange-50 p-3 rounded-lg transition-all duration-300">
+                  <i class="fas fa-brain text-orange-500 mt-1 mr-3 group-hover:scale-110 transition-transform duration-300"></i>
+                  <div>
+                      <strong class="block text-gray-800 group-hover:text-orange-600 transition-colors duration-300">The Way We Think</strong>
+                      <span class="text-sm">Forward-thinking strategies, anticipating future tech waves.</span>
+                  </div>
+              </li>
+              <li class="flex items-start group hover:bg-orange-50 p-3 rounded-lg transition-all duration-300">
+                  <i class="fas fa-robot text-orange-500 mt-1 mr-3 group-hover:scale-110 transition-transform duration-300"></i>
+                  <div>
+                      <strong class="block text-gray-800 group-hover:text-orange-600 transition-colors duration-300">Reinvention & AI-First</strong>
+                      <span class="text-sm">AI-driven solutions to transform businesses from the ground up.</span>
+                  </div>
+              </li>
+          </ul>
+      </div>
+  </div>
+
+  <!-- New Floating Handle (Button to Open Sidebar) -->
+  <div id="newFloatingHandle" class="new-floating-handle fixed top-1/3 right-0 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-l-full px-4 py-3 cursor-pointer shadow-lg z-50 hover:from-orange-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105">
+      <div class="flex items-center space-x-2">
+          <i class="fas fa-chevron-left"></i>
+          <span class="font-medium">Our Pillars</span>
+      </div>
+  </div>
+  <div style="margin-bottom: 5%;"></div>
