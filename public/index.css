@@ -523,6 +523,7 @@ body {
     .nav__link, .nav__dropdown-btn, .nav__mega-btn {
         padding: 15px;
         width: 100%;
+        transform: rotate(0deg);
         justify-content: space-between;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
@@ -3874,9 +3875,7 @@ nav input {
 @media screen and (max-width: 992px) {
     .nav__dropdown-menu .submenu-back,
     .nav__mega-menu .submenu-back {
-        display: block !important;
-        visibility: visible;
-        opacity: 1;
+       
         height: auto;
         width: 100%;
         padding: 10px 15px;
