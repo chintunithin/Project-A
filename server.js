@@ -47,7 +47,7 @@ app.get('/', (req, res) => {
                 console.error(err);
                 return res.status(500).send("Error fetching background media");
             }
-            res.render('index', { events: events, media: media || [] });
+            res.render('home', { events: events, media: media || [] });
         });
     });
 });
@@ -227,7 +227,7 @@ app.get("/:page", (req, res) => {
     "celonis","microsoft","servicenow","sap","salesforce","feedback","casestudy","about","hospitality","utilities"
 ,"notforprofit","manufacturing","consumercpg","banking","contactus"];
 
-    if (page === "index") {
+    if (page === "home") {
         db.all("SELECT * FROM tblContentTable", [], (err, events) => {
             if (err) {
                 console.error(err);
@@ -238,7 +238,7 @@ app.get("/:page", (req, res) => {
                     console.error(err);
                     return res.status(500).send("Error fetching background media");
                 }
-                res.render("index", { events: events, media: media || [] });
+                res.render("home", { events: events, media: media || [] });
             });
         });
     } else if (allowedPages.includes(page)) {

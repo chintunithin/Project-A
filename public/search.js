@@ -508,33 +508,39 @@ const searchData = [
     { title: 'Celonis', icon: 'fas fa-chart-network', url: '/celonis', category: 'Platforms' }
 ];
 
-// Add this function at the top level of your script
 function handleBackNavigation(element, event) {
-    // Prevent event propagation
     event.stopPropagation();
-    
-    // Find the closest dropdown or mega menu
+
+    // Get the submenu wrapper (.nav__dropdown-menu or .nav__mega-menu)
     const submenu = element.closest('.nav__dropdown-menu, .nav__mega-menu');
     if (submenu) {
-        // Hide the current submenu
-        submenu.classList.remove('active');
-        
-        // Find and show the parent menu
+        // Find the parent nav__item
         const parentItem = submenu.closest('.nav__item');
         if (parentItem) {
-            const parentButton = parentItem.querySelector('.nav__dropdown-btn, .nav__mega-btn');
-            if (parentButton) {
-                // Remove active class from parent button
-                parentButton.classList.remove('active');
-                
-                // If it's a mega menu, show the main menu
-                if (parentItem.classList.contains('nav__item--mega')) {
-                    const mainMenu = document.querySelector('.nav__menu');
-                    if (mainMenu) {
-                        mainMenu.classList.add('active');
-                    }
-                }
+            // Remove the modifier class to hide the submenu
+            if (parentItem.classList.contains('nav__item--dropdown')) {
+                parentItem.classList.remove('nav__item--dropdown');
+            } else if (parentItem.classList.contains('nav__item--mega')) {
+                parentItem.classList.remove('nav__item--mega');
+            }
+
+            // Optionally show nav__menu again if needed (mobile view)
+            const navMenu = document.querySelector('.nav__menu');
+            if (navMenu && !navMenu.classList.contains('active')) {
+                navMenu.classList.add('active');
+            }
+
+            // Optional: toggle button active state off
+            const toggleBtn = parentItem.querySelector('.nav__dropdown-btn, .nav__mega-btn');
+            if (toggleBtn) {
+                toggleBtn.classList.remove('active');
             }
         }
+    }
+
+    // Optionally trigger the nav__toggle if needed
+    const toggle = document.querySelector('.nav__toggle');
+    if (toggle && !toggle.classList.contains('active')) {
+        toggle.click(); // This simulates opening the main menu
     }
 }

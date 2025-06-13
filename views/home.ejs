@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="index2.css"  rel="stylesheet" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/search.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.22.1/dist/algoliasearch-lite.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.65.0/dist/instantsearch.production.min.js"></script>
+    <script src="/Aos.js"></script>
+
+
+    <style>
+      .footer {
+    background: #111;
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.footer .container {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-section h2 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #F4A261;
+}
+
+.footer-section p,
+.footer-section ul {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #f4a261;
+}
+
+.socials a {
+    display: inline-block;
+    color: white;
+    margin-right: 10px;
+    font-size: 24px;
+    transition: transform 0.3s;
+}
+
+.socials a:hover {
+    transform: scale(1.2);
+    color: #f4a261;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    font-size: 13px;
+    border-top: 1px solid #444;
+    padding-top: 10px;
+}
+.swiper-container {
+            width: 100%;
+            padding: 50px 0;
+        }
+        .swiper-slide {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 300px;
+            color: white;
+            font-size: 20px;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            border: 5px solid #FFA500;
+            border-radius: 15px;
+        }
+        .swiper-slide::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .swiper-slide h3, .swiper-slide p {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+            /* background: rgba(0, 0, 0, 0.6); */
+            border-radius: 10px;
+        }
+        @media (max-width: 768px) {
+            .swiper-slide {
+                height: 250px;
+            }
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Montserrat:wght@400;700&display=swap');
+
+.dynamic-section {
+    padding: 40px 20px;
+    background-color: #fff;
+}
+
+.section-heading {
+    text-align: center;
+    color: #f97316 ;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.event-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.event-box {
+    width: 300px;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid #f4a261;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.event-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.event-content {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    height: 100%;
+}
+
+.event-content h3 {
+    font-size: 20px;
+    color: #d86f2d;
+    margin-bottom: 10px;
+}
+
+.event-content p {
+    font-size: 16px;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+.event-link {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #f4a261;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.event-link:hover {
+    background-color: #e07a3f;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .event-box {
+        width: 100%;
+    }
+}
+
+
+.box {
+    background: rgba(255, 255, 255, 0.85); /* Semi-transparent white for a vintage feel */
+    padding: 20px;
+    border-radius: 5px;
+    font-family: 'EB Garamond', serif; /* Classic newspaper-like font */
+    text-align: center;
+    width: 100%;
+}
+
+.box h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #222;
+    text-transform: uppercase;
+}
+
+.box p {
+    font-size: 16px;
+    color: #444;
+    font-style: italic;
+}
+
+.box a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: #ff9800;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 3px;
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+}
+
+.box a:hover {
+    background: #e68900;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3);
+}
+
+/* Media Queries for Better Responsiveness */
+@media (max-width: 768px) {
+    .Event-Container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .Event-Container {
+        grid-template-columns: 1fr;
+    }
+}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+.offering-modern-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 60px 5%;
+  background-color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  gap: 40px;
+}
+
+.offering-text {
+  flex: 1 1 45%;
+  max-width: 100%;
+}
+
+.offering-text h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+.offering-subtext {
+  font-size: 1.05rem;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.offering-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.offering-list li {
+  position: relative;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  background: #fafafa;
+  border-left: 4px solid #f4a261;
+  transition: background 0.3s;
+  cursor: pointer;
+  font-size: 0.98rem;
+}
+
+.offering-list li:hover {
+  background: #fff6ed;
+}
+
+.offering-image-container {
+  flex: 1 1 50%;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.offering-image-container img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+
+/* Hover popup */
+.hover-popup {
+  position: absolute;
+  background: #fffaf5;
+  color: #333;
+  padding: 10px 14px;
+  border: 1px solid #f4a261;
+  border-radius: 6px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  font-size: 0.9rem;
+  display: none;
+  z-index: 1000;
+  white-space: nowrap;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .offering-modern-section {
+    flex-direction: column;
+    padding: 40px 5%;
+  }
+
+  .offering-text,
+  .offering-image-container {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .offering-text h2 {
+    font-size: 1.8rem;
+  }
+
+  .offering-list li {
+    font-size: 1rem;
+  }
+}
+
+
+.swiper-slide a{
+    text-decoration: none;
+    color: white;
+}
+
+.offering-modern-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 60px 5%;
+  background-color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  gap: 40px;
+}
+
+.offering-text {
+  flex: 1;
+  max-width: 100%;
+}
+
+.offering-text h2 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+.offering-subtext {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.offering-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.offering-list li {
+  position: relative;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  background: #fafafa;
+  border-left: 4px solid #f4a261;
+  transition: background 0.3s;
+  cursor: pointer;
+}
+
+.offering-list li:hover {
+  background: #fff6ed;
+}
+
+.offering-image-container {
+  flex: 1;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.offering-image-container img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}
+
+/* Popup */
+.hover-popup {
+  position: absolute;
+  background: #fffaf5;
+  color: #333;
+  padding: 12px 16px;
+  border: 1px solid #f4a261;
+  border-radius: 6px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  font-size: 0.95rem;
+  display: none;
+  z-index: 1000;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .offering-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    
+    .offering-card {
+        height: 180px;
+    }
+}
+
+/* Search Styles */
+.nav__item--search {
+    position: relative;
+}
+
+.search-toggle {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.search-toggle:hover {
+    color: #F4A261;
+}
+
+.search-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 300px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    display: none;
+    z-index: 1000;
+}
+
+.search-dropdown.active {
+    display: block;
+    animation: slideDown 0.3s ease;
+}
+
+.search-input-wrapper {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 10px 35px 10px 15px;
+    border: 2px solid #F4A261;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#searchInput:focus {
+    border-color: #d86f2d;
+}
+
+.search-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #F4A261;
+}
+
+.search-results {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.search-result-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    text-decoration: none;
+    color: #333;
+}
+
+.search-result-item:hover {
+    background-color: #fff5eb;
+}
+
+.search-result-item i {
+    margin-right: 8px;
+    color: #F4A261;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .search-dropdown {
+        width: 100%;
+        right: -15px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <%- include('partials/navbar') %>
+
+    <section class="background-container">
+        <% if (media.length > 1) { %>
+            <div class="slideshow">
+                <% media.forEach(item => { %>
+                    <% if (item.mediaType === 'image') { %>
+                        <img src="/images/<%= item.mediaUrl %>" alt="Background">
+                    <% } %>
+                <% }); %>
+            </div>
+        <% } else if (media.length === 1 && media[0].mediaType === 'video') { %>
+            <video class="bg-video" autoplay loop muted>
+                <source src="/images/<%= media[0].mediaUrl %>" type="video/mp4">
+            </video>
+        <% } %>
+        
+        <section class="hero title-hero">
+            <h1>We Are Dawn Digital Technology – Industry-First AI-Powered Solutions</h1>
+            <p>Transforming industries with <span class="dynamic-text"></span></p>
+        </section>
+    </section>
+    <section class="swiper-container">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" style="background-image: url('images/indexHospitality.jpg');">
+                    <a href="/hospitality"> <div>
+                        <h3>Hospitality & Travel</h3>
+                        <p>Enhancing customer experiences with AI-driven solutions for seamless travel and hospitality services.</p>
+                    </div></a>
+                </div>
+            
+            <div class="swiper-slide" style="background-image: url('images/energyandutilities.webp');">
+                <a href="/utilities"> <div>
+                        <h3>Energy & Utilities</h3>
+                        <p>Driving efficiency and sustainability with smart grid technology and predictive analytics.</p>
+                    </a>    </div>
+                </div>
+              <div class="swiper-slide" style="background-image: url('images/indexmanufacturing.jpg');">
+                <a href="/manufacturing">    <div>
+                        <h3>Manufacturing</h3>
+                        <p>Optimizing production processes through AI-powered automation and real-time data insights.</p>
+                    </a>    </div>
+                </div>
+              <div class="swiper-slide" style="background-image: url('images/notforprofit.jpeg');">
+                <a href="/notforprofit">   <div>
+                        <h3>Not-for-Profit</h3>
+                        <p>Empowering organizations with digital solutions to maximize impact and streamline operations.</p>
+                    </a>     </div>
+                </div>
+            <div class="swiper-slide" style="background-image: url('images/ServiceNowIcon.webp');">
+                <a href="/consumercpg">   <div>
+                        <h3>CPG</h3>
+                        <p>Revolutionizing consumer goods with AI-powered demand forecasting and personalized marketing.</p>
+                    </a>     </div>
+                </div>
+          <div class="swiper-slide" style="background-image: url('images/bankingmain.jpg');">
+            <a href="/banking">       <div>
+                        <h3>Banking & Financial Services</h3>
+                        <p>Enhancing security, customer insights, and operational efficiency in financial institutions.</p>
+                    </a>    </div>
+               </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+   <section class="dynamic-section">
+    <h2 class="section-heading">Upcoming Events</h2>
+    <div class="event-container">
+        <% events.forEach(event => { %>
+            <div class="event-box" style="background-image: url('/images/<%= event.imageUrl %>');">
+                <div class="event-content">
+                    <h3><%= event.title %></h3>
+                    <p><%= event.description %></p>
+                    <% if (event.link) { %>
+                        <a href="<%= event.link %>" target="_blank" class="event-link">More Info</a>
+                    <% } %>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</section>
+
+    <section class="intro-section" data-aos="fade-up">
+      <div class="intro-container">
+          <div class="intro-content">
+              <div class="intro-header" data-aos="fade-right">
+                  <h2>Our Expertise</h2>
+                  <p>Transforming businesses through innovative solutions</p>
+              </div>
+              
+              <div class="content-grid">
+                  <div class="content-block" data-aos="fade-up" data-aos-delay="100">
+                      <i class="fas fa-sync-alt"></i>
+                      <h3>Business Process Transformation</h3>
+                      <div class="popup-content">
+                          <h4>Business Process Transformation</h4>
+                          <p>Leverage Salesforce and AI to streamline your business processes. Our solutions help automate workflows, reduce manual tasks, and increase operational efficiency.</p>
+                          <ul>
+                              <li>Process Automation</li>
+                              <li>Workflow Optimization</li>
+                              <li>Digital Transformation</li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="content-block" data-aos="fade-up" data-aos-delay="200">
+                      <i class="fas fa-cogs"></i>
+                      <h3>Technology Implementation</h3>
+                      <div class="popup-content">
+                          <h4>Technology Implementation</h4>
+                          <p>Expert implementation of Salesforce solutions with AI integration. We ensure seamless deployment and maximum ROI for your technology investments.</p>
+                          <ul>
+                              <li>Salesforce Implementation</li>
+                              <li>AI Integration</li>
+                              <li>Custom Development</li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="content-block" data-aos="fade-up" data-aos-delay="300">
+                      <i class="fas fa-cloud"></i>
+                      <h3>Cloud Migration</h3>
+                      <div class="popup-content">
+                          <h4>Cloud Migration</h4>
+                          <p>Seamless migration to Salesforce cloud with AI capabilities. We handle the entire process ensuring zero downtime and data integrity.</p>
+                          <ul>
+                              <li>Data Migration</li>
+                              <li>Cloud Architecture</li>
+                              <li>Security Implementation</li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="content-block" data-aos="fade-up" data-aos-delay="400">
+                      <i class="fas fa-users-cog"></i>
+                      <h3>Shared and Managed Services</h3>
+                      <div class="popup-content">
+                          <h4>Shared and Managed Services</h4>
+                          <p>Comprehensive managed services for Salesforce and AI solutions. We provide ongoing support, maintenance, and optimization.</p>
+                          <ul>
+                              <li>24/7 Support</li>
+                              <li>System Maintenance</li>
+                              <li>Performance Optimization</li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="content-block" data-aos="fade-up" data-aos-delay="500">
+                      <i class="fas fa-exchange-alt"></i>
+                      <h3>Change Management</h3>
+                      <div class="popup-content">
+                          <h4>Change Management</h4>
+                          <p>Expert guidance through digital transformation. We help organizations adapt to new Salesforce and AI technologies effectively.</p>
+                          <ul>
+                              <li>Training Programs</li>
+                              <li>User Adoption</li>
+                              <li>Change Strategy</li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="content-block" data-aos="fade-up" data-aos-delay="600">
+                      <i class="fas fa-lightbulb"></i>
+                      <h3>Design Thinking</h3>
+                      <div class="popup-content">
+                          <h4>Design Thinking</h4>
+                          <p>Innovative approach to Salesforce and AI solutions. We use design thinking to create user-centric, effective digital experiences.</p>
+                          <ul>
+                              <li>User Experience Design</li>
+                              <li>Solution Architecture</li>
+                              <li>Innovation Workshops</li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="content-block" data-aos="fade-up" data-aos-delay="700">
+                      <i class="fas fa-brain"></i>
+                      <h3>AI and ML</h3>
+                      <div class="popup-content">
+                          <h4>AI and Machine Learning</h4>
+                          <p>Advanced AI and ML solutions integrated with Salesforce. We help businesses leverage artificial intelligence for better decision-making.</p>
+                          <ul>
+                              <li>Predictive Analytics</li>
+                              <li>AI Automation</li>
+                              <li>Machine Learning Models</li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="content-block" data-aos="fade-up" data-aos-delay="800">
+                      <i class="fas fa-chart-line"></i>
+                      <h3>Analytics and Visualization</h3>
+                      <div class="popup-content">
+                          <h4>Analytics and Visualization</h4>
+                          <p>Powerful analytics and visualization tools for Salesforce data. Transform your data into actionable insights with AI-powered analytics.</p>
+                          <ul>
+                              <li>Data Analytics</li>
+                              <li>Business Intelligence</li>
+                              <li>Custom Dashboards</li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="content-block" style="display: none;" data-aos="fade-up" data-aos-delay="900">
+                      <i class="fas fa-graduation-cap"></i>
+                      <h3>Digital Skills Training</h3>
+                      <div class="popup-content">
+                          <h4>Digital Skills Training</h4>
+                          <p>Comprehensive training programs for Salesforce and AI technologies. We help your team master new digital tools and technologies.</p>
+                          <ul>
+                              <li>Salesforce Training</li>
+                              <li>AI Awareness</li>
+                              <li>Digital Literacy</li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          
+          <div class="intro-image-container" style="display: none;" data-aos="fade-left">
+              <div class="slideshow2">
+                  <img src="/images/image1.jpg" class="slide active" alt="Business Transformation">
+                  <img src="/images/image2.jpg" class="slide" alt="Technology Implementation">
+                  <img src="/images/image3.jpg" class="slide" alt="Cloud Migration">
+                  <img src="/images/image4.webp" class="slide" alt="Shared and Managed Services">
+                  <img src="/images/image5.webp" class="slide" alt="AI and ML">
+                  <img src="/images/image6.webp" class="slide" alt="Analytics and Visualization">
+                  <img src="/images/image7.webp" class="slide" alt="Digital Skills Training">
+              </div>
+              <div class="image-overlay"></div>
+          </div>
+      </div>
+  </section>
+  <br>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+<section class="offering-modern-section">
+  <div class="offering-text">
+    <h2>Industry Offerings that Drive Innovation</h2>
+    <p class="offering-subtext">
+      Discover tailored services that solve real business challenges using modern tech and design thinking.
+    </p>
+    <ul class="offering-list">
+       <li data-message="We transform your operating model with agile strategies.">Business Model Transformation</li>
+      <li data-message="We implement modern technologies for operational excellence.">Technology Implementation</li>
+      <li data-message="Smart outsourcing and management strategies.">Shared & Managed Services</li>
+      <li data-message="Change processes guided by people-centric innovation.">Change Management</li>
+      <li data-message="Design-focused solutions tailored to your needs.">Design Thinking</li>
+      <li data-message="Empower your solutions with AI & ML capabilities.">AI and Machine Learning</li>
+      <li data-message="Insights that drive better decisions, powered by data.">Data Analytics</li>
+    </ul>
+  </div>
+  <div class="offering-image-container">
+    <img src="/images/IndustrialOfferings.png" alt="Offering Layers Graphic">
+  </div>
+</section>
+
+<div id="hover-popup" class="hover-popup"></div>
+
+
+  <div class="offering-section-header">Contact</div>
+   
+  <footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section about" data-aos="fade-up">
+                <h2>Dawn Digital Technology</h2>
+                <p>Your trusted partner in innovation and excellence.</p>
+                <div class="socials">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/dawndgtllc/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section links" data-aos="fade-up" data-aos-delay="100">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="/index">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <!-- <li><a href="#">Services</a></li> -->
+                    <li><a href="/contactus">Contact</a></li>
+                    <li><a href="/About">Blog</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section contact" data-aos="fade-up" data-aos-delay="200">
+                <h2>Contact Us</h2>
+                <p><i class="fas fa-map-marker-alt"></i> 3 Sugarcreek Center Blvd, Suite 100, Sugar Land, TX 77478</p>
+                <!-- <p><i class="fas fa-phone"></i> +123 456 7890</p> -->
+                <p><i class="fas fa-envelope"></i> info@dawndgt.com</p>
+            </div>
+        </div>
+    </div>
+    <div id="popup-message" class="popup-message">
+        <a href="https://www.linkedin.com/company/dawndgtllc/">Follow us on Linkedin! <i class="fab fa-linkedin"></i></a>
+    </div>
+    
+    <div class="footer-bottom">
+        <p>&copy; 2025 Dawn Digital Technology | All rights reserved.</p>
+    </div>
+  </footer>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+        
+        <script>
+            AOS.init({
+                duration: 1000,
+                once: true,
+            });
+
+            document.addEventListener("DOMContentLoaded", function() {
+            const slideshow = document.querySelector(".slideshow");
+            const slides = document.querySelectorAll(".slideshow img");
+            let currentIndex = 0;
+            
+            function showNextSlide() {
+                currentIndex = (currentIndex + 1) % slides.length;
+                slideshow.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+            
+            if (slides.length > 1) {
+                setInterval(showNextSlide, 5000); // Change image every 5 seconds
+            }
+        });
+
+        </script>
+            <script>
+ 
+
+document.addEventListener("DOMContentLoaded", function () {
+    let slides = document.querySelectorAll(".slide");
+    let index = 0;
+
+    function showNextSlide() {
+        slides[index].classList.remove("active"); 
+        index = (index + 1) % slides.length; 
+        slides[index].classList.add("active"); 
+    }
+
+    setInterval(showNextSlide, 2000); 
+});
+    document.addEventListener("DOMContentLoaded", function () {
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 2000,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                },
+                480: {
+                    slidesPerView: 1,
+                }
+            }
+        });
+    });
+
+const phrases = ["cutting-edge AI", "technology", "expertise"];
+        let currentPhrase = 0;
+        let currentLetter = 0;
+        let isDeleting = false;
+        const textElement = document.querySelector(".dynamic-text");
+
+        function typeEffect() {
+            let phrase = phrases[currentPhrase];
+            let speed = isDeleting ? 50 : 100; 
+            
+            if (isDeleting) {
+                textElement.textContent = phrase.substring(0, currentLetter);
+                currentLetter--;
+            } else {
+                textElement.textContent = phrase.substring(0, currentLetter);
+                currentLetter++;
+            }
+            
+            if (!isDeleting && currentLetter === phrase.length + 1) {
+                isDeleting = true;
+                speed = 1200;
+            } else if (isDeleting && currentLetter === 0) {
+                isDeleting = false;
+                currentPhrase = (currentPhrase + 1) % phrases.length;
+                speed = 500;
+            }
+            
+            setTimeout(typeEffect, speed);
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(typeEffect, 1000);
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const titleElement = document.querySelector(".title-hero h1");
+
+            if (window.innerWidth <= 768) {
+                titleElement.textContent = "DGT";
+            }
+        });
+
+    </script>
+
+<!-- Add Algolia InstantSearch.js -->
+<script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.22.1/dist/algoliasearch-lite.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.65.0/dist/instantsearch.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.65.0/dist/instantsearch.production.min.css"></script>
+<script>
+  const popup = document.getElementById('hover-popup');
+
+  document.querySelectorAll('.offering-list li').forEach(item => {
+    item.addEventListener('mouseover', e => {
+      const msg = item.getAttribute('data-message');
+      if (msg) {
+        popup.textContent = msg;
+        popup.style.display = 'block';
+        popup.style.top = (e.pageY + 10) + 'px';
+        popup.style.left = (e.pageX + 10) + 'px';
+      }
+    });
+    item.addEventListener('mousemove', e => {
+      popup.style.top = (e.pageY + 10) + 'px';
+      popup.style.left = (e.pageX + 10) + 'px';
+    });
+    item.addEventListener('mouseout', () => {
+      popup.style.display = 'none';
+    });
+  });
+</script>
+
+</body>
+</html>
