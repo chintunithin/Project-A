@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospitality & Travel | DGT</title>
+    <link href="index.css"  rel="stylesheet" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/search.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="/Aos.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 80vh;
+            background: url('images/hospitality.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+            max-width: 600px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            color: #fbf5f5;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000 !important;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #fbf6f6;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000 !important;
+            margin-top: 10px;
+        }
+
+        /* Main Container */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 50px 0;
+        }
+
+        /* Sections */
+        .hospitality-section {
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .hospitality-section h2 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .hospitality-section p {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Key Solutions Grid */
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .hs-card {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            flex: 1 1 calc(50% - 20px);
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .hs-card h3 {
+            color: #ff7f50;
+            margin-bottom: 10px;
+        }
+
+        /* Technology Stack */
+        .tools {
+            background: #f1f1f1;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* Call to Action */
+        .cta {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .cta-footer a {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #ef7110e0;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                flex-direction: column;
+            }
+
+            .hs-card {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+   <%- include('partials/navbar') %>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content" data-aos="zoom-out"  data-aos-delay="100">
+            <h1>Hospitality & Travel</h1>
+            <p>Bringing AI-powered automation to transform guest experiences and operations.</p>
+        </div>
+    </section>
+
+    <!-- About Hospitality & Travel -->
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <section class="hospitality-section">
+            <h2>Transforming the Hospitality & Travel Industry</h2>
+            <p>At DGT, we leverage AI-driven automation to redefine the guest experience, optimize operations, and enhance service delivery. From intelligent concierge services to real-time travel insights, our solutions empower businesses to deliver superior experiences.</p>
+        </section>
+
+        <!-- Key AI Solutions -->
+        <section class="hospitality-section">
+            <h2>Key AI-Powered Solutions</h2>
+            <div class="grid" data-aos-delay="100">
+                <div class="hs-card"  data-aos="fade-up" >
+                    <h3>AI-Driven Guest Experience</h3>
+                    <p>Automated chatbots, sentiment analysis, and predictive personalization to enhance guest satisfaction.</p>
+                </div>
+                <div class="hs-card"  data-aos="fade-up" data-aos-delay="100">
+                    <h3>Smart Mobile Check-In</h3>
+                    <p>Seamless, contactless check-ins reducing wait times and enhancing efficiency.</p>
+                </div>
+                <div class="hs-card"  data-aos="fade-up" data-aos-delay="100">
+                    <h3>Intelligent Concierge</h3>
+                    <p>24/7 virtual assistants providing real-time travel and booking recommendations.</p>
+                </div>
+                <div class="hs-card"  data-aos="fade-up" data-aos-delay="100">
+                    <h3>Data-Driven Pricing & Forecasting</h3>
+                    <p>AI-powered analytics for demand forecasting, dynamic pricing, and revenue optimization.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tools & Technologies -->
+        <section class="hospitality-section tools"data-aos="fade-up" data-aos-delay="100">
+            <h2>Technology Stack</h2>
+            <p><strong>Salesforce Service Cloud</strong> | <a href="/microsoft">Mulesoft</a> | Informatica | <a href="/mobility">Mobile Apps</a> | <a href="/celonis">Celonis</a></p>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="hospitality-section cta-footer" data-aos="fade-up" data-aos-delay="100">
+            <h2>Get Started with AI-Powered Hospitality</h2>
+            <a href="/contactus">Contact Us</a>
+        </section>
+    </div>
+    <script>
+        AOS.init({
+                  duration: 1000,
+                  once: true,
+              });
+  </script>
+</body>
+</html>

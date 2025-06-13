@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Migration | DGT</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <script src="/search.js"></script>
-    <link href="index.css"  rel="stylesheet" >
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Design Thinking | DGT</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="index.css"  rel="stylesheet" >
+    <script src="/search.js"></script>
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@300;400;500;700&display=swap');
         
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Poppins', 'Roboto', sans-serif;
             background: #fafafa;
             color: #2c3e50;
             margin: 0;
@@ -23,10 +24,7 @@
         }
 
         .hero {
-            background: linear-gradient(135deg, rgba(255, 245, 240, 0.9), rgba(255, 255, 255, 0.9)), url('/images/DataMigrationMain.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background: linear-gradient(135deg, #fff5f0, #fff);
             color: #2c3e50;
             text-align: center;
             padding: 100px 20px 120px;
@@ -42,8 +40,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 70% 30%, rgba(255, 127, 80, 0.1) 0%, transparent 70%);
-            z-index: 1;
+            background: radial-gradient(circle at 70% 30%, rgba(255, 127, 80, 0.05) 0%, transparent 70%);
         }
 
         .hero::after {
@@ -53,9 +50,8 @@
             right: -50px;
             width: 200px;
             height: 200px;
-            background: radial-gradient(circle, rgba(255, 127, 80, 0.15) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 127, 80, 0.08) 0%, transparent 70%);
             border-radius: 50%;
-            z-index: 1;
         }
 
         .hero-content {
@@ -75,7 +71,6 @@
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 0.8s ease-out forwards;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .hero h1::after {
@@ -96,124 +91,93 @@
             margin: 0 auto;
             position: relative;
             line-height: 1.8;
-            color: #2c3e50;
+            color: #5d6d7e;
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 0.8s ease-out 0.4s forwards;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
         }
 
-        .container {
-            width: 85%;
-            max-width: 1200px;
-            margin: auto;
-            padding: 20px 0;
+        .hero p span {
+            position: relative;
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(10px);
         }
 
-        .section {
+        .content-container {
+            max-width: 1400px;
+            margin: -60px auto 40px;
+            padding: 0 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .classic-card {
             background: white;
-            padding: 60px 30px;
             border-radius: 12px;
-            margin: 50px 0;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out;
+            padding: 40px;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         }
 
-        section {
-            margin-bottom: 30px;
-            margin-top: 10px;
+        .classic-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 4px;
+            height: 0;
+            background: #ff7f50;
+            transition: height 0.4s ease;
         }
 
-        section div {
-            width: 35%;
+        .classic-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
-        .section:hover {
-            transform: translateY(-5px);
+        .classic-card:hover::after {
+            height: 100%;
         }
 
-        section h2 {
-            font-size: 2rem;
-            color: #ff7f50; 
-            text-align: center;
-            margin-bottom: 25px;
+        .classic-card h2 {
+            font-family: 'Poppins', 'Roboto', sans-serif;
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 15px;
         }
 
-        .challenges, .accelerators, .methodology {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-evenly;
-            align-items: center;
+        .classic-card h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: #ff7f50;
+            transition: width 0.3s ease;
         }
 
-        @media screen and (max-width: 768px) {
-            .challenges, .accelerators, .methodology {
-                flex-direction: column;
-                justify-content: space-evenly;
-                align-items: center;
-            }
-            .trends, .expertise, .why-choose, .success {
-                flex-direction: column !important;
-                justify-content: space-evenly;
-                align-items: center;
-            }
-            section div {
-                width: 100%;
-            }
+        .classic-card:hover h2::after {
+            width: 80px;
         }
 
-        .trends, .expertise, .why-choose, .success {
-            display: flex;
-            flex-direction: row-reverse;
-            justify-content: space-evenly;
-            align-items: center;
-        }
-
-        .data_migration_img {
-            top: 20px;
-            width: 500px;
-            height: 300px;
-        }
-
-        .success ul, .methodology ul, .why-choose ul, .accelerators ul, .trends ul, .challenges ul,
-        .success ol, .methodology ol, .why-choose ol, .accelerators ol, .trends ol, .challenges ol {
-            list-style: none;
-            padding: 0;
-        }
-
-        .success ol li, .methodology ol li, .why-choose ol li, .accelerators ol li, .trends ol li, .challenges ol li,
-        .success ul li, .methodology ul li, .why-choose ul li, .accelerators ul li, .trends ul li, .challenges ul li {
-            font-size: 1.2rem;
-            padding: 10px 0;
-            border-left: 5px solid #ff7f50;
-            padding-left: 20px;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .success ol li:hover, .methodology ol li:hover, .why-choose ol li:hover, .accelerators ol li:hover, .trends ol li:hover, .challenges ol li:hover,
-        .success ul li:hover, .methodology ul li:hover, .why-choose ul li:hover, .accelerators ul li:hover, .trends ul li:hover, .challenges ul li:hover {
-            background: rgba(255, 127, 80, 0.15);
-            padding-left: 25px;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes lineExpand {
-            from {
-                width: 0;
-            }
-            to {
-                width: 60px;
-            }
+        .classic-card p {
+            color: #5d6d7e;
+            line-height: 1.8;
+            position: relative;
+            margin: 0;
         }
 
         .cta-section {
@@ -226,6 +190,20 @@
             overflow: hidden;
             border-top: 1px solid rgba(255, 127, 80, 0.1);
             border-bottom: 1px solid rgba(255, 127, 80, 0.1);
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(to right, 
+                transparent, 
+                rgba(255, 127, 80, 0.2), 
+                transparent
+            );
         }
 
         .cta-wrapper {
@@ -275,6 +253,22 @@
             border-color: #ff7f50;
             background: rgba(255, 127, 80, 0.05);
             transform: translateY(-2px);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(255, 127, 80, 0.1) 0%, transparent 70%);
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.6s ease-out;
+        }
+
+        .cta-button:hover::before {
+            transform: translate(-50%, -50%) scale(1);
         }
 
         .classic-footer {
@@ -391,79 +385,117 @@
             color: #a3b1c2;
             font-size: 0.9rem;
         }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes lineExpand {
+            from {
+                width: 0;
+            }
+            to {
+                width: 60px;
+            }
+        }
+
+        @keyframes wordFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 80px 20px 100px;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            .section-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .content-container {
+                padding: 0 20px;
+                margin-top: -40px;
+            }
+            .classic-card {
+                padding: 30px;
+            }
+            .cta-section {
+                padding: 40px 20px;
+            }
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+        }
     </style>
 </head>
 <body>
     <%- include('partials/navbar') %>
-      <!-- End New Floating Sidebar HTML -->
-    <header class="hero" data-aos="fade-up">
+    <header class="hero">
         <div class="hero-content">
-            <h1>Revolutionize Your Business with DGT's Data Migration Solutions</h1>
-            <p>Seamlessly transition your critical data with DGT's expert services ensuring zero downtime and complete data integrity.</p>
+            <h1>Design Thinking</h1>
+            <p class="animated-text">Bridging the gap between technology and human experience through innovative design thinking principles. We transform complex challenges into intuitive, impactful solutions that drive real business value.</p>
         </div>
     </header>
-    
-    <section class="challenges" data-aos="fade-up">
-        <img class="data_migration_img" src="images/challenges.jpg" alt="">
-        <div>
-            <h2>Understanding the Challenges</h2>
-            <ul>
-                <li>Data Loss & Corruption</li>
-                <li>System Downtime & Compatibility Issues</li>
-                <li>Data Security & Compliance</li>
-                <li>Performance Bottlenecks</li>
-            </ul>
-        </div>
-    </section>
-    
-    <section class="trends" data-aos="fade-up">
-        <img class="data_migration_img" src="images/t_image.jpg" alt="">
-        <div>
-            <h2>Technology Trends</h2>
-            <ul>
-                <li>AI-Driven Data Migration</li>
-                <li>Cloud-to-Cloud Migrations</li>
-                <li>Real-Time Migration</li>
-                <li>Blockchain in Data Integrity</li>
-            </ul>
-        </div>
-    </section>
-    
-    <section class="accelerators" data-aos="fade-up">
-        <img class="data_migration_img" src="images/Our_expertise.JPG" alt="">
-        <div>
-            <h2>Our Expertise</h2>
-            <ul>
-                <li>15+ years in complex data migration projects</li>
-                <li>Proficiency in ETL tools: Informatica, Talend, AWS Glue</li>
-                <li>Expertise in migrating Oracle, SQL Server, SAP HANA, Snowflake</li>
-                <li>AI-driven data quality, governance & automation</li>
-            </ul>
-        </div>
-    </section>
-    
-    <section class="success" data-aos="fade-up">
-        <img class="data_migration_img" src="images/c_image1.jpg" alt="">
-        <div>
-            <h2>Case Study</h2>
-            <ul>
-                <li>Migrated 10TB of data for a global retailer</li>
-                <li>Zero data loss achieved</li>
-                <li>Minimal business disruption</li>
-                <li>Improved system performance</li>
-            </ul>
-            <div class="whitebutton" onclick="showDownloadPopup()" style="float: left;"> 
-                <a href="#">Download</a><br>
-                <span class="up">Click to Download</span><br>
-                <span class="down" id="file-info">Fetching size...</span>
+    <div class="content-container">
+        <div class="section-grid">
+            <div class="classic-card" data-aos="fade-up">
+                <h2>DGT Value Add</h2>
+                <p>Our design-thinking workshops combine AI-driven insights with deep industry expertise. We leverage cutting-edge UX/UI practices with enterprise platforms like Salesforce and Tableau to deliver transformative solutions.</p>
+            </div>
+
+            <div class="classic-card" data-aos="fade-up" data-aos-delay="100">
+                <h2>Hospitality and Travel</h2>
+                <p>Elevating guest experiences through AI-enhanced UX design and seamless integration of Salesforce Service Cloud, Mobile Apps, and Tableau analytics.</p>
+            </div>
+
+            <div class="classic-card" data-aos="fade-up" data-aos-delay="200">
+                <h2>Energy and Utilities</h2>
+                <p>Empowering field teams with human-centric AI solutions, powered by Salesforce Field Service and Azure, with real-time insights through Power BI.</p>
+            </div>
+
+            <div class="classic-card" data-aos="fade-up" data-aos-delay="300">
+                <h2>Manufacturing</h2>
+                <p>Streamlining operations with AI-powered lean manufacturing workflows, integrating Salesforce Manufacturing Cloud with Celonis process mining.</p>
+            </div>
+
+            <div class="classic-card" data-aos="fade-up" data-aos-delay="400">
+                <h2>Not For Profit</h2>
+                <p>Maximizing social impact through data-driven donor engagement strategies, powered by Salesforce Nonprofit Cloud and Tableau analytics.</p>
+            </div>
+
+            <div class="classic-card" data-aos="fade-up" data-aos-delay="500">
+                <h2>CPG</h2>
+                <p>Unlocking consumer insights with advanced AI analytics, combining Salesforce CPG Cloud with Informatica and Power BI for actionable intelligence.</p>
             </div>
         </div>
-    </section>
-    
+    </div>
+
     <section class="cta-section" data-aos="fade-up">
         <div class="cta-wrapper">
-            <h2>Ready to Transform Your Data Strategy?</h2>
-            <a href="/contactus" class="cta-button">Contact Us</a>
+            <h2>Ready to Transform Your Business?</h2>
+            <a href="/contactus" class="cta-button">Start Your Journey</a>
         </div>
     </section>
 
@@ -515,6 +547,20 @@
             once: true,
             offset: 100,
             easing: 'ease-out-cubic'
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const text = document.querySelector('.animated-text');
+            const words = text.textContent.split(' ');
+            text.textContent = '';
+            
+            words.forEach((word, index) => {
+                const span = document.createElement('span');
+                span.textContent = word + ' ';
+                span.style.animationDelay = `${0.6 + (index * 0.03)}s`;
+                span.style.animation = 'wordFadeIn 0.5s ease-out forwards';
+                text.appendChild(span);
+            });
         });
     </script>
 </body>

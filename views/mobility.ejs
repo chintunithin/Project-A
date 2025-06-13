@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobility Solutions | DGT</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="/search.js"></script>
+    <link href="index.css"  rel="stylesheet" >
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #fafafa;
+            color: #2c3e50;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(255, 245, 240, 0.9), rgba(255, 255, 255, 0.9)), url('/images/MobilityIcon.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #2c3e50;
+            text-align: center;
+            padding: 100px 20px 120px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255, 127, 80, 0.1);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 70% 30%, rgba(255, 127, 80, 0.1) 0%, transparent 70%);
+            z-index: 1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255, 127, 80, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 4rem;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+            color: #2c3e50;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: rgba(255, 127, 80, 0.3);
+            animation: lineExpand 0.6s ease-out 0.8s forwards;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            line-height: 1.8;
+            color: #2c3e50;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out 0.4s forwards;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* --- Existing Mobility Styles Below --- */
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px 0;
+        }
+
+        /* Existing Mobility Hero styles are replaced by the new .hero styles above */
+
+        .section {
+            background: white;
+            padding: 60px 30px;
+            border-radius: 12px;
+            margin: 50px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+        section{
+            
+            margin-bottom: 30px;
+            margin-top: 10px;
+        }
+        section div{
+            
+          width: 35%;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        section h2 {
+            font-size: 2rem;
+            color: #ff7f50; 
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .challenges,.accelerators,.methodology{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+
+        }
+        @media screen and (max-width: 768px) {
+            .challenges,.accelerators,.methodology{
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .trends,.expertise,.why-choose,.success{
+            flex-direction: column !important;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        section div{
+            width: 100%;
+          }
+        }
+        .trends,.expertise,.why-choose,.success{
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .mobility_img{
+            top: 20px;
+            width: 500px;
+            height: 300px;
+        }
+
+        .success ul,.methodology ul,.why-choose ul,.accelerators ul,.trends ul,.challenges ul,
+        .success ol,.methodology ol,.why-choose ol,.accelerators ol,.trends ol,.challenges ol {
+            list-style: none;
+            padding: 0;
+        }
+
+        .success ol li,.methodology ol li,.why-choose ol li,.accelerators ol li,.trends ol li,.challenges ol li,
+        .success ul li,.methodology ul li,.why-choose ul li,.accelerators ul li,.trends ul li,.challenges ul li {
+            font-size: 1.2rem;
+            padding: 10px 0;
+            border-left: 5px solid #ff7f50;
+            padding-left: 20px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .success ol li:hover,.methodology ol li:hover,.why-choose ol li:hover,.accelerators ol li:hover,.trends ol li:hover,.challenges ol li:hover,
+        .success ul li:hover,.methodology ul li:hover,.why-choose ul li:hover,.accelerators ul li:hover,.trends ul li:hover,.challenges ul li:hover {
+            background: rgba(255, 127, 80, 0.15);
+            padding-left: 25px;
+        }
+
+        /* Existing Mobility CTA styles are replaced by the new .cta styles below */
+
+        /* Animations */
+        @keyframes fadeInUp { /* Keep or adjust if already defined for new hero */
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes lineExpand { /* Keep or adjust if already defined for new hero */
+            from {
+                width: 0;
+            }
+            to {
+                width: 60px;
+            }
+        }
+        
+        /* --- Styles Copied from BusinessProcessTransformation.ejs --- */
+
+        .cta-section {
+            background: #fff;
+            color: #2c3e50;
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid rgba(255, 127, 80, 0.1);
+            border-bottom: 1px solid rgba(255, 127, 80, 0.1);
+        }
+
+        .cta-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-section h2 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .cta-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: #ff7f50;
+            opacity: 0.3;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 32px;
+            background: transparent;
+            color: #2c3e50;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 127, 80, 0.3);
+            position: relative;
+            overflow: hidden;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button:hover {
+            border-color: #ff7f50;
+            background: rgba(255, 127, 80, 0.05);
+            transform: translateY(-2px);
+        }
+
+        @keyframes moveShape {
+            0% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(20px, 20px);
+            }
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+        .classic-footer {
+            background: #1a252f;
+            color: white;
+            padding: 80px 0 20px;
+            margin-top: 0;
+            position: relative;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 60px;
+            padding: 0 40px;
+        }
+
+        .footer-section {
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            font-family: 'Roboto', sans-serif;
+            color: white;
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: #ff7f50;
+        }
+
+        .footer-section p, .footer-section li {
+            color: #a3b1c2;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section ul li a {
+            color: #a3b1c2;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .footer-section ul li a::before {
+            content: '→';
+            position: absolute;
+            left: -10px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            color: #ff7f50;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+            padding-left: 20px;
+        }
+
+        .footer-section ul li a:hover::before {
+            opacity: 1;
+            left: 0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: #a3b1c2;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-links a:hover {
+            color: #ff7f50;
+            border-color: #ff7f50;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 60px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: #a3b1c2;
+            font-size: 0.9rem;
+        }
+
+        /* Popup Content Styles */
+        .popup-content {
+            position: absolute;
+            width: 300px;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            border: 2px solid #ff6b6b;
+            z-index: 99999;
+            pointer-events: none;
+            left: 50%;
+            transform: translateX(-50%);
+            display: block !important;
+        }
+
+        .section div {
+            position: relative;
+        }
+
+        .section div:hover .popup-content {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            display: block !important;
+        }
+
+        .popup-content h4 {
+            color: #ff6b6b;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .popup-content p {
+            color: #2d3436;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .popup-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+        }
+
+        .popup-content ul li {
+            color: #636e72;
+            font-size: 0.9rem;
+            padding: 5px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .popup-content ul li::before {
+            content: '•';
+            color: #ff6b6b;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        .popup-content::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+        }
+
+        /* Position popups for bottom row */
+        .section div:nth-last-child(-n+3) .popup-content {
+            bottom: 100%;
+            top: auto;
+            margin-bottom: 10px;
+        }
+
+        /* Position popups for other rows */
+        .section div:not(:nth-last-child(-n+3)) .popup-content {
+            top: 100%;
+            margin-top: 10px;
+        }
+
+        .section div:not(:nth-last-child(-n+3)) .popup-content::before {
+            top: -10px;
+            border-bottom: 10px solid #ff6b6b;
+        }
+
+        .section div:nth-last-child(-n+3) .popup-content::before {
+            bottom: -10px;
+            border-top: 10px solid #ff6b6b;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .popup-content {
+                width: 280px;
+                left: 0;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <%- include('partials/navbar') %>
+    
+    <!-- End New Floating Sidebar HTML -->
+    <header class="hero" data-aos="fade-up">
+        <div class="hero-content">
+            <h1>Empower Your Workforce with AI-Driven Mobility Solutions</h1>
+            <p>Enhance operational efficiency, enable real-time decision-making, and elevate user experience with DGT's mobile-first enterprise solutions.</p>
+        </div>
+    </header>
+    
+    <section class="expertise" data-aos="fade-up" style="display: none;">
+        <div>
+        <h2>Our Expertise</h2>
+        <p>#NAME?</p>
+    </div>
+    </section>
+    
+    <section class="challenges" data-aos="fade-up">
+        <img class="mobility_img" src="images/todayceo.jpg" alt="">
+        <div>
+            <h2>Today's CEO Challenges</h2>
+            <ul>
+                <li>Security & Compliance Risks</li>
+                <li>Device Fragmentation & User Experience</li>
+                <li>Offline Functionality & Performance Issues</li>
+                <li>Scalability & Cost of Development</li>
+            </ul>
+            <div class="popup-content">
+                <h4>Today's CEO Challenges</h4>
+                <p>Modern enterprises face critical challenges in their mobile transformation journey. Our solutions address these key pain points:</p>
+                <ul>
+                    <li>Security & Compliance: Protecting sensitive data while ensuring regulatory adherence</li>
+                    <li>Device Fragmentation: Managing consistent user experience across diverse devices</li>
+                    <li>Offline Functionality: Ensuring seamless operation in low-connectivity areas</li>
+                    <li>Scalability: Building cost-effective solutions that grow with your business</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <section class="trends" data-aos="fade-up">
+        <img class="mobility_img" src="images/technologytrend.jpg" alt="">
+        <div>
+            <h2>Technology Trends</h2>
+            <ul>
+                <li>AI-powered mobile apps & predictive workflows</li>
+                <li>Edge AI & 5G for real-time processing</li>
+                <li>Voice & Gesture Interfaces</li>
+                <li>Blockchain for mobile security</li>
+            </ul>
+            <div class="popup-content">
+                <h4>Technology Trends</h4>
+                <p>Stay ahead with cutting-edge mobile technologies that drive innovation:</p>
+                <ul>
+                    <li>AI-powered mobile apps: Leveraging machine learning for enhanced user experience</li>
+                    <li>Edge AI & 5G: Enabling real-time data processing and reduced latency</li>
+                    <li>Voice & Gesture Interfaces: Revolutionizing user interaction methods</li>
+                    <li>Blockchain Security: Ensuring tamper-proof data protection</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <section class="accelerators">
+        <img class="mobility_img" src="images/dgtacceletors.jpg" alt="" data-aos="slide-in">
+        <div>
+            <h2 data-aos="slide-in">DGT Accelerators</h2>
+            <ul>
+                <li>DGT MobileOps™: AI-powered field service & sales enablement app</li>
+                <li>Offline-First SDK: Real-time data sync in low-connectivity zones</li>
+                <li>AI Voice Assistant for Mobility</li>
+            </ul>
+            <div class="popup-content">
+                <h4>DGT Accelerators</h4>
+                <p>Our proprietary solutions accelerate your mobile transformation:</p>
+                <ul>
+                    <li>DGT MobileOps™: Comprehensive field service and sales enablement platform</li>
+                    <li>Offline-First SDK: Robust data synchronization for challenging environments</li>
+                    <li>AI Voice Assistant: Intelligent voice-based interaction for enhanced productivity</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <section class="why-choose" data-aos="fade-up">
+        <img class="mobility_img" src="images/whydgt.jpg" alt="">
+        <div>
+            <h2>Why Choose DGT</h2>
+            <ul>
+                <li>AI-first mobile architecture</li>
+                <li>Cross-platform development expertise</li>
+                <li>Offline & real-time sync capabilities</li>
+                <li>Enterprise-grade security & compliance</li>
+            </ul>
+            <div class="popup-content">
+                <h4>Why Choose DGT</h4>
+                <p>Partner with us for comprehensive mobile solutions:</p>
+                <ul>
+                    <li>AI-first Approach: Leveraging artificial intelligence for optimal performance</li>
+                    <li>Cross-platform Expertise: Seamless deployment across all devices</li>
+                    <li>Advanced Sync: Reliable data synchronization in any environment</li>
+                    <li>Enterprise Security: Robust protection for sensitive business data</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <section class="methodology" data-aos="fade-up">
+        <img class="mobility_img" src="images/ourmethod.jpg" alt="">
+        <div>
+            <h2>Our Methodology</h2>
+            <ol>
+                <li>Discovery & User Experience Research</li>
+                <li>App Design & Prototyping</li>
+                <li>Development & Testing</li>
+                <li>Deployment & AI-driven Optimization</li>
+            </ol>
+            <div class="popup-content">
+                <h4>Our Methodology</h4>
+                <p>Our proven approach ensures successful mobile solutions:</p>
+                <ul>
+                    <li>Discovery: Deep understanding of user needs and business requirements</li>
+                    <li>Design: Creating intuitive and engaging user interfaces</li>
+                    <li>Development: Building robust and scalable applications</li>
+                    <li>Deployment: Seamless implementation with continuous optimization</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <section class="success" data-aos="fade-up">
+        <img class="mobility_img" src="images/casestudy.jpg" alt="">
+        <div>
+        <h2>Case Study</h2>
+        <ul>
+            <li>Deployed AI-powered field service app for a global telecom provider</li>
+            <li>Reduced operational delays by 40%</li>
+            <li>Increased technician efficiency by 35%</li>
+        </ul>
+        <div class="popup-content">
+            <h4>Case Study Success</h4>
+            <p>Real-world results from our mobile solutions implementation:</p>
+            <ul>
+                <li>Global Telecom Provider: Successful deployment of AI-powered field service app</li>
+                <li>Operational Efficiency: 40% reduction in service delays</li>
+                <li>Workforce Productivity: 35% increase in technician efficiency</li>
+                <li>ROI Achievement: Significant cost savings and improved customer satisfaction</li>
+            </ul>
+        </div>
+        <div class="whitebutton" onclick="showDownloadPopup()"  style="float: left;"> 
+            <a href="#">Download</a><br>
+            <span class="up">Click to Download</span><br>
+            <span class="down" id="file-info">Fetching size...</span>
+        </div>
+        
+        </div>
+    </section>
+    
+    
+    
+    <section class="cta-section" data-aos="fade-up">
+        <div class="cta-wrapper">
+            <h2>Ready to Transform Your Mobile Strategy?</h2>
+            <a href="/contactus" class="cta-button">Contact Us</a>
+        </div>
+    </section>
+
+    <footer class="classic-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Dawn Digital</h3>
+                <p>Pioneering digital transformation through innovative solutions and strategic thinking. We combine cutting-edge technology with practical business insights.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/index">Home</a></li>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/services">Services</a></li>
+                    <li><a href="/contactus">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> 3 Sugarcreek Center Blvd, Suite 100, Sugar Land, TX 77478</li>
+                    <li><i class="fas fa-envelope"></i> info@dawndgt.com</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Dawn Digital Technology. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100,
+            easing: 'ease-out-cubic'
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const text = document.querySelector('.animated-text');
+            const words = text.textContent.split(' ');
+            text.textContent = '';
+            
+            words.forEach((word, index) => {
+                const span = document.createElement('span');
+                span.textContent = word + ' ';
+                span.style.animationDelay = `${0.6 + (index * 0.03)}s`;
+                span.style.animation = 'wordFadeIn 0.5s ease-out forwards';
+                text.appendChild(span);
+            });
+
+            // Add popup handling
+            const sections = document.querySelectorAll('.section div');
+            sections.forEach(section => {
+                section.addEventListener('mouseenter', function() {
+                    const popup = this.querySelector('.popup-content');
+                    if (popup) {
+                        popup.style.display = 'block';
+                        popup.style.opacity = '1';
+                        popup.style.visibility = 'visible';
+                    }
+                });
+
+                section.addEventListener('mouseleave', function() {
+                    const popup = this.querySelector('.popup-content');
+                    if (popup) {
+                        popup.style.display = 'none';
+                        popup.style.opacity = '0';
+                        popup.style.visibility = 'hidden';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

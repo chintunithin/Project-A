@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latest Case Studies - Dawn Digital</title>
+  <script src="/search.js"></script>
+  <link href="index.css"  rel="stylesheet" >
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- SweetAlert2 CDN -->
+  <style>
+    /* Custom light orange theme */
+    :root {
+      --primary-color: #fffbf5;
+      --hover-color: #f97316;
+    }
+
+    .case-card:hover {
+      background-color: var(--hover-color);
+      color: white;
+      transform: translateY(-5px);
+      transition: all 0.3s ease;
+    }
+
+    .case-card:hover a {
+      color: white;
+    }
+
+    .case-image {
+      height: 180px;
+      object-fit: cover;
+      border-radius: 1rem;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 font-sans leading-relaxed tracking-wide">
+   <%- include('partials/navbar') %>
+  <!-- Section -->
+  <section class="max-w-7xl mx-auto px-6 py-12">
+    <h1 class="text-4xl font-bold text-gray-800 text-center mb-4" data-aos="fade-down">Latest Case Studies</h1>
+    <p class="text-center text-gray-600 mb-12" data-aos="fade-up">Discover how Dawn Digital's DGT division leverages AI and Data Transformation to deliver cutting-edge solutions.</p>
+
+    <!-- Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Case Study 1 -->
+      <div class="case-card p-4 bg-[var(--primary-color)] rounded-2xl shadow-lg hover:shadow-2xl" data-aos="fade-up" data-aos-delay="100">
+        <img src="/images/Ai-drivenBusinessTransformation.webp" alt="AI & Digital Transformation" class="case-image mb-4">
+        <h2 class="text-2xl font-semibold mb-2">AI & Digital Transformation</h2>
+        <p class="text-gray-700 mb-4">Revolutionizing Salesforce with AI-first approaches to enhance CRM systems for next-gen businesses.</p>
+        <a href="javascript:void(0);" onclick="showCaseStudy('AI & Digital Transformation', 'We revolutionize Salesforce by integrating AI-driven solutions that automate processes, improve customer relationships, and deliver unparalleled data insights.')" class="font-bold underline" style="color: black;">Read More →</a>
+      </div>
+
+      <!-- Case Study 2 -->
+      <div class="case-card p-4 bg-[var(--primary-color)] rounded-2xl shadow-lg hover:shadow-2xl" data-aos="fade-up" data-aos-delay="200">
+        <img src="/images/DataGovernanceExcellence.webp" alt="Data Governance Excellence" class="case-image mb-4">
+        <h2 class="text-2xl font-semibold mb-2">Data Governance Excellence</h2>
+        <p class="text-gray-700 mb-4">Leading data governance initiatives ensuring security, compliance, and actionable insights.</p>
+        <a href="javascript:void(0);" onclick="showCaseStudy('Data Governance Excellence', 'Our data governance solutions ensure robust security, regulatory compliance, and meaningful insights that drive organizational success.')" class="font-bold underline" style="color:black">Read More →</a>
+      </div>
+
+      <!-- Case Study 3 -->
+      <div class="case-card p-4 bg-[var(--primary-color)] rounded-2xl shadow-lg hover:shadow-2xl" data-aos="fade-up" data-aos-delay="300">
+        <img src="/images/transformingCustomerJourney.webp" alt="Customer Journey Transformation" class="case-image mb-4">
+        <h2 class="text-2xl font-semibold mb-2">Transforming Customer Journeys</h2>
+        <p class="text-gray-700 mb-4">Crafting personalized customer experiences through AI and intelligent data-driven insights.</p>
+        <a href="javascript:void(0);" onclick="showCaseStudy('Customer Journey Transformation', 'We craft personalized, AI-enhanced customer journeys that drive engagement, satisfaction, and loyalty through intelligent data use.')" class="font-bold underline" style="color:black">Read More →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      easing: 'ease-in-out',
+      once: true
+    });
+
+    // SweetAlert2 function to show case study info
+    function showCaseStudy(title, description) {
+      Swal.fire({
+        title: title,
+        text: description,
+        icon: 'info',
+        confirmButtonText: 'Close',
+        confirmButtonColor: '#f97316',
+        background: '#fff',
+        color: '#333',
+        backdrop: true,
+        padding: '1.5rem'
+      });
+    }
+  </script>
+</body>
+</html>
