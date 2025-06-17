@@ -1,174 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAP - Dawn Digital Technology</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <script src="/search.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SAP – Dawn Digital Technology</title>
+  <script src="/search.js"></script>
     <link href="index.css"  rel="stylesheet" >
-    <style>
-       body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f4f4f4;
-            color: #333;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            padding: 20px;
-        }
-        .img-container img:hover {
-            transform: scale(1.1);
-        }
-        .card ul {
-            padding-left: 20px;
-            list-style-type: none;
-        }
-        .card ul li {
-            margin: 5px 0;
-            padding: 10px;
-            color: black;
-            background: rgba(244, 162, 97, 0.2);
-            border-left: 4px solid #F4A261;
-            border-radius: 5px;
-        }
-        .hero {
-            background: url('/images/s_image3.jpg') no-repeat center center/cover;
-            height: 70vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: rgb(226, 218, 218);
-            text-align: center;
-            font-size: 2rem;
-            font-weight: bold;
-            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
-            animation: fadeIn 2s ease-in-out;
-        }
-        .card {
-            background: white;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            border-left: 5px solid #ef7809;
-        }
-        .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .container h2{
-            font-size: 2rem;
-    color: #ff7f50;
-    text-align: center;
-    margin-bottom: 25px;
-        }
-    </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #333;
+      border-bottom: 2px solid #f4a26166;
+      display: inline-block;
+      padding-bottom: 4px;
+      margin-bottom: 16px;
+    }
+    .info-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+    }
+     p,li{
+        font-size: 16px!important;
+        list-style-type: none;
+        font-family: 'Poppins', sans-serif;
+    }
+    h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto', sans-serif;
+}
+  </style>
 </head>
-<body>
-    <%- include('partials/navbar') %>
-    
-    <div class="hero" data-aos="fade-up">
-        <h2 style="text-shadow:0px 0px 5px #000000;color:white">Unlock Intelligent Enterprise with SAP & DGT – AI-Enhanced, Cloud-Ready, and Future-Proof</h2>
+<body class="bg-[#fcfcfc] text-gray-800">
+<%- include('partials/navbar') %>
+  <!-- Hero -->
+  <section class="h-[65vh] bg-cover bg-center bg-no-repeat flex items-center justify-center relative text-white text-center shadow-md" style="background-image: url('/images/s_image3.jpg');">
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+    <div class="z-10 px-4">
+      <h1 class="text-3xl md:text-4xl font-bold leading-snug">Unlock Intelligent Enterprise with SAP & DGT</h1>
+      <p class="mt-4 text-lg text-gray-200">AI-enhanced · Cloud-ready · Future-proof</p>
     </div>
-    
-    <div class="container">
-        <div class="card" data-aos="fade-up">
-            <h2>Our SAP Expertise</h2>
-            <p style="color: black;">We modernize ERP, SCM, Procurement, and Finance with AI-powered SAP solutions.</p>
-        </div>
-        
-        <div class="card" data-aos="fade-up">
-            <h2>Our SAP Delivery Framework</h2>
-            <ul>
-                <li>Plan & Assess – SAP Readiness, Business Blueprinting</li>
-                <li>Design & Configure – Fit-to-Standard or Custom Development</li>
-                <li>Deploy & Integrate – SAP Cloud, Hybrid, or On-Prem Implementation</li>
-                <li>Optimize & Support – AI-driven enhancements and monitoring</li>
-            </ul>
-        </div>
-        
-        <div class="card" data-aos="fade-up">
-            <h2>Technical Prowess</h2>
-            <ul>
-                <li>SAP S/4HANA, SAP BTP, SAP Ariba, SAP SuccessFactors</li>
-                <li>Integration via Mulesoft, Boomi, and Informatica</li>
-                <li>SAP DevOps, AI/ML-powered analytics & RPA</li>
-            </ul>
-        </div>
-        
-        <div class="card" data-aos="fade-up">
-            <h2>Functional Expertise</h2>
-            <ul>
-                <li>ERP Modernization: SAP S/4HANA Digital Core transformation</li>
-                <li>Supply Chain Excellence: AI-powered forecasting in SAP IBP</li>
-                <li>HR Transformation: Seamless HR operations with SAP SuccessFactors</li>
-            </ul>
-        </div>
-        
-        <div class="card" data-aos="fade-up">
-            <h2>Managed Services</h2>
-            <ul>
-                <li>24x5 SAP Support with AI-driven monitoring</li>
-                <li>Continuous SAP Enhancements & Compliance</li>
-                <li>Cost Optimization & Process Automation</li>
-            </ul>
-        </div>
-        
-        <div class="card" data-aos="fade-up">
-            <h2>Interactive Elements</h2>
-            <ul>
-                <li> SAP Readiness Assessment Tool</li>
-                <li> Demo Video: SAP modernization approach</li>
-                <li> SAP Chatbot for instant inquiries</li>
-            </ul>
-        </div>
-        
-        <div class="card" data-aos="fade-up">
-            <h2>Client Success Stories</h2>
-            <ul>
-                <li>Retail: Optimized supply chain with SAP IBP & AI forecasting</li>
-                <li>Healthcare: Automated HR workflows with SAP SuccessFactors</li>
-                <li>Manufacturing: Transformed finance operations with SAP S/4HANA</li>
-            </ul>
-        </div>
-        
-        <div class="card" data-aos="fade-up">
-            <h2>Team Expertise</h2>
-            <ul>
-                <li>Certified SAP Solution Architects & Business Process Experts</li>
-                <li>Specializations in SAP AI/ML, RPA, Fiori UX, and Cloud Migration</li>
-            </ul>
-        </div>
-        
-        <div class="card" data-aos="fade-up">
-            <h2>Call-to-Action</h2>
-            <ul>
-                <li> [Schedule an SAP Consultation]</li>
-                <li>📄 [Download Our SAP Best Practices Whitepaper]</li>
-            </ul>
-        </div>
+  </section>
+
+  <!-- Content -->
+  <section class="max-w-7xl mx-auto py-16 px-6">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-800">Our SAP Capabilities</h2>
+      <p class="text-gray-500 mt-2">Tailored solutions across SAP ecosystem</p>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
+    <div class="grid md:grid-cols-3 gap-10">
+      <!-- Each box -->
+      <div class="info-box transition duration-300 bg-white p-6 rounded-lg" data-aos="fade-up">
+        <h3 class="section-title">SAP Expertise</h3>
+        <p class="text-sm text-gray-600 mt-2">
+          Modernizing ERP, SCM, Procurement, and Finance with intelligent SAP systems powered by AI.
+        </p>
+      </div>
+
+      <div class="info-box transition duration-300 bg-white p-6 rounded-lg" data-aos="fade-up">
+        <h3 class="section-title">Delivery Framework</h3>
+        <ul class="mt-2 text-sm text-gray-600 space-y-1">
+          <li>Plan & Assess</li>
+          <li>Design & Configure</li>
+          <li>Deploy & Integrate</li>
+          <li>Optimize & Support</li>
+        </ul>
+      </div>
+
+      <div class="info-box transition duration-300 bg-white p-6 rounded-lg" data-aos="fade-up">
+        <h3 class="section-title">Tech Stack</h3>
+        <ul class="mt-2 text-sm text-gray-600 space-y-1">
+          <li>S/4HANA, SAP BTP</li>
+          <li>Mulesoft, Boomi, Informatica</li>
+          <li>RPA, AI/ML, SAP DevOps</li>
+        </ul>
+      </div>
+
+      <div class="info-box transition duration-300 bg-white p-6 rounded-lg" data-aos="fade-up">
+        <h3 class="section-title">Functional Expertise</h3>
+        <ul class="mt-2 text-sm text-gray-600 space-y-1">
+          <li>ERP Core Transformation</li>
+          <li>AI-driven Supply Chain</li>
+          <li>HR Automation via SuccessFactors</li>
+        </ul>
+      </div>
+
+      <div class="info-box transition duration-300 bg-white p-6 rounded-lg" data-aos="fade-up">
+        <h3 class="section-title">Managed Services</h3>
+        <ul class="mt-2 text-sm text-gray-600 space-y-1">
+          <li>24x5 AI Monitoring</li>
+          <li>Continuous Enhancements</li>
+          <li>Process Automation</li>
+        </ul>
+      </div>
+
+      <div class="info-box transition duration-300 bg-white p-6 rounded-lg" data-aos="fade-up">
+        <h3 class="section-title">Success Stories</h3>
+        <ul class="mt-2 text-sm text-gray-600 space-y-1">
+          <li>Retail: SAP IBP + AI</li>
+          <li>Healthcare: HR Digitization</li>
+          <li>Manufacturing: Finance Revamp</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-16 text-center">
+      <h3 class="text-2xl font-semibold mb-4 text-gray-800">Get Started with SAP Transformation</h3>
+      <div class="flex flex-col md:flex-row justify-center gap-4 mt-4">
+        <a href="/schedule-consultation" class="bg-orange-500 text-white py-3 px-6 rounded-md hover:bg-orange-600 transition">Schedule a Consultation</a>
+        <a href="/SAP_Best_Practices.pdf" download class="group inline-flex items-center border border-orange-400 text-orange-500 px-6 py-3 rounded-md hover:bg-orange-100 transition">
+          <span>Download Whitepaper</span>
+          <i class="fa-solid fa-file-arrow-down ml-2 transition-transform group-hover:translate-x-1"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
+
 </body>
 </html>

@@ -1,160 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Microsoft Azure Solutions</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <script src="/search.js"></script>
-    <link href="index.css"  rel="stylesheet" >
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-       body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f4f4f4;
-            color: #333;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            padding: 20px;
-        }
-        .hero {
-            background: url('/images/s_image5.jpg') no-repeat center center/cover;
-            height: 70vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #110f0ffb;
-            text-align: center;
-            font-size: 2rem;
-            font-weight: bold;
-            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
-            animation: fadeIn 2s ease-in-out;
-        }
-        .card {
-            background: white;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            border-left: 5px solid #df6d0a;
-        }
-        .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-        .card ul {
-            padding-left: 20px;
-            list-style-type: none;
-        }
-        .card ul li {
-            margin: 5px 0;
-            padding: 10px;
-            background: rgba(0, 120, 212, 0.1);
-            border-left: 4px solid #eb7309;
-            border-radius: 5px;
-            color: black;
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        @media screen and (max-width: 768px) {
-            .container {
-                width: 95%;
-            }
-            .hero {
-                font-size: 1.5rem;
-                height: 40vh;
-            }
-        }
-        .container h2{
-            font-size: 2rem;
-    color: #ff7f50;
-    text-align: center;
-    margin-bottom: 25px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Microsoft Azure Solutions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/search.js"></script>
+  <link href="index.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .section-header {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 40px 0 20px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      padding: 0 40px 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .content-item {
+      position: relative;
+      padding-left: 20px;
+      border-left: 2px solid #ddd;
+    }
+
+    .content-item::before {
+      content: '⬤';
+      color: #f4a261;
+      font-size: 0.8rem;
+      position: absolute;
+      left: -10px;
+      top: 4px;
+    }
+
+    .content-item h3 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+      color: #333;
+      border-bottom: 2px solid rgba(244, 162, 97, 0.2);
+      display: inline-block;
+      padding-bottom: 4px;
+    }
+
+    .content-item p, .content-item ul {
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .content-item ul {
+      padding-left: 1.2rem;
+      list-style: none;
+    }
+
+    .content-item ul li::before {
+      content: "›";
+      color: #f4a261;
+      margin-right: 6px;
+    }
+
+    .hero {
+      background: url('/images/s_image5.jpg') no-repeat center center/cover;
+      height: 65vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      padding: 20px;
+      text-shadow: 0px 0px 5px #000;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      .content-grid {
+        padding: 0 20px 40px;
+      }
+      .section-header {
+        padding-top: 10%;
+      }
+      .hero {
+        font-size: 1.5rem;
+        height: 40vh;
+      }
+    }
+  </style>
 </head>
 <body>
-    <%- include('partials/navbar') %>
-    <div class="hero" data-aos="fade-up">
-        <h2 style="text-shadow:0px 0px 5px #333;">Transform, Secure, and Scale with Microsoft Azure & AI-driven Solutions</h2>
-    </div>
-    
-    <div class="container">
-        <div class="card" data-aos="fade-up">
-            <h2>Our Expertise</h2>
-            <p style="color: black;">We help enterprises modernize and scale with Azure Cloud, leveraging AI, automation, and security-driven cloud architectures.</p>
-        </div>
-        
-        <div class="card" data-aos="fade-up">
-            <h2>Azure Cloud Adoption Framework</h2>
-            <ul>
-                <li> Strategy & Planning – Cloud readiness assessment</li>
-                <li> Architecture & Migration – Seamless workload transition</li>
-                <li> Optimization & Automation – AI-driven cost and security compliance</li>
-            </ul>
-        </div>
-        
-        <div class="card" data-aos="fade-up">
-            <h2>Technical Prowess</h2>
-            <ul>
-                <li> Azure AI & ML, Data Lake, Synapse Analytics</li>
-                <li> Azure DevOps, CI/CD Pipelines, Kubernetes</li>
-                <li> Security & Compliance: Azure AD, Sentinel, Defender</li>
-            </ul>
-        </div>
-        
-        <div class="card" data-aos="fade-up">
-            <h2>Implementation & Integration</h2>
-            <ul>
-                <li> Hybrid Cloud & Multi-cloud with Azure Arc</li>
-                <li> SAP on Azure, Salesforce & Mulesoft Integrations</li>
-                <li> Data Migration & Governance with secure, scalable strategies</li>
-            </ul>
-        </div>
-        
-        <div class="card" data-aos="fade-up">
-            <h2>Client Success Stories</h2>
-            <ul>
-                <li> Healthcare: AI-driven patient analytics using Azure AI & Power BI.</li>
-                <li> Financial Services: AI-powered fraud detection with Azure ML.</li>
-                <li> Retail: Scalable eCommerce using Azure Kubernetes & CosmosDB.</li>
-            </ul>
-        </div>
-        
-        <div class="card" data-aos="fade-up">
-            <h2>Team Expertise</h2>
-            <ul>
-                <li> Microsoft-Certified Azure Architects & Security Engineers</li>
-                <li> Specializations in AI/ML, DevOps, SAP on Azure</li>
-            </ul>
-        </div>
-        
-        <div class="card" data-aos="fade-up">
-            <h2>Call-to-Action</h2>
-            <ul>
-                <li> <strong>[Schedule an Azure Cloud Consultation]</strong></li>
-                <li>📄 <strong>[Download Our Azure Best Practices Whitepaper]</strong></li>
-            </ul>
-        </div>
+  <%- include('partials/navbar') %>
+
+  <div class="hero" data-aos="fade-up">
+    Transform, Secure, and Scale with Microsoft Azure & AI-Driven Solutions
+  </div>
+
+  <h1 class="section-header">Our Microsoft Azure Capabilities</h1>
+
+  <div class="content-grid">
+
+    <div class="content-item">
+      <h3>Our Expertise</h3>
+      <p>We help enterprises modernize and scale with Azure Cloud, leveraging AI, automation, and security-driven cloud architectures.</p>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
+    <div class="content-item">
+      <h3>Cloud Adoption Framework</h3>
+      <ul>
+        <li>Strategy & Planning – Cloud readiness assessment</li>
+        <li>Architecture & Migration – Seamless workload transition</li>
+        <li>Optimization – AI-driven cost & compliance governance</li>
+      </ul>
+    </div>
+
+    <div class="content-item">
+      <h3>Technical Prowess</h3>
+      <ul>
+        <li>Azure AI & ML, Data Lake, Synapse Analytics</li>
+        <li>DevOps, CI/CD Pipelines, Kubernetes</li>
+        <li>Security & Compliance: Azure AD, Sentinel, Defender</li>
+      </ul>
+    </div>
+
+    <div class="content-item">
+      <h3>Implementation & Integration</h3>
+      <ul>
+        <li>Hybrid Cloud with Azure Arc</li>
+        <li>SAP on Azure, Mulesoft, Salesforce integrations</li>
+        <li>Data Migration & Governance</li>
+      </ul>
+    </div>
+
+    <div class="content-item">
+      <h3>Client Success</h3>
+      <ul>
+        <li>Healthcare: AI-powered analytics with Power BI</li>
+        <li>Finance: Fraud detection using Azure ML</li>
+        <li>Retail: Scalable eCommerce with Azure Kubernetes</li>
+      </ul>
+    </div>
+
+    <div class="content-item">
+      <h3>Team Expertise</h3>
+      <ul>
+        <li>Microsoft-Certified Azure Architects</li>
+        <li>Specialists in AI, DevOps, SAP on Azure</li>
+      </ul>
+    </div>
+
+     <div class="content-item">
+  <h3>Engage with Us</h3>
+  <ul>
+    <li><strong>Book a Consultation</strong> – Talk to our ServiceNow experts</li>
+    <li><strong>Download Whitepaper</strong> – Best practices & success metrics</li>
+  </ul>
+
+  <div class="mt-4 flex flex-col sm:flex-row gap-3">
+    <a href="#consultation"
+       class="inline-flex items-center justify-center px-5 py-2.5 font-medium text-sm text-white bg-[#f4a261] hover:bg-[#e67e22] transition duration-300 ease-in-out rounded-full shadow-md hover:shadow-lg">
+       <i class="fa-solid fa-calendar-check mr-2"></i> Book a Consultation
+    </a>
+
+    <a href="#whitepaper"
+       class="inline-flex items-center justify-center px-5 py-2.5 font-medium text-sm text-[#f4a261] border border-[#f4a261] hover:bg-[#f4a261]/10 transition duration-300 ease-in-out rounded-full shadow-sm">
+       <i class="fa-solid fa-file-lines mr-2"></i> Download Whitepaper
+    </a>
+  </div>
+</div>
+
+
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
 </body>
 </html>

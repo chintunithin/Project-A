@@ -1,209 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salesforce Solutions</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <script src="/search.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Salesforce Solutions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/search.js"></script>
     <link href="index.css"  rel="stylesheet" >
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-       body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f4f4f4;
-            color: #333;
-        }
-        .hero {
-            background-image: url('/images/SalesforceIcon.jpg');
-    background-size: cover; /* Ensures the image covers the entire background */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat; /* Prevents repeating */
-    height: 400px;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            padding: 20px;
-        }
-        .hero {
-            height: 50vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 6%;
-            color: rgb(0, 0, 0);
-            text-align: center;
-            font-size: 2rem;
-            font-weight: bold;
-            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
-            animation: fadeIn 2s ease-in-out;
-        }
-        .card {
-            background: white;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            border-left: 5px solid #F4A261;
-        }
-        .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-        .img-container img {
-            width: 100%;
-            border-radius: 10px;
-            transition: transform 0.3s ease-in-out;
-        }
-        .img-container img:hover {
-            transform: scale(1.1);
-        }
-        .card ul {
-            padding-left: 20px;
-            list-style-type: none;
-        }
-        .card ul li {
-            margin: 5px 0;
-            padding: 10px;
-            background: rgba(244, 162, 97, 0.2);
-            border-left: 4px solid #F4A261;
-            color:black;
-            border-radius: 5px;
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        @media screen and (max-width: 768px) {
-            .container {
-                width: 95%;
-            }
-            .hero {
-                font-size: 1.5rem;
-                height: 40vh;
-            }
-        }
-        .SF-grid_sec{
-            display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      padding: 20px;
-        }
-        @media (max-width: 480px) {
-        .SF-grid_sec {
-            grid-template-columns: 1fr; 
-        }
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      
     }
-    .container h2{
-            font-size: 2rem;
-    color: #ff7f50;
-    text-align: center;
-    margin-bottom: 25px;
-        }
-
-    </style>
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #333;
+      border-bottom: 2px solid #f4a26166;
+      display: inline-block;
+      padding-bottom: 4px;
+      margin-bottom: 16px;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+    }
+  p,li{
+        font-size: 16px!important;
+        list-style-type: none;
+        font-family: 'Poppins', sans-serif;
+    }
+    h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto', sans-serif;
+}
+  </style>
 </head>
-<body>
-    <%- include('partials/navbar') %>
-    <div class="hero" data-aos="fade-up">
-        Unleash the Power of Salesforce with AI-driven Innovation
+<body class="bg-[#fcfcfc] text-gray-800">
+
+  <!-- Navbar Placeholder -->
+  <%- include('partials/navbar') %>
+
+  <!-- Hero -->
+  <section class="h-[60vh] bg-cover bg-center bg-no-repeat flex items-center justify-center relative text-white text-center" style="background-image: url('/images/SalesforceIcon.jpg');">
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+    <div class="z-10 px-4">
+      <h1 class="text-3xl md:text-4xl font-bold leading-snug">Unleash the Power of Salesforce with AI-driven Innovation</h1>
     </div>
-    
-    <div class="container">
-        <div class="SF-grid_sec">
-        <div class="card" data-aos="fade-up">
-            <h2>Our Expertise</h2>
-            <p style="color: black;">We bring an AI-first approach to Salesforce, integrating intelligence into every step.</p>
-        </div>
-        
-        <div class="card" data-aos="fade-up">
-            <h2>Process Excellence</h2>
-            <p style="color: black;">Proven Methodology: Our structured 5-stage approach ensures seamless implementation and optimization.</p>
-        </div>
-        
-        <div class="card" data-aos="fade-up">
-            <h2>Technical Prowess</h2>
-            <p style="color: black;">Certifications & Skills: Our team holds Salesforce certifications in AI, automation, and analytics.</p>
-        </div>
-        
-        <div class="card" data-aos="fade-up">
-            <h2>Functional Mastery</h2>
-            <p style="color: black;">Deep expertise across Sales, Service, Marketing, and Commerce Cloud solutions.</p>
-        </div>
-        </div>
-        
-        <div class="card" data-aos="fade-up">
-            <h2>Implementation Excellence</h2>
-            <p><strong>Our Approach:</strong></p>
-            <ul>
-                <li>Customization & Development: Tailored configurations, custom LWC, and AI-infused workflows.</li>
-                <li>Integration: Connecting Salesforce with ERP, HRMS, and data lakes via Mulesoft, Boomi, SAP, Informatica.</li>
-                <li>Data Migration & Governance: Secure, scalable migration strategies using Salesforce Data Cloud and best-in-class ETL tools.</li>
-                <li>Visual Representation: A guided process flow of our implementation methodology.</li>
-            </ul>
-        </div>
-        
-        <div class="card" data-aos="fade-up">
-            <h2>Maintenance and Managed Services</h2>
-            <p>Ongoing Support & Optimization:</p>
-            <ul>
-                <li>24x5 shared services support with AI-driven monitoring.</li>
-                <li>Proactive Issue Resolution using ServiceNow, Salesforce Health Check, and predictive analytics.</li>
-                <li>Continuous Salesforce Enhancement – Leveraging AI and automation to improve productivity.</li>
-                <li>Performance Optimization – Fine-tuning workflows, reporting, and dashboards for maximum efficiency.</li>
-            </ul>
-            <p><strong>Testimonials:</strong> Featuring long-term clients benefiting from our Managed Services Model.</p>
-        </div>
-        
-        <div class="card" data-aos="fade-up">
-            <h2>Interactive Elements</h2>
-            <ul>
-                <li> <strong>Salesforce Readiness Assessment Tool</strong> – A quick self-assessment for businesses to gauge Salesforce implementation maturity.</li>
-                <li> <strong>Demo Video:</strong> A walkthrough of our AI-powered Salesforce solutions.</li>
-                <li> <strong>Salesforce Chatbot:</strong> Instant responses for questions about our Salesforce expertise, integrations, and use cases.</li>
-            </ul>
-        </div>
-        
-        <div class="card" data-aos="fade-up">
-            <h2>Client Success Stories</h2>
-            <ul>
-                <li> <strong>Manufacturing:</strong> Reduced order processing time by 40% using Salesforce CPQ + AI-based demand forecasting.</li>
-                <li> <strong>Financial Services:</strong> Improved customer onboarding by 60% with Salesforce Financial Services Cloud & AI-powered KYC automation.</li>
-                <li> <strong>Healthcare:</strong> Enhanced patient engagement by 35% via Service Cloud + Experience Cloud integration.</li>
-            </ul>
-        </div>
-        
-        <div class="card" data-aos="fade-up">
-            <h2>Team Expertise</h2>
-            <ul>
-                <li>Meet Our Experts: Featuring our Lead Salesforce Architects, Technical Experts, and Industry Consultants.</li>
-                <li>Showcasing Salesforce Certifications, Specializations, and Thought Leadership.</li>
-            </ul>
-        </div>
-        
-        <div class="card" data-aos="fade-up">
-            <h2>Call-to-Action</h2>
-            <ul>
-                <li> <strong>[Schedule a Salesforce Consultation]</strong> – Book a call with our Salesforce experts.</li>
-                <li>📄 <strong>[Download Our Salesforce Best Practices Whitepaper]</strong> – Gain insights on optimizing Salesforce investments.</li>
-            </ul>
-        </div>
+  </section>
+
+  <!-- Content -->
+  <section class="max-w-7xl mx-auto py-16 px-6">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-800">Salesforce Expertise</h2>
+      <p class="text-gray-500 mt-2">Driving business success with AI-powered CRM innovation</p>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
+    <!-- 3-Column Cards -->
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-white p-6 rounded-xl shadow-sm transition-transform duration-300 hover:shadow-md hover:-translate-y-1" data-aos="fade-up">
+        <h3 class="section-title">Our Expertise</h3>
+        <p class="text-sm mt-2">We bring an AI-first approach to Salesforce, integrating intelligence into every step.</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow-sm transition-transform duration-300 hover:shadow-md hover:-translate-y-1" data-aos="fade-up">
+        <h3 class="section-title">Process Excellence</h3>
+        <p class="text-sm mt-2">Structured 5-stage methodology ensuring smooth implementation and optimization.</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow-sm transition-transform duration-300 hover:shadow-md hover:-translate-y-1" data-aos="fade-up">
+        <h3 class="section-title">Technical Prowess</h3>
+        <p class="text-sm mt-2">Certified experts in Salesforce AI, automation, and analytics tools.</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow-sm transition-transform duration-300 hover:shadow-md hover:-translate-y-1" data-aos="fade-up">
+        <h3 class="section-title">Functional Mastery</h3>
+        <p class="text-sm mt-2">Expertise across Sales, Service, Marketing, and Commerce Cloud solutions.</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow-sm transition-transform duration-300 hover:shadow-md hover:-translate-y-1" data-aos="fade-up">
+        <h3 class="section-title">Implementation Excellence</h3>
+        <ul class="text-sm mt-2 space-y-2 list-disc list-inside text-gray-700">
+          <li>Tailored LWC development & AI workflows</li>
+          <li>Integrations via Mulesoft, Boomi, SAP</li>
+          <li>Secure data migration using Salesforce Data Cloud</li>
+          <li>Visual process flows</li>
+        </ul>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow-sm transition-transform duration-300 hover:shadow-md hover:-translate-y-1" data-aos="fade-up">
+        <h3 class="section-title">Managed Services</h3>
+        <ul class="text-sm mt-2 space-y-2 list-disc list-inside text-gray-700">
+          <li>24x5 AI-monitored support</li>
+          <li>Proactive issue resolution via ServiceNow</li>
+          <li>Performance optimization and automation</li>
+        </ul>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow-sm transition-transform duration-300 hover:shadow-md hover:-translate-y-1" data-aos="fade-up">
+        <h3 class="section-title">Interactive Elements</h3>
+        <ul class="text-sm mt-2 space-y-2 list-disc list-inside text-gray-700">
+          <li>Salesforce Readiness Assessment Tool</li>
+          <li>Demo walkthrough video</li>
+          <li>AI-powered Salesforce Chatbot</li>
+        </ul>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow-sm transition-transform duration-300 hover:shadow-md hover:-translate-y-1" data-aos="fade-up">
+        <h3 class="section-title">Client Success Stories</h3>
+        <ul class="text-sm mt-2 space-y-2 list-disc list-inside text-gray-700">
+          <li>📦 Manufacturing: +40% efficiency via CPQ + AI</li>
+          <li>🏦 Financial: 60% faster onboarding via FSC</li>
+          <li>🏥 Healthcare: 35% engagement boost with Experience Cloud</li>
+        </ul>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow-sm transition-transform duration-300 hover:shadow-md hover:-translate-y-1" data-aos="fade-up">
+        <h3 class="section-title">Our Team</h3>
+        <ul class="text-sm mt-2 space-y-2 list-disc list-inside text-gray-700">
+          <li>Certified Salesforce Architects and Consultants</li>
+          <li>Thought leaders in AI-integrated Salesforce delivery</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-16 text-center">
+      <h3 class="text-2xl font-semibold mb-4 text-gray-800">Accelerate Your Salesforce Journey</h3>
+      <div class="flex flex-col md:flex-row justify-center gap-4 mt-4">
+        <a href="/schedule-salesforce-consultation" class="bg-orange-500 text-white py-3 px-6 rounded-md hover:bg-orange-600 transition">Schedule a Consultation</a>
+        <a href="/Salesforce_Best_Practices.pdf" download class="group inline-flex items-center border border-orange-400 text-orange-500 px-6 py-3 rounded-md hover:bg-orange-100 transition">
+          <span>Download Whitepaper</span>
+          <i class="fa-solid fa-file-arrow-down ml-2 transition-transform group-hover:translate-x-1"></i>
+        </a>
+      </div>
+    </div>
+
+  </section>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
 </body>
 </html>
