@@ -544,7 +544,7 @@ function handleBackNavigation(element, event) {
         toggle.click(); // This simulates opening the main menu
     }
 }
-// document.addEventListener('contextmenu', event => event.preventDefault());
+document.addEventListener('contextmenu', event => event.preventDefault());
 document.onkeydown = function(e) {
     if (
       e.keyCode == 123 || // F12
