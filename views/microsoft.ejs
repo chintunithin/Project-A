@@ -13,96 +13,150 @@
   <style>
     body {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #f9f9f9;
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+      background: #fcfcfc;
       color: #333;
     }
-
-    h1, h2, h3 {
+    h1, h2, h3, h4, h5, h6 {
       font-family: 'Roboto', sans-serif;
     }
-
-    .section-header {
-      text-align: center;
-      font-size: 2rem;
-      font-weight: bold;
-      margin: 40px 0 20px;
-    }
-
-    .content-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 40px;
-      padding: 0 40px 60px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .content-item {
-      position: relative;
-      padding-left: 20px;
-      border-left: 2px solid #ddd;
-    }
-
-    .content-item::before {
-      content: '⬤';
-      color: #f4a261;
-      font-size: 0.8rem;
-      position: absolute;
-      left: -10px;
-      top: 4px;
-    }
-
-    .content-item h3 {
-      margin: 0 0 10px;
-      font-size: 1.2rem;
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 600;
       color: #333;
-      border-bottom: 2px solid rgba(244, 162, 97, 0.2);
+      border-bottom: 2px solid #f4a26166;
       display: inline-block;
       padding-bottom: 4px;
+      margin-bottom: 16px;
     }
-
-    .content-item p, .content-item ul {
-      margin: 0;
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-
-    .content-item ul {
-      padding-left: 1.2rem;
-      list-style: none;
-    }
-
-    .content-item ul li::before {
-      content: "›";
-      color: #f4a261;
-      margin-right: 6px;
-    }
-
-    .hero {
-      background: url('/images/s_image5.jpg') no-repeat center center/cover;
-      height: 65vh;
+    .card {
+      background: #fff;
+      border-radius: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      padding: 2rem 1.5rem;
+      transition: box-shadow 0.2s, transform 0.2s;
+      min-height: 180px;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+    }
+    p{
+      color: #333;
+    }
+    .card ul {
+      margin: 0;
+      padding-left: 1.2rem;
+      color: #444;
+      font-size: 1rem;
+    }
+    .card ul li {
+      margin-bottom: 0.5rem;
+      list-style-type: disc;
+    }
+    .cta-btn {
+      display: inline-flex;
       align-items: center;
+      justify-content: center;
+      padding: 0.75rem 2rem;
+      font-weight: 500;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      transition: background 0.2s, color 0.2s, border 0.2s, transform 0.2s;
+      cursor: pointer;
+    }
+    .cta-btn-primary {
+      background: #f4a261;
+      color: #fff;
+      border: none;
+    }
+    .cta-btn-primary:hover {
+      background: #e67e22;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    .cta-btn-outline {
+      background: transparent;
+      color: #f4a261;
+      border: 2px solid #f4a261;
+    }
+    .cta-btn-outline:hover {
+      background: #f4a26111;
+      color: #e67e22;
+      border-color: #e67e22;
+      transform: translateY(-2px);
+    }
+    .microsoft-hero {
+      height: 60vh;
+      background: url('/images/s_image5.jpg') center center/cover no-repeat;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
       color: #fff;
-      padding: 20px;
-      text-shadow: 0px 0px 5px #000;
-      font-size: 2rem;
-      font-weight: bold;
     }
-
-    @media (max-width: 768px) {
-      .content-grid {
-        padding: 0 20px 40px;
+    .microsoft-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 1;
+    }
+    .microsoft-hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 1rem;
+    }
+    .microsoft-hero h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    @media (min-width: 768px) {
+      .microsoft-hero h1 {
+        font-size: 2.8rem;
       }
-      .section-header {
-        padding-top: 10%;
-      }
-      .hero {
-        font-size: 1.5rem;
-        height: 40vh;
+    }
+    .microsoft-section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: bold;
+      margin: 48px 0 12px;
+      color: #333;
+    }
+    .microsoft-section-subtitle {
+      text-align: center;
+      color: #888;
+      font-size: 1.1rem;
+      margin-bottom: 36px;
+    }
+    .microsoft-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px 60px;
+    }
+    .microsoft-cta {
+      text-align: center;
+      margin: 60px 0 50px 0;
+    }
+    .microsoft-cta-btns {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      margin-top: 24px;
+    }
+    @media (min-width: 600px) {
+      .microsoft-cta-btns {
+        flex-direction: row;
+        justify-content: center;
       }
     }
   </style>
@@ -110,84 +164,78 @@
 <body>
   <%- include('partials/navbar') %>
 
-  <div class="hero" data-aos="fade-up">
-    Transform, Secure, and Scale with Microsoft Azure & AI-Driven Solutions
-  </div>
+  <!-- Hero Section -->
+  <section class="microsoft-hero">
+    <div class="microsoft-hero-content">
+      <h1>Transform, Secure, and Scale with Microsoft Azure & AI-Driven Solutions</h1>
+    </div>
+  </section>
 
-  <h1 class="section-header">Our Microsoft Azure Capabilities</h1>
+  <!-- Section Title & Subtitle -->
+  <div class="microsoft-section-title">Our Microsoft Azure Capabilities</div>
+  <div class="microsoft-section-subtitle">Modernize, automate, and secure your enterprise with Azure cloud, AI, and integrated solutions</div>
 
-  <div class="content-grid">
-
-    <div class="content-item">
-      <h3>Our Expertise</h3>
+  <!-- Main Content as Cards Grid -->
+  <div class="microsoft-grid">
+    <div class="card" data-aos="fade-up">
+      <h3 class="section-title">Our Expertise</h3>
       <p>We help enterprises modernize and scale with Azure Cloud, leveraging AI, automation, and security-driven cloud architectures.</p>
     </div>
-
-    <div class="content-item">
-      <h3>Cloud Adoption Framework</h3>
+    <div class="card" data-aos="fade-up">
+      <h3 class="section-title">Cloud Adoption Framework</h3>
       <ul>
         <li>Strategy & Planning – Cloud readiness assessment</li>
         <li>Architecture & Migration – Seamless workload transition</li>
         <li>Optimization – AI-driven cost & compliance governance</li>
       </ul>
     </div>
-
-    <div class="content-item">
-      <h3>Technical Prowess</h3>
+    <div class="card" data-aos="fade-up">
+      <h3 class="section-title">Technical Prowess</h3>
       <ul>
         <li>Azure AI & ML, Data Lake, Synapse Analytics</li>
         <li>DevOps, CI/CD Pipelines, Kubernetes</li>
         <li>Security & Compliance: Azure AD, Sentinel, Defender</li>
       </ul>
     </div>
-
-    <div class="content-item">
-      <h3>Implementation & Integration</h3>
+    <div class="card" data-aos="fade-up">
+      <h3 class="section-title">Implementation & Integration</h3>
       <ul>
         <li>Hybrid Cloud with Azure Arc</li>
         <li>SAP on Azure, Mulesoft, Salesforce integrations</li>
         <li>Data Migration & Governance</li>
       </ul>
     </div>
-
-    <div class="content-item">
-      <h3>Client Success</h3>
+    <div class="card" data-aos="fade-up">
+      <h3 class="section-title">Client Success</h3>
       <ul>
         <li>Healthcare: AI-powered analytics with Power BI</li>
         <li>Finance: Fraud detection using Azure ML</li>
         <li>Retail: Scalable eCommerce with Azure Kubernetes</li>
       </ul>
     </div>
-
-    <div class="content-item">
-      <h3>Team Expertise</h3>
+    <div class="card" data-aos="fade-up">
+      <h3 class="section-title">Team Expertise</h3>
       <ul>
         <li>Microsoft-Certified Azure Architects</li>
         <li>Specialists in AI, DevOps, SAP on Azure</li>
       </ul>
     </div>
-
-     <div class="content-item">
-  <h3>Engage with Us</h3>
-  <ul>
-    <li><strong>Book a Consultation</strong> – Talk to our ServiceNow experts</li>
-    <li><strong>Download Whitepaper</strong> – Best practices & success metrics</li>
-  </ul>
-
-  <div class="mt-4 flex flex-col sm:flex-row gap-3">
-    <a href="#consultation"
-       class="inline-flex items-center justify-center px-5 py-2.5 font-medium text-sm text-white bg-[#f4a261] hover:bg-[#e67e22] transition duration-300 ease-in-out rounded-full shadow-md hover:shadow-lg">
-       <i class="fa-solid fa-calendar-check mr-2"></i> Book a Consultation
-    </a>
-
-    <a href="#whitepaper"
-       class="inline-flex items-center justify-center px-5 py-2.5 font-medium text-sm text-[#f4a261] border border-[#f4a261] hover:bg-[#f4a261]/10 transition duration-300 ease-in-out rounded-full shadow-sm">
-       <i class="fa-solid fa-file-lines mr-2"></i> Download Whitepaper
-    </a>
+    <div class="card" data-aos="fade-up">
+      <h3 class="section-title">Engage with Us</h3>
+      <ul>
+        <li><strong>Book a Consultation</strong> – Talk to our Azure experts</li>
+        <li><strong>Download Whitepaper</strong> – Best practices & success metrics</li>
+      </ul>
+    </div>
   </div>
-</div>
 
-
+  <!-- CTA Section -->
+  <div class="microsoft-cta">
+    <h3 class="text-2xl font-semibold mb-4 text-gray-800">Accelerate Your Azure Journey</h3>
+    <div class="microsoft-cta-btns">
+      <a href="#consultation" class="cta-btn cta-btn-primary"><i class="fa-solid fa-calendar-check mr-2"></i>Book a Consultation</a>
+      <a href="#whitepaper" class="cta-btn cta-btn-outline"><i class="fa-solid fa-file-lines mr-2"></i>Download Whitepaper</a>
+    </div>
   </div>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

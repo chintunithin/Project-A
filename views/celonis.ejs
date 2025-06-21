@@ -11,143 +11,231 @@
     <link href="index.css"  rel="stylesheet" >
     <style>
        body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
             margin: 0;
             padding: 0;
-            background: #f4f4f4;
+            background: #fcfcfc;
             color: #333;
         }
-        .container {
-            width: 80%;
-            margin: auto;
-            padding: 20px;
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Roboto', sans-serif;
         }
-        .hero {
-            background: url('/images/s_image1.jpg') no-repeat center center/cover;
-            height: 50vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #121111;
-            text-align: center;
-            font-size: 2rem;
-            font-weight: bold;
-            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
-            animation: fadeIn 2s ease-in-out;
+        p{
+      color: #333;
+    }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            border-bottom: 2px solid #f4a26166;
+            display: inline-block;
+            padding-bottom: 4px;
+            margin-bottom: 16px;
         }
         .card {
-            background: white;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            border-left: 5px solid #e97d02;
+            background: #fff;
+            border-radius: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            padding: 2rem 1.5rem;
+            transition: box-shadow 0.2s, transform 0.2s;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
         .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.08);
         }
         .card ul {
-            padding-left: 20px;
-            list-style-type: none;
+            margin: 0;
+            padding-left: 1.2rem;
+            color: #444;
+            font-size: 1rem;
         }
         .card ul li {
-            margin: 5px 0;
-            padding: 10px;
-            background: rgba(0, 120, 212, 0.1);
-            color: black;
-            border-left: 4px solid #ed7a08;
-            border-radius: 5px;
+            margin-bottom: 0.5rem;
+            list-style-type: disc;
         }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 2rem;
+            font-weight: 500;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: background 0.2s, color 0.2s, border 0.2s, transform 0.2s;
+            cursor: pointer;
+        }
+        .cta-btn-primary {
+            background: #f4a261;
+            color: #fff;
+            border: none;
+        }
+        .cta-btn-primary:hover {
+            background: #e67e22;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        .cta-btn-outline {
+            background: transparent;
+            color: #f4a261;
+            border: 2px solid #f4a261;
+        }
+        .cta-btn-outline:hover {
+            background: #f4a26111;
+            color: #e67e22;
+            border-color: #e67e22;
+            transform: translateY(-2px);
+        }
+        .celonis-hero {
+            height: 60vh;
+            background: url('/images/s_image1.jpg') center center/cover no-repeat;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+        }
+        .celonis-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1;
+        }
+        .celonis-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 1rem;
+        }
+        .celonis-hero h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        @media (min-width: 768px) {
+            .celonis-hero h1 {
+                font-size: 2.8rem;
             }
         }
-        @media screen and (max-width: 768px) {
-            .container {
-                width: 95%;
-            }
-            .hero {
-                font-size: 1.5rem;
-                height: 40vh;
-            }
+        .celonis-section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin: 48px 0 12px;
+            color: #333;
         }
-        .container h2{
-            font-size: 2rem;
-    color: #ff7f50;
-    text-align: center;
-    margin-bottom: 25px;
+        .celonis-section-subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 1.1rem;
+            margin-bottom: 36px;
+        }
+        .celonis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px 60px;
+        }
+        .celonis-cta {
+            text-align: center;
+            margin: 60px 0 50px 0;
+        }
+        .celonis-cta-btns {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+            margin-top: 24px;
+        }
+        @media (min-width: 600px) {
+            .celonis-cta-btns {
+                flex-direction: row;
+                justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
     <%- include('partials/navbar') %>
 
-    
-    <div class="container">
-        <div class="card" data-aos="fade-up">
-            <h2>Our Expertise</h2>
-            <p style="color: black;">We empower businesses with Celonis Process Mining & AI-powered automation, optimizing workflows and enhancing decision-making.</p>
-        </div>
-        
-        <div class="card" data-aos="fade-up">
-            <h2>End-to-End Process Optimization Framework</h2>
-            <ul>
-                <li> Process Discovery – Analyzing inefficiencies in SAP, Salesforce, or legacy systems</li>
-                <li> AI-powered Automation – Intelligent process mining and real-time workflow enhancements</li>
-                <li> Continuous Monitoring & Optimization – AI-driven anomaly detection & compliance tracking</li>
-            </ul>
-        </div>
-        
-        <div class="card" data-aos="fade-up">
-            <h2>Technical Prowess</h2>
-            <ul>
-                <li> Celonis EMS & AI-powered process mining</li>
-                <li> Intelligent Automation and Decision Optimization</li>
-                <li> Integration with SAP, Salesforce, Mulesoft, and ServiceNow</li>
-            </ul>
-        </div>
-        
-        <div class="card" data-aos="fade-up">
-            <h2>Process Intelligence in Action</h2>
-            <ul>
-                <li> AI-driven invoice processing & working capital optimization</li>
-                <li> Real-time analytics for inventory & logistics optimization</li>
-                <li> AI-powered predictive risk & performance analysis</li>
-            </ul>
-        </div>
-        
-        <div class="card" data-aos="fade-up">
-            <h2>Client Success Stories</h2>
-            <ul>
-                <li> Manufacturing: AI-driven efficiency improvements in production lines</li>
-                <li> Banking & Finance: Fraud detection & compliance automation</li>
-                <li> Retail: Supply chain resilience & demand forecasting optimization</li>
-            </ul>
-        </div>
-        
-        <div class="card" data-aos="fade-up">
-            <h2>Team Expertise</h2>
-            <ul>
-                <li> Celonis-Certified Experts in Process Mining & AI-Powered Decision Optimization</li>
-                <li> Specializations in Celonis EMS, AI Workflow Intelligence</li>
-            </ul>
-        </div>
-        
-        <div class="card" data-aos="fade-up">
-            <h2>Call-to-Action</h2>
-            <ul>
-                <li> <strong>[Schedule a Celonis Process Intelligence Consultation]</strong></li>
-                <li>📄 <strong>[Download Our Celonis Best Practices Whitepaper]</strong></li>
-            </ul>
-        </div>
+    <!-- Hero Section -->
+    <section class="celonis-hero">
+      <div class="celonis-hero-content">
+        <h1>AI-Driven Process Mining & Automation with Celonis</h1>
+      </div>
+    </section>
+
+    <!-- Section Title & Subtitle -->
+    <div class="celonis-section-title">Celonis Solutions</div>
+    <div class="celonis-section-subtitle">Unlock process excellence and business value with process mining, automation, and real-time analytics</div>
+
+    <!-- Main Content as Cards Grid -->
+    <div class="celonis-grid">
+      <div class="card" data-aos="fade-up">
+        <h3 class="section-title">Our Expertise</h3>
+        <p>We empower businesses with Celonis Process Mining & AI-powered automation, optimizing workflows and enhancing decision-making.</p>
+      </div>
+      <div class="card" data-aos="fade-up">
+        <h3 class="section-title">End-to-End Process Optimization Framework</h3>
+        <ul>
+          <li>Process Discovery – Analyzing inefficiencies in SAP, Salesforce, or legacy systems</li>
+          <li>AI-powered Automation – Intelligent process mining and real-time workflow enhancements</li>
+          <li>Continuous Monitoring & Optimization – AI-driven anomaly detection & compliance tracking</li>
+        </ul>
+      </div>
+      <div class="card" data-aos="fade-up">
+        <h3 class="section-title">Technical Prowess</h3>
+        <ul>
+          <li>Celonis EMS & AI-powered process mining</li>
+          <li>Intelligent Automation and Decision Optimization</li>
+          <li>Integration with SAP, Salesforce, Mulesoft, and ServiceNow</li>
+        </ul>
+      </div>
+      <div class="card" data-aos="fade-up">
+        <h3 class="section-title">Process Intelligence in Action</h3>
+        <ul>
+          <li>AI-driven invoice processing & working capital optimization</li>
+          <li>Real-time analytics for inventory & logistics optimization</li>
+          <li>AI-powered predictive risk & performance analysis</li>
+        </ul>
+      </div>
+      <div class="card" data-aos="fade-up">
+        <h3 class="section-title">Client Success Stories</h3>
+        <ul>
+          <li>Manufacturing: AI-driven efficiency improvements in production lines</li>
+          <li>Banking & Finance: Fraud detection & compliance automation</li>
+          <li>Retail: Supply chain resilience & demand forecasting optimization</li>
+        </ul>
+      </div>
+      <div class="card" data-aos="fade-up">
+        <h3 class="section-title">Team Expertise</h3>
+        <ul>
+          <li>Celonis-Certified Experts in Process Mining & AI-Powered Decision Optimization</li>
+          <li>Specializations in Celonis EMS, AI Workflow Intelligence</li>
+        </ul>
+      </div>
+      <div class="card" data-aos="fade-up">
+        <h3 class="section-title">Engage with Us</h3>
+        <ul>
+          <li><strong>Book a Consultation</strong> – Talk to our Celonis experts</li>
+          <li><strong>Download Whitepaper</strong> – Best practices & success metrics</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="celonis-cta">
+      <h3 class="text-2xl font-semibold mb-4 text-gray-800">Accelerate Your Celonis Journey</h3>
+      <div class="celonis-cta-btns">
+        <a href="#consultation" class="cta-btn cta-btn-primary"><i class="fa-solid fa-calendar-check mr-2"></i>Book a Consultation</a>
+        <a href="#whitepaper" class="cta-btn cta-btn-outline"><i class="fa-solid fa-file-lines mr-2"></i>Download Whitepaper</a>
+      </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>

@@ -391,6 +391,81 @@
             color: #a3b1c2;
             font-size: 0.9rem;
         }
+
+        .classic-grid-container {
+          width: 100%;
+          background: #f7f7f7;
+          padding: 60px 0 30px 0;
+        }
+        .classic-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 40px;
+          max-width: 1200px;
+          margin: 0 auto;
+          justify-content: center;
+        }
+        .classic-card {
+          background: #fff;
+          border-radius: 14px;
+          box-shadow: 0 4px 16px rgba(44,62,80,0.08);
+          border: 1px solid #ececec;
+          padding: 32px 24px 24px 24px;
+          text-align: center;
+          transition: box-shadow 0.2s, transform 0.2s;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        .classic-card:hover {
+          box-shadow: 0 8px 32px rgba(255,127,80,0.13);
+          transform: translateY(-4px) scale(1.02);
+        }
+        .classic-card-img {
+          width: 80px;
+          height: 80px;
+          object-fit: cover;
+          border-radius: 50%;
+          margin-bottom: 18px;
+          border: 2px solid #ff7f50;
+          background: #fff;
+        }
+        .classic-card h3 {
+          font-size: 1.35rem;
+          color: #ff7f50;
+          margin-bottom: 16px;
+          font-family: 'Roboto', sans-serif;
+        }
+        .classic-card ul, .classic-card ol {
+          text-align: left;
+          margin: 0 auto;
+          padding: 0 0 0 18px;
+          color: #2c3e50;
+          font-size: 1.05rem;
+        }
+        .classic-card li {
+          margin-bottom: 10px;
+        }
+        @media (max-width: 1024px) {
+          .classic-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+        @media (max-width: 700px) {
+          .classic-grid {
+            grid-template-columns: 1fr;
+          }
+          .classic-grid-container {
+            padding: 30px 0 10px 0;
+          }
+        }
+        /* Center last card if odd number of cards in last row */
+        .classic-grid > .classic-card:nth-last-child(1):nth-child(3n+2) {
+          grid-column: 2;
+        }
+        .classic-grid > .classic-card:nth-last-child(1):nth-child(3n+1) {
+          grid-column: 2;
+        }
     </style>
 </head>
 <body>
@@ -403,63 +478,62 @@
         </div>
     </header>
     
-    <section class="challenges" data-aos="fade-up">
-        <img class="data_migration_img" src="images/challenges.jpg" alt="">
-        <div>
-            <h2>Understanding the Challenges</h2>
-            <ul>
-                <li>Data Loss & Corruption</li>
-                <li>System Downtime & Compatibility Issues</li>
-                <li>Data Security & Compliance</li>
-                <li>Performance Bottlenecks</li>
-            </ul>
+    <!-- Classic 3-blocks-per-row grid redesign start -->
+    <div class="classic-grid-container">
+      <div class="classic-grid">
+        <!-- Block 1: Understanding the Challenges -->
+        <div class="classic-card">
+          <img src="images/challenges.jpg" alt="Challenges" class="classic-card-img">
+          <h3>Understanding the Challenges</h3>
+          <ul>
+            <li>Data Loss & Corruption</li>
+            <li>System Downtime & Compatibility Issues</li>
+            <li>Data Security & Compliance</li>
+            <li>Performance Bottlenecks</li>
+          </ul>
         </div>
-    </section>
-    
-    <section class="trends" data-aos="fade-up">
-        <img class="data_migration_img" src="images/t_image.jpg" alt="">
-        <div>
-            <h2>Technology Trends</h2>
-            <ul>
-                <li>AI-Driven Data Migration</li>
-                <li>Cloud-to-Cloud Migrations</li>
-                <li>Real-Time Migration</li>
-                <li>Blockchain in Data Integrity</li>
-            </ul>
+        <!-- Block 2: Technology Trends -->
+        <div class="classic-card">
+          <img src="images/t_image.jpg" alt="Technology Trends" class="classic-card-img">
+          <h3>Technology Trends</h3>
+          <ul>
+            <li>AI-Driven Data Migration</li>
+            <li>Cloud-to-Cloud Migrations</li>
+            <li>Real-Time Migration</li>
+            <li>Blockchain in Data Integrity</li>
+          </ul>
         </div>
-    </section>
-    
-    <section class="accelerators" data-aos="fade-up">
-        <img class="data_migration_img" src="images/Our_expertise.JPG" alt="">
-        <div>
-            <h2>Our Expertise</h2>
-            <ul>
-                <li>15+ years in complex data migration projects</li>
-                <li>Proficiency in ETL tools: Informatica, Talend, AWS Glue</li>
-                <li>Expertise in migrating Oracle, SQL Server, SAP HANA, Snowflake</li>
-                <li>AI-driven data quality, governance & automation</li>
-            </ul>
+        <!-- Block 3: Our Expertise -->
+        <div class="classic-card">
+          <img src="images/Our_expertise.JPG" alt="Our Expertise" class="classic-card-img">
+          <h3>Our Expertise</h3>
+          <ul>
+            <li>15+ years in complex data migration projects</li>
+            <li>Proficiency in ETL tools: Informatica, Talend, AWS Glue</li>
+            <li>Expertise in migrating Oracle, SQL Server, SAP HANA, Snowflake</li>
+            <li>AI-driven data quality, governance & automation</li>
+          </ul>
         </div>
-    </section>
-    
-    <section class="success" data-aos="fade-up">
-        <img class="data_migration_img" src="images/c_image1.jpg" alt="">
-        <div>
-            <h2>Case Study</h2>
-            <ul>
-                <li>Migrated 10TB of data for a global retailer</li>
-                <li>Zero data loss achieved</li>
-                <li>Minimal business disruption</li>
-                <li>Improved system performance</li>
-            </ul>
-            <div class="whitebutton" onclick="showDownloadPopup()" style="float: left;"> 
-                <a href="#">Download</a><br>
-                <span class="up">Click to Download</span><br>
-                <span class="down" id="file-info">Fetching size...</span>
-            </div>
+        <!-- Block 4: Case Study Success (with download button) -->
+        <div class="classic-card">
+          <img src="images/c_image1.jpg" alt="Case Study" class="classic-card-img">
+          <h3>Case Study Success</h3>
+          <ul>
+            <li>Migrated 10TB of data for a global retailer</li>
+            <li>Zero data loss achieved</li>
+            <li>Minimal business disruption</li>
+            <li>Improved system performance</li>
+          </ul>
+          <div class="whitebutton" onclick="showDownloadPopup()" style="margin: 18px auto 0; float: none; display: inline-block;"> 
+            <a href="#">Download</a><br>
+            <span class="up">Click to Download</span><br>
+            <span class="down" id="file-info">Fetching size...</span>
+          </div>
         </div>
-    </section>
-    
+      </div>
+    </div>
+    <!-- Classic 3-blocks-per-row grid redesign end -->
+
     <section class="cta-section" data-aos="fade-up">
         <div class="cta-wrapper">
             <h2>Ready to Transform Your Data Strategy?</h2>
